@@ -21,7 +21,7 @@ namespace DCC
     public partial class CertificateForm : Form
     {
         #region Tanımlamalar
-         
+
         OpenFileDialog openFileDialog = new OpenFileDialog();
         public string ExcelDosyaYolu;
         public string ExcelDosyaAdi;
@@ -37,11 +37,11 @@ namespace DCC
         SP_WordTable SP_WordTable = new SP_WordTable();
         EE_DataWord EE_DataWord = new EE_DataWord();
         CreateXML CreateXML = new CreateXML();
-        CF_DataWord CF_DataWord= new CF_DataWord();
-        EE_WordTable EE_WordTable= new EE_WordTable();
-        CIS_DataWord CIS_DataWord= new CIS_DataWord();
-        CF_WordTable CF_Word_Table= new CF_WordTable();
-        CIS_WordTable CIS_Word_Table= new CIS_WordTable();
+        CF_DataWord CF_DataWord = new CF_DataWord();
+        EE_WordTable EE_WordTable = new EE_WordTable();
+        CIS_DataWord CIS_DataWord = new CIS_DataWord();
+        CF_WordTable CF_Word_Table = new CF_WordTable();
+        CIS_WordTable CIS_Word_Table = new CIS_WordTable();
         int satır;
         string sütun;
 
@@ -68,17 +68,21 @@ namespace DCC
             homePage.Show();
         }
 
-
         private void BackBox2_Click(object sender, EventArgs e)
         {
             CertificateTabControl.SelectedTab = API_PAGE;
             this.Text = "API OPERATIONS";
         }
+
         private void BackBox3_Click(object sender, EventArgs e)
         {
             this.Text = "DATA OPERATIONS";
             CertificateTabControl.SelectedTab = DATA_PAGE;
 
+        }
+        private void BackBox4_Click(object sender, EventArgs e)
+        {
+            CertificateTabControl.SelectedTab = ExcelView_Page;
         }
 
         private void MeasurementTypes_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,11 +132,12 @@ namespace DCC
             pageName = ExcelPage_ComboBox.SelectedItem.ToString();
             CertificateTabControl.SelectedTab = ExcelView_Page;
         }
-
+        #region Button
         private void Save_Row_Col_Button_Click(object sender, EventArgs e)
         {
             satır = Convert.ToInt32(RowNumberTextBox.Text);
             sütun = ColumnNameTextBox.Text;
+            sütun = sütun.ToUpper();
             this.Text = "DATA OPERATIONS";
             CertificateTabControl.SelectedTab = DATA_PAGE;
         }
@@ -197,8 +202,8 @@ namespace DCC
                 #region S-Parametre
                 if (MeasurementTypes_ComboBox.SelectedIndex == 4)
                 {
-                    sp_DataWord.main(ExcelDosyaYolu, pageName);
-                    XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName);
+                    sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
 
                     #region S parametre Checkbox Kontrolleri
 
@@ -360,7 +365,7 @@ namespace DCC
                 {
                     EE_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.EE_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    
+
                     #region EE ChechkBox Kontrolleri
                     List<bool> dataListEE = new List<bool>(14) { false, false, false, false };
 
@@ -413,8 +418,8 @@ namespace DCC
                 #region Calibration Factor
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 1)
                 {
-                    CF_DataWord.main(ExcelDosyaYolu, pageName);
-                    XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName);
+                    CF_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     #region CF CheckBox Kontrolleri
 
                     List<bool> dataListCF = new List<bool>(14) { false, false };
@@ -450,8 +455,8 @@ namespace DCC
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 2)
                 {
 
-                    CIS_DataWord.main(ExcelDosyaYolu, pageName);
-                    XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName);
+                    CIS_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
 
                     bool CIS_bool = false;
 
@@ -516,7 +521,7 @@ namespace DCC
 
 
 
-           
+
             if (result == DialogResult.Yes)
             {
 
@@ -652,6 +657,7 @@ namespace DCC
             }
 
         }
+        #endregion
         public void WordBasarim()
         {
             LabelProgress.Visible = false;
@@ -745,6 +751,6 @@ namespace DCC
             Application.Exit();
         }
 
-        
+      
     }
 }
