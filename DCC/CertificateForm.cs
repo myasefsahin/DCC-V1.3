@@ -135,8 +135,7 @@ namespace DCC
         #region Button
         private void Save_Row_Col_Button_Click(object sender, EventArgs e)
         {
-            satır = Convert.ToInt32(RowNumberTextBox.Text);
-            sütun = ColumnNameTextBox.Text;
+            
             sütun = sütun.ToUpper();
             this.Text = "DATA OPERATIONS";
             CertificateTabControl.SelectedTab = DATA_PAGE;
@@ -751,6 +750,28 @@ namespace DCC
             Application.Exit();
         }
 
-      
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Eğer hücre seçilmediyse veya sütun başlığına tıklanmışsa bu olayı işlememize gerek yok
+            if (e.RowIndex == -1 || e.ColumnIndex == -1)
+                return;
+
+            // Çift tıklanan hücrenin sütun ve satır indekslerini alalım
+            int columnIndex = e.ColumnIndex;
+            int rowIndex = e.RowIndex;
+
+            // Sütun ve satır indekslerini kullanarak hücrenin değerini veya başlık değerini alabilirsiniz
+            object cellValue = dataGridView1.Rows[rowIndex].Cells[columnIndex].Value;
+
+            // Hücrenin sütun ve satır bilgisini kullanarak istediğiniz işlemi yapabilirsiniz
+              string columnName = dataGridView1.Columns[columnIndex].HeaderText;
+            int rowNumber = rowIndex + 1; // Satır numarası 0'dan başlamıyorsa +1 ekleyebilirsiniz
+
+            sütun = columnName;
+            satır = rowNumber;
+
+            // Elde edilen bilgileri kullanarak istediğiniz işlemi yapabilirsiniz
+            MessageBox.Show($"Seçilen hücre: {columnName}{rowNumber}");
+        }
     }
 }

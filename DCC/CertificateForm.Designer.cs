@@ -101,16 +101,14 @@
             ExcelView_Page = new TabPage();
             panel3 = new Panel();
             Save_Row_Col_Button = new MaterialSkin.Controls.MaterialButton();
-            RowNumberTextBox = new MaterialSkin.Controls.MaterialTextBox2();
-            ColumnNameTextBox = new MaterialSkin.Controls.MaterialTextBox2();
             dataGridView1 = new DataGridView();
             label4 = new Label();
             BackBox3 = new PictureBox();
+            groupBox13 = new GroupBox();
             progressBar = new ProgressBar();
             label6 = new Label();
             groupBox12 = new GroupBox();
             LabelProgress = new Label();
-            groupBox13 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)BackBox1).BeginInit();
             CertificateTabControl.SuspendLayout();
             API_PAGE.SuspendLayout();
@@ -1218,8 +1216,6 @@
             // 
             panel3.BackColor = Color.White;
             panel3.Controls.Add(Save_Row_Col_Button);
-            panel3.Controls.Add(RowNumberTextBox);
-            panel3.Controls.Add(ColumnNameTextBox);
             panel3.Controls.Add(dataGridView1);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(BackBox3);
@@ -1251,64 +1247,6 @@
             Save_Row_Col_Button.UseVisualStyleBackColor = true;
             Save_Row_Col_Button.Click += Save_Row_Col_Button_Click;
             // 
-            // RowNumberTextBox
-            // 
-            RowNumberTextBox.AnimateReadOnly = false;
-            RowNumberTextBox.BackgroundImageLayout = ImageLayout.None;
-            RowNumberTextBox.CharacterCasing = CharacterCasing.Normal;
-            RowNumberTextBox.Depth = 0;
-            RowNumberTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            RowNumberTextBox.HideSelection = true;
-            RowNumberTextBox.Hint = "Lütfen satır numarasını giriniz";
-            RowNumberTextBox.LeadingIcon = null;
-            RowNumberTextBox.Location = new Point(491, 661);
-            RowNumberTextBox.MaxLength = 32767;
-            RowNumberTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            RowNumberTextBox.Name = "RowNumberTextBox";
-            RowNumberTextBox.PasswordChar = '\0';
-            RowNumberTextBox.PrefixSuffixText = null;
-            RowNumberTextBox.ReadOnly = false;
-            RowNumberTextBox.RightToLeft = RightToLeft.No;
-            RowNumberTextBox.SelectedText = "";
-            RowNumberTextBox.SelectionLength = 0;
-            RowNumberTextBox.SelectionStart = 0;
-            RowNumberTextBox.ShortcutsEnabled = true;
-            RowNumberTextBox.Size = new Size(312, 48);
-            RowNumberTextBox.TabIndex = 12;
-            RowNumberTextBox.TabStop = false;
-            RowNumberTextBox.TextAlign = HorizontalAlignment.Left;
-            RowNumberTextBox.TrailingIcon = null;
-            RowNumberTextBox.UseSystemPasswordChar = false;
-            // 
-            // ColumnNameTextBox
-            // 
-            ColumnNameTextBox.AnimateReadOnly = false;
-            ColumnNameTextBox.BackgroundImageLayout = ImageLayout.None;
-            ColumnNameTextBox.CharacterCasing = CharacterCasing.Normal;
-            ColumnNameTextBox.Depth = 0;
-            ColumnNameTextBox.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            ColumnNameTextBox.HideSelection = true;
-            ColumnNameTextBox.Hint = "Lütfen Sütun adını giriniz";
-            ColumnNameTextBox.LeadingIcon = null;
-            ColumnNameTextBox.Location = new Point(75, 661);
-            ColumnNameTextBox.MaxLength = 32767;
-            ColumnNameTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            ColumnNameTextBox.Name = "ColumnNameTextBox";
-            ColumnNameTextBox.PasswordChar = '\0';
-            ColumnNameTextBox.PrefixSuffixText = null;
-            ColumnNameTextBox.ReadOnly = false;
-            ColumnNameTextBox.RightToLeft = RightToLeft.No;
-            ColumnNameTextBox.SelectedText = "";
-            ColumnNameTextBox.SelectionLength = 0;
-            ColumnNameTextBox.SelectionStart = 0;
-            ColumnNameTextBox.ShortcutsEnabled = true;
-            ColumnNameTextBox.Size = new Size(312, 48);
-            ColumnNameTextBox.TabIndex = 11;
-            ColumnNameTextBox.TabStop = false;
-            ColumnNameTextBox.TextAlign = HorizontalAlignment.Left;
-            ColumnNameTextBox.TrailingIcon = null;
-            ColumnNameTextBox.UseSystemPasswordChar = false;
-            // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
@@ -1321,6 +1259,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1113, 505);
             dataGridView1.TabIndex = 10;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // label4
             // 
@@ -1343,6 +1282,14 @@
             BackBox3.TabIndex = 8;
             BackBox3.TabStop = false;
             BackBox3.Click += BackBox3_Click;
+            // 
+            // groupBox13
+            // 
+            groupBox13.Location = new Point(29, 58);
+            groupBox13.Name = "groupBox13";
+            groupBox13.Size = new Size(1162, 579);
+            groupBox13.TabIndex = 14;
+            groupBox13.TabStop = false;
             // 
             // progressBar
             // 
@@ -1384,14 +1331,6 @@
             LabelProgress.TabIndex = 3;
             LabelProgress.Text = "LabelProgress";
             LabelProgress.Visible = false;
-            // 
-            // groupBox13
-            // 
-            groupBox13.Location = new Point(29, 58);
-            groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(1162, 579);
-            groupBox13.TabIndex = 14;
-            groupBox13.TabStop = false;
             // 
             // CertificateForm
             // 
@@ -1512,8 +1451,6 @@
         private DataGridView dataGridView1;
         private Label label4;
         private MaterialSkin.Controls.MaterialButton Save_Row_Col_Button;
-        private MaterialSkin.Controls.MaterialTextBox2 RowNumberTextBox;
-        private MaterialSkin.Controls.MaterialTextBox2 ColumnNameTextBox;
         private Label label6;
         private GroupBox groupBox12;
         public MaterialSkin.Controls.MaterialTextBox2 ExcelFileName_TextBox;
