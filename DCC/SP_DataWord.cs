@@ -6,45 +6,49 @@ using System.Windows.Forms;
 using OfficeOpenXml;
 using System.ComponentModel;
 using LicenseContext = OfficeOpenXml.LicenseContext;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace DCC
 {
     public class SP_DataWord
     {
+        List<string> columnName = new List<string>(104) {
+                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ","AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ",
+                "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ","BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT","BU", "BV", "BW", "BX", "BY", "BZ",
+                "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ","CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT","CU", "CV", "CW", "CX", "CY", "CZ" };
 
 
 
-        public void main(string ExcelDosyaYolu, string pageName)
+        public void main(string ExcelDosyaYolu, string pageName,int satır,string sütun)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-            // Excel Verileri
-
+            int harfIndex = columnName.IndexOf(sütun);
             using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
             {
 
 
-                // Excel'in sabit olan sonuç sayfasındaki verilere göre hazırlanmıştır. 
+                // Excel'in 13. sayfasındaki veriler
+
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
+
                 int rowCount = worksheet.Dimension.Rows;
-                //int satirSayisi = rowCount - 6;
+
 
                 string[] cellValue = new string[rowCount];
 
 
                 // Frekans değerlerinin çekimi
-                for (int i = 7; i <= rowCount; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["A" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[sütun + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ArrayFrekans.Add(cellValue[i - 7]);
+                        ArrayFrekans.Add(cellValue[i - satır]);
                     }
                 }
 
-
                 // S-Parametre değerlerinin çekimi
-                for (int i = 7; i < ArrayFrekans.Count + 7; i++)
+                for (int i = satır; i < ArrayFrekans.Count + satır; i++)
                 {
 
                     //S11 değerleri için 
@@ -52,118 +56,85 @@ namespace DCC
                     CalculateEntity calculateEntity = new CalculateEntity();
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["B" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["C" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex+1] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex+2] + i].Value);
                     CalculateEntity formattedEntity = NumberFormatter.deneme(calculateEntity);
                     ArrayS11Reel.Add(formattedEntity.measurent);
                     ArrayS11ReelUnc.Add(formattedEntity.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["D" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["E" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex+3]  + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex+4] + i].Value);
                     CalculateEntity formattedEntity1 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11Complex.Add(formattedEntity1.measurent);
                     ArrayS11ComplexUnc.Add(formattedEntity1.uncertainty);
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["Q" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["R" + i].Value);
-                    CalculateEntity formattedEntity7 = NumberFormatter.deneme(calculateEntity);
-                    ArrayS12Reel.Add(formattedEntity7.measurent);
-                    ArrayS12ReelUnc.Add(formattedEntity7.uncertainty);
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["S" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["T" + i].Value);
-                    CalculateEntity formattedEntity8 = NumberFormatter.deneme(calculateEntity);
-                    ArrayS12Complex.Add(formattedEntity8.measurent);
-                    ArrayS12ComplexUnc.Add(formattedEntity8.uncertainty);
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AD" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AE" + i].Value);
-                    CalculateEntity formattedEntity13 = NumberFormatter.deneme(calculateEntity);
-                    ArrayS21Reel.Add(formattedEntity13.measurent);
-                    ArrayS21ReelUnc.Add(formattedEntity13.uncertainty);
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AF" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AG" + i].Value);
-                    CalculateEntity formattedEntity14 = NumberFormatter.deneme(calculateEntity);
-                    ArrayS21Complex.Add(formattedEntity14.measurent);
-                    ArrayS21ComplexUnc.Add(formattedEntity14.uncertainty);
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AQ" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AR" + i].Value);
-                    CalculateEntity formattedEntity19 = NumberFormatter.deneme(calculateEntity);
-                    ArrayS22Reel.Add(formattedEntity19.measurent);
-                    ArrayS22ReelUnc.Add(formattedEntity19.uncertainty);
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AS" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AT" + i].Value);
-                    CalculateEntity formattedEntity20 = NumberFormatter.deneme(calculateEntity);
-                    ArrayS22Complex.Add(formattedEntity20.measurent);
-                    ArrayS22ComplexUnc.Add(formattedEntity20.uncertainty);
-
-
-
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["F" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["G" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 5] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
                     CalculateEntity formattedEntity2 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11Lin.Add(formattedEntity2.measurent);
                     ArrayS11LinUnc.Add(formattedEntity2.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["H" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["I" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 7] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
                     CalculateEntity formattedEntity3 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11LinPhase.Add(formattedEntity3.measurent);
                     ArrayS11LinPhaseUnc.Add(formattedEntity3.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["J" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["K" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 9] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 10] + i].Value);
                     CalculateEntity formattedEntity4 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11Log.Add(formattedEntity4.measurent);
                     ArrayS11LogUnc.Add(formattedEntity4.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["L" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["M" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 11] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 12] + i].Value);
                     CalculateEntity formattedEntity5 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11LogPhase.Add(formattedEntity5.measurent);
                     ArrayS11LogPhaseUnc.Add(formattedEntity5.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["N" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["O" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 13] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 14] + i].Value);
                     CalculateEntity formattedEntity6 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11SWR.Add(formattedEntity6.measurent);
                     ArrayS11SWRUnc.Add(formattedEntity6.uncertainty);
 
-
-
-
-
                     //S12 değerleri için 
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex +16 ] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 17] + i].Value);
+                    CalculateEntity formattedEntity7 = NumberFormatter.deneme(calculateEntity);
+                    ArrayS12Reel.Add(formattedEntity7.measurent);
+                    ArrayS12ReelUnc.Add(formattedEntity7.uncertainty);
 
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 18] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 19] + i].Value);
+                    CalculateEntity formattedEntity8 = NumberFormatter.deneme(calculateEntity);
+                    ArrayS12Complex.Add(formattedEntity8.measurent);
+                    ArrayS12ComplexUnc.Add(formattedEntity8.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["U" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["V" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 20] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 21] + i].Value);
                     CalculateEntity formattedEntity9 = NumberFormatter.deneme(calculateEntity);
                     ArrayS12Lin.Add(formattedEntity9.measurent);
                     ArrayS12LinUnc.Add(formattedEntity9.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["W" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["X" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 22] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 23] + i].Value);
                     CalculateEntity formattedEntity10 = NumberFormatter.deneme(calculateEntity);
                     ArrayS12LinPhase.Add(formattedEntity10.measurent);
                     ArrayS12LinPhaseUnc.Add(formattedEntity10.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["Y" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["Z" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 24] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 25] + i].Value);
                     CalculateEntity formattedEntity11 = NumberFormatter.deneme(calculateEntity);
                     ArrayS12Log.Add(formattedEntity11.measurent);
                     ArrayS12LogUnc.Add(formattedEntity11.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AA" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AB" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 26] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 27] + i].Value);
                     CalculateEntity formattedEntity12 = NumberFormatter.deneme(calculateEntity);
                     ArrayS12LogPhase.Add(formattedEntity12.measurent);
                     ArrayS12LogPhaseUnc.Add(formattedEntity12.uncertainty);
@@ -172,29 +143,41 @@ namespace DCC
                     //S21 değerleri için 
 
 
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 29] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 30] + i].Value);
+                    CalculateEntity formattedEntity13 = NumberFormatter.deneme(calculateEntity);
+                    ArrayS21Reel.Add(formattedEntity13.measurent);
+                    ArrayS21ReelUnc.Add(formattedEntity13.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AH" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AI" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 31] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 32] + i].Value);
+                    CalculateEntity formattedEntity14 = NumberFormatter.deneme(calculateEntity);
+                    ArrayS21Complex.Add(formattedEntity14.measurent);
+                    ArrayS21ComplexUnc.Add(formattedEntity14.uncertainty);
+
+
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 33] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 34] + i].Value);
                     CalculateEntity formattedEntity15 = NumberFormatter.deneme(calculateEntity);
                     ArrayS21Lin.Add(formattedEntity15.measurent);
                     ArrayS21LinUnc.Add(formattedEntity15.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AJ" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AK" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 35] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 36] + i].Value);
                     CalculateEntity formattedEntity16 = NumberFormatter.deneme(calculateEntity);
                     ArrayS21LinPhase.Add(formattedEntity16.measurent);
                     ArrayS21LinPhaseUnc.Add(formattedEntity16.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AL" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AM" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 37] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 38] + i].Value);
                     CalculateEntity formattedEntity17 = NumberFormatter.deneme(calculateEntity);
                     ArrayS21Log.Add(formattedEntity17.measurent);
                     ArrayS21LogUnc.Add(formattedEntity17.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AN" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AO" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 39] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 40] + i].Value);
                     CalculateEntity formattedEntity18 = NumberFormatter.deneme(calculateEntity);
                     ArrayS21LogPhase.Add(formattedEntity18.measurent);
                     ArrayS21LogPhaseUnc.Add(formattedEntity18.uncertainty);
@@ -202,37 +185,47 @@ namespace DCC
 
                     //S22 değerleri için 
 
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 42] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 43] + i].Value);
+                    CalculateEntity formattedEntity19 = NumberFormatter.deneme(calculateEntity);
+                    ArrayS22Reel.Add(formattedEntity19.measurent);
+                    ArrayS22ReelUnc.Add(formattedEntity19.uncertainty);
 
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 44] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 45] + i].Value);
+                    CalculateEntity formattedEntity20 = NumberFormatter.deneme(calculateEntity);
+                    ArrayS22Complex.Add(formattedEntity20.measurent);
+                    ArrayS22ComplexUnc.Add(formattedEntity20.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AU" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AV" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 46] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 47] + i].Value);
                     CalculateEntity formattedEntity21 = NumberFormatter.deneme(calculateEntity);
                     ArrayS22Lin.Add(formattedEntity21.measurent);
                     ArrayS22LinUnc.Add(formattedEntity21.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AW" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AX" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 48] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 49] + i].Value);
                     CalculateEntity formattedEntity22 = NumberFormatter.deneme(calculateEntity);
                     ArrayS22LinPhase.Add(formattedEntity22.measurent);
                     ArrayS22LinPhaseUnc.Add(formattedEntity22.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["AY" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["AZ" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 50] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 51] + i].Value);
                     CalculateEntity formattedEntity23 = NumberFormatter.deneme(calculateEntity);
                     ArrayS22Log.Add(formattedEntity23.measurent);
                     ArrayS22LogUnc.Add(formattedEntity23.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["BA" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["BB" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 52] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 53] + i].Value);
                     CalculateEntity formattedEntity24 = NumberFormatter.deneme(calculateEntity);
                     ArrayS22LogPhase.Add(formattedEntity24.measurent);
                     ArrayS22LogPhaseUnc.Add(formattedEntity24.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["BC" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["BD" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 54] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 55] + i].Value);
                     CalculateEntity formattedEntity25 = NumberFormatter.deneme(calculateEntity);
                     ArrayS22SWR.Add(formattedEntity25.measurent);
                     ArrayS22SWRUnc.Add(formattedEntity25.uncertainty);

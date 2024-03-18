@@ -1,4 +1,5 @@
 ﻿
+using DocumentFormat.OpenXml.Wordprocessing;
 using OfficeOpenXml;
 using System;
 using System.Collections;
@@ -12,14 +13,25 @@ namespace DCC
 {
     public class CIS_DataWord
     {
-        public void main(string ExcelDosyaYolu, string pageName)
+        List<string> columnName = new List<string>(104) {
+                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ","AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ",
+                "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ","BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT","BU", "BV", "BW", "BX", "BY", "BZ",
+                "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ","CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT","CU", "CV", "CW", "CX", "CY", "CZ" };
+        public void main(string ExcelDosyaYolu, string pageName,int satır, string sütun)
         {
+            int harfIndex = columnName.IndexOf(sütun);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            // Excel Verileri
+
             using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
             {
 
 
                 // Excel'in sabit olan sonuç sayfasındaki verilere göre hazırlanmıştır. 
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
+
                 int rowCount = worksheet.Dimension.Rows;
                 //int satirSayisi = rowCount - 6;
 
@@ -27,15 +39,16 @@ namespace DCC
 
 
                 // Frekans değerlerinin çekimi
-                for (int i = 7; i <= rowCount; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["N" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[sütun + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        CIS_Olcum_Adım.Add(cellValue[i - 7]);
+                        CIS_Olcum_Adım.Add(cellValue[i - satır]);
                     }
                 }
-                for (int i = 7; i < CIS_Olcum_Adım.Count + 7; i++)
+
+                for (int i = satır; i < CIS_Olcum_Adım.Count+ satır;  i++)
                 {
 
                     //S11 değerleri için 
@@ -44,20 +57,20 @@ namespace DCC
 
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["O" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["P" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex+1] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 2] + i].Value);
                     CalculateEntity formattedEntity = NumberFormatter.deneme(calculateEntity);
                     CIS_ZP.Add(formattedEntity.measurent);
                     CIS_ZP_Unc.Add(formattedEntity.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["Q" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["R" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 3] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 4] + i].Value);
                     CalculateEntity formattedEntity1 = NumberFormatter.deneme(calculateEntity);
                     CIS_ICOD.Add(formattedEntity1.measurent);
                     CIS_ICOD_Unc.Add(formattedEntity1.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["S" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["T" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 5] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
                     CalculateEntity formattedEntity2 = NumberFormatter.deneme(calculateEntity);
                     CIS_OCID.Add(formattedEntity.measurent);
                     CIS_OCID_Unc.Add(formattedEntity2.uncertainty);

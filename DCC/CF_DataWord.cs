@@ -1,4 +1,5 @@
 ﻿
+using DocumentFormat.OpenXml.Wordprocessing;
 using OfficeOpenXml;
 using System;
 using System.Collections;
@@ -13,8 +14,16 @@ namespace DCC
 
     class CF_DataWord
     {
-        public void main(string ExcelDosyaYolu, string pageName)
+        List<string> columnName = new List<string>(104) {
+                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+                "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ","AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV", "AW", "AX", "AY", "AZ",
+                "BA", "BB", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ","BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT","BU", "BV", "BW", "BX", "BY", "BZ",
+                "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ","CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT","CU", "CV", "CW", "CX", "CY", "CZ" };
+
+
+        public void main(string ExcelDosyaYolu, string pageName,int satır,string sütun)
         {
+            int harfIndex = columnName.IndexOf(sütun);
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             // Excel Verileri
@@ -33,18 +42,17 @@ namespace DCC
 
 
                 // Frekans değerlerinin çekimi
-                for (int i = 4; i <= rowCount; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 4] = Convert.ToString(worksheet.Cells["B" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 4]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[sütun + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        CF_ArrayFrekans.Add(cellValue[i - 4]);
+                        CF_ArrayFrekans.Add(cellValue[i - satır]);
                     }
                 }
 
-
-                // CF Değerlerinin çekimi
-                for (int i = 4; i < CF_ArrayFrekans.Count + 4; i++)
+                // S-Parametre değerlerinin çekimi
+                for (int i = satır; i < CF_ArrayFrekans.Count + satır; i++)
                 {
 
                     //S11 değerleri için 
@@ -52,26 +60,26 @@ namespace DCC
                     CalculateEntity calculateEntity = new CalculateEntity();
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["C" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["D" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex+1] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 2] + i].Value);
                     CalculateEntity formattedEntity = NumberFormatter.deneme(calculateEntity);
                     CF_Array.Add(formattedEntity.measurent);
                     CF_ArrayCFUnc.Add(formattedEntity.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["H" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["I" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 7] + i].Value);
                     CalculateEntity formattedEntity1 = NumberFormatter.deneme(calculateEntity);
                     CF_ArrayReel.Add(formattedEntity1.measurent);
                     CF_ArrayReelUnc.Add(formattedEntity1.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["J" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["K" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 9] + i].Value);
                     CalculateEntity formattedEntity2 = NumberFormatter.deneme(calculateEntity);
                     CF_ArrayComplex.Add(formattedEntity2.measurent);
                     CF_ArrayComplexUnc.Add(formattedEntity2.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells["L" + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells["M" + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 10] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 11] + i].Value);
                     CalculateEntity formattedEntity3 = NumberFormatter.deneme(calculateEntity);
                     CF_YK.Add(formattedEntity3.measurent);
                     CF_YK_Unc.Add(formattedEntity3.uncertainty);

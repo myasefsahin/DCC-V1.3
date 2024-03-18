@@ -53,6 +53,8 @@
             label1 = new Label();
             DATA_PAGE = new TabPage();
             panel2 = new Panel();
+            BackBox4 = new PictureBox();
+            BackBox2 = new PictureBox();
             groupBox10 = new GroupBox();
             CreateCertificate_Button = new MaterialSkin.Controls.MaterialButton();
             groupBox11 = new GroupBox();
@@ -96,7 +98,6 @@
             Noise_Page = new TabPage();
             MeasurementTypes_ComboBox = new MaterialSkin.Controls.MaterialComboBox();
             label3 = new Label();
-            BackBox2 = new PictureBox();
             ExcelView_Page = new TabPage();
             panel3 = new Panel();
             Save_Row_Col_Button = new MaterialSkin.Controls.MaterialButton();
@@ -109,6 +110,7 @@
             label6 = new Label();
             groupBox12 = new GroupBox();
             LabelProgress = new Label();
+            groupBox13 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)BackBox1).BeginInit();
             CertificateTabControl.SuspendLayout();
             API_PAGE.SuspendLayout();
@@ -119,6 +121,8 @@
             groupBox2.SuspendLayout();
             DATA_PAGE.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BackBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BackBox2).BeginInit();
             groupBox10.SuspendLayout();
             groupBox11.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -131,7 +135,6 @@
             groupBox8.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)BackBox2).BeginInit();
             ExcelView_Page.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -581,14 +584,37 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(BackBox4);
+            panel2.Controls.Add(BackBox2);
             panel2.Controls.Add(groupBox10);
             panel2.Controls.Add(groupBox5);
-            panel2.Controls.Add(BackBox2);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(1213, 715);
             panel2.TabIndex = 8;
+            // 
+            // BackBox4
+            // 
+            BackBox4.Image = (Image)resources.GetObject("BackBox4.Image");
+            BackBox4.Location = new Point(1142, 14);
+            BackBox4.Name = "BackBox4";
+            BackBox4.Size = new Size(62, 35);
+            BackBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            BackBox4.TabIndex = 13;
+            BackBox4.TabStop = false;
+            BackBox4.Click += BackBox4_Click;
+            // 
+            // BackBox2
+            // 
+            BackBox2.Image = (Image)resources.GetObject("BackBox2.Image");
+            BackBox2.Location = new Point(5, 14);
+            BackBox2.Name = "BackBox2";
+            BackBox2.Size = new Size(62, 35);
+            BackBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            BackBox2.TabIndex = 12;
+            BackBox2.TabStop = false;
+            BackBox2.Click += BackBox2_Click;
             // 
             // groupBox10
             // 
@@ -1177,17 +1203,6 @@
             label3.TabIndex = 8;
             label3.Text = "Measurement Types";
             // 
-            // BackBox2
-            // 
-            BackBox2.Image = (Image)resources.GetObject("BackBox2.Image");
-            BackBox2.Location = new Point(5, 14);
-            BackBox2.Name = "BackBox2";
-            BackBox2.Size = new Size(62, 35);
-            BackBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            BackBox2.TabIndex = 7;
-            BackBox2.TabStop = false;
-            BackBox2.Click += BackBox2_Click;
-            // 
             // ExcelView_Page
             // 
             ExcelView_Page.Controls.Add(panel3);
@@ -1208,6 +1223,7 @@
             panel3.Controls.Add(dataGridView1);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(BackBox3);
+            panel3.Controls.Add(groupBox13);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
@@ -1369,6 +1385,14 @@
             LabelProgress.Text = "LabelProgress";
             LabelProgress.Visible = false;
             // 
+            // groupBox13
+            // 
+            groupBox13.Location = new Point(29, 58);
+            groupBox13.Name = "groupBox13";
+            groupBox13.Size = new Size(1162, 579);
+            groupBox13.TabIndex = 14;
+            groupBox13.TabStop = false;
+            // 
             // CertificateForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1395,6 +1419,8 @@
             groupBox2.ResumeLayout(false);
             DATA_PAGE.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)BackBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BackBox2).EndInit();
             groupBox10.ResumeLayout(false);
             groupBox10.PerformLayout();
             groupBox11.ResumeLayout(false);
@@ -1416,7 +1442,6 @@
             groupBox7.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)BackBox2).EndInit();
             ExcelView_Page.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -1452,7 +1477,6 @@
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 MethodTextBox;
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 DeviceTextBox;
         private MaterialSkin.Controls.MaterialButton NextButton;
-        private PictureBox BackBox2;
         private Panel panel2;
         private GroupBox groupBox5;
         private MaterialSkin.Controls.MaterialTabControl CheckBoxTabControl;
@@ -1509,5 +1533,8 @@
         public CheckBox checkBoxS22Reel;
         public ProgressBar progressBar;
         public Label LabelProgress;
+        private PictureBox BackBox2;
+        private PictureBox BackBox4;
+        private GroupBox groupBox13;
     }
 }
