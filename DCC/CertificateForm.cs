@@ -30,10 +30,11 @@ namespace DCC
         public List<Table> tables = new List<Table>();
         public List<string> header = new List<string>();
         public string XMLFolderPath;
-        public XmlDocument xml = new XmlDocument();
-        SP_DataWord sp_DataWord = new SP_DataWord();
+        public XmlDocument xml = new XmlDocument();    
         string TableName;
+
         XML_Arrays XML_Arrays = new XML_Arrays();
+        SP_DataWord sp_DataWord = new SP_DataWord();
         SP_WordTable SP_WordTable = new SP_WordTable();
         EE_DataWord EE_DataWord = new EE_DataWord();
         CreateXML CreateXML = new CreateXML();
@@ -492,7 +493,7 @@ namespace DCC
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 6)
                 {
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-
+                    XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     List<bool> NoiseBool = new List<bool>(3) { false, false,false };
 
                     if (NS_checkBoxENR.Checked)
@@ -525,6 +526,7 @@ namespace DCC
                         NoiseBool[2] = true;
                         SaveBasarim();
                     }
+                    CreateXML.AddNoiseResult(xml, TableName, XML_Arrays, NoiseBool);
 
                 }
                 #endregion
@@ -559,6 +561,7 @@ namespace DCC
             checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
             CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
             CIS_CheckBox.Checked = false;
+            NS_checkBoxENR.Checked = false; NS_checkBox_DC_OFF.Checked = false; NS_checkBox_DC_ON.Checked = false;
         
             ExcelDosyaYolu = "";
             ExcelFileName_TextBox.Hint = "Please Select Xml File";
@@ -569,10 +572,13 @@ namespace DCC
             CF_DataWord.ClearData();
             EE_DataWord.ClearData();
             CIS_DataWord.ClearData();
+            Noise_DataWord.ClearData();
             XML_Arrays.SP_ClearData();
             XML_Arrays.EE_ClearData();
             XML_Arrays.CF_ClearData();
             XML_Arrays.CIS_ClearData();
+            XML_Arrays.Noise_ClearData();
+
 
 
 
@@ -589,6 +595,8 @@ namespace DCC
                 checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
                 CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
                 CIS_CheckBox.Checked = false;
+                NS_checkBoxENR.Checked = false; NS_checkBox_DC_OFF.Checked = false; NS_checkBox_DC_ON.Checked = false;
+
 
                 ExcelDosyaYolu = "";
                 ExcelPage_ComboBox.Items.Clear();
@@ -599,10 +607,13 @@ namespace DCC
                 CF_DataWord.ClearData();
                 EE_DataWord.ClearData();
                 CIS_DataWord.ClearData();
+                Noise_DataWord.ClearData();
                 XML_Arrays.SP_ClearData();
                 XML_Arrays.EE_ClearData();
                 XML_Arrays.CF_ClearData();
                 XML_Arrays.CIS_ClearData();
+                XML_Arrays.Noise_ClearData();
+
 
 
 

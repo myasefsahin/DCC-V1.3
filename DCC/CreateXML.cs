@@ -18,6 +18,8 @@ using System.Collections;
 
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
+using DocumentFormat.OpenXml.Math;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 
 
 namespace DCC
@@ -237,7 +239,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "frequency");
+            frekansElement.SetAttribute("refType", "frequency_sp");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -767,7 +769,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "frequency");
+            frekansElement.SetAttribute("refType", "frequency_ee");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -1078,7 +1080,7 @@ namespace DCC
 
             // phase Unc Element Oluşturulması
             XmlElement phaseUncElement = xml.CreateElement("dcc", "quantity", dcc);
-            phaseUncElement.SetAttribute("refType", "Effective Effiency " + EE + "Imaginer_Unc");
+            phaseUncElement.SetAttribute("refType", "Effective Effiency " + EE + "-Imaginer_Unc");
 
             XmlElement phaseUncName = xml.CreateElement("dcc", "name", dcc);
             XmlElement phaseUncContent = xml.CreateElement("dcc", "content", dcc);
@@ -1177,7 +1179,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "frequency");
+            frekansElement.SetAttribute("refType", "frequency_cf");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -1221,7 +1223,7 @@ namespace DCC
 
             XmlElement cfrelName = xml.CreateElement("dcc", "name", dcc);
             XmlElement cfrelContent = xml.CreateElement("dcc", "content", dcc);
-            cfrelContent.InnerText = cfstr + " Reel";
+            cfrelContent.InnerText = cfstr;
 
             XmlElement cfrelHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement cfrelRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1247,7 +1249,7 @@ namespace DCC
 
             XmlElement cfreluncName = xml.CreateElement("dcc", "name", dcc);
             XmlElement cfreluncContent = xml.CreateElement("dcc", "content", dcc);
-            cfreluncContent.InnerText = cfstr + " ReelUnc";
+            cfreluncContent.InnerText = cfstr + " Unc";
 
             XmlElement cfreluncHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement cfreluncRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1505,7 +1507,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "Measurement Steps");
+            frekansElement.SetAttribute("refType", "frequency_cis");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -1569,7 +1571,7 @@ namespace DCC
 
             //  CIS Z-POSİTİON UNC  Element Oluşturulması
             XmlElement CIS_ZP_Unc_Element = xml.CreateElement("dcc", "quantity", dcc);
-            CIS_ZP_Unc_Element.SetAttribute("refType", "Calculable Impedance Standard " + CIS + "-Z-Position Unc");
+            CIS_ZP_Unc_Element.SetAttribute("refType", "Calculable Impedance Standard " + CIS + "-Z-PositionUnc");
 
             XmlElement CIS_ZP_Unc_Name = xml.CreateElement("dcc", "name", dcc);
             XmlElement CIS_ZP_Unc_Content = xml.CreateElement("dcc", "content", dcc);
@@ -1676,7 +1678,7 @@ namespace DCC
 
             // OCID  Unc Element Oluşturulması
             XmlElement OCID_Unc_Element = xml.CreateElement("dcc", "quantity", dcc);
-            OCID_Unc_Element.SetAttribute("refType", "Calculable Impedance Standard  " + CIS + "-OCID Unc");
+            OCID_Unc_Element.SetAttribute("refType", "Calculable Impedance Standard  " + CIS + "-OCID_Unc");
 
             XmlElement OCID_Unc_Name = xml.CreateElement("dcc", "name", dcc);
             XmlElement OCID_Unc_Content = xml.CreateElement("dcc", "content", dcc);
@@ -1704,6 +1706,359 @@ namespace DCC
 
         }
         #endregion
+
+        #region NOİSE XML İŞLEMLERİ
+
+        #region Noise_Result
+        // S Parametre için results elementi altına result elemeti oluşturma.
+        public XmlDocument AddNoiseResult(XmlDocument xml, string str, XML_Arrays dataXml, List<bool> control)
+        {
+            //Result Namespace oluşturma
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", dcc);
+            nsmgr.AddNamespace("si", si);
+
+            this.dataList = control;
+
+            XmlNode sResults = xml.SelectSingleNode("/dcc:digitalCalibrationCertificate/dcc:measurementResults/dcc:measurementResult/dcc:results", nsmgr);
+
+            // Elementlerin oluşturulması
+            XmlElement result = xml.CreateElement("dcc", "result", dcc);
+            result.SetAttribute("id", "Noise" + str + "_dB");
+            XmlElement name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement data = xml.CreateElement("dcc", "data", dcc);
+            XmlElement list = xml.CreateElement("dcc", "list", dcc);
+            XmlElement content = xml.CreateElement("dcc", "content", dcc);
+            content.InnerText = "Noise" + str + "_dB";
+
+            //Dataları içeren elementler oluşturulup dcc:List elementine eklenir.
+            list.AppendChild(addNoiseFrekans(xml, dataXml));
+
+            if (control[0])
+            {
+                List<XmlElement> xmlList = AddENR(xml, dataXml.XML_NS_ArrayENR, dataXml.XML_NS_ArrayENRUnc, "Noise");
+
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[1])
+            {
+                List<XmlElement> xmlList = AddRCDC_ON_OFF(xml, dataXml.XML_NS_ArrayRC, dataXml.XML_NS_ArrayRC_ustlimit, dataXml.XML_NS_ArrayRCUnc, dataXml.XML_NS_ArrayRC_Phase, dataXml.XML_NS_ArrayRC_PhaseUnc, dataXml.XML_NS_ArrayControl_DC_ON, "Noise");
+
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[2])
+            {
+                List<XmlElement> xmlList1 = AddRCDC_ON_OFF(xml, dataXml.XML_NS_ArrayRC_DC_OFF, dataXml.XML_NS_ArrayRC_ustlimit_DC_OFF, dataXml.XML_NS_ArrayRCUnc_DC_OFF, dataXml.XML_NS_ArrayRC_Phase_DC_OFF, dataXml.XML_NS_ArrayRC_PhaseUnc_DC_OFF, dataXml.XML_NS_ArrayControl_DC_OFF, "Noise");
+
+                foreach (XmlElement xmlElement in xmlList1)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+
+
+
+            //Son eklemeler yapılarak data geçirme tamamlanır.
+            name.AppendChild(content);
+            result.AppendChild(name);
+            data.AppendChild(list);
+            result.AppendChild(data);
+            sResults.AppendChild(result);
+
+            return xml;
+        }
+        #endregion
+
+        #region Noise_Frequency
+        public XmlElement addNoiseFrekans(XmlDocument xml, XML_Arrays dataXml)
+        {
+            //Namespace manager oluşturma
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", "https://ptb.de/dcc");
+            nsmgr.AddNamespace("si", "https://ptb.de/si");
+
+            // Node oluşturulması
+            XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
+            frekansElement.SetAttribute("refType", "frequency_noise");
+
+            XmlElement name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement content = xml.CreateElement("dcc", "content", dcc);
+            content.InnerText = "Frequency";
+
+            XmlElement hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement realList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement unit = xml.CreateElement("si", "unitXMLList", si);
+            unit.InnerText = "\\dB";
+
+            string frekansData = string.Join(" ", dataXml.XML_NS_ArrayFrekans.ToArray());
+            value.InnerText = frekansData;
+
+            name.AppendChild(content);
+            realList.AppendChild(value);
+            realList.AppendChild(unit);
+            hibrid.AppendChild(realList);
+            frekansElement.AppendChild(name);
+            frekansElement.AppendChild(hibrid);
+
+            return frekansElement;
+
+        }
+        #endregion
+
+        #region Noise_Parameter
+        public List<XmlElement> AddENR(XmlDocument xml, ArrayList enr, ArrayList uenr, string noisestr)
+        {
+            List<XmlElement> xmlElements = new List<XmlElement>();
+
+            //Namespace manager oluşturma
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", "https://ptb.de/dcc");
+            nsmgr.AddNamespace("si", "https://ptb.de/si");
+
+            // Node oluşturulması
+            // enr Element Oluşturulması
+            XmlElement enrElement = xml.CreateElement("dcc", "quantity", dcc);
+            enrElement.SetAttribute("refType", "Noise" + noisestr + "ENR");
+
+            XmlElement enrName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement enrContent = xml.CreateElement("dcc", "content", dcc);
+            enrContent.InnerText = noisestr + "_ENR";
+
+            XmlElement enrHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement enrRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement enrValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement enrUnit = xml.CreateElement("si", "unitXMLList", si);
+            enrUnit.InnerText = "\\dB";
+
+            string reelData = string.Join(" ", enr.ToArray());
+            enrValue.InnerText = reelData;
+
+            enrName.AppendChild(enrContent);
+            enrRealList.AppendChild(enrValue);
+            enrRealList.AppendChild(enrUnit);
+            enrHibrid.AppendChild(enrRealList);
+            enrElement.AppendChild(enrName);
+            enrElement.AppendChild(enrHibrid);
+
+            xmlElements.Add(enrElement);
+
+            // Uenr Element Oluşturulması
+            XmlElement uenrElement = xml.CreateElement("dcc", "quantity", dcc);
+            uenrElement.SetAttribute("refType", "Noise" + noisestr + "UENR");
+
+            XmlElement uenrName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement uenrContent = xml.CreateElement("dcc", "content", dcc);
+            uenrContent.InnerText = noisestr + "_UENR";
+
+            XmlElement uenrHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement uenrRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement uenrValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement uenrUnit = xml.CreateElement("si", "unitXMLList", si);
+            uenrUnit.InnerText = "\\dB";
+
+            string uenrData = string.Join(" ", uenr.ToArray());
+            uenrValue.InnerText = uenrData;
+
+            uenrName.AppendChild(uenrContent);
+            uenrRealList.AppendChild(uenrValue);
+            uenrRealList.AppendChild(uenrUnit);
+            uenrHibrid.AppendChild(uenrRealList);
+            uenrElement.AppendChild(uenrName);
+            uenrElement.AppendChild(uenrHibrid);
+
+            xmlElements.Add(uenrElement);
+            return xmlElements;
+
+        }
+
+
+        public List<XmlElement> AddRCDC_ON_OFF(XmlDocument xml, ArrayList rclin, ArrayList rclimit, ArrayList rclinunc, ArrayList rcphase, ArrayList rcphaseunc,ArrayList Control, string noisestr)
+        {
+            List<XmlElement> xmlElements = new List<XmlElement>();
+
+            //Namespace manager oluşturma
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", "https://ptb.de/dcc");
+            nsmgr.AddNamespace("si", "https://ptb.de/si");
+
+            // Node oluşturulması
+            // lin Element Oluşturulması
+            XmlElement rclinElement = xml.CreateElement("dcc", "quantity", dcc);
+            rclinElement.SetAttribute("refType",  noisestr + " Lin");
+
+            XmlElement rclinName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement rclinContent = xml.CreateElement("dcc", "content", dcc);
+            rclinContent.InnerText = noisestr + " Lin";
+
+            XmlElement rclinHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement rclinRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement rclinValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement rclinUnit = xml.CreateElement("si", "unitXMLList", si);
+            rclinUnit.InnerText = "\\dB";
+
+            string rclinData = string.Join(" ", rclin.ToArray());
+            rclinValue.InnerText = rclinData;
+
+            rclinName.AppendChild(rclinContent);
+            rclinRealList.AppendChild(rclinValue);
+            rclinRealList.AppendChild(rclinUnit);
+            rclinHibrid.AppendChild(rclinRealList);
+            rclinElement.AppendChild(rclinName);
+            rclinElement.AppendChild(rclinHibrid);
+
+            xmlElements.Add(rclinElement);
+
+            // rclimit Element Oluşturulması
+            XmlElement rclimitElement = xml.CreateElement("dcc", "quantity", dcc);
+            rclimitElement.SetAttribute("refType", noisestr + " Limit");
+
+            XmlElement rclimitName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement rclimitContent = xml.CreateElement("dcc", "content", dcc);
+            rclimitContent.InnerText = noisestr + " Limit";
+
+            XmlElement rclimitHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement rclimitRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement rclimitValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement rclimitUnit = xml.CreateElement("si", "unitXMLList", si);
+            rclimitUnit.InnerText = "\\dB";
+
+            string rclimitData = string.Join(" ", rclimit.ToArray());
+            rclimitValue.InnerText = rclimitData;
+
+            rclimitName.AppendChild(rclimitContent);
+            rclimitRealList.AppendChild(rclimitValue);
+            rclimitRealList.AppendChild(rclimitUnit);
+            rclimitHibrid.AppendChild(rclimitRealList);
+            rclimitElement.AppendChild(rclimitName);
+            rclimitElement.AppendChild(rclimitHibrid);
+
+            xmlElements.Add(rclimitElement);
+
+            // lin unc Element Oluşturulması
+            XmlElement rclinuncElement = xml.CreateElement("dcc", "quantity", dcc);
+            rclinuncElement.SetAttribute("refType",  noisestr + " Lin Unc");
+
+            XmlElement rclinuncName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement rclinuncContent = xml.CreateElement("dcc", "content", dcc);
+            rclinuncContent.InnerText = noisestr + " Lin Unc";
+
+            XmlElement rclinuncHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement rclinuncRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement rclinuncValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement rclinuncUnit = xml.CreateElement("si", "unitXMLList", si);
+            rclinuncUnit.InnerText = "\\dB";
+
+            string rclinuncData = string.Join(" ", rclinunc.ToArray());
+            rclinuncValue.InnerText = rclinuncData;
+
+            rclinuncName.AppendChild(rclinuncContent);
+            rclinuncRealList.AppendChild(rclinuncValue);
+            rclinuncRealList.AppendChild(rclinuncUnit);
+            rclinuncHibrid.AppendChild(rclinuncRealList);
+            rclinuncElement.AppendChild(rclinuncName);
+            rclinuncElement.AppendChild(rclinuncHibrid);
+
+            xmlElements.Add(rclinuncElement);
+
+            // rcphase Element Oluşturulması
+            XmlElement rcphaseElement = xml.CreateElement("dcc", "quantity", dcc);
+            rcphaseElement.SetAttribute("refType", noisestr + " RC_Phase");
+
+            XmlElement rcphaseName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement rcphaseContent = xml.CreateElement("dcc", "content", dcc);
+            rcphaseContent.InnerText = noisestr + " RC_Phase";
+
+            XmlElement rcphaseHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement rcphaseRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement rcphaseValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement rcphaseUnit = xml.CreateElement("si", "unitXMLList", si);
+            rcphaseUnit.InnerText = "\\dB";
+
+            string rcphaseData = string.Join(" ", rcphase.ToArray());
+            rcphaseValue.InnerText = rcphaseData;
+
+            rcphaseName.AppendChild(rcphaseContent);
+            rcphaseRealList.AppendChild(rcphaseValue);
+            rcphaseRealList.AppendChild(rcphaseUnit);
+            rcphaseHibrid.AppendChild(rcphaseRealList);
+            rcphaseElement.AppendChild(rcphaseName);
+            rcphaseElement.AppendChild(rcphaseHibrid);
+
+            xmlElements.Add(rcphaseElement);
+
+            // rcphaseunc Element Oluşturulması
+            XmlElement rcphaseuncElement = xml.CreateElement("dcc", "quantity", dcc);
+            rcphaseuncElement.SetAttribute("refType", noisestr + " RC_Phase Unc");
+
+            XmlElement rcphaseuncName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement rcphaseuncContent = xml.CreateElement("dcc", "content", dcc);
+            rcphaseuncContent.InnerText = noisestr + " RC_Phase Unc";
+
+            XmlElement rcphaseuncHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement rcphaseuncRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement rcphaseuncValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement rcphaseuncUnit = xml.CreateElement("si", "unitXMLList", si);
+            rcphaseuncUnit.InnerText = "\\dB";
+
+            string rcphaseuncData = string.Join(" ", rcphaseunc.ToArray());
+            rcphaseuncValue.InnerText = rcphaseuncData;
+
+            rcphaseuncName.AppendChild(rcphaseuncContent);
+            rcphaseuncRealList.AppendChild(rcphaseuncValue);
+            rcphaseuncRealList.AppendChild(rcphaseuncUnit);
+            rcphaseuncHibrid.AppendChild(rcphaseuncRealList);
+            rcphaseuncElement.AppendChild(rcphaseuncName);
+            rcphaseuncElement.AppendChild(rcphaseuncHibrid);
+
+            xmlElements.Add(rcphaseuncElement);
+
+
+            XmlElement ControlElement = xml.CreateElement("dcc", "quantity", dcc);
+            ControlElement.SetAttribute("refType", noisestr + " Control");
+
+            XmlElement ControlName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement ControlContent = xml.CreateElement("dcc", "content", dcc);
+            ControlContent.InnerText = noisestr + " Control";
+
+            XmlElement ControlHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement ControlRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement ControlValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement ControlUnit = xml.CreateElement("si", "unitXMLList", si);
+            ControlUnit.InnerText = "\\dB";
+
+            string ControlData = string.Join(" ", Control.ToArray());
+            ControlValue.InnerText = ControlData;
+
+            ControlName.AppendChild(ControlContent);
+            ControlRealList.AppendChild(ControlValue);
+            ControlRealList.AppendChild(ControlUnit);
+            ControlHibrid.AppendChild(ControlRealList);
+            ControlElement.AppendChild(ControlName);
+            ControlElement.AppendChild(ControlHibrid);
+
+            xmlElements.Add(ControlElement);
+
+
+
+            return xmlElements;
+
+        }
+
+
+
+        #endregion
+
+        #endregion
+
+
+
     }
 }
 

@@ -20,7 +20,7 @@ namespace DCC
                 "CA", "CB", "CC", "CD", "CE", "CF", "CG", "CH", "CI", "CJ","CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT","CU", "CV", "CW", "CX", "CY", "CZ" };
 
         #region S-PARAMETER
-        public void SP_Data_Xml(string ExcelDosyaYolu, string pageName,int satır,string sütun)
+        public void SP_Data_Xml(string ExcelDosyaYolu, string pageName, int satır, string sütun)
         {
             int harfIndex = columnName.IndexOf(sütun);
             using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
@@ -32,7 +32,7 @@ namespace DCC
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
 
                 int rowCount = worksheet.Dimension.Rows;
-                
+
 
                 string[] cellValue = new string[rowCount];
 
@@ -273,6 +273,25 @@ namespace DCC
             XML_CIS_ICOD_Unc = new ArrayList();
             XML_CIS_OCID = new ArrayList();
             XML_CIS_OCID_Unc = new ArrayList();
+
+            XML_NS_ArrayFrekans = new ArrayList();
+
+            XML_NS_ArrayENR = new ArrayList();
+            XML_NS_ArrayENRUnc = new ArrayList();
+
+            XML_NS_ArrayRC = new ArrayList();
+            XML_NS_ArrayRC_ustlimit = new ArrayList();
+            XML_NS_ArrayRCUnc = new ArrayList();
+            XML_NS_ArrayRC_Phase = new ArrayList();
+            XML_NS_ArrayRC_PhaseUnc = new ArrayList();
+            XML_NS_ArrayControl_DC_ON = new ArrayList();
+
+            XML_NS_ArrayRC_DC_OFF = new ArrayList();
+            XML_NS_ArrayRC_ustlimit_DC_OFF = new ArrayList();
+            XML_NS_ArrayRCUnc_DC_OFF = new ArrayList();
+            XML_NS_ArrayRC_Phase_DC_OFF = new ArrayList();
+            XML_NS_ArrayRC_PhaseUnc_DC_OFF = new ArrayList();
+            XML_NS_ArrayControl_DC_OFF = new ArrayList();
         }
 
         public void SP_ClearData()
@@ -334,7 +353,7 @@ namespace DCC
         #endregion
 
         #region EE 
-        public void EE_Data_Xml(string ExcelDosyaYolu, string pageName ,int satır, string sütun)
+        public void EE_Data_Xml(string ExcelDosyaYolu, string pageName, int satır, string sütun)
         {
             int harfIndex = columnName.IndexOf(sütun);
             using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
@@ -342,7 +361,7 @@ namespace DCC
 
 
                 // Excel'in 13. sayfasındaki veriler
-                
+
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
 
                 int rowCount = worksheet.Dimension.Rows;
@@ -365,8 +384,8 @@ namespace DCC
                 for (int i = satır; i < XML_EE_ArrayFrekans.Count + satır; i++)
                 {
 
-                    XML_EE_ArrayEE.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex+1] + i].Value));
-                    XML_EE_ArrayEEUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex+2] + i].Value));
+                    XML_EE_ArrayEE.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
+                    XML_EE_ArrayEEUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
 
                     XML_EE_ArrayS11Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 4] + i].Value));
                     XML_EE_ArrayS11ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 5] + i].Value));
@@ -421,7 +440,7 @@ namespace DCC
         #endregion
 
         #region CF
-        public void CF_Data_Xml(string ExcelDosyaYolu, string pageName,int satır, string sütun)
+        public void CF_Data_Xml(string ExcelDosyaYolu, string pageName, int satır, string sütun)
         {
             int harfIndex = columnName.IndexOf(sütun);
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -455,7 +474,7 @@ namespace DCC
                 for (int i = satır; i < XML_CF_ArrayFrekans.Count + satır; i++)
                 {
 
-                    XML_CF_Array.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex+1] + i].Value));
+                    XML_CF_Array.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
                     XML_CF_ArrayCFUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
 
                     XML_CF_ArrayReel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 6] + i].Value));
@@ -540,7 +559,7 @@ namespace DCC
 
 
 
-                    XML_CIS_ZP.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex+1] + i].Value));
+                    XML_CIS_ZP.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
                     XML_CIS_ZP_Unc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
 
                     XML_CIS_ICOD.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 3] + i].Value));
@@ -578,6 +597,111 @@ namespace DCC
 
         }
 
+        #endregion
+
+        #region NOİSE
+
+        public void Noise_Data_Xml(string ExcelDosyaYolu, string pageName, int satır, string sütun)
+        {
+            int harfIndex = columnName.IndexOf(sütun);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            // Excel Verileri
+
+            using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
+            {
+
+
+                // Excel'in sabit olan sonuç sayfasındaki verilere göre hazırlanmıştır. 
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
+
+                int rowCount = worksheet.Dimension.Rows;
+                //int satirSayisi = rowCount - 6;
+
+                string[] cellValue = new string[rowCount];
+
+
+                // Frekans değerlerinin çekimi
+                for (int i = satır; i <= rowCount; i++)
+                {
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[sütun + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
+                    {
+                        XML_NS_ArrayFrekans.Add(cellValue[i - satır]);
+                    }
+                }
+
+                for (int i = satır; i < XML_NS_ArrayFrekans.Count + satır; i++)
+                {
+
+
+
+
+
+
+                    XML_NS_ArrayENR.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
+                    XML_NS_ArrayENRUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
+                    XML_NS_ArrayRC.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 4] + i].Value));
+                    XML_NS_ArrayRC_ustlimit.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 5] + i].Value));
+                    XML_NS_ArrayRCUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 6] + i].Value));
+                    XML_NS_ArrayRC_Phase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 7] + i].Value));
+                    XML_NS_ArrayRC_PhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 8] + i].Value));
+                    XML_NS_ArrayControl_DC_ON.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
+
+                    XML_NS_ArrayRC_DC_OFF.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 11] + i].Value));
+                    XML_NS_ArrayRC_ustlimit_DC_OFF.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 12] + i].Value));
+                    XML_NS_ArrayRCUnc_DC_OFF.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 13] + i].Value));
+                    XML_NS_ArrayRC_Phase_DC_OFF.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 14] + i].Value));
+                    XML_NS_ArrayRC_PhaseUnc_DC_OFF.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 15] + i].Value));
+                    XML_NS_ArrayControl_DC_OFF.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + i].Value));
+
+
+
+                }
+            }
+        }
+        public ArrayList XML_NS_ArrayFrekans { get; set; }
+
+        public ArrayList XML_NS_ArrayENR { get; set; }
+        public ArrayList XML_NS_ArrayENRUnc { get; set; }
+
+        public ArrayList XML_NS_ArrayRC { get; set; }
+        public ArrayList XML_NS_ArrayRC_ustlimit { get; set; }
+        public ArrayList XML_NS_ArrayRCUnc { get; set; }
+        public ArrayList XML_NS_ArrayRC_Phase { get; set; }
+        public ArrayList XML_NS_ArrayRC_PhaseUnc { get; set; }
+        public ArrayList XML_NS_ArrayControl_DC_ON { get; set; }
+
+
+
+
+        public ArrayList XML_NS_ArrayRC_DC_OFF { get; set; }
+        public ArrayList XML_NS_ArrayRC_ustlimit_DC_OFF { get; set; }
+        public ArrayList XML_NS_ArrayRCUnc_DC_OFF { get; set; }
+        public ArrayList XML_NS_ArrayRC_Phase_DC_OFF { get; set; }
+        public ArrayList XML_NS_ArrayRC_PhaseUnc_DC_OFF { get; set; }
+        public ArrayList XML_NS_ArrayControl_DC_OFF { get; set; }
+
+
+        public void Noise_ClearData()
+        {
+            XML_NS_ArrayFrekans.Clear();
+            XML_NS_ArrayENR.Clear();
+            XML_NS_ArrayENRUnc.Clear();
+            XML_NS_ArrayRC.Clear();
+            XML_NS_ArrayRC_ustlimit.Clear();
+            XML_NS_ArrayRCUnc.Clear();
+            XML_NS_ArrayRC_Phase.Clear();
+            XML_NS_ArrayRC_PhaseUnc.Clear();
+            XML_NS_ArrayControl_DC_ON.Clear();
+            XML_NS_ArrayRC_DC_OFF.Clear();
+            XML_NS_ArrayRC_ustlimit_DC_OFF.Clear();
+            XML_NS_ArrayRCUnc_DC_OFF.Clear();
+            XML_NS_ArrayRC_Phase_DC_OFF.Clear();
+            XML_NS_ArrayRC_PhaseUnc_DC_OFF.Clear();
+            XML_NS_ArrayControl_DC_OFF.Clear();
+
+        }
         #endregion
     }
 }
