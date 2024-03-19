@@ -42,6 +42,9 @@ namespace DCC
         CIS_DataWord CIS_DataWord = new CIS_DataWord();
         CF_WordTable CF_Word_Table = new CF_WordTable();
         CIS_WordTable CIS_Word_Table = new CIS_WordTable();
+        CreateTemplate createTemplate = new CreateTemplate();
+        Noise_DataWord Noise_DataWord = new Noise_DataWord();
+        Noise_WordTable Noise_WordTable = new Noise_WordTable();
         int satır;
         string sütun;
 
@@ -78,13 +81,15 @@ namespace DCC
         {
             this.Text = "DATA OPERATIONS";
             CertificateTabControl.SelectedTab = DATA_PAGE;
-
+            label4.Text = "Please double click on the cell to select it.";
+            label4.Location = new System.Drawing.Point(377, 53);
         }
-        private void BackBox4_Click(object sender, EventArgs e)
+
+        private void NextBox1_Click(object sender, EventArgs e)
         {
             CertificateTabControl.SelectedTab = ExcelView_Page;
         }
-
+    
         private void MeasurementTypes_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MeasurementTypes_ComboBox.SelectedIndex == 0)
@@ -135,10 +140,19 @@ namespace DCC
         #region Button
         private void Save_Row_Col_Button_Click(object sender, EventArgs e)
         {
-            
-            sütun = sütun.ToUpper();
-            this.Text = "DATA OPERATIONS";
-            CertificateTabControl.SelectedTab = DATA_PAGE;
+            if (satır == 0 && sütun == null)
+            {
+                label4.Location = new System.Drawing.Point(475, 53);
+
+                label4.Text = "Please select a cell";
+            }
+            else
+            {
+                sütun = sütun.ToUpper();
+                this.Text = "DATA OPERATIONS";
+                CertificateTabControl.SelectedTab = DATA_PAGE;
+                label4.Text = "Please double click on the cell to select it.";
+            }
         }
 
         private void SelectExcel_Button_Click(object sender, EventArgs e)
@@ -474,6 +488,47 @@ namespace DCC
                 }
                 #endregion
 
+                #region Noise
+                else if (MeasurementTypes_ComboBox.SelectedIndex == 6)
+                {
+                    Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+
+                    List<bool> NoiseBool = new List<bool>(3) { false, false,false };
+
+                    if (NS_checkBoxENR.Checked)
+                    {
+                        string txt_ENR_Noise = TableName + "ENR, ENR Uncertainty\n";
+                        Table ENR_Noise_table = Noise_WordTable.CreateENR(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayENR, Noise_DataWord.NS_ArrayENRUnc);
+                        tables.Add(ENR_Noise_table);
+                        header.Add(txt_ENR_Noise);
+                        NoiseBool[0] = true;
+                        SaveBasarim();
+                    }
+                    if (NS_checkBox_DC_ON.Checked)
+                    {
+                        string txt_DC_ON_Noise = TableName + "DC ON for Noise\n";
+                        Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc, 
+                                                                                    Noise_DataWord.NS_ArrayRC_Phase, Noise_DataWord.NS_ArrayRC_PhaseUnc, Noise_DataWord.NS_ArrayControl_DC_ON);
+                        tables.Add(DC_ON_Noise_table);
+                        header.Add(txt_DC_ON_Noise);
+                        NoiseBool[1] = true;
+                        SaveBasarim();
+                    }
+
+                    if (NS_checkBox_DC_OFF.Checked)
+                    {
+                        string txt_DC_OFF_Noise = TableName + "DC OFF for Noise\n";
+                        Table DC_OFF_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC_DC_OFF, Noise_DataWord.NS_ArrayRC_ustlimit_DC_OFF, Noise_DataWord.NS_ArrayRCUnc_DC_OFF,
+                                                                                    Noise_DataWord.NS_ArrayRC_Phase_DC_OFF, Noise_DataWord.NS_ArrayRC_PhaseUnc_DC_OFF, Noise_DataWord.NS_ArrayControl_DC_OFF);
+                        tables.Add(DC_OFF_Noise_table);
+                        header.Add(txt_DC_OFF_Noise);
+                        NoiseBool[2] = true;
+                        SaveBasarim();
+                    }
+
+                }
+                #endregion
+
                 for (int i = 0; i < 100; i++)
                 {
 
@@ -482,6 +537,7 @@ namespace DCC
                 LabelProgress.ForeColor = System.Drawing.Color.Green;
                 LabelProgress.Text = @"Import data successfull";
             }
+
             catch (Exception err)
             {
                 LabelProgress.Visible = true;
@@ -502,7 +558,8 @@ namespace DCC
 
             checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
             CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
-
+            CIS_CheckBox.Checked = false;
+        
             ExcelDosyaYolu = "";
             ExcelFileName_TextBox.Hint = "Please Select Xml File";
             ExcelFileName_TextBox.Text = "";
@@ -531,6 +588,7 @@ namespace DCC
 
                 checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
                 CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
+                CIS_CheckBox.Checked = false;
 
                 ExcelDosyaYolu = "";
                 ExcelPage_ComboBox.Items.Clear();
@@ -556,6 +614,8 @@ namespace DCC
             }
 
             #endregion
+
+           
 
         }
 
@@ -597,13 +657,13 @@ namespace DCC
 
                     }
                 }
-
-                CreateWordFile wordAktarim = new CreateWordFile();
-                wordAktarim.CreateWord(ExcelDosyaAdi, WordFolderPath);
+                
+                createTemplate.ResultPages(tables);
+                
 
                 if (tables.Count >= 1)
                 {
-                    wordAktarim.ProcessWord(tables, header);
+                    
                     WordBasarim();
                 }
                 else
@@ -752,26 +812,24 @@ namespace DCC
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Eğer hücre seçilmediyse veya sütun başlığına tıklanmışsa bu olayı işlememize gerek yok
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
                 return;
 
-            // Çift tıklanan hücrenin sütun ve satır indekslerini alalım
             int columnIndex = e.ColumnIndex;
             int rowIndex = e.RowIndex;
-
-            // Sütun ve satır indekslerini kullanarak hücrenin değerini veya başlık değerini alabilirsiniz
             object cellValue = dataGridView1.Rows[rowIndex].Cells[columnIndex].Value;
-
-            // Hücrenin sütun ve satır bilgisini kullanarak istediğiniz işlemi yapabilirsiniz
-              string columnName = dataGridView1.Columns[columnIndex].HeaderText;
-            int rowNumber = rowIndex + 1; // Satır numarası 0'dan başlamıyorsa +1 ekleyebilirsiniz
+            string columnName = dataGridView1.Columns[columnIndex].HeaderText;
+            int rowNumber = rowIndex + 1; 
 
             sütun = columnName;
             satır = rowNumber;
 
-            // Elde edilen bilgileri kullanarak istediğiniz işlemi yapabilirsiniz
-            MessageBox.Show($"Seçilen hücre: {columnName}{rowNumber}");
+
+            label4.Text = ($"Selection cell:  {"Column: "}{columnName}{"  Row: "}{rowNumber}");
+            LabelProgress.Text = "Cell selection successful";
+            
         }
+
+        
     }
 }

@@ -53,7 +53,7 @@
             label1 = new Label();
             DATA_PAGE = new TabPage();
             panel2 = new Panel();
-            BackBox4 = new PictureBox();
+            NextBox1 = new PictureBox();
             BackBox2 = new PictureBox();
             groupBox10 = new GroupBox();
             CreateCertificate_Button = new MaterialSkin.Controls.MaterialButton();
@@ -96,6 +96,9 @@
             checkBoxS11Reel = new CheckBox();
             MetCH_Page = new TabPage();
             Noise_Page = new TabPage();
+            NS_checkBox_DC_OFF = new CheckBox();
+            NS_checkBox_DC_ON = new CheckBox();
+            NS_checkBoxENR = new CheckBox();
             MeasurementTypes_ComboBox = new MaterialSkin.Controls.MaterialComboBox();
             label3 = new Label();
             ExcelView_Page = new TabPage();
@@ -119,7 +122,7 @@
             groupBox2.SuspendLayout();
             DATA_PAGE.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)BackBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NextBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BackBox2).BeginInit();
             groupBox10.SuspendLayout();
             groupBox11.SuspendLayout();
@@ -133,6 +136,7 @@
             groupBox8.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
+            Noise_Page.SuspendLayout();
             ExcelView_Page.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -298,6 +302,7 @@
             // 
             // DeviceTextBox
             // 
+            DeviceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             DeviceTextBox.AnimateReadOnly = false;
             DeviceTextBox.BackgroundImageLayout = ImageLayout.None;
             DeviceTextBox.CharacterCasing = CharacterCasing.Normal;
@@ -582,7 +587,7 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(BackBox4);
+            panel2.Controls.Add(NextBox1);
             panel2.Controls.Add(BackBox2);
             panel2.Controls.Add(groupBox10);
             panel2.Controls.Add(groupBox5);
@@ -592,16 +597,16 @@
             panel2.Size = new Size(1213, 715);
             panel2.TabIndex = 8;
             // 
-            // BackBox4
+            // NextBox1
             // 
-            BackBox4.Image = (Image)resources.GetObject("BackBox4.Image");
-            BackBox4.Location = new Point(1142, 14);
-            BackBox4.Name = "BackBox4";
-            BackBox4.Size = new Size(62, 35);
-            BackBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            BackBox4.TabIndex = 13;
-            BackBox4.TabStop = false;
-            BackBox4.Click += BackBox4_Click;
+            NextBox1.Image = (Image)resources.GetObject("NextBox1.Image");
+            NextBox1.Location = new Point(1142, 14);
+            NextBox1.Name = "NextBox1";
+            NextBox1.Size = new Size(62, 35);
+            NextBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            NextBox1.TabIndex = 13;
+            NextBox1.TabStop = false;
+            NextBox1.Click += NextBox1_Click;
             // 
             // BackBox2
             // 
@@ -1158,6 +1163,9 @@
             // 
             // Noise_Page
             // 
+            Noise_Page.Controls.Add(NS_checkBox_DC_OFF);
+            Noise_Page.Controls.Add(NS_checkBox_DC_ON);
+            Noise_Page.Controls.Add(NS_checkBoxENR);
             Noise_Page.Location = new Point(4, 29);
             Noise_Page.Name = "Noise_Page";
             Noise_Page.Padding = new Padding(3);
@@ -1165,6 +1173,42 @@
             Noise_Page.TabIndex = 6;
             Noise_Page.Text = "Noise";
             Noise_Page.UseVisualStyleBackColor = true;
+            // 
+            // NS_checkBox_DC_OFF
+            // 
+            NS_checkBox_DC_OFF.AutoSize = true;
+            NS_checkBox_DC_OFF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            NS_checkBox_DC_OFF.ForeColor = Color.Navy;
+            NS_checkBox_DC_OFF.Location = new Point(37, 162);
+            NS_checkBox_DC_OFF.Name = "NS_checkBox_DC_OFF";
+            NS_checkBox_DC_OFF.Size = new Size(505, 24);
+            NS_checkBox_DC_OFF.TabIndex = 9;
+            NS_checkBox_DC_OFF.Text = "Ref Cof , Ref Cof Unc,Ref Cof upper limit Phase, Phase Unc - DC OFF";
+            NS_checkBox_DC_OFF.UseVisualStyleBackColor = true;
+            // 
+            // NS_checkBox_DC_ON
+            // 
+            NS_checkBox_DC_ON.AutoSize = true;
+            NS_checkBox_DC_ON.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            NS_checkBox_DC_ON.ForeColor = Color.Navy;
+            NS_checkBox_DC_ON.Location = new Point(37, 118);
+            NS_checkBox_DC_ON.Name = "NS_checkBox_DC_ON";
+            NS_checkBox_DC_ON.Size = new Size(501, 24);
+            NS_checkBox_DC_ON.TabIndex = 8;
+            NS_checkBox_DC_ON.Text = "Ref Cof , Ref Cof Unc,Ref Cof upper limit Phase, Phase Unc - DC ON";
+            NS_checkBox_DC_ON.UseVisualStyleBackColor = true;
+            // 
+            // NS_checkBoxENR
+            // 
+            NS_checkBoxENR.AutoSize = true;
+            NS_checkBoxENR.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            NS_checkBoxENR.ForeColor = Color.Navy;
+            NS_checkBoxENR.Location = new Point(37, 77);
+            NS_checkBoxENR.Name = "NS_checkBoxENR";
+            NS_checkBoxENR.Size = new Size(174, 24);
+            NS_checkBoxENR.TabIndex = 7;
+            NS_checkBoxENR.Text = "Noise ENR, ENR Unc";
+            NS_checkBoxENR.UseVisualStyleBackColor = true;
             // 
             // MeasurementTypes_ComboBox
             // 
@@ -1234,12 +1278,12 @@
             Save_Row_Col_Button.Depth = 0;
             Save_Row_Col_Button.HighEmphasis = true;
             Save_Row_Col_Button.Icon = null;
-            Save_Row_Col_Button.Location = new Point(941, 661);
+            Save_Row_Col_Button.Location = new Point(507, 656);
             Save_Row_Col_Button.Margin = new Padding(4, 6, 4, 6);
             Save_Row_Col_Button.MouseState = MaterialSkin.MouseState.HOVER;
             Save_Row_Col_Button.Name = "Save_Row_Col_Button";
             Save_Row_Col_Button.NoAccentTextColor = Color.Empty;
-            Save_Row_Col_Button.Size = new Size(198, 43);
+            Save_Row_Col_Button.Size = new Size(199, 43);
             Save_Row_Col_Button.TabIndex = 13;
             Save_Row_Col_Button.Text = "KAYDET VE ÇIK";
             Save_Row_Col_Button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1266,11 +1310,11 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label4.ForeColor = Color.Navy;
-            label4.Location = new Point(270, 53);
+            label4.Location = new Point(377, 53);
             label4.Name = "label4";
-            label4.Size = new Size(673, 31);
+            label4.Size = new Size(459, 31);
             label4.TabIndex = 9;
-            label4.Text = "Lütfen satır ve sütun değerlerini aşağıdaki kutucuklara giriniz";
+            label4.Text = "Please double click on the cell to select it.";
             // 
             // BackBox3
             // 
@@ -1325,7 +1369,7 @@
             // 
             LabelProgress.AutoSize = true;
             LabelProgress.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            LabelProgress.Location = new Point(599, 26);
+            LabelProgress.Location = new Point(599, 22);
             LabelProgress.Name = "LabelProgress";
             LabelProgress.Size = new Size(121, 23);
             LabelProgress.TabIndex = 3;
@@ -1358,7 +1402,7 @@
             groupBox2.ResumeLayout(false);
             DATA_PAGE.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)BackBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NextBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)BackBox2).EndInit();
             groupBox10.ResumeLayout(false);
             groupBox10.PerformLayout();
@@ -1381,6 +1425,8 @@
             groupBox7.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
+            Noise_Page.ResumeLayout(false);
+            Noise_Page.PerformLayout();
             ExcelView_Page.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -1471,7 +1517,10 @@
         public ProgressBar progressBar;
         public Label LabelProgress;
         private PictureBox BackBox2;
-        private PictureBox BackBox4;
+        private PictureBox NextBox1;
         private GroupBox groupBox13;
+        public CheckBox NS_checkBox_DC_OFF;
+        public CheckBox NS_checkBox_DC_ON;
+        public CheckBox NS_checkBoxENR;
     }
 }
