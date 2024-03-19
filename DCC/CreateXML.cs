@@ -237,7 +237,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "frequency");
+            frekansElement.SetAttribute("refType", "frequency_sp");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -767,7 +767,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "frequency");
+            frekansElement.SetAttribute("refType", "frequency_ee");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -1177,7 +1177,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "frequency");
+            frekansElement.SetAttribute("refType", "frequency_cf");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
@@ -1221,7 +1221,7 @@ namespace DCC
 
             XmlElement cfrelName = xml.CreateElement("dcc", "name", dcc);
             XmlElement cfrelContent = xml.CreateElement("dcc", "content", dcc);
-            cfrelContent.InnerText = cfstr + " Reel";
+            cfrelContent.InnerText = cfstr ;
 
             XmlElement cfrelHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement cfrelRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1247,7 +1247,7 @@ namespace DCC
 
             XmlElement cfreluncName = xml.CreateElement("dcc", "name", dcc);
             XmlElement cfreluncContent = xml.CreateElement("dcc", "content", dcc);
-            cfreluncContent.InnerText = cfstr + " ReelUnc";
+            cfreluncContent.InnerText = cfstr + " Unc";
 
             XmlElement cfreluncHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement cfreluncRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1505,7 +1505,7 @@ namespace DCC
 
             // Node oluşturulması
             XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
-            frekansElement.SetAttribute("refType", "Measurement Steps");
+            frekansElement.SetAttribute("refType", "frequency_cis");
 
             XmlElement name = xml.CreateElement("dcc", "name", dcc);
             XmlElement content = xml.CreateElement("dcc", "content", dcc);
