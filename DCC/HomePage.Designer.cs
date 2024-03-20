@@ -37,9 +37,9 @@
             pictureBox2 = new PictureBox();
             groupBox1 = new GroupBox();
             checkBox1 = new CheckBox();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            createWordFile = new MaterialSkin.Controls.MaterialButton();
             materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
-            materialButton3 = new MaterialSkin.Controls.MaterialButton();
+            selectXmlFile = new MaterialSkin.Controls.MaterialButton();
             pictureBox3 = new PictureBox();
             HomeTab = new TabPage();
             panel1 = new Panel();
@@ -63,10 +63,11 @@
             // 
             XMLtoWordPage.Controls.Add(groupBox2);
             XMLtoWordPage.Controls.Add(panel2);
-            XMLtoWordPage.Location = new Point(4, 29);
+            XMLtoWordPage.Location = new Point(4, 24);
+            XMLtoWordPage.Margin = new Padding(3, 2, 3, 2);
             XMLtoWordPage.Name = "XMLtoWordPage";
-            XMLtoWordPage.Padding = new Padding(3);
-            XMLtoWordPage.Size = new Size(697, 707);
+            XMLtoWordPage.Padding = new Padding(3, 2, 3, 2);
+            XMLtoWordPage.Size = new Size(609, 527);
             XMLtoWordPage.TabIndex = 1;
             XMLtoWordPage.Text = "tabPage2";
             XMLtoWordPage.UseVisualStyleBackColor = true;
@@ -75,26 +76,29 @@
             // 
             groupBox2.Controls.Add(progressBar);
             groupBox2.Controls.Add(labelProgress);
-            groupBox2.Location = new Point(-3, 648);
+            groupBox2.Location = new Point(-3, 486);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(702, 53);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(614, 40);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             // 
             // progressBar
             // 
             progressBar.BackColor = Color.White;
-            progressBar.Location = new Point(526, 17);
+            progressBar.Location = new Point(460, 13);
+            progressBar.Margin = new Padding(3, 2, 3, 2);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(125, 29);
+            progressBar.Size = new Size(109, 22);
             progressBar.TabIndex = 2;
             // 
             // labelProgress
             // 
             labelProgress.AutoSize = true;
-            labelProgress.Location = new Point(372, 19);
+            labelProgress.Location = new Point(326, 14);
             labelProgress.Name = "labelProgress";
-            labelProgress.Size = new Size(101, 20);
+            labelProgress.Size = new Size(80, 15);
             labelProgress.TabIndex = 3;
             labelProgress.Text = "LabelProgress";
             labelProgress.Visible = false;
@@ -105,17 +109,19 @@
             panel2.Controls.Add(groupBox1);
             panel2.Controls.Add(pictureBox3);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
+            panel2.Location = new Point(3, 2);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(691, 701);
+            panel2.Size = new Size(603, 523);
             panel2.TabIndex = 6;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(209, 16);
+            pictureBox2.Location = new Point(183, 12);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(259, 280);
+            pictureBox2.Size = new Size(227, 210);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -124,14 +130,16 @@
             // 
             groupBox1.BackColor = Color.White;
             groupBox1.Controls.Add(checkBox1);
-            groupBox1.Controls.Add(materialButton1);
+            groupBox1.Controls.Add(createWordFile);
             groupBox1.Controls.Add(materialTextBox22);
-            groupBox1.Controls.Add(materialButton3);
+            groupBox1.Controls.Add(selectXmlFile);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             groupBox1.ForeColor = Color.Navy;
-            groupBox1.Location = new Point(162, 325);
+            groupBox1.Location = new Point(142, 244);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(353, 308);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(309, 231);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "XML TO WORD";
@@ -139,32 +147,34 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(350, 300);
+            checkBox1.Location = new Point(306, 225);
+            checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(106, 24);
+            checkBox1.Size = new Size(88, 19);
             checkBox1.TabIndex = 4;
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // materialButton1
+            // createWordFile
             // 
-            materialButton1.AutoSize = false;
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(99, 226);
-            materialButton1.Margin = new Padding(4, 6, 4, 6);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(158, 36);
-            materialButton1.TabIndex = 3;
-            materialButton1.Text = "CREATE WORD FİLE";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
+            createWordFile.AutoSize = false;
+            createWordFile.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            createWordFile.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            createWordFile.Depth = 0;
+            createWordFile.HighEmphasis = true;
+            createWordFile.Icon = null;
+            createWordFile.Location = new Point(87, 170);
+            createWordFile.Margin = new Padding(4);
+            createWordFile.MouseState = MaterialSkin.MouseState.HOVER;
+            createWordFile.Name = "createWordFile";
+            createWordFile.NoAccentTextColor = Color.Empty;
+            createWordFile.Size = new Size(138, 27);
+            createWordFile.TabIndex = 3;
+            createWordFile.Text = "CREATE WORD FİLE";
+            createWordFile.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            createWordFile.UseAccentColor = false;
+            createWordFile.UseVisualStyleBackColor = true;
+            createWordFile.Click += createWordFile_Click;
             // 
             // materialTextBox22
             // 
@@ -176,7 +186,8 @@
             materialTextBox22.HideSelection = true;
             materialTextBox22.Hint = "XML file name";
             materialTextBox22.LeadingIcon = null;
-            materialTextBox22.Location = new Point(35, 81);
+            materialTextBox22.Location = new Point(31, 61);
+            materialTextBox22.Margin = new Padding(3, 2, 3, 2);
             materialTextBox22.MaxLength = 32767;
             materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox22.Name = "materialTextBox22";
@@ -188,39 +199,41 @@
             materialTextBox22.SelectionLength = 0;
             materialTextBox22.SelectionStart = 0;
             materialTextBox22.ShortcutsEnabled = true;
-            materialTextBox22.Size = new Size(283, 48);
+            materialTextBox22.Size = new Size(248, 48);
             materialTextBox22.TabIndex = 1;
             materialTextBox22.TabStop = false;
             materialTextBox22.TextAlign = HorizontalAlignment.Left;
             materialTextBox22.TrailingIcon = null;
             materialTextBox22.UseSystemPasswordChar = false;
             // 
-            // materialButton3
+            // selectXmlFile
             // 
-            materialButton3.AutoSize = false;
-            materialButton3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton3.Depth = 0;
-            materialButton3.HighEmphasis = true;
-            materialButton3.Icon = null;
-            materialButton3.Location = new Point(99, 159);
-            materialButton3.Margin = new Padding(4, 6, 4, 6);
-            materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton3.Name = "materialButton3";
-            materialButton3.NoAccentTextColor = Color.Empty;
-            materialButton3.Size = new Size(158, 36);
-            materialButton3.TabIndex = 2;
-            materialButton3.Text = "SELECT XML FİLE";
-            materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton3.UseAccentColor = false;
-            materialButton3.UseVisualStyleBackColor = true;
+            selectXmlFile.AutoSize = false;
+            selectXmlFile.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            selectXmlFile.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            selectXmlFile.Depth = 0;
+            selectXmlFile.HighEmphasis = true;
+            selectXmlFile.Icon = null;
+            selectXmlFile.Location = new Point(87, 119);
+            selectXmlFile.Margin = new Padding(4);
+            selectXmlFile.MouseState = MaterialSkin.MouseState.HOVER;
+            selectXmlFile.Name = "selectXmlFile";
+            selectXmlFile.NoAccentTextColor = Color.Empty;
+            selectXmlFile.Size = new Size(138, 27);
+            selectXmlFile.TabIndex = 2;
+            selectXmlFile.Text = "SELECT XML FİLE";
+            selectXmlFile.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            selectXmlFile.UseAccentColor = false;
+            selectXmlFile.UseVisualStyleBackColor = true;
+            selectXmlFile.Click += selectXmlFile_Click;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(15, 16);
+            pictureBox3.Location = new Point(13, 12);
+            pictureBox3.Margin = new Padding(3, 2, 3, 2);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(62, 35);
+            pictureBox3.Size = new Size(54, 26);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
@@ -231,10 +244,11 @@
             HomeTab.BackColor = Color.White;
             HomeTab.Controls.Add(panel1);
             HomeTab.ImeMode = ImeMode.NoControl;
-            HomeTab.Location = new Point(4, 29);
+            HomeTab.Location = new Point(4, 24);
+            HomeTab.Margin = new Padding(3, 2, 3, 2);
             HomeTab.Name = "HomeTab";
-            HomeTab.Padding = new Padding(3);
-            HomeTab.Size = new Size(697, 707);
+            HomeTab.Padding = new Padding(3, 2, 3, 2);
+            HomeTab.Size = new Size(609, 527);
             HomeTab.TabIndex = 0;
             HomeTab.Text = "tabPage1";
             // 
@@ -245,9 +259,10 @@
             panel1.Controls.Add(CertificatePageShowButton);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(691, 701);
+            panel1.Size = new Size(603, 523);
             panel1.TabIndex = 1;
             // 
             // XMLtoWordPageButton
@@ -258,12 +273,12 @@
             XMLtoWordPageButton.Depth = 0;
             XMLtoWordPageButton.HighEmphasis = true;
             XMLtoWordPageButton.Icon = null;
-            XMLtoWordPageButton.Location = new Point(375, 438);
-            XMLtoWordPageButton.Margin = new Padding(4, 6, 4, 6);
+            XMLtoWordPageButton.Location = new Point(328, 328);
+            XMLtoWordPageButton.Margin = new Padding(4);
             XMLtoWordPageButton.MouseState = MaterialSkin.MouseState.HOVER;
             XMLtoWordPageButton.Name = "XMLtoWordPageButton";
             XMLtoWordPageButton.NoAccentTextColor = Color.Empty;
-            XMLtoWordPageButton.Size = new Size(173, 66);
+            XMLtoWordPageButton.Size = new Size(151, 50);
             XMLtoWordPageButton.TabIndex = 2;
             XMLtoWordPageButton.Text = "MACHİNE READABLE TO HUMAN READABLE";
             XMLtoWordPageButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -279,12 +294,12 @@
             CertificatePageShowButton.Depth = 0;
             CertificatePageShowButton.HighEmphasis = true;
             CertificatePageShowButton.Icon = null;
-            CertificatePageShowButton.Location = new Point(109, 438);
-            CertificatePageShowButton.Margin = new Padding(4, 6, 4, 6);
+            CertificatePageShowButton.Location = new Point(95, 328);
+            CertificatePageShowButton.Margin = new Padding(4);
             CertificatePageShowButton.MouseState = MaterialSkin.MouseState.HOVER;
             CertificatePageShowButton.Name = "CertificatePageShowButton";
             CertificatePageShowButton.NoAccentTextColor = Color.Empty;
-            CertificatePageShowButton.Size = new Size(173, 66);
+            CertificatePageShowButton.Size = new Size(151, 50);
             CertificatePageShowButton.TabIndex = 1;
             CertificatePageShowButton.Text = "CREATE CERTİFİCATE";
             CertificatePageShowButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -295,9 +310,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(209, 16);
+            pictureBox1.Location = new Point(183, 12);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(259, 280);
+            pictureBox1.Size = new Size(227, 210);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -306,19 +322,21 @@
             // 
             tabControl1.Controls.Add(HomeTab);
             tabControl1.Controls.Add(XMLtoWordPage);
-            tabControl1.Location = new Point(0, -36);
+            tabControl1.Location = new Point(0, -27);
+            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(705, 740);
+            tabControl1.Size = new Size(617, 555);
             tabControl1.TabIndex = 1;
             // 
             // HomePage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(699, 706);
+            ClientSize = new Size(612, 530);
             Controls.Add(tabControl1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "HomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DCC CREATER ";
@@ -348,9 +366,9 @@
         private PictureBox pictureBox2;
         private GroupBox groupBox1;
         private CheckBox checkBox1;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton createWordFile;
         private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
-        private MaterialSkin.Controls.MaterialButton materialButton3;
+        private MaterialSkin.Controls.MaterialButton selectXmlFile;
         private PictureBox pictureBox3;
         private TabPage HomeTab;
         private Panel panel1;
