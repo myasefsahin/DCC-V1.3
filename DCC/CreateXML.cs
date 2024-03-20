@@ -1745,7 +1745,7 @@ namespace DCC
             }
             if (control[1])
             {
-                List<XmlElement> xmlList = AddRCDC_ON_OFF(xml, dataXml.XML_NS_ArrayRC, dataXml.XML_NS_ArrayRC_ustlimit, dataXml.XML_NS_ArrayRCUnc, dataXml.XML_NS_ArrayRC_Phase, dataXml.XML_NS_ArrayRC_PhaseUnc, dataXml.XML_NS_ArrayControl_DC_ON, "Noise");
+                List<XmlElement> xmlList = AddRCDC_ON_OFF(xml, dataXml.XML_NS_ArrayRC, dataXml.XML_NS_ArrayRC_ustlimit, dataXml.XML_NS_ArrayRCUnc, dataXml.XML_NS_ArrayRC_Phase, dataXml.XML_NS_ArrayRC_PhaseUnc, dataXml.XML_NS_ArrayControl_DC_ON, "Noise_DC_ON");
 
                 foreach (XmlElement xmlElement in xmlList)
                 {
@@ -1754,7 +1754,7 @@ namespace DCC
             }
             if (control[2])
             {
-                List<XmlElement> xmlList1 = AddRCDC_ON_OFF(xml, dataXml.XML_NS_ArrayRC_DC_OFF, dataXml.XML_NS_ArrayRC_ustlimit_DC_OFF, dataXml.XML_NS_ArrayRCUnc_DC_OFF, dataXml.XML_NS_ArrayRC_Phase_DC_OFF, dataXml.XML_NS_ArrayRC_PhaseUnc_DC_OFF, dataXml.XML_NS_ArrayControl_DC_OFF, "Noise");
+                List<XmlElement> xmlList1 = AddRCDC_ON_OFF(xml, dataXml.XML_NS_ArrayRC_DC_OFF, dataXml.XML_NS_ArrayRC_ustlimit_DC_OFF, dataXml.XML_NS_ArrayRCUnc_DC_OFF, dataXml.XML_NS_ArrayRC_Phase_DC_OFF, dataXml.XML_NS_ArrayRC_PhaseUnc_DC_OFF, dataXml.XML_NS_ArrayControl_DC_OFF, "Noise_DC_OFF");
 
                 foreach (XmlElement xmlElement in xmlList1)
                 {
@@ -1825,7 +1825,7 @@ namespace DCC
             // Node oluşturulması
             // enr Element Oluşturulması
             XmlElement enrElement = xml.CreateElement("dcc", "quantity", dcc);
-            enrElement.SetAttribute("refType", "Noise" + noisestr + "ENR");
+            enrElement.SetAttribute("refType",  noisestr + "_ENR");
 
             XmlElement enrName = xml.CreateElement("dcc", "name", dcc);
             XmlElement enrContent = xml.CreateElement("dcc", "content", dcc);
@@ -1851,11 +1851,11 @@ namespace DCC
 
             // Uenr Element Oluşturulması
             XmlElement uenrElement = xml.CreateElement("dcc", "quantity", dcc);
-            uenrElement.SetAttribute("refType", "Noise" + noisestr + "UENR");
+            uenrElement.SetAttribute("refType",  noisestr + "_ENR_Unc");
 
             XmlElement uenrName = xml.CreateElement("dcc", "name", dcc);
             XmlElement uenrContent = xml.CreateElement("dcc", "content", dcc);
-            uenrContent.InnerText = noisestr + "_UENR";
+            uenrContent.InnerText = noisestr + "_ENR_Unc";
 
             XmlElement uenrHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement uenrRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1891,11 +1891,11 @@ namespace DCC
             // Node oluşturulması
             // lin Element Oluşturulması
             XmlElement rclinElement = xml.CreateElement("dcc", "quantity", dcc);
-            rclinElement.SetAttribute("refType",  noisestr + " Lin");
+            rclinElement.SetAttribute("refType",  noisestr + "_RC_Lin");
 
             XmlElement rclinName = xml.CreateElement("dcc", "name", dcc);
             XmlElement rclinContent = xml.CreateElement("dcc", "content", dcc);
-            rclinContent.InnerText = noisestr + " Lin";
+            rclinContent.InnerText = noisestr + "_RC_Lin";
 
             XmlElement rclinHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement rclinRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1917,11 +1917,11 @@ namespace DCC
 
             // rclimit Element Oluşturulması
             XmlElement rclimitElement = xml.CreateElement("dcc", "quantity", dcc);
-            rclimitElement.SetAttribute("refType", noisestr + " Limit");
+            rclimitElement.SetAttribute("refType", noisestr + "_Up_Limit");
 
             XmlElement rclimitName = xml.CreateElement("dcc", "name", dcc);
             XmlElement rclimitContent = xml.CreateElement("dcc", "content", dcc);
-            rclimitContent.InnerText = noisestr + " Limit";
+            rclimitContent.InnerText = noisestr + "_Up_Limit";
 
             XmlElement rclimitHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement rclimitRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1943,11 +1943,11 @@ namespace DCC
 
             // lin unc Element Oluşturulması
             XmlElement rclinuncElement = xml.CreateElement("dcc", "quantity", dcc);
-            rclinuncElement.SetAttribute("refType",  noisestr + " Lin Unc");
+            rclinuncElement.SetAttribute("refType",  noisestr + "_RC_Lin_Unc");
 
             XmlElement rclinuncName = xml.CreateElement("dcc", "name", dcc);
             XmlElement rclinuncContent = xml.CreateElement("dcc", "content", dcc);
-            rclinuncContent.InnerText = noisestr + " Lin Unc";
+            rclinuncContent.InnerText = noisestr + "_RC_Lin_Unc";
 
             XmlElement rclinuncHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement rclinuncRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1969,11 +1969,11 @@ namespace DCC
 
             // rcphase Element Oluşturulması
             XmlElement rcphaseElement = xml.CreateElement("dcc", "quantity", dcc);
-            rcphaseElement.SetAttribute("refType", noisestr + " RC_Phase");
+            rcphaseElement.SetAttribute("refType", noisestr + "_RC_Phase");
 
             XmlElement rcphaseName = xml.CreateElement("dcc", "name", dcc);
             XmlElement rcphaseContent = xml.CreateElement("dcc", "content", dcc);
-            rcphaseContent.InnerText = noisestr + " RC_Phase";
+            rcphaseContent.InnerText = noisestr + "_RC_Phase";
 
             XmlElement rcphaseHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement rcphaseRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -1995,11 +1995,11 @@ namespace DCC
 
             // rcphaseunc Element Oluşturulması
             XmlElement rcphaseuncElement = xml.CreateElement("dcc", "quantity", dcc);
-            rcphaseuncElement.SetAttribute("refType", noisestr + " RC_Phase Unc");
+            rcphaseuncElement.SetAttribute("refType", noisestr + "_RC_Phase_Unc");
 
             XmlElement rcphaseuncName = xml.CreateElement("dcc", "name", dcc);
             XmlElement rcphaseuncContent = xml.CreateElement("dcc", "content", dcc);
-            rcphaseuncContent.InnerText = noisestr + " RC_Phase Unc";
+            rcphaseuncContent.InnerText = noisestr + "_RC_Phase_Unc";
 
             XmlElement rcphaseuncHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement rcphaseuncRealList = xml.CreateElement("si", "realListXMLList", si);
@@ -2021,11 +2021,11 @@ namespace DCC
 
 
             XmlElement ControlElement = xml.CreateElement("dcc", "quantity", dcc);
-            ControlElement.SetAttribute("refType", noisestr + " Control");
+            ControlElement.SetAttribute("refType", noisestr + "_Control");
 
             XmlElement ControlName = xml.CreateElement("dcc", "name", dcc);
             XmlElement ControlContent = xml.CreateElement("dcc", "content", dcc);
-            ControlContent.InnerText = noisestr + " Control";
+            ControlContent.InnerText = noisestr + "_Control";
 
             XmlElement ControlHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement ControlRealList = xml.CreateElement("si", "realListXMLList", si);

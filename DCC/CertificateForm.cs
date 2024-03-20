@@ -14,6 +14,7 @@ using OfficeOpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DCC;
 using System.Xml;
+using DocumentFormat.OpenXml.Drawing.Diagrams;
 
 namespace DCC
 {
@@ -30,7 +31,7 @@ namespace DCC
         public List<Table> tables = new List<Table>();
         public List<string> header = new List<string>();
         public string XMLFolderPath;
-        public XmlDocument xml = new XmlDocument();    
+        public XmlDocument xml = new XmlDocument();
         string TableName;
 
         XML_Arrays XML_Arrays = new XML_Arrays();
@@ -90,7 +91,7 @@ namespace DCC
         {
             CertificateTabControl.SelectedTab = ExcelView_Page;
         }
-    
+
         private void MeasurementTypes_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MeasurementTypes_ComboBox.SelectedIndex == 0)
@@ -204,388 +205,357 @@ namespace DCC
                 }
 
 
-
             }
         }
 
         private void ReceiveData_Button_Click(object sender, EventArgs e)
         {
             #region dataword çalıştırma
-            try
+            if (ExcelFileName_TextBox.Text != "" && ExcelPage_ComboBox.Text != "")
             {
-                #region S-Parametre
-                if (MeasurementTypes_ComboBox.SelectedIndex == 4)
+                try
                 {
-                    sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-                    XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
 
-                    #region S parametre Checkbox Kontrolleri
-
-                    if (ExcelFileName_TextBox.Text != "(Please enter a header name..)")
+                    #region S-Parametre
+                    if (MeasurementTypes_ComboBox.SelectedIndex == 4)
                     {
-                        TableName = MeasurementTypes_ComboBox.Text + " - ";
-                    }
-                    else
-                    {
-                        TableName = "";
-                    }
+                        sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                        XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
 
-                    List<bool> dataList = new List<bool>(14) { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
+                        #region S parametre Checkbox Kontrolleri
 
-                    if (checkBoxS11Reel.Checked)
-                    {          // Reel & Imaginer kutusu
-                        string txtS11Reel = TableName + "Reel and Imaginary Components for S11\n\n";
-                        Table s11reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Reel, sp_DataWord.ArrayS11ReelUnc, sp_DataWord.ArrayS11Complex, sp_DataWord.ArrayS11ComplexUnc);
-                        tables.Add(s11reelTable);
-                        header.Add(txtS11Reel);
-                        dataList[0] = true;
-                        SaveBasarim();
-                    }
+                        if (ExcelFileName_TextBox.Text != "(Please enter a header name..)")
+                        {
+                            TableName = MeasurementTypes_ComboBox.Text + " - ";
+                        }
+                        else
+                        {
+                            TableName = "";
+                        }
 
-                    if (checkBoxS11Lin.Checked)
-                    {    // Linear kutusu
-                        string txtS11Lin = TableName + "Linear Magnitude and Phase Components for S11\n\n";
-                        Table s11linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Lin, sp_DataWord.ArrayS11LinUnc, sp_DataWord.ArrayS11LinPhase, sp_DataWord.ArrayS11LinPhaseUnc);
-                        tables.Add(s11linTable);
-                        header.Add(txtS11Lin);
-                        dataList[1] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS11Log.Checked)
-                    {    // Logarithmic Kutusu
-                        string txtS11Log = TableName + "Logarithmic Magnitude and Phase Components for S11\n\n";
-                        Table s11logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Log, sp_DataWord.ArrayS11LogUnc, sp_DataWord.ArrayS11LogPhase, sp_DataWord.ArrayS11LogPhaseUnc);
-                        tables.Add(s11logTable);
-                        header.Add(txtS11Log);
-                        dataList[2] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS11SWR.Checked)
-                    {    // SWR Kutusu
-                        string txtS11SWR = TableName + "SWR for S11";
-                        Table s11swrTable = SP_WordTable.CreateSWR(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11SWR, sp_DataWord.ArrayS11SWRUnc);
-                        tables.Add(s11swrTable);
-                        header.Add(txtS11SWR);
-                        dataList[3] = true;
-                        SaveBasarim();
-                    }
+                        List<bool> dataList = new List<bool>(14) { false, false, false, false, false, false, false, false, false, false, false, false, false, false };
 
+                        if (checkBoxS11Reel.Checked)
+                        {          // Reel & Imaginer kutusu
+                            string txtS11Reel = TableName + "Reel and Imaginary Components for S11\n\n";
+                            Table s11reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Reel, sp_DataWord.ArrayS11ReelUnc, sp_DataWord.ArrayS11Complex, sp_DataWord.ArrayS11ComplexUnc);
+                            tables.Add(s11reelTable);
+                            header.Add(txtS11Reel);
+                            dataList[0] = true;
+                            SaveBasarim();
+                        }
 
-                    if (checkBoxS12Reel.Checked)
-                    {  // Reel & Imaginer kutusu
-                        string txtS12Reel = TableName + "Reel and Imaginary Components for S12\n";
-                        Table s12reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Reel, sp_DataWord.ArrayS12ReelUnc, sp_DataWord.ArrayS12Complex, sp_DataWord.ArrayS12ComplexUnc);
-                        tables.Add(s12reelTable);
-                        header.Add(txtS12Reel);
-                        dataList[4] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS12Lin.Checked)
-                    {    // Linear kutusu
-                        string txtS12Lin = TableName + "Linear Magnitude and Phase Components for S12\n\n";
-                        Table s12linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Lin, sp_DataWord.ArrayS12LinUnc, sp_DataWord.ArrayS12LinPhase, sp_DataWord.ArrayS12LinPhaseUnc);
-                        tables.Add(s12linTable);
-                        header.Add(txtS12Lin);
-                        dataList[5] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS12Log.Checked)
-                    {    // Logarithmic Kutusu
-                        string txtS12Log = TableName + "Logarithmic Magnitude and Phase Components for S12\n\n";
-                        Table s12logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Log, sp_DataWord.ArrayS12LogUnc, sp_DataWord.ArrayS12LogPhase, sp_DataWord.ArrayS12LogPhaseUnc);
-                        tables.Add(s12logTable);
-                        header.Add(txtS12Log);
-                        dataList[6] = true;
-                        SaveBasarim();
-                    }
+                        if (checkBoxS11Lin.Checked)
+                        {    // Linear kutusu
+                            string txtS11Lin = TableName + "Linear Magnitude and Phase Components for S11\n\n";
+                            Table s11linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Lin, sp_DataWord.ArrayS11LinUnc, sp_DataWord.ArrayS11LinPhase, sp_DataWord.ArrayS11LinPhaseUnc);
+                            tables.Add(s11linTable);
+                            header.Add(txtS11Lin);
+                            dataList[1] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS11Log.Checked)
+                        {    // Logarithmic Kutusu
+                            string txtS11Log = TableName + "Logarithmic Magnitude and Phase Components for S11\n\n";
+                            Table s11logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Log, sp_DataWord.ArrayS11LogUnc, sp_DataWord.ArrayS11LogPhase, sp_DataWord.ArrayS11LogPhaseUnc);
+                            tables.Add(s11logTable);
+                            header.Add(txtS11Log);
+                            dataList[2] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS11SWR.Checked)
+                        {    // SWR Kutusu
+                            string txtS11SWR = TableName + "SWR for S11";
+                            Table s11swrTable = SP_WordTable.CreateSWR(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11SWR, sp_DataWord.ArrayS11SWRUnc);
+                            tables.Add(s11swrTable);
+                            header.Add(txtS11SWR);
+                            dataList[3] = true;
+                            SaveBasarim();
+                        }
 
 
-                    if (checkBoxS21Reel.Checked)
-                    {  // Reel & Imaginer kutusu
-                        string txtS21Reel = TableName + "Reel and Imaginary Components for S21\n";
-                        Table s21reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Reel, sp_DataWord.ArrayS21ReelUnc, sp_DataWord.ArrayS21Complex, sp_DataWord.ArrayS21ComplexUnc);
-                        tables.Add(s21reelTable);
-                        header.Add(txtS21Reel);
-                        dataList[7] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS21Lin.Checked)
-                    {    // Linear kutusu
-                        string txtS21Lin = TableName + "Linear Magnitude and Phase Components for S21\n\n";
-                        Table s21linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Lin, sp_DataWord.ArrayS21LinUnc, sp_DataWord.ArrayS21LinPhase, sp_DataWord.ArrayS21LinPhaseUnc);
-                        tables.Add(s21linTable);
-                        header.Add(txtS21Lin);
-                        dataList[8] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS21Log.Checked)
-                    {    // Logarithmic Kutusu
-                        string txtS21Log = TableName + "Logarithmic Magnitude and Phase Components for S21\n\n";
-                        Table s21logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Log, sp_DataWord.ArrayS21LogUnc, sp_DataWord.ArrayS21LogPhase, sp_DataWord.ArrayS21LogPhaseUnc);
-                        tables.Add(s21logTable);
-                        header.Add(txtS21Log);
-                        dataList[9] = true;
-                        SaveBasarim();
-                    }
+                        if (checkBoxS12Reel.Checked)
+                        {  // Reel & Imaginer kutusu
+                            string txtS12Reel = TableName + "Reel and Imaginary Components for S12\n";
+                            Table s12reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Reel, sp_DataWord.ArrayS12ReelUnc, sp_DataWord.ArrayS12Complex, sp_DataWord.ArrayS12ComplexUnc);
+                            tables.Add(s12reelTable);
+                            header.Add(txtS12Reel);
+                            dataList[4] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS12Lin.Checked)
+                        {    // Linear kutusu
+                            string txtS12Lin = TableName + "Linear Magnitude and Phase Components for S12\n\n";
+                            Table s12linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Lin, sp_DataWord.ArrayS12LinUnc, sp_DataWord.ArrayS12LinPhase, sp_DataWord.ArrayS12LinPhaseUnc);
+                            tables.Add(s12linTable);
+                            header.Add(txtS12Lin);
+                            dataList[5] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS12Log.Checked)
+                        {    // Logarithmic Kutusu
+                            string txtS12Log = TableName + "Logarithmic Magnitude and Phase Components for S12\n\n";
+                            Table s12logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Log, sp_DataWord.ArrayS12LogUnc, sp_DataWord.ArrayS12LogPhase, sp_DataWord.ArrayS12LogPhaseUnc);
+                            tables.Add(s12logTable);
+                            header.Add(txtS12Log);
+                            dataList[6] = true;
+                            SaveBasarim();
+                        }
 
-                    if (checkBoxS22Reel.Checked)
-                    {  // Reel & Imaginer kutusu
-                        string txtS22Reel = TableName + "Reel and Imaginary Components for S22\n";
-                        Table s22reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Reel, sp_DataWord.ArrayS22ReelUnc, sp_DataWord.ArrayS22Complex, sp_DataWord.ArrayS22ComplexUnc);
-                        tables.Add(s22reelTable);
-                        header.Add(txtS22Reel);
-                        dataList[10] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS22Lin.Checked)
-                    {    // Linear kutusu
-                        string txtS22Lin = TableName + "Linear Magnitude and Phase Components for S22\n\n";
-                        Table s22linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Lin, sp_DataWord.ArrayS22LinUnc, sp_DataWord.ArrayS22LinPhase, sp_DataWord.ArrayS22LinPhaseUnc);
-                        tables.Add(s22linTable);
-                        header.Add(txtS22Lin);
-                        dataList[11] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS22Log.Checked)
-                    {    // Logarithmic Kutusu
-                        string txtS22Log = TableName + "Logarithmic Magnitude and Phase Components for S22\n\n";
-                        Table s22logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Log, sp_DataWord.ArrayS22LogUnc, sp_DataWord.ArrayS22LogPhase, sp_DataWord.ArrayS22LogPhaseUnc);
-                        tables.Add(s22logTable);
-                        header.Add(txtS22Log);
-                        dataList[12] = true;
-                        SaveBasarim();
-                    }
-                    if (checkBoxS22SWR.Checked)
-                    {    // SWR Kutusu
-                        string txtS22SWR = TableName + "SWR for S22";
-                        Table s22swrTable = SP_WordTable.CreateSWR(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22SWR, sp_DataWord.ArrayS22SWRUnc);
-                        tables.Add(s22swrTable);
-                        header.Add(txtS22SWR);
-                        dataList[13] = true;
-                        SaveBasarim();
-                    }
 
-                    CreateXML.AddSParameterResult(xml, TableName, XML_Arrays, dataList);
+                        if (checkBoxS21Reel.Checked)
+                        {  // Reel & Imaginer kutusu
+                            string txtS21Reel = TableName + "Reel and Imaginary Components for S21\n";
+                            Table s21reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Reel, sp_DataWord.ArrayS21ReelUnc, sp_DataWord.ArrayS21Complex, sp_DataWord.ArrayS21ComplexUnc);
+                            tables.Add(s21reelTable);
+                            header.Add(txtS21Reel);
+                            dataList[7] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS21Lin.Checked)
+                        {    // Linear kutusu
+                            string txtS21Lin = TableName + "Linear Magnitude and Phase Components for S21\n\n";
+                            Table s21linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Lin, sp_DataWord.ArrayS21LinUnc, sp_DataWord.ArrayS21LinPhase, sp_DataWord.ArrayS21LinPhaseUnc);
+                            tables.Add(s21linTable);
+                            header.Add(txtS21Lin);
+                            dataList[8] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS21Log.Checked)
+                        {    // Logarithmic Kutusu
+                            string txtS21Log = TableName + "Logarithmic Magnitude and Phase Components for S21\n\n";
+                            Table s21logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Log, sp_DataWord.ArrayS21LogUnc, sp_DataWord.ArrayS21LogPhase, sp_DataWord.ArrayS21LogPhaseUnc);
+                            tables.Add(s21logTable);
+                            header.Add(txtS21Log);
+                            dataList[9] = true;
+                            SaveBasarim();
+                        }
 
+                        if (checkBoxS22Reel.Checked)
+                        {  // Reel & Imaginer kutusu
+                            string txtS22Reel = TableName + "Reel and Imaginary Components for S22\n";
+                            Table s22reelTable = SP_WordTable.CreateReelImg(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Reel, sp_DataWord.ArrayS22ReelUnc, sp_DataWord.ArrayS22Complex, sp_DataWord.ArrayS22ComplexUnc);
+                            tables.Add(s22reelTable);
+                            header.Add(txtS22Reel);
+                            dataList[10] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS22Lin.Checked)
+                        {    // Linear kutusu
+                            string txtS22Lin = TableName + "Linear Magnitude and Phase Components for S22\n\n";
+                            Table s22linTable = SP_WordTable.CreateLinPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Lin, sp_DataWord.ArrayS22LinUnc, sp_DataWord.ArrayS22LinPhase, sp_DataWord.ArrayS22LinPhaseUnc);
+                            tables.Add(s22linTable);
+                            header.Add(txtS22Lin);
+                            dataList[11] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS22Log.Checked)
+                        {    // Logarithmic Kutusu
+                            string txtS22Log = TableName + "Logarithmic Magnitude and Phase Components for S22\n\n";
+                            Table s22logTable = SP_WordTable.CreateLogPhase(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Log, sp_DataWord.ArrayS22LogUnc, sp_DataWord.ArrayS22LogPhase, sp_DataWord.ArrayS22LogPhaseUnc);
+                            tables.Add(s22logTable);
+                            header.Add(txtS22Log);
+                            dataList[12] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBoxS22SWR.Checked)
+                        {    // SWR Kutusu
+                            string txtS22SWR = TableName + "SWR for S22";
+                            Table s22swrTable = SP_WordTable.CreateSWR(sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22SWR, sp_DataWord.ArrayS22SWRUnc);
+                            tables.Add(s22swrTable);
+                            header.Add(txtS22SWR);
+                            dataList[13] = true;
+                            SaveBasarim();
+                        }
+
+                        CreateXML.AddSParameterResult(xml, TableName, XML_Arrays, dataList);
+
+                        #endregion
+
+
+                    }
                     #endregion
 
+                    #region Effective Effiency
 
-                }
-                #endregion
-
-                #region Effective Effiency
-
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 0)
-                {
-                    EE_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-                    XML_Arrays.EE_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-
-                    #region EE ChechkBox Kontrolleri
-                    List<bool> dataListEE = new List<bool>(14) { false, false, false, false };
-
-
-                    if (checkBoxEE.Checked)
-                    {          // Reel & Imaginer kutusu
-                        string txtS11Reel_EE = TableName + "S11 Reel And Imagıner Components for EE \n\n";
-                        Table s11reelTable_EE = EE_WordTable.EECreateReelImg(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayS11Reel, EE_DataWord.EE_ArrayS11ReelUnc, EE_DataWord.EE_ArrayS11Complex, EE_DataWord.EE_ArrayS11ComplexUnc);
-                        tables.Add(s11reelTable_EE);
-                        header.Add(txtS11Reel_EE);
-                        dataListEE[0] = true;
-                        SaveBasarim();
-                    }
-
-                    if (checkBox_EE_RI.Checked)
-                    {    // Linear kutusu
-                        string txt_EE = TableName + "Effective Effiency\n\n";
-                        Table EE_table = EE_WordTable.CreateEE(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayEE, EE_DataWord.EE_ArrayEEUnc);
-                        tables.Add(EE_table);
-                        header.Add(txt_EE);
-                        dataListEE[1] = true;
-                        SaveBasarim();
-                    }
-
-                    // Logarithmic Kutusu
-                    if (checkBoxRHO.Checked)
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 0)
                     {
-                        string txtRHO = TableName + "RHO Tables\n\n";
-                        Table RHOTable = EE_WordTable.CreateRHO(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayRhoLin, EE_DataWord.EE_ArrayRhoUnc);
-                        tables.Add(RHOTable);
-                        header.Add(txtRHO);
-                        dataListEE[2] = true;
-                        SaveBasarim();
+                        EE_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                        XML_Arrays.EE_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+
+                        #region EE ChechkBox Kontrolleri
+                        List<bool> dataListEE = new List<bool>(14) { false, false, false, false };
+
+
+                        if (checkBoxEE.Checked)
+                        {          // Reel & Imaginer kutusu
+                            string txtS11Reel_EE = TableName + "S11 Reel And Imagıner Components for EE \n\n";
+                            Table s11reelTable_EE = EE_WordTable.EECreateReelImg(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayS11Reel, EE_DataWord.EE_ArrayS11ReelUnc, EE_DataWord.EE_ArrayS11Complex, EE_DataWord.EE_ArrayS11ComplexUnc);
+                            tables.Add(s11reelTable_EE);
+                            header.Add(txtS11Reel_EE);
+                            dataListEE[0] = true;
+                            SaveBasarim();
+                        }
+
+                        if (checkBox_EE_RI.Checked)
+                        {    // Linear kutusu
+                            string txt_EE = TableName + "Effective Effiency\n\n";
+                            Table EE_table = EE_WordTable.CreateEE(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayEE, EE_DataWord.EE_ArrayEEUnc);
+                            tables.Add(EE_table);
+                            header.Add(txt_EE);
+                            dataListEE[1] = true;
+                            SaveBasarim();
+                        }
+
+                        // Logarithmic Kutusu
+                        if (checkBoxRHO.Checked)
+                        {
+                            string txtRHO = TableName + "RHO Tables\n\n";
+                            Table RHOTable = EE_WordTable.CreateRHO(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayRhoLin, EE_DataWord.EE_ArrayRhoUnc);
+                            tables.Add(RHOTable);
+                            header.Add(txtRHO);
+                            dataListEE[2] = true;
+                            SaveBasarim();
+                        }
+                        if (checkBox_EE_CF.Checked)
+                        {    // SWR Kutusu
+                            string txtCF_EE = TableName + "CF Tables for EE";
+                            Table EE_CF_table = EE_WordTable.CreateCF(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayCF, EE_DataWord.EE_ArrayCFUnc);
+                            tables.Add(EE_CF_table);
+                            header.Add(txtCF_EE);
+                            dataListEE[3] = true;
+                            SaveBasarim();
+                        }
+                        CreateXML.Add_EE_Result(xml, TableName, XML_Arrays, dataListEE);
+                        #endregion
+
                     }
-                    if (checkBox_EE_CF.Checked)
-                    {    // SWR Kutusu
-                        string txtCF_EE = TableName + "CF Tables for EE";
-                        Table EE_CF_table = EE_WordTable.CreateCF(EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayCF, EE_DataWord.EE_ArrayCFUnc);
-                        tables.Add(EE_CF_table);
-                        header.Add(txtCF_EE);
-                        dataListEE[3] = true;
-                        SaveBasarim();
-                    }
-                    CreateXML.Add_EE_Result(xml, TableName, XML_Arrays, dataListEE);
                     #endregion
 
-                }
-                #endregion
+                    #region Calibration Factor
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 1)
+                    {
+                        CF_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                        XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+                        #region CF CheckBox Kontrolleri
 
-                #region Calibration Factor
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 1)
-                {
-                    CF_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-                    XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    #region CF CheckBox Kontrolleri
-
-                    List<bool> dataListCF = new List<bool>(14) { false, false };
+                        List<bool> dataListCF = new List<bool>(14) { false, false };
 
 
-                    if (CF_checkBox_RIRC.Checked)
-                    {    // Linear kutusu
-                        string txt_CF = TableName + "Reel, Imaginer and Reflection Coefficient\n";
-                        Table CF_table = CF_Word_Table.CF_CreateCF(CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_Array, CF_DataWord.CF_ArrayCFUnc);
-                        tables.Add(CF_table);
-                        header.Add(txt_CF);
-                        dataListCF[1] = true;
-                        SaveBasarim();
+                        if (CF_checkBox_RIRC.Checked)
+                        {    // Linear kutusu
+                            string txt_CF = TableName + "Reel, Imaginer and Reflection Coefficient\n";
+                            Table CF_table = CF_Word_Table.CF_CreateCF(CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_Array, CF_DataWord.CF_ArrayCFUnc);
+                            tables.Add(CF_table);
+                            header.Add(txt_CF);
+                            dataListCF[1] = true;
+                            SaveBasarim();
+                        }
+
+                        if (CheckBox_CF.Checked)
+                        {          // Reel & Imaginer kutusu
+                            string txtReel_CF = TableName + "Calibration Factor \n\n";
+                            Table reelTable_CF = CF_Word_Table.CF_CreateReelImg(CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_ArrayReel, CF_DataWord.CF_ArrayReelUnc, CF_DataWord.CF_ArrayComplex, CF_DataWord.CF_ArrayComplexUnc, CF_DataWord.CF_YK, CF_DataWord.CF_YK_Unc);
+                            tables.Add(reelTable_CF);
+                            header.Add(txtReel_CF);
+                            dataListCF[0] = true;
+                            SaveBasarim();
+                        }
+
+                        CreateXML.AddCFResult(xml, TableName, XML_Arrays, dataListCF);
+
+                        #endregion
                     }
-
-                    if (CheckBox_CF.Checked)
-                    {          // Reel & Imaginer kutusu
-                        string txtReel_CF = TableName + "Calibration Factor \n\n";
-                        Table reelTable_CF = CF_Word_Table.CF_CreateReelImg(CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_ArrayReel, CF_DataWord.CF_ArrayReelUnc, CF_DataWord.CF_ArrayComplex, CF_DataWord.CF_ArrayComplexUnc, CF_DataWord.CF_YK, CF_DataWord.CF_YK_Unc);
-                        tables.Add(reelTable_CF);
-                        header.Add(txtReel_CF);
-                        dataListCF[0] = true;
-                        SaveBasarim();
-                    }
-
-                    CreateXML.AddCFResult(xml, TableName, XML_Arrays, dataListCF);
-
                     #endregion
+
+                    #region CIS
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 2)
+                    {
+
+                        CIS_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                        XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+
+                        bool CIS_bool = false;
+
+
+                        if (CIS_CheckBox.Checked)
+                        {    // Linear kutusu
+                            string txt_CIS = TableName + "Z-Position ,OCID,ICOD\n";
+                            Table CIS_table = CIS_Word_Table.Create_Z_Position(CIS_DataWord.CIS_Olcum_Adım, CIS_DataWord.CIS_ZP, CIS_DataWord.CIS_ZP_Unc, CIS_DataWord.CIS_ICOD, CIS_DataWord.CIS_ICOD_Unc, CIS_DataWord.CIS_OCID, CIS_DataWord.CIS_OCID_Unc);
+                            tables.Add(CIS_table);
+                            header.Add(txt_CIS);
+                            CIS_bool = true;
+                            SaveBasarim();
+                        }
+                        CreateXML.AddCISResult(xml, TableName, XML_Arrays, CIS_bool);
+
+                    }
+                    #endregion
+
+                    #region Noise
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 6)
+                    {
+                        Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                        XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+                        List<bool> NoiseBool = new List<bool>(3) { false, false, false };
+
+                        if (NS_checkBoxENR.Checked)
+                        {
+                            string txt_ENR_Noise = TableName + "ENR, ENR Uncertainty\n";
+                            Table ENR_Noise_table = Noise_WordTable.CreateENR(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayENR, Noise_DataWord.NS_ArrayENRUnc);
+                            tables.Add(ENR_Noise_table);
+                            header.Add(txt_ENR_Noise);
+                            NoiseBool[0] = true;
+                            SaveBasarim();
+                        }
+                        if (NS_checkBox_DC_ON.Checked)
+                        {
+                            string txt_DC_ON_Noise = TableName + "DC ON for Noise\n";
+                            Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc,
+                                                                                        Noise_DataWord.NS_ArrayRC_Phase, Noise_DataWord.NS_ArrayRC_PhaseUnc, Noise_DataWord.NS_ArrayControl_DC_ON);
+                            tables.Add(DC_ON_Noise_table);
+                            header.Add(txt_DC_ON_Noise);
+                            NoiseBool[1] = true;
+                            SaveBasarim();
+                        }
+
+                        if (NS_checkBox_DC_OFF.Checked)
+                        {
+                            string txt_DC_OFF_Noise = TableName + "DC OFF for Noise\n";
+                            Table DC_OFF_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC_DC_OFF, Noise_DataWord.NS_ArrayRC_ustlimit_DC_OFF, Noise_DataWord.NS_ArrayRCUnc_DC_OFF,
+                                                                                        Noise_DataWord.NS_ArrayRC_Phase_DC_OFF, Noise_DataWord.NS_ArrayRC_PhaseUnc_DC_OFF, Noise_DataWord.NS_ArrayControl_DC_OFF);
+                            tables.Add(DC_OFF_Noise_table);
+                            header.Add(txt_DC_OFF_Noise);
+                            NoiseBool[2] = true;
+                            SaveBasarim();
+                        }
+                        CreateXML.AddNoiseResult(xml, TableName, XML_Arrays, NoiseBool);
+
+                    }
+                    #endregion
+
+                    for (int i = 0; i < 100; i++)
+                    {
+
+                    }
+                    LabelProgress.Visible = true;
+                    LabelProgress.ForeColor = System.Drawing.Color.Green;
+                    LabelProgress.Text = @"Import data successfull";
+                }
+
+
+                catch (Exception err)
+                {
+                    LabelProgress.Visible = true;
+                    LabelProgress.ForeColor = System.Drawing.Color.Red;
+                    LabelProgress.Text = @"ERROR!: Excel";
+                    MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 #endregion
 
-                #region CIS
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 2)
-                {
+                #region Refresh
 
-                    CIS_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-                    XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-
-                    bool CIS_bool = false;
-
-
-                    if (CIS_CheckBox.Checked)
-                    {    // Linear kutusu
-                        string txt_CIS = TableName + "Z-Position ,OCID,ICOD\n";
-                        Table CIS_table = CIS_Word_Table.Create_Z_Position(CIS_DataWord.CIS_Olcum_Adım, CIS_DataWord.CIS_ZP, CIS_DataWord.CIS_ZP_Unc, CIS_DataWord.CIS_ICOD, CIS_DataWord.CIS_ICOD_Unc, CIS_DataWord.CIS_OCID, CIS_DataWord.CIS_OCID_Unc);
-                        tables.Add(CIS_table);
-                        header.Add(txt_CIS);
-                        CIS_bool = true;
-                        SaveBasarim();
-                    }
-                    CreateXML.AddCISResult(xml, TableName, XML_Arrays, CIS_bool);
-
-                }
-                #endregion
-
-                #region Noise
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 6)
-                {
-                    Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-                    XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    List<bool> NoiseBool = new List<bool>(3) { false, false,false };
-
-                    if (NS_checkBoxENR.Checked)
-                    {
-                        string txt_ENR_Noise = TableName + "ENR, ENR Uncertainty\n";
-                        Table ENR_Noise_table = Noise_WordTable.CreateENR(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayENR, Noise_DataWord.NS_ArrayENRUnc);
-                        tables.Add(ENR_Noise_table);
-                        header.Add(txt_ENR_Noise);
-                        NoiseBool[0] = true;
-                        SaveBasarim();
-                    }
-                    if (NS_checkBox_DC_ON.Checked)
-                    {
-                        string txt_DC_ON_Noise = TableName + "DC ON for Noise\n";
-                        Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc, 
-                                                                                    Noise_DataWord.NS_ArrayRC_Phase, Noise_DataWord.NS_ArrayRC_PhaseUnc, Noise_DataWord.NS_ArrayControl_DC_ON);
-                        tables.Add(DC_ON_Noise_table);
-                        header.Add(txt_DC_ON_Noise);
-                        NoiseBool[1] = true;
-                        SaveBasarim();
-                    }
-
-                    if (NS_checkBox_DC_OFF.Checked)
-                    {
-                        string txt_DC_OFF_Noise = TableName + "DC OFF for Noise\n";
-                        Table DC_OFF_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC_DC_OFF, Noise_DataWord.NS_ArrayRC_ustlimit_DC_OFF, Noise_DataWord.NS_ArrayRCUnc_DC_OFF,
-                                                                                    Noise_DataWord.NS_ArrayRC_Phase_DC_OFF, Noise_DataWord.NS_ArrayRC_PhaseUnc_DC_OFF, Noise_DataWord.NS_ArrayControl_DC_OFF);
-                        tables.Add(DC_OFF_Noise_table);
-                        header.Add(txt_DC_OFF_Noise);
-                        NoiseBool[2] = true;
-                        SaveBasarim();
-                    }
-                    CreateXML.AddNoiseResult(xml, TableName, XML_Arrays, NoiseBool);
-
-                }
-                #endregion
-
-                for (int i = 0; i < 100; i++)
-                {
-
-                }
-                LabelProgress.Visible = true;
-                LabelProgress.ForeColor = System.Drawing.Color.Green;
-                LabelProgress.Text = @"Import data successfull";
-            }
-
-            catch (Exception err)
-            {
-                LabelProgress.Visible = true;
-                LabelProgress.ForeColor = System.Drawing.Color.Red;
-                LabelProgress.Text = @"ERROR!: Excel";
-                MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            #endregion
-
-            #region Refresh
-
-            DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-            checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
-            checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
-            checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
-            checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
-
-            checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
-            CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
-            CIS_CheckBox.Checked = false;
-            NS_checkBoxENR.Checked = false; NS_checkBox_DC_OFF.Checked = false; NS_checkBox_DC_ON.Checked = false;
-        
-            ExcelDosyaYolu = "";
-            ExcelFileName_TextBox.Hint = "Please Select Xml File";
-            ExcelFileName_TextBox.Text = "";
-            ExcelPage_ComboBox.Items.Clear();
-            progressBar.Value = 0;
-            sp_DataWord.ClearData();
-            CF_DataWord.ClearData();
-            EE_DataWord.ClearData();
-            CIS_DataWord.ClearData();
-            Noise_DataWord.ClearData();
-            XML_Arrays.SP_ClearData();
-            XML_Arrays.EE_ClearData();
-            XML_Arrays.CF_ClearData();
-            XML_Arrays.CIS_ClearData();
-            XML_Arrays.Noise_ClearData();
-
-
-
-
-
-
-            if (result == DialogResult.Yes)
-            {
+                DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
                 checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
@@ -597,11 +567,10 @@ namespace DCC
                 CIS_CheckBox.Checked = false;
                 NS_checkBoxENR.Checked = false; NS_checkBox_DC_OFF.Checked = false; NS_checkBox_DC_ON.Checked = false;
 
-
                 ExcelDosyaYolu = "";
-                ExcelPage_ComboBox.Items.Clear();
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
                 ExcelFileName_TextBox.Text = "";
+                ExcelPage_ComboBox.Items.Clear();
                 progressBar.Value = 0;
                 sp_DataWord.ClearData();
                 CF_DataWord.ClearData();
@@ -618,17 +587,65 @@ namespace DCC
 
 
 
+
+                if (result == DialogResult.Yes)
+                {
+
+                    checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
+                    checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
+                    checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
+                    checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
+
+                    checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
+                    CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
+                    CIS_CheckBox.Checked = false;
+                    NS_checkBoxENR.Checked = false; NS_checkBox_DC_OFF.Checked = false; NS_checkBox_DC_ON.Checked = false;
+
+
+                    ExcelDosyaYolu = "";
+                    ExcelPage_ComboBox.Items.Clear();
+                    ExcelFileName_TextBox.Hint = "Please Select Xml File";
+                    ExcelFileName_TextBox.Text = "";
+                    progressBar.Value = 0;
+                    sp_DataWord.ClearData();
+                    CF_DataWord.ClearData();
+                    EE_DataWord.ClearData();
+                    CIS_DataWord.ClearData();
+                    Noise_DataWord.ClearData();
+                    XML_Arrays.SP_ClearData();
+                    XML_Arrays.EE_ClearData();
+                    XML_Arrays.CF_ClearData();
+                    XML_Arrays.CIS_ClearData();
+                    XML_Arrays.Noise_ClearData();
+
+
+
+
+
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+
+                #endregion
             }
-            else if (result == DialogResult.No)
+            else if(ExcelFileName_TextBox.Text == "" && ExcelPage_ComboBox.Text== "")
             {
-
+                MessageBox.Show("Please select an excel file and page");
             }
-
-            #endregion
-
-           
-
+            else if(ExcelPage_ComboBox.Text == "")
+            {
+                MessageBox.Show("Please select an excel page");
+            }
+        
         }
+        
+    
+      
+
+
+    
 
         public void SaveBasarim()
         {

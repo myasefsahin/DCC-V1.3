@@ -746,7 +746,7 @@
             ExcelFileName_TextBox.Name = "ExcelFileName_TextBox";
             ExcelFileName_TextBox.PasswordChar = '\0';
             ExcelFileName_TextBox.PrefixSuffixText = null;
-            ExcelFileName_TextBox.ReadOnly = false;
+            ExcelFileName_TextBox.ReadOnly = true;
             ExcelFileName_TextBox.RightToLeft = RightToLeft.No;
             ExcelFileName_TextBox.SelectedText = "";
             ExcelFileName_TextBox.SelectionLength = 0;
@@ -1247,6 +1247,7 @@
             // 
             // ExcelView_Page
             // 
+            ExcelView_Page.BackColor = Color.White;
             ExcelView_Page.Controls.Add(panel3);
             ExcelView_Page.Location = new Point(4, 29);
             ExcelView_Page.Name = "ExcelView_Page";
@@ -1254,7 +1255,6 @@
             ExcelView_Page.Size = new Size(1219, 721);
             ExcelView_Page.TabIndex = 2;
             ExcelView_Page.Text = "tabPage3";
-            ExcelView_Page.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -1331,7 +1331,7 @@
             // 
             groupBox13.Location = new Point(29, 58);
             groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(1162, 579);
+            groupBox13.Size = new Size(1162, 589);
             groupBox13.TabIndex = 14;
             groupBox13.TabStop = false;
             // 
@@ -1385,6 +1385,7 @@
             Controls.Add(groupBox12);
             Controls.Add(CertificateTabControl);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 162);
+            MaximizeBox = false;
             Name = "CertificateForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "API OPERATİONS";

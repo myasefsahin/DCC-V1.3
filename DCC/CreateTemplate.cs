@@ -859,7 +859,7 @@ namespace DCC
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    string originalFilePath = "C:\\Users\\work\\Desktop\\sertifikaC.docx";
+                    string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifikaB.docx";
                     string copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
