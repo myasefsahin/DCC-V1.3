@@ -809,10 +809,11 @@
             checkBox_EE_CF.ForeColor = Color.Navy;
             checkBox_EE_CF.Location = new Point(66, 270);
             checkBox_EE_CF.Name = "checkBox_EE_CF";
-            checkBox_EE_CF.Size = new Size(175, 24);
+            checkBox_EE_CF.Size = new Size(155, 24);
             checkBox_EE_CF.TabIndex = 3;
-            checkBox_EE_CF.Text = "EE Calibration Factor";
+            checkBox_EE_CF.Text = "Calibration Factor";
             checkBox_EE_CF.UseVisualStyleBackColor = true;
+            checkBox_EE_CF.CheckedChanged += checkBox_EE_CF_CheckedChanged;
             // 
             // checkBoxRHO
             // 
@@ -821,9 +822,9 @@
             checkBoxRHO.ForeColor = Color.Navy;
             checkBoxRHO.Location = new Point(66, 206);
             checkBoxRHO.Name = "checkBoxRHO";
-            checkBoxRHO.Size = new Size(84, 24);
+            checkBoxRHO.Size = new Size(309, 24);
             checkBoxRHO.TabIndex = 2;
-            checkBoxRHO.Text = "Rho Lin";
+            checkBoxRHO.Text = "Linear Magnitude Reflection Coefficient";
             checkBoxRHO.UseVisualStyleBackColor = true;
             // 
             // checkBox_EE_RI
@@ -833,9 +834,9 @@
             checkBox_EE_RI.ForeColor = Color.Navy;
             checkBox_EE_RI.Location = new Point(66, 142);
             checkBox_EE_RI.Name = "checkBox_EE_RI";
-            checkBox_EE_RI.Size = new Size(158, 24);
+            checkBox_EE_RI.Size = new Size(291, 24);
             checkBox_EE_RI.TabIndex = 1;
-            checkBox_EE_RI.Text = "Reel and Imaginer";
+            checkBox_EE_RI.Text = "Reflection Coefficient, Reel, Imaginer";
             checkBox_EE_RI.UseVisualStyleBackColor = true;
             // 
             // checkBoxEE
@@ -849,6 +850,7 @@
             checkBoxEE.TabIndex = 0;
             checkBoxEE.Text = "Effective Effiency";
             checkBoxEE.UseVisualStyleBackColor = true;
+            checkBoxEE.CheckedChanged += checkBoxEE_CheckedChanged;
             // 
             // CalFactor_Page
             // 
@@ -871,7 +873,7 @@
             CF_checkBox_RIRC.Name = "CF_checkBox_RIRC";
             CF_checkBox_RIRC.Size = new Size(317, 24);
             CF_checkBox_RIRC.TabIndex = 5;
-            CF_checkBox_RIRC.Text = "Reel , Imaginer and Reflection Coffiecent";
+            CF_checkBox_RIRC.Text = "Reel, Imaginer and Reflection Coefficient";
             CF_checkBox_RIRC.UseVisualStyleBackColor = true;
             // 
             // CheckBox_CF
@@ -881,9 +883,9 @@
             CheckBox_CF.ForeColor = Color.Navy;
             CheckBox_CF.Location = new Point(66, 78);
             CheckBox_CF.Name = "CheckBox_CF";
-            CheckBox_CF.Size = new Size(271, 24);
+            CheckBox_CF.Size = new Size(155, 24);
             CheckBox_CF.TabIndex = 4;
-            CheckBox_CF.Text = "Calibration Factor and Uncertainty";
+            CheckBox_CF.Text = "Calibration Factor";
             CheckBox_CF.UseVisualStyleBackColor = true;
             // 
             // CIS_Page
@@ -1179,11 +1181,11 @@
             NS_checkBox_DC_OFF.AutoSize = true;
             NS_checkBox_DC_OFF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             NS_checkBox_DC_OFF.ForeColor = Color.Navy;
-            NS_checkBox_DC_OFF.Location = new Point(37, 162);
+            NS_checkBox_DC_OFF.Location = new Point(68, 261);
             NS_checkBox_DC_OFF.Name = "NS_checkBox_DC_OFF";
-            NS_checkBox_DC_OFF.Size = new Size(505, 24);
+            NS_checkBox_DC_OFF.Size = new Size(239, 44);
             NS_checkBox_DC_OFF.TabIndex = 9;
-            NS_checkBox_DC_OFF.Text = "Ref Cof , Ref Cof Unc,Ref Cof upper limit Phase, Phase Unc - DC OFF";
+            NS_checkBox_DC_OFF.Text = "Reflection Coefficient Linear\r\nMagnitude and Phase DC-OFF";
             NS_checkBox_DC_OFF.UseVisualStyleBackColor = true;
             // 
             // NS_checkBox_DC_ON
@@ -1191,11 +1193,11 @@
             NS_checkBox_DC_ON.AutoSize = true;
             NS_checkBox_DC_ON.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             NS_checkBox_DC_ON.ForeColor = Color.Navy;
-            NS_checkBox_DC_ON.Location = new Point(37, 118);
+            NS_checkBox_DC_ON.Location = new Point(68, 166);
             NS_checkBox_DC_ON.Name = "NS_checkBox_DC_ON";
-            NS_checkBox_DC_ON.Size = new Size(501, 24);
+            NS_checkBox_DC_ON.Size = new Size(235, 44);
             NS_checkBox_DC_ON.TabIndex = 8;
-            NS_checkBox_DC_ON.Text = "Ref Cof , Ref Cof Unc,Ref Cof upper limit Phase, Phase Unc - DC ON";
+            NS_checkBox_DC_ON.Text = "Reflection Coefficient Linear\r\nMagnitude and Phase DC-ON";
             NS_checkBox_DC_ON.UseVisualStyleBackColor = true;
             // 
             // NS_checkBoxENR
@@ -1203,11 +1205,11 @@
             NS_checkBoxENR.AutoSize = true;
             NS_checkBoxENR.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             NS_checkBoxENR.ForeColor = Color.Navy;
-            NS_checkBoxENR.Location = new Point(37, 77);
+            NS_checkBoxENR.Location = new Point(68, 84);
             NS_checkBoxENR.Name = "NS_checkBoxENR";
-            NS_checkBoxENR.Size = new Size(174, 24);
+            NS_checkBoxENR.Size = new Size(61, 24);
             NS_checkBoxENR.TabIndex = 7;
-            NS_checkBoxENR.Text = "Noise ENR, ENR Unc";
+            NS_checkBoxENR.Text = "ENR";
             NS_checkBoxENR.UseVisualStyleBackColor = true;
             // 
             // MeasurementTypes_ComboBox
@@ -1390,6 +1392,7 @@
             Text = "API OPERATİONS";
             TransparencyKey = SystemColors.Control;
             FormClosed += CertificateForm_FormClosed;
+            Load += CertificateForm_Load;
             ((System.ComponentModel.ISupportInitialize)BackBox1).EndInit();
             CertificateTabControl.ResumeLayout(false);
             API_PAGE.ResumeLayout(false);

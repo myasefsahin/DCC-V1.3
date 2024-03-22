@@ -89,7 +89,7 @@ namespace DCC
         {
             CertificateTabControl.SelectedTab = ExcelView_Page;
         }
-    
+
         private void MeasurementTypes_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MeasurementTypes_ComboBox.SelectedIndex == 0)
@@ -493,7 +493,7 @@ namespace DCC
                 {
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
 
-                    List<bool> NoiseBool = new List<bool>(3) { false, false,false };
+                    List<bool> NoiseBool = new List<bool>(3) { false, false, false };
 
                     if (NS_checkBoxENR.Checked)
                     {
@@ -507,7 +507,7 @@ namespace DCC
                     if (NS_checkBox_DC_ON.Checked)
                     {
                         string txt_DC_ON_Noise = TableName + "DC ON for Noise\n";
-                        Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc, 
+                        Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc,
                                                                                     Noise_DataWord.NS_ArrayRC_Phase, Noise_DataWord.NS_ArrayRC_PhaseUnc, Noise_DataWord.NS_ArrayControl_DC_ON);
                         tables.Add(DC_ON_Noise_table);
                         header.Add(txt_DC_ON_Noise);
@@ -559,7 +559,7 @@ namespace DCC
             checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
             CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
             CIS_CheckBox.Checked = false;
-        
+
             ExcelDosyaYolu = "";
             ExcelFileName_TextBox.Hint = "Please Select Xml File";
             ExcelFileName_TextBox.Text = "";
@@ -615,7 +615,7 @@ namespace DCC
 
             #endregion
 
-           
+
 
         }
 
@@ -657,13 +657,13 @@ namespace DCC
 
                     }
                 }
-                
+
                 createTemplate.ResultPages(tables);
-                
+
 
                 if (tables.Count >= 1)
                 {
-                    
+
                     WordBasarim();
                 }
                 else
@@ -819,7 +819,7 @@ namespace DCC
             int rowIndex = e.RowIndex;
             object cellValue = dataGridView1.Rows[rowIndex].Cells[columnIndex].Value;
             string columnName = dataGridView1.Columns[columnIndex].HeaderText;
-            int rowNumber = rowIndex + 1; 
+            int rowNumber = rowIndex + 1;
 
             sütun = columnName;
             satır = rowNumber;
@@ -827,9 +827,22 @@ namespace DCC
 
             label4.Text = ($"Selection cell:  {"Column: "}{columnName}{"  Row: "}{rowNumber}");
             LabelProgress.Text = "Cell selection successful";
-            
+
         }
 
-        
+        private void CertificateForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxEE_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox_EE_CF_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
