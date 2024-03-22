@@ -274,6 +274,7 @@
             CalibrationDescTextBox.TabStop = false;
             CalibrationDescTextBox.TextAlign = HorizontalAlignment.Left;
             CalibrationDescTextBox.UseSystemPasswordChar = false;
+            CalibrationDescTextBox.TextChanged += CalibrationDescTextBox_TextChanged;
             // 
             // MethodTextBox
             // 
@@ -299,6 +300,7 @@
             MethodTextBox.TabStop = false;
             MethodTextBox.TextAlign = HorizontalAlignment.Left;
             MethodTextBox.UseSystemPasswordChar = false;
+            MethodTextBox.TextChanged += MethodTextBox_TextChanged;
             // 
             // DeviceTextBox
             // 
@@ -325,6 +327,7 @@
             DeviceTextBox.TabStop = false;
             DeviceTextBox.TextAlign = HorizontalAlignment.Left;
             DeviceTextBox.UseSystemPasswordChar = false;
+            DeviceTextBox.TextChanged += DeviceTextBox_TextChanged;
             // 
             // label2
             // 
@@ -368,6 +371,7 @@
             SelectDeviceButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             SelectDeviceButton.UseAccentColor = false;
             SelectDeviceButton.UseVisualStyleBackColor = true;
+            SelectDeviceButton.Click += SelectDeviceButton_Click;
             // 
             // groupBox3
             // 
@@ -411,6 +415,7 @@
             CalCodeTextBox.TextAlign = HorizontalAlignment.Left;
             CalCodeTextBox.TrailingIcon = null;
             CalCodeTextBox.UseSystemPasswordChar = false;
+            CalCodeTextBox.TextChanged += CalCodeTextBox_TextChanged;
             // 
             // SerialNumberTextBox
             // 
@@ -422,7 +427,7 @@
             SerialNumberTextBox.HideSelection = true;
             SerialNumberTextBox.Hint = "Please Enter Serial Number";
             SerialNumberTextBox.LeadingIcon = null;
-            SerialNumberTextBox.Location = new Point(37, 204);
+            SerialNumberTextBox.Location = new Point(37, 203);
             SerialNumberTextBox.MaxLength = 32767;
             SerialNumberTextBox.MouseState = MaterialSkin.MouseState.OUT;
             SerialNumberTextBox.Name = "SerialNumberTextBox";
@@ -440,6 +445,7 @@
             SerialNumberTextBox.TextAlign = HorizontalAlignment.Left;
             SerialNumberTextBox.TrailingIcon = null;
             SerialNumberTextBox.UseSystemPasswordChar = false;
+            SerialNumberTextBox.TextChanged += SerialNumberTextBox_TextChanged;
             // 
             // ModelNameTextBox
             // 
@@ -469,6 +475,7 @@
             ModelNameTextBox.TextAlign = HorizontalAlignment.Left;
             ModelNameTextBox.TrailingIcon = null;
             ModelNameTextBox.UseSystemPasswordChar = false;
+            ModelNameTextBox.TextChanged += ModelNameTextBox_TextChanged;
             // 
             // DeviceNameTextBox
             // 
@@ -498,6 +505,7 @@
             DeviceNameTextBox.TextAlign = HorizontalAlignment.Left;
             DeviceNameTextBox.TrailingIcon = null;
             DeviceNameTextBox.UseSystemPasswordChar = false;
+            DeviceNameTextBox.TextChanged += DeviceNameTextBox_TextChanged;
             // 
             // groupBox2
             // 
@@ -525,6 +533,7 @@
             LaboratoryComboBox.Hint = "Please Select Laboratory";
             LaboratoryComboBox.IntegralHeight = false;
             LaboratoryComboBox.ItemHeight = 43;
+            LaboratoryComboBox.Items.AddRange(new object[] { "RF ve Mikrodalga Laboratuvarı ", "Empedans Laboratuvarı" });
             LaboratoryComboBox.Location = new Point(37, 108);
             LaboratoryComboBox.MaxDropDownItems = 4;
             LaboratoryComboBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -532,6 +541,7 @@
             LaboratoryComboBox.Size = new Size(312, 49);
             LaboratoryComboBox.StartIndex = 0;
             LaboratoryComboBox.TabIndex = 1;
+            LaboratoryComboBox.TextChanged += LaboratoryComboBox_TextChanged;
             // 
             // OrderNumberTextBox
             // 
@@ -561,6 +571,7 @@
             OrderNumberTextBox.TextAlign = HorizontalAlignment.Left;
             OrderNumberTextBox.TrailingIcon = null;
             OrderNumberTextBox.UseSystemPasswordChar = false;
+            OrderNumberTextBox.TextChanged += OrderNumberTextBox_TextChanged;
             // 
             // label1
             // 
@@ -1390,6 +1401,7 @@
             Text = "API OPERATİONS";
             TransparencyKey = SystemColors.Control;
             FormClosed += CertificateForm_FormClosed;
+            Load += CertificateForm_Load;
             ((System.ComponentModel.ISupportInitialize)BackBox1).EndInit();
             CertificateTabControl.ResumeLayout(false);
             API_PAGE.ResumeLayout(false);

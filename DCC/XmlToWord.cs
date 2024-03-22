@@ -738,7 +738,8 @@ namespace DCC
                     #endregion
 
                 }
-                ctb.ResultPages(tables);
+                List<string> header = new List<string>(4) { "1", "2", "3", "4" };
+                ctb.ResultPages(tables,header);
 
             }
             catch (Exception ex)

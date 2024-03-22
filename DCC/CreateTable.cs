@@ -1647,7 +1647,7 @@ namespace TabloOlusturma
 
             // Kullanıcıya kaydedilecek konumu seçme iletişim kutusunu göster
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = "C:\\Users\\ABDURRAHMAN\\Desktop";
+            saveFileDialog.InitialDirectory = "C:\\Users\\work\\Desktop\\sertifikaC.docx";
             saveFileDialog.Filter = "Word Dosyaları|*.docx";
             saveFileDialog.Title = "Kopyayı kaydedin";
 
@@ -1717,7 +1717,7 @@ namespace TabloOlusturma
                 table.AppendChild(row.CloneNode(true));
             }
         }
-        public void ResultPages(List<Table> tables)
+        public void ResultPages(List<Table> tables,List <string> header)
         {
             try
             {
@@ -1730,7 +1730,7 @@ namespace TabloOlusturma
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifikaC.docx";
+                    string originalFilePath = "C:\\Users\\work\\Desktop\\sertifikaC.docx";
                     string copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
