@@ -55,6 +55,77 @@ namespace DCC
             this.xml = xml;
             InitializeComponent();
         }
+        #region API PAGE
+        private void CertificateForm_Load(object sender, EventArgs e)
+        {
+            LaboratoryComboBox.Enabled = false;
+            DeviceNameTextBox.Enabled = false;
+            ModelNameTextBox.Enabled = false;
+            SerialNumberTextBox.Enabled = false;
+            CalCodeTextBox.Enabled = false;
+            SelectDeviceButton.Enabled = false;
+            DeviceTextBox.Enabled = false;
+            MethodTextBox.Enabled = false;
+            CalibrationDescTextBox.Enabled = false;
+            MeasurementsTextBox.Enabled = false;
+            ReceiveData_Button.Enabled = false;
+            CreateCertificate_Button.Enabled = false;
+            BackBox3.Enabled = false;
+
+
+        }
+
+        private void OrderNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            LaboratoryComboBox.Enabled = true;
+        }
+
+        private void LaboratoryComboBox_TextChanged(object sender, EventArgs e)
+        {
+            DeviceNameTextBox.Enabled = true;
+        }
+
+        private void DeviceNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ModelNameTextBox.Enabled = true;
+        }
+
+        private void ModelNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SerialNumberTextBox.Enabled = true;
+        }
+
+        private void SerialNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CalCodeTextBox.Enabled = true;
+
+        }
+
+        private void CalCodeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SelectDeviceButton.Enabled = true;
+        }
+
+        private void SelectDeviceButton_Click(object sender, EventArgs e)
+        {
+            DeviceTextBox.Enabled = true;
+        }
+
+        private void DeviceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            MethodTextBox.Enabled = true;
+        }
+
+        private void MethodTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CalibrationDescTextBox.Enabled = true;
+        }
+
+        private void CalibrationDescTextBox_TextChanged(object sender, EventArgs e)
+        {
+            MeasurementsTextBox.Enabled = true;
+        }
+        #endregion
 
         #region Next,Back Button ve Combobox Kontrolleri 
         private void NextButton_Click(object sender, EventArgs e)
@@ -136,6 +207,8 @@ namespace DCC
             }
             pageName = ExcelPage_ComboBox.SelectedItem.ToString();
             CertificateTabControl.SelectedTab = ExcelView_Page;
+
+            ReceiveData_Button.Enabled = true;
         }
         #region Button
         private void Save_Row_Col_Button_Click(object sender, EventArgs e)
@@ -209,6 +282,8 @@ namespace DCC
 
         private void ReceiveData_Button_Click(object sender, EventArgs e)
         {
+            CreateCertificate_Button.Enabled = true;
+
             #region dataword çalıştırma
             try
             {
@@ -217,6 +292,7 @@ namespace DCC
                 {
                     sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+                    listBox1.Items.Add("S Parametre-" + ExcelDosyaAdi);
 
                     #region S parametre Checkbox Kontrolleri
 
@@ -378,6 +454,7 @@ namespace DCC
                 {
                     EE_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.EE_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+                    listBox1.Items.Add("Effective Effiency-" + ExcelDosyaAdi);
 
                     #region EE ChechkBox Kontrolleri
                     List<bool> dataListEE = new List<bool>(14) { false, false, false, false };
@@ -433,6 +510,7 @@ namespace DCC
                 {
                     CF_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+                    listBox1.Items.Add("Calibration Factor-" + ExcelDosyaAdi);
                     #region CF CheckBox Kontrolleri
 
                     List<bool> dataListCF = new List<bool>(14) { false, false };
@@ -470,6 +548,7 @@ namespace DCC
 
                     CIS_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+                    listBox1.Items.Add("Calculable Impedance Standard" + ExcelDosyaAdi);
 
                     bool CIS_bool = false;
 
@@ -492,6 +571,9 @@ namespace DCC
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 6)
                 {
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu,pageName,satır,sütun);
+                    listBox1.Items.Add("Noise-" + ExcelDosyaAdi);
+
 
                     List<bool> NoiseBool = new List<bool>(3) { false, false, false };
 
@@ -525,6 +607,7 @@ namespace DCC
                         NoiseBool[2] = true;
                         SaveBasarim();
                     }
+                    CreateXML.AddNoiseResult(xml, TableName, XML_Arrays, NoiseBool);
 
                 }
                 #endregion
@@ -828,19 +911,14 @@ namespace DCC
             label4.Text = ($"Selection cell:  {"Column: "}{columnName}{"  Row: "}{rowNumber}");
             LabelProgress.Text = "Cell selection successful";
 
-        }
 
-        private void CertificateForm_Load(object sender, EventArgs e)
-        {
 
-        }
 
-        private void checkBoxEE_CheckedChanged(object sender, EventArgs e)
-        {
 
         }
 
-        private void checkBox_EE_CF_CheckedChanged(object sender, EventArgs e)
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
