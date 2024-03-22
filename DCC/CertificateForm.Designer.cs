@@ -62,6 +62,7 @@
             SelectExcel_Button = new MaterialSkin.Controls.MaterialButton();
             ExcelPage_ComboBox = new MaterialSkin.Controls.MaterialComboBox();
             ExcelFileName_TextBox = new MaterialSkin.Controls.MaterialTextBox2();
+            listBox1 = new ListBox();
             groupBox5 = new GroupBox();
             CheckBoxTabControl = new MaterialSkin.Controls.MaterialTabControl();
             EE_Page = new TabPage();
@@ -274,6 +275,7 @@
             CalibrationDescTextBox.TabStop = false;
             CalibrationDescTextBox.TextAlign = HorizontalAlignment.Left;
             CalibrationDescTextBox.UseSystemPasswordChar = false;
+            CalibrationDescTextBox.TextChanged += CalibrationDescTextBox_TextChanged;
             // 
             // MethodTextBox
             // 
@@ -299,6 +301,7 @@
             MethodTextBox.TabStop = false;
             MethodTextBox.TextAlign = HorizontalAlignment.Left;
             MethodTextBox.UseSystemPasswordChar = false;
+            MethodTextBox.TextChanged += MethodTextBox_TextChanged;
             // 
             // DeviceTextBox
             // 
@@ -325,6 +328,7 @@
             DeviceTextBox.TabStop = false;
             DeviceTextBox.TextAlign = HorizontalAlignment.Left;
             DeviceTextBox.UseSystemPasswordChar = false;
+            DeviceTextBox.TextChanged += DeviceTextBox_TextChanged;
             // 
             // label2
             // 
@@ -368,6 +372,7 @@
             SelectDeviceButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             SelectDeviceButton.UseAccentColor = false;
             SelectDeviceButton.UseVisualStyleBackColor = true;
+            SelectDeviceButton.Click += SelectDeviceButton_Click;
             // 
             // groupBox3
             // 
@@ -411,6 +416,7 @@
             CalCodeTextBox.TextAlign = HorizontalAlignment.Left;
             CalCodeTextBox.TrailingIcon = null;
             CalCodeTextBox.UseSystemPasswordChar = false;
+            CalCodeTextBox.TextChanged += CalCodeTextBox_TextChanged;
             // 
             // SerialNumberTextBox
             // 
@@ -440,6 +446,7 @@
             SerialNumberTextBox.TextAlign = HorizontalAlignment.Left;
             SerialNumberTextBox.TrailingIcon = null;
             SerialNumberTextBox.UseSystemPasswordChar = false;
+            SerialNumberTextBox.TextChanged += SerialNumberTextBox_TextChanged;
             // 
             // ModelNameTextBox
             // 
@@ -469,6 +476,7 @@
             ModelNameTextBox.TextAlign = HorizontalAlignment.Left;
             ModelNameTextBox.TrailingIcon = null;
             ModelNameTextBox.UseSystemPasswordChar = false;
+            ModelNameTextBox.TextChanged += ModelNameTextBox_TextChanged;
             // 
             // DeviceNameTextBox
             // 
@@ -498,6 +506,7 @@
             DeviceNameTextBox.TextAlign = HorizontalAlignment.Left;
             DeviceNameTextBox.TrailingIcon = null;
             DeviceNameTextBox.UseSystemPasswordChar = false;
+            DeviceNameTextBox.TextChanged += DeviceNameTextBox_TextChanged;
             // 
             // groupBox2
             // 
@@ -525,6 +534,7 @@
             LaboratoryComboBox.Hint = "Please Select Laboratory";
             LaboratoryComboBox.IntegralHeight = false;
             LaboratoryComboBox.ItemHeight = 43;
+            LaboratoryComboBox.Items.AddRange(new object[] { "RF ve Mikrodalga Laboratuvarı", "Empedans Laboratuvarı" });
             LaboratoryComboBox.Location = new Point(37, 108);
             LaboratoryComboBox.MaxDropDownItems = 4;
             LaboratoryComboBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -532,6 +542,7 @@
             LaboratoryComboBox.Size = new Size(312, 49);
             LaboratoryComboBox.StartIndex = 0;
             LaboratoryComboBox.TabIndex = 1;
+            LaboratoryComboBox.TextChanged += LaboratoryComboBox_TextChanged;
             // 
             // OrderNumberTextBox
             // 
@@ -561,6 +572,7 @@
             OrderNumberTextBox.TextAlign = HorizontalAlignment.Left;
             OrderNumberTextBox.TrailingIcon = null;
             OrderNumberTextBox.UseSystemPasswordChar = false;
+            OrderNumberTextBox.TextChanged += OrderNumberTextBox_TextChanged;
             // 
             // label1
             // 
@@ -575,6 +587,7 @@
             // 
             // DATA_PAGE
             // 
+            DATA_PAGE.BackColor = Color.White;
             DATA_PAGE.Controls.Add(panel2);
             DATA_PAGE.Location = new Point(4, 29);
             DATA_PAGE.Name = "DATA_PAGE";
@@ -582,7 +595,6 @@
             DATA_PAGE.Size = new Size(1219, 721);
             DATA_PAGE.TabIndex = 1;
             DATA_PAGE.Text = "tabPage2";
-            DATA_PAGE.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -623,6 +635,7 @@
             // 
             groupBox10.Controls.Add(CreateCertificate_Button);
             groupBox10.Controls.Add(groupBox11);
+            groupBox10.Controls.Add(listBox1);
             groupBox10.Location = new Point(779, 55);
             groupBox10.Name = "groupBox10";
             groupBox10.Size = new Size(406, 665);
@@ -636,7 +649,7 @@
             CreateCertificate_Button.Depth = 0;
             CreateCertificate_Button.HighEmphasis = true;
             CreateCertificate_Button.Icon = null;
-            CreateCertificate_Button.Location = new Point(126, 529);
+            CreateCertificate_Button.Location = new Point(130, 608);
             CreateCertificate_Button.Margin = new Padding(4, 6, 4, 6);
             CreateCertificate_Button.MouseState = MaterialSkin.MouseState.HOVER;
             CreateCertificate_Button.Name = "CreateCertificate_Button";
@@ -657,7 +670,7 @@
             groupBox11.Controls.Add(ExcelFileName_TextBox);
             groupBox11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             groupBox11.ForeColor = Color.Navy;
-            groupBox11.Location = new Point(26, 129);
+            groupBox11.Location = new Point(25, 260);
             groupBox11.Name = "groupBox11";
             groupBox11.Size = new Size(354, 334);
             groupBox11.TabIndex = 0;
@@ -759,6 +772,16 @@
             ExcelFileName_TextBox.TrailingIcon = null;
             ExcelFileName_TextBox.UseSystemPasswordChar = false;
             // 
+            // listBox1
+            // 
+            listBox1.BackColor = Color.White;
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(18, 21);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(369, 224);
+            listBox1.TabIndex = 2;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            // 
             // groupBox5
             // 
             groupBox5.Controls.Add(CheckBoxTabControl);
@@ -813,7 +836,6 @@
             checkBox_EE_CF.TabIndex = 3;
             checkBox_EE_CF.Text = "Calibration Factor";
             checkBox_EE_CF.UseVisualStyleBackColor = true;
-            checkBox_EE_CF.CheckedChanged += checkBox_EE_CF_CheckedChanged;
             // 
             // checkBoxRHO
             // 
@@ -850,7 +872,6 @@
             checkBoxEE.TabIndex = 0;
             checkBoxEE.Text = "Effective Effiency";
             checkBoxEE.UseVisualStyleBackColor = true;
-            checkBoxEE.CheckedChanged += checkBoxEE_CheckedChanged;
             // 
             // CalFactor_Page
             // 
@@ -1231,7 +1252,7 @@
             MeasurementTypes_ComboBox.MaxDropDownItems = 4;
             MeasurementTypes_ComboBox.MouseState = MaterialSkin.MouseState.OUT;
             MeasurementTypes_ComboBox.Name = "MeasurementTypes_ComboBox";
-            MeasurementTypes_ComboBox.Size = new Size(241, 49);
+            MeasurementTypes_ComboBox.Size = new Size(277, 49);
             MeasurementTypes_ComboBox.StartIndex = 0;
             MeasurementTypes_ComboBox.TabIndex = 9;
             MeasurementTypes_ComboBox.SelectedIndexChanged += MeasurementTypes_ComboBox_SelectedIndexChanged;
@@ -1249,6 +1270,7 @@
             // 
             // ExcelView_Page
             // 
+            ExcelView_Page.BackColor = Color.White;
             ExcelView_Page.Controls.Add(panel3);
             ExcelView_Page.Location = new Point(4, 29);
             ExcelView_Page.Name = "ExcelView_Page";
@@ -1256,7 +1278,6 @@
             ExcelView_Page.Size = new Size(1219, 721);
             ExcelView_Page.TabIndex = 2;
             ExcelView_Page.Text = "tabPage3";
-            ExcelView_Page.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -1280,14 +1301,14 @@
             Save_Row_Col_Button.Depth = 0;
             Save_Row_Col_Button.HighEmphasis = true;
             Save_Row_Col_Button.Icon = null;
-            Save_Row_Col_Button.Location = new Point(507, 656);
+            Save_Row_Col_Button.Location = new Point(1076, 17);
             Save_Row_Col_Button.Margin = new Padding(4, 6, 4, 6);
             Save_Row_Col_Button.MouseState = MaterialSkin.MouseState.HOVER;
             Save_Row_Col_Button.Name = "Save_Row_Col_Button";
             Save_Row_Col_Button.NoAccentTextColor = Color.Empty;
-            Save_Row_Col_Button.Size = new Size(199, 43);
+            Save_Row_Col_Button.Size = new Size(59, 40);
             Save_Row_Col_Button.TabIndex = 13;
-            Save_Row_Col_Button.Text = "KAYDET VE ÇIK";
+            Save_Row_Col_Button.Text = "OK";
             Save_Row_Col_Button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             Save_Row_Col_Button.UseAccentColor = false;
             Save_Row_Col_Button.UseVisualStyleBackColor = true;
@@ -1299,11 +1320,12 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.GridColor = Color.Black;
             dataGridView1.Location = new Point(50, 113);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1113, 505);
+            dataGridView1.Size = new Size(1113, 552);
             dataGridView1.TabIndex = 10;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
@@ -1312,11 +1334,11 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label4.ForeColor = Color.Navy;
-            label4.Location = new Point(377, 53);
+            label4.Location = new Point(345, 53);
             label4.Name = "label4";
-            label4.Size = new Size(459, 31);
+            label4.Size = new Size(513, 31);
             label4.TabIndex = 9;
-            label4.Text = "Please double click on the cell to select it.";
+            label4.Text = "Please double click starter corner of your table";
             // 
             // BackBox3
             // 
@@ -1331,9 +1353,10 @@
             // 
             // groupBox13
             // 
+            groupBox13.BackColor = Color.White;
             groupBox13.Location = new Point(29, 58);
             groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(1162, 579);
+            groupBox13.Size = new Size(1162, 629);
             groupBox13.TabIndex = 14;
             groupBox13.TabStop = false;
             // 
@@ -1525,5 +1548,6 @@
         public CheckBox NS_checkBox_DC_OFF;
         public CheckBox NS_checkBox_DC_ON;
         public CheckBox NS_checkBoxENR;
+        private ListBox listBox1;
     }
 }
