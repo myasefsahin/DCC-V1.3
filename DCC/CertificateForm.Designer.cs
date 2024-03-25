@@ -75,7 +75,18 @@
             CheckBox_CF = new CheckBox();
             CIS_Page = new TabPage();
             CIS_CheckBox = new CheckBox();
-            RFPow_Page = new TabPage();
+            Absolute_RFPow_Page = new TabPage();
+            ARFP_11 = new CheckBox();
+            ARFP_10 = new CheckBox();
+            ARFP_9 = new CheckBox();
+            ARFP_8 = new CheckBox();
+            ARFP_7 = new CheckBox();
+            ARFP_6 = new CheckBox();
+            ARFP_5 = new CheckBox();
+            ARFP_4 = new CheckBox();
+            ARFP_3 = new CheckBox();
+            ARFP_2 = new CheckBox();
+            ARFP_1 = new CheckBox();
             SParam_Page = new TabPage();
             groupBox9 = new GroupBox();
             checkBoxS22SWR = new CheckBox();
@@ -100,6 +111,16 @@
             NS_checkBox_DC_OFF = new CheckBox();
             NS_checkBox_DC_ON = new CheckBox();
             NS_checkBoxENR = new CheckBox();
+            RF_Difference_Tabpage = new TabPage();
+            RF_Diff_4 = new CheckBox();
+            RF_Diff_3 = new CheckBox();
+            RF_Diff_2 = new CheckBox();
+            RF_Diff_1 = new CheckBox();
+            RF_Gain_Tabpage = new TabPage();
+            RF_Gain4 = new CheckBox();
+            RF_Gain2 = new CheckBox();
+            RF_Gain3 = new CheckBox();
+            RF_Gain1 = new CheckBox();
             MeasurementTypes_ComboBox = new MaterialSkin.Controls.MaterialComboBox();
             label3 = new Label();
             ExcelView_Page = new TabPage();
@@ -132,12 +153,15 @@
             EE_Page.SuspendLayout();
             CalFactor_Page.SuspendLayout();
             CIS_Page.SuspendLayout();
+            Absolute_RFPow_Page.SuspendLayout();
             SParam_Page.SuspendLayout();
             groupBox9.SuspendLayout();
             groupBox8.SuspendLayout();
             groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
             Noise_Page.SuspendLayout();
+            RF_Difference_Tabpage.SuspendLayout();
+            RF_Gain_Tabpage.SuspendLayout();
             ExcelView_Page.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -798,10 +822,12 @@
             CheckBoxTabControl.Controls.Add(EE_Page);
             CheckBoxTabControl.Controls.Add(CalFactor_Page);
             CheckBoxTabControl.Controls.Add(CIS_Page);
-            CheckBoxTabControl.Controls.Add(RFPow_Page);
+            CheckBoxTabControl.Controls.Add(Absolute_RFPow_Page);
             CheckBoxTabControl.Controls.Add(SParam_Page);
             CheckBoxTabControl.Controls.Add(MetCH_Page);
             CheckBoxTabControl.Controls.Add(Noise_Page);
+            CheckBoxTabControl.Controls.Add(RF_Difference_Tabpage);
+            CheckBoxTabControl.Controls.Add(RF_Gain_Tabpage);
             CheckBoxTabControl.Depth = 0;
             CheckBoxTabControl.Location = new Point(64, 129);
             CheckBoxTabControl.MouseState = MaterialSkin.MouseState.HOVER;
@@ -818,10 +844,10 @@
             EE_Page.Controls.Add(checkBoxRHO);
             EE_Page.Controls.Add(checkBox_EE_RI);
             EE_Page.Controls.Add(checkBoxEE);
-            EE_Page.Location = new Point(4, 29);
+            EE_Page.Location = new Point(4, 54);
             EE_Page.Name = "EE_Page";
             EE_Page.Padding = new Padding(3);
-            EE_Page.Size = new Size(571, 475);
+            EE_Page.Size = new Size(571, 450);
             EE_Page.TabIndex = 0;
             EE_Page.Text = "Effecitve Effiency";
             // 
@@ -877,10 +903,10 @@
             // 
             CalFactor_Page.Controls.Add(CF_checkBox_RIRC);
             CalFactor_Page.Controls.Add(CheckBox_CF);
-            CalFactor_Page.Location = new Point(4, 29);
+            CalFactor_Page.Location = new Point(4, 54);
             CalFactor_Page.Name = "CalFactor_Page";
             CalFactor_Page.Padding = new Padding(3);
-            CalFactor_Page.Size = new Size(571, 475);
+            CalFactor_Page.Size = new Size(571, 450);
             CalFactor_Page.TabIndex = 1;
             CalFactor_Page.Text = "Cal Factor";
             CalFactor_Page.UseVisualStyleBackColor = true;
@@ -912,10 +938,10 @@
             // CIS_Page
             // 
             CIS_Page.Controls.Add(CIS_CheckBox);
-            CIS_Page.Location = new Point(4, 29);
+            CIS_Page.Location = new Point(4, 54);
             CIS_Page.Name = "CIS_Page";
             CIS_Page.Padding = new Padding(3);
-            CIS_Page.Size = new Size(571, 475);
+            CIS_Page.Size = new Size(571, 450);
             CIS_Page.TabIndex = 2;
             CIS_Page.Text = "CIS";
             CIS_Page.UseVisualStyleBackColor = true;
@@ -932,15 +958,158 @@
             CIS_CheckBox.Text = "Z-Position , ICOD , OCID";
             CIS_CheckBox.UseVisualStyleBackColor = true;
             // 
-            // RFPow_Page
+            // Absolute_RFPow_Page
             // 
-            RFPow_Page.Location = new Point(4, 29);
-            RFPow_Page.Name = "RFPow_Page";
-            RFPow_Page.Padding = new Padding(3);
-            RFPow_Page.Size = new Size(571, 475);
-            RFPow_Page.TabIndex = 3;
-            RFPow_Page.Text = "RF Power";
-            RFPow_Page.UseVisualStyleBackColor = true;
+            Absolute_RFPow_Page.Controls.Add(ARFP_11);
+            Absolute_RFPow_Page.Controls.Add(ARFP_10);
+            Absolute_RFPow_Page.Controls.Add(ARFP_9);
+            Absolute_RFPow_Page.Controls.Add(ARFP_8);
+            Absolute_RFPow_Page.Controls.Add(ARFP_7);
+            Absolute_RFPow_Page.Controls.Add(ARFP_6);
+            Absolute_RFPow_Page.Controls.Add(ARFP_5);
+            Absolute_RFPow_Page.Controls.Add(ARFP_4);
+            Absolute_RFPow_Page.Controls.Add(ARFP_3);
+            Absolute_RFPow_Page.Controls.Add(ARFP_2);
+            Absolute_RFPow_Page.Controls.Add(ARFP_1);
+            Absolute_RFPow_Page.Location = new Point(4, 54);
+            Absolute_RFPow_Page.Name = "Absolute_RFPow_Page";
+            Absolute_RFPow_Page.Padding = new Padding(3);
+            Absolute_RFPow_Page.Size = new Size(571, 450);
+            Absolute_RFPow_Page.TabIndex = 3;
+            Absolute_RFPow_Page.Text = "Absolute RF Power";
+            Absolute_RFPow_Page.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_11
+            // 
+            ARFP_11.AutoSize = true;
+            ARFP_11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_11.ForeColor = Color.Navy;
+            ARFP_11.Location = new Point(30, 367);
+            ARFP_11.Name = "ARFP_11";
+            ARFP_11.Size = new Size(462, 24);
+            ARFP_11.TabIndex = 16;
+            ARFP_11.Text = "Microwave Output Standing Wave Ratio (SWR) Test @-9 dBm";
+            ARFP_11.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_10
+            // 
+            ARFP_10.AutoSize = true;
+            ARFP_10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_10.ForeColor = Color.Navy;
+            ARFP_10.Location = new Point(30, 332);
+            ARFP_10.Name = "ARFP_10";
+            ARFP_10.Size = new Size(456, 24);
+            ARFP_10.TabIndex = 15;
+            ARFP_10.Text = "Microwave Output Standing Wave Ratio (SWR) Test @3 dBm";
+            ARFP_10.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_9
+            // 
+            ARFP_9.AutoSize = true;
+            ARFP_9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_9.ForeColor = Color.Navy;
+            ARFP_9.Location = new Point(30, 297);
+            ARFP_9.Name = "ARFP_9";
+            ARFP_9.Size = new Size(465, 24);
+            ARFP_9.TabIndex = 14;
+            ARFP_9.Text = "Microwave Output Standing Wave Ratio (SWR) Test @11 dBm";
+            ARFP_9.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_8
+            // 
+            ARFP_8.AutoSize = true;
+            ARFP_8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_8.ForeColor = Color.Navy;
+            ARFP_8.Location = new Point(30, 262);
+            ARFP_8.Name = "ARFP_8";
+            ARFP_8.Size = new Size(418, 24);
+            ARFP_8.TabIndex = 13;
+            ARFP_8.Text = "Microwave Output Level Accuracy Test by Power Range";
+            ARFP_8.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_7
+            // 
+            ARFP_7.AutoSize = true;
+            ARFP_7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_7.ForeColor = Color.Navy;
+            ARFP_7.Location = new Point(30, 227);
+            ARFP_7.Name = "ARFP_7";
+            ARFP_7.Size = new Size(301, 24);
+            ARFP_7.TabIndex = 12;
+            ARFP_7.Text = "Microwave Output Level Accuracy Test";
+            ARFP_7.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_6
+            // 
+            ARFP_6.AutoSize = true;
+            ARFP_6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_6.ForeColor = Color.Navy;
+            ARFP_6.Location = new Point(30, 192);
+            ARFP_6.Name = "ARFP_6";
+            ARFP_6.Size = new Size(454, 24);
+            ARFP_6.TabIndex = 10;
+            ARFP_6.Text = "“Head RF” Output Standing Wave Ratio (SWR) Test @-7dBm";
+            ARFP_6.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_5
+            // 
+            ARFP_5.AutoSize = true;
+            ARFP_5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_5.ForeColor = Color.Navy;
+            ARFP_5.Location = new Point(30, 157);
+            ARFP_5.Name = "ARFP_5";
+            ARFP_5.Size = new Size(448, 24);
+            ARFP_5.TabIndex = 9;
+            ARFP_5.Text = "“Head RF” Output Standing Wave Ratio (SWR) Test @3dBm";
+            ARFP_5.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_4
+            // 
+            ARFP_4.AutoSize = true;
+            ARFP_4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_4.ForeColor = Color.Navy;
+            ARFP_4.Location = new Point(30, 122);
+            ARFP_4.Name = "ARFP_4";
+            ARFP_4.Size = new Size(457, 24);
+            ARFP_4.TabIndex = 8;
+            ARFP_4.Text = "“Head RF” Output Standing Wave Ratio (SWR) Test @13dBm";
+            ARFP_4.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_3
+            // 
+            ARFP_3.AutoSize = true;
+            ARFP_3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_3.ForeColor = Color.Navy;
+            ARFP_3.Location = new Point(30, 87);
+            ARFP_3.Name = "ARFP_3";
+            ARFP_3.Size = new Size(346, 24);
+            ARFP_3.TabIndex = 7;
+            ARFP_3.Text = "“Head RF” Output Attenuation Accuracy Test";
+            ARFP_3.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_2
+            // 
+            ARFP_2.AutoSize = true;
+            ARFP_2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_2.ForeColor = Color.Navy;
+            ARFP_2.Location = new Point(30, 52);
+            ARFP_2.Name = "ARFP_2";
+            ARFP_2.Size = new Size(284, 24);
+            ARFP_2.TabIndex = 6;
+            ARFP_2.Text = "Level Accuracy Test by Power Range";
+            ARFP_2.UseVisualStyleBackColor = true;
+            // 
+            // ARFP_1
+            // 
+            ARFP_1.AutoSize = true;
+            ARFP_1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            ARFP_1.ForeColor = Color.Navy;
+            ARFP_1.Location = new Point(30, 17);
+            ARFP_1.Name = "ARFP_1";
+            ARFP_1.Size = new Size(290, 24);
+            ARFP_1.TabIndex = 5;
+            ARFP_1.Text = "Head RF” Output Level Accuracy Test";
+            ARFP_1.UseVisualStyleBackColor = true;
             // 
             // SParam_Page
             // 
@@ -948,10 +1117,10 @@
             SParam_Page.Controls.Add(groupBox8);
             SParam_Page.Controls.Add(groupBox7);
             SParam_Page.Controls.Add(groupBox6);
-            SParam_Page.Location = new Point(4, 29);
+            SParam_Page.Location = new Point(4, 54);
             SParam_Page.Name = "SParam_Page";
             SParam_Page.Padding = new Padding(3);
-            SParam_Page.Size = new Size(571, 475);
+            SParam_Page.Size = new Size(571, 450);
             SParam_Page.TabIndex = 4;
             SParam_Page.Text = "S-Parameter";
             SParam_Page.UseVisualStyleBackColor = true;
@@ -1176,10 +1345,10 @@
             // 
             // MetCH_Page
             // 
-            MetCH_Page.Location = new Point(4, 29);
+            MetCH_Page.Location = new Point(4, 54);
             MetCH_Page.Name = "MetCH_Page";
             MetCH_Page.Padding = new Padding(3);
-            MetCH_Page.Size = new Size(571, 475);
+            MetCH_Page.Size = new Size(571, 450);
             MetCH_Page.TabIndex = 5;
             MetCH_Page.Text = "Meteral Ch.";
             MetCH_Page.UseVisualStyleBackColor = true;
@@ -1189,10 +1358,10 @@
             Noise_Page.Controls.Add(NS_checkBox_DC_OFF);
             Noise_Page.Controls.Add(NS_checkBox_DC_ON);
             Noise_Page.Controls.Add(NS_checkBoxENR);
-            Noise_Page.Location = new Point(4, 29);
+            Noise_Page.Location = new Point(4, 54);
             Noise_Page.Name = "Noise_Page";
             Noise_Page.Padding = new Padding(3);
-            Noise_Page.Size = new Size(571, 475);
+            Noise_Page.Size = new Size(571, 450);
             Noise_Page.TabIndex = 6;
             Noise_Page.Text = "Noise";
             Noise_Page.UseVisualStyleBackColor = true;
@@ -1233,6 +1402,130 @@
             NS_checkBoxENR.Text = "ENR";
             NS_checkBoxENR.UseVisualStyleBackColor = true;
             // 
+            // RF_Difference_Tabpage
+            // 
+            RF_Difference_Tabpage.Controls.Add(RF_Diff_4);
+            RF_Difference_Tabpage.Controls.Add(RF_Diff_3);
+            RF_Difference_Tabpage.Controls.Add(RF_Diff_2);
+            RF_Difference_Tabpage.Controls.Add(RF_Diff_1);
+            RF_Difference_Tabpage.Location = new Point(4, 54);
+            RF_Difference_Tabpage.Name = "RF_Difference_Tabpage";
+            RF_Difference_Tabpage.Padding = new Padding(3);
+            RF_Difference_Tabpage.Size = new Size(571, 450);
+            RF_Difference_Tabpage.TabIndex = 7;
+            RF_Difference_Tabpage.Text = "RF Difference";
+            RF_Difference_Tabpage.UseVisualStyleBackColor = true;
+            // 
+            // RF_Diff_4
+            // 
+            RF_Diff_4.AutoSize = true;
+            RF_Diff_4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Diff_4.ForeColor = Color.Navy;
+            RF_Diff_4.Location = new Point(47, 158);
+            RF_Diff_4.Name = "RF_Diff_4";
+            RF_Diff_4.Size = new Size(94, 24);
+            RF_Diff_4.TabIndex = 10;
+            RF_Diff_4.Text = "Min-max";
+            RF_Diff_4.UseVisualStyleBackColor = true;
+            // 
+            // RF_Diff_3
+            // 
+            RF_Diff_3.AutoSize = true;
+            RF_Diff_3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Diff_3.ForeColor = Color.Navy;
+            RF_Diff_3.Location = new Point(47, 118);
+            RF_Diff_3.Name = "RF_Diff_3";
+            RF_Diff_3.Size = new Size(284, 24);
+            RF_Diff_3.TabIndex = 9;
+            RF_Diff_3.Text = "Level Accuracy Test by Power Range";
+            RF_Diff_3.UseVisualStyleBackColor = true;
+            // 
+            // RF_Diff_2
+            // 
+            RF_Diff_2.AutoSize = true;
+            RF_Diff_2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Diff_2.ForeColor = Color.Navy;
+            RF_Diff_2.Location = new Point(47, 78);
+            RF_Diff_2.Name = "RF_Diff_2";
+            RF_Diff_2.Size = new Size(264, 24);
+            RF_Diff_2.TabIndex = 8;
+            RF_Diff_2.Text = "Level Accuracy Test by Frequency";
+            RF_Diff_2.UseVisualStyleBackColor = true;
+            // 
+            // RF_Diff_1
+            // 
+            RF_Diff_1.AutoSize = true;
+            RF_Diff_1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Diff_1.ForeColor = Color.Navy;
+            RF_Diff_1.Location = new Point(47, 38);
+            RF_Diff_1.Name = "RF_Diff_1";
+            RF_Diff_1.Size = new Size(237, 24);
+            RF_Diff_1.TabIndex = 7;
+            RF_Diff_1.Text = "Maximum Output Power Test";
+            RF_Diff_1.UseVisualStyleBackColor = true;
+            // 
+            // RF_Gain_Tabpage
+            // 
+            RF_Gain_Tabpage.Controls.Add(RF_Gain4);
+            RF_Gain_Tabpage.Controls.Add(RF_Gain2);
+            RF_Gain_Tabpage.Controls.Add(RF_Gain3);
+            RF_Gain_Tabpage.Controls.Add(RF_Gain1);
+            RF_Gain_Tabpage.Location = new Point(4, 54);
+            RF_Gain_Tabpage.Name = "RF_Gain_Tabpage";
+            RF_Gain_Tabpage.Padding = new Padding(3);
+            RF_Gain_Tabpage.Size = new Size(571, 450);
+            RF_Gain_Tabpage.TabIndex = 8;
+            RF_Gain_Tabpage.Text = "RF Gain";
+            RF_Gain_Tabpage.UseVisualStyleBackColor = true;
+            // 
+            // RF_Gain4
+            // 
+            RF_Gain4.AutoSize = true;
+            RF_Gain4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Gain4.ForeColor = Color.Navy;
+            RF_Gain4.Location = new Point(47, 158);
+            RF_Gain4.Name = "RF_Gain4";
+            RF_Gain4.Size = new Size(375, 24);
+            RF_Gain4.TabIndex = 11;
+            RF_Gain4.Text = "Gain change for different input powers for 1 GHz";
+            RF_Gain4.UseVisualStyleBackColor = true;
+            // 
+            // RF_Gain2
+            // 
+            RF_Gain2.AutoSize = true;
+            RF_Gain2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Gain2.ForeColor = Color.Navy;
+            RF_Gain2.Location = new Point(47, 78);
+            RF_Gain2.Name = "RF_Gain2";
+            RF_Gain2.Size = new Size(153, 24);
+            RF_Gain2.TabIndex = 10;
+            RF_Gain2.Text = "Max,Min,Flatness";
+            RF_Gain2.UseVisualStyleBackColor = true;
+            // 
+            // RF_Gain3
+            // 
+            RF_Gain3.AutoSize = true;
+            RF_Gain3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Gain3.ForeColor = Color.Navy;
+            RF_Gain3.Location = new Point(47, 118);
+            RF_Gain3.Name = "RF_Gain3";
+            RF_Gain3.Size = new Size(468, 24);
+            RF_Gain3.TabIndex = 9;
+            RF_Gain3.Text = "Gain change in response to different input powers for 100 kHz";
+            RF_Gain3.UseVisualStyleBackColor = true;
+            // 
+            // RF_Gain1
+            // 
+            RF_Gain1.AutoSize = true;
+            RF_Gain1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            RF_Gain1.ForeColor = Color.Navy;
+            RF_Gain1.Location = new Point(47, 38);
+            RF_Gain1.Name = "RF_Gain1";
+            RF_Gain1.Size = new Size(296, 24);
+            RF_Gain1.TabIndex = 8;
+            RF_Gain1.Text = "Gain (Input power: -33 dBm nominal)";
+            RF_Gain1.UseVisualStyleBackColor = true;
+            // 
             // MeasurementTypes_ComboBox
             // 
             MeasurementTypes_ComboBox.AutoResize = false;
@@ -1247,7 +1540,7 @@
             MeasurementTypes_ComboBox.FormattingEnabled = true;
             MeasurementTypes_ComboBox.IntegralHeight = false;
             MeasurementTypes_ComboBox.ItemHeight = 43;
-            MeasurementTypes_ComboBox.Items.AddRange(new object[] { "Effective Effiency", "Calibration Factor", "Calculable Impedans Standard", "RF Power ", "S Paramaters", "Meteral Characterization ", "Noise" });
+            MeasurementTypes_ComboBox.Items.AddRange(new object[] { "Effective Effiency", "Calibration Factor", "Calculable Impedans Standard", "Absolute RF Power", "RF Difference", "RF Gain", "S Paramaters", "Noise", "Meteral Characterization " });
             MeasurementTypes_ComboBox.Location = new Point(229, 60);
             MeasurementTypes_ComboBox.MaxDropDownItems = 4;
             MeasurementTypes_ComboBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -1442,6 +1735,8 @@
             CalFactor_Page.PerformLayout();
             CIS_Page.ResumeLayout(false);
             CIS_Page.PerformLayout();
+            Absolute_RFPow_Page.ResumeLayout(false);
+            Absolute_RFPow_Page.PerformLayout();
             SParam_Page.ResumeLayout(false);
             groupBox9.ResumeLayout(false);
             groupBox9.PerformLayout();
@@ -1453,6 +1748,10 @@
             groupBox6.PerformLayout();
             Noise_Page.ResumeLayout(false);
             Noise_Page.PerformLayout();
+            RF_Difference_Tabpage.ResumeLayout(false);
+            RF_Difference_Tabpage.PerformLayout();
+            RF_Gain_Tabpage.ResumeLayout(false);
+            RF_Gain_Tabpage.PerformLayout();
             ExcelView_Page.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -1497,7 +1796,7 @@
         private Label label3;
         private TabPage ExcelView_Page;
         private TabPage CIS_Page;
-        private TabPage RFPow_Page;
+        private TabPage Absolute_RFPow_Page;
         private TabPage SParam_Page;
         private TabPage MetCH_Page;
         private TabPage Noise_Page;
@@ -1549,5 +1848,26 @@
         public CheckBox NS_checkBox_DC_ON;
         public CheckBox NS_checkBoxENR;
         private ListBox listBox1;
+        private TabPage RF_Difference_Tabpage;
+        private TabPage RF_Gain_Tabpage;
+        public CheckBox RF_Diff_2;
+        public CheckBox RF_Diff_1;
+        public CheckBox RF_Diff_4;
+        public CheckBox RF_Diff_3;
+        public CheckBox RF_Gain4;
+        public CheckBox RF_Gain2;
+        public CheckBox RF_Gain3;
+        public CheckBox RF_Gain1;
+        public CheckBox ARFP_8;
+        public CheckBox ARFP_7;
+        public CheckBox ARFP_6;
+        public CheckBox ARFP_5;
+        public CheckBox ARFP_4;
+        public CheckBox ARFP_3;
+        public CheckBox ARFP_2;
+        public CheckBox ARFP_1;
+        public CheckBox ARFP_11;
+        public CheckBox ARFP_10;
+        public CheckBox ARFP_9;
     }
 }

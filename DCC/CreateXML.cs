@@ -1710,7 +1710,7 @@ namespace DCC
         #region NOİSE XML İŞLEMLERİ
 
         #region Noise_Result
-        // S Parametre için results elementi altına result elemeti oluşturma.
+
         public XmlDocument AddNoiseResult(XmlDocument xml, string str, XML_Arrays dataXml, List<bool> control)
         {
             //Result Namespace oluşturma
@@ -1743,6 +1743,7 @@ namespace DCC
                     list.AppendChild(xmlElement);
                 }
             }
+
             if (control[1])
             {
                 List<XmlElement> xmlList = Add_RC_CON_OFF(xml, dataXml.XML_NS_ArrayRC, dataXml.XML_NS_ArrayRC_ustlimit, dataXml.XML_NS_ArrayRCUnc, dataXml.XML_NS_ArrayRC_Phase, dataXml.XML_NS_ArrayRC_PhaseUnc, "Noise_DC_ON");
@@ -2028,7 +2029,479 @@ namespace DCC
 
         #endregion
 
+        #region ABSOLUTE RF POWER
+        public XmlDocument Add_ARFP_Result(XmlDocument xml, string str, XML_Arrays dataXml, List<bool> control)
+        {
+            //Result Namespace oluşturma
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", dcc);
+            nsmgr.AddNamespace("si", si);
 
+            this.dataList = control;
+
+            XmlNode sResults = xml.SelectSingleNode("/dcc:digitalCalibrationCertificate/dcc:measurementResults/dcc:measurementResult/dcc:results", nsmgr);
+
+            // Elementlerin oluşturulması
+            XmlElement result = xml.CreateElement("dcc", "result", dcc);
+            result.SetAttribute("id", "Noise" + str + "_dB");
+            XmlElement name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement data = xml.CreateElement("dcc", "data", dcc);
+            XmlElement list = xml.CreateElement("dcc", "list", dcc);
+            XmlElement content = xml.CreateElement("dcc", "content", dcc);
+            content.InnerText = "Noise" + str + "_dB";
+
+            //Dataları içeren elementler oluşturulup dcc:List elementine eklenir.
+            
+
+            if (control[0])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T1_Frekans));
+                List<XmlElement> xmlList = Add_ARFP_1(xml, dataXml.XML_ARFP_T1_Cıkıs_Gücü, dataXml.XML_ARFP_T1_Olculen_Güc, dataXml.XML_ARFP_T1_AltSınır, dataXml.XML_ARFP_T1_Sapma, dataXml.XML_ARFP_T1_ÜstSınır, dataXml.XML_ARFP_T1_Belirsizlik, "Abs_RF_Power","Measured_Power", "deflection");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+
+            if (control[1])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T2_Frekans));
+                List<XmlElement> xmlList = Add_ARFP_1(xml, dataXml.XML_ARFP_T2_Cıkıs_Gücü, dataXml.XML_ARFP_T2_OlculenDeger, dataXml.XML_ARFP_T2_AltSınır, dataXml.XML_ARFP_T2_Sapma, dataXml.XML_ARFP_T2_ÜstSınır, dataXml.XML_ARFP_T2_Belirsizlik, "Abs_RF_Power", "Measured_Value", "difference");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[2])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T3_Frekans));
+                List<XmlElement> xmlList = Add_ARFP_1(xml, dataXml.XML_ARFP_T3_Cıkıs_Gücü, dataXml.XML_ARFP_T3_OlculenZayıflatma, dataXml.XML_ARFP_T3_AltSınır, dataXml.XML_ARFP_T3_Sapma, dataXml.XML_ARFP_T3_ÜstSınır, dataXml.XML_ARFP_T3_Belirsizlik, "Abs_RF_Power", "Measured_Attenuation", "Attenuation");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[3])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T4_T5_T6_frekans));
+                List<XmlElement> xmlList = Add_ARFP_2(xml, dataXml.XML_ARFP_T4_SWR_Seviye, dataXml.XML_ARFP_T4_SWR_OlculenDeger, dataXml.XML_ARFP_T4_SWR_MaksimumDeger, dataXml.XML_ARFP_T4_SWR_Belirsizlik, "Max_Value", "Abs_RF_Power");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[4])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T4_T5_T6_frekans));
+                List<XmlElement> xmlList = Add_ARFP_2(xml, dataXml.XML_ARFP_T5_SWR_Seviye, dataXml.XML_ARFP_T5_SWR_OlculenDeger, dataXml.XML_ARFP_T5_SWR_MaksimumDeger, dataXml.XML_ARFP_T5_SWR_Belirsizlik, "Max_Value", "Abs_RF_Power");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[5])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T4_T5_T6_frekans));
+                List<XmlElement> xmlList = Add_ARFP_2(xml, dataXml.XML_ARFP_T6_SWR_Seviye, dataXml.XML_ARFP_T6_SWR_OlculenDeger, dataXml.XML_ARFP_T6_SWR_MaksimumDeger, dataXml.XML_ARFP_T6_SWR_Belirsizlik, "Max_Value", "Abs_RF_Power");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[6])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T7_Frekans));
+                List<XmlElement> xmlList = Add_ARFP_1(xml, dataXml.XML_ARFP_T7_Cıkıs_Gücü, dataXml.XML_ARFP_T7_OlculenGuc, dataXml.XML_ARFP_T7_AltSınır, dataXml.XML_ARFP_T7_Sapma, dataXml.XML_ARFP_T7_ÜstSınır, dataXml.XML_ARFP_T7_Belirsizlik, "Abs_RF_Power", "Measured_Power", "deflection");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[7])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T8_Frekans));
+                List<XmlElement> xmlList = Add_ARFP_1(xml, dataXml.XML_ARFP_T8_Cıkıs_Gücü, dataXml.XML_ARFP_T8_OlculenDeger, dataXml.XML_ARFP_T8_AltSınır, dataXml.XML_ARFP_T8_Sapma, dataXml.XML_ARFP_T8_ÜstSınır, dataXml.XML_ARFP_T8_Belirsizlik, "Abs_RF_Power", "Measured_Value", "difference");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[8])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T9_T10_T11_frekans));
+                List<XmlElement> xmlList = Add_ARFP_2(xml, dataXml.XML_ARFP_T9_SWR_Seviye, dataXml.XML_ARFP_T9_SWR_OlculenDeger, dataXml.XML_ARFP_T9_SWR_MaksimumDeger, dataXml.XML_ARFP_T9_SWR_Belirsizlik, "Upper_Limit", "Abs_RF_Power");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[9])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T9_T10_T11_frekans));
+                List<XmlElement> xmlList = Add_ARFP_2(xml, dataXml.XML_ARFP_T10_SWR_Seviye, dataXml.XML_ARFP_T10_SWR_OlculenDeger, dataXml.XML_ARFP_T10_SWR_MaksimumDeger, dataXml.XML_ARFP_T10_SWR_Belirsizlik, "Upper_Limit", "Abs_RF_Power");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+            if (control[10])
+            {
+                list.AppendChild(add_ARFP_Frekans(xml, dataXml.XML_ARFP_T9_T10_T11_frekans));
+                List<XmlElement> xmlList = Add_ARFP_2(xml, dataXml.XML_ARFP_T11_SWR_Seviye, dataXml.XML_ARFP_T11_SWR_OlculenDeger, dataXml.XML_ARFP_T11_SWR_MaksimumDeger, dataXml.XML_ARFP_T11_SWR_Belirsizlik, "Upper_Limit", "Abs_RF_Power");
+                foreach (XmlElement xmlElement in xmlList)
+                {
+                    list.AppendChild(xmlElement);
+                }
+            }
+
+
+
+
+            //Son eklemeler yapılarak data geçirme tamamlanır.
+            name.AppendChild(content);
+            result.AppendChild(name);
+            data.AppendChild(list);
+            result.AppendChild(data);
+            sResults.AppendChild(result);
+
+            return xml;
+        }
+        public XmlElement add_ARFP_Frekans(XmlDocument xml,ArrayList arrayListFrekans)
+        {
+            //Namespace manager oluşturma
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", "https://ptb.de/dcc");
+            nsmgr.AddNamespace("si", "https://ptb.de/si");
+
+            // Node oluşturulması
+            XmlElement frekansElement = xml.CreateElement("dcc", "quantity", dcc);
+            frekansElement.SetAttribute("refType", "frequency_ARFP");
+
+            XmlElement name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement content = xml.CreateElement("dcc", "content", dcc);
+            content.InnerText = "Frequency";
+
+            XmlElement hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement realList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement unit = xml.CreateElement("si", "unitXMLList", si);
+            unit.InnerText = "\\dB";
+
+            string frekansData = string.Join(" ", arrayListFrekans.ToArray());
+            value.InnerText = frekansData;
+
+            name.AppendChild(content);
+            realList.AppendChild(value);
+            realList.AppendChild(unit);
+            hibrid.AppendChild(realList);
+            frekansElement.AppendChild(name);
+            frekansElement.AppendChild(hibrid);
+
+            return frekansElement;
+
+        }
+        public List<XmlElement> Add_ARFP_1(XmlDocument xml, ArrayList CikisGucu, ArrayList Olculen, ArrayList AltSınır, ArrayList Sapma_Fark_Zayıflatma, ArrayList UstSınır, ArrayList Belirsizlik, string noisestr,string olculen,string measurement)
+        {
+            List<XmlElement> xmlElements = new List<XmlElement>();
+
+            //Çıkış gücü 
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", "https://ptb.de/dcc");
+            nsmgr.AddNamespace("si", "https://ptb.de/si");
+
+            // Node oluşturulması
+            // lin Element Oluşturulması
+            XmlElement ARFP_OP_Element = xml.CreateElement("dcc", "quantity", dcc);
+            ARFP_OP_Element.SetAttribute("refType", noisestr + "_Output_Power_(dBm)");
+
+            XmlElement ARFP_OP_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement ARFP_OP_Content = xml.CreateElement("dcc", "content", dcc);
+            ARFP_OP_Content.InnerText = noisestr + "_Output_Power_(dBm)";
+
+            XmlElement ARFP_OP_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement ARFP_OP_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement ARFP_OP_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement ARFP_OP_Unit = xml.CreateElement("si", "unitXMLList", si);
+            ARFP_OP_Unit.InnerText = "\\dB";
+
+            string ARFP_OP_Data = string.Join(" ", CikisGucu.ToArray());
+            ARFP_OP_Value.InnerText = ARFP_OP_Data;
+
+            ARFP_OP_Name.AppendChild(ARFP_OP_Content);
+            ARFP_OP_RealList.AppendChild(ARFP_OP_Value);
+            ARFP_OP_RealList.AppendChild(ARFP_OP_Unit);
+            ARFP_OP_Hibrid.AppendChild(ARFP_OP_RealList);
+            ARFP_OP_Element.AppendChild(ARFP_OP_Name);
+            ARFP_OP_Element.AppendChild(ARFP_OP_Hibrid);
+
+            xmlElements.Add(ARFP_OP_Element);
+
+
+
+            //Olculen
+            XmlElement measurentElement = xml.CreateElement("dcc", "quantity", dcc);
+            measurentElement.SetAttribute("refType", noisestr + "_"+olculen);
+
+            XmlElement measurentName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement measurentContent = xml.CreateElement("dcc", "content", dcc);
+            measurentContent.InnerText = noisestr +"_"+olculen;
+
+            XmlElement measurentHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement measurentRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement measurentValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement measurentUnit = xml.CreateElement("si", "unitXMLList", si);
+            measurentUnit.InnerText = "\\dB";
+
+            string measurentData = string.Join(" ", Olculen.ToArray());
+            measurentValue.InnerText = measurentData;
+
+            measurentName.AppendChild(measurentContent);
+            measurentRealList.AppendChild(measurentValue);
+            measurentRealList.AppendChild(measurentUnit);
+            measurentHibrid.AppendChild(measurentRealList);
+            measurentElement.AppendChild(measurentName);
+            measurentElement.AppendChild(measurentHibrid);
+
+            xmlElements.Add(measurentElement);
+
+
+
+
+            //Alt Sınır
+            XmlElement low_limit_Element = xml.CreateElement("dcc", "quantity", dcc);
+            low_limit_Element.SetAttribute("refType", noisestr + "_Lower_Limit");
+
+            XmlElement low_limit_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement low_limit_Content = xml.CreateElement("dcc", "content", dcc);
+            low_limit_Content.InnerText = noisestr + "_Lower_Limit";
+
+            XmlElement low_limit_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement low_limit_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement low_limit_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement low_limit_Unit = xml.CreateElement("si", "unitXMLList", si);
+            low_limit_Unit.InnerText = "\\dB";
+
+            string low_limit_Data = string.Join(" ", AltSınır.ToArray());
+            low_limit_Value.InnerText = low_limit_Data;
+
+            low_limit_Name.AppendChild(low_limit_Content);
+            low_limit_RealList.AppendChild(low_limit_Value);
+            low_limit_RealList.AppendChild(low_limit_Unit);
+            low_limit_Hibrid.AppendChild(low_limit_RealList);
+            low_limit_Element.AppendChild(low_limit_Name);
+            low_limit_Element.AppendChild(low_limit_Hibrid);
+
+            xmlElements.Add(low_limit_Element);
+
+
+            // Sapma Fark Zayıflatma
+            XmlElement SFZ_Element = xml.CreateElement("dcc", "quantity", dcc);
+            SFZ_Element.SetAttribute("refType", noisestr + "_"+measurement);
+
+            XmlElement SFZ_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement SFZ_Content = xml.CreateElement("dcc", "content", dcc);
+            SFZ_Content.InnerText = noisestr + "_" + measurement;
+
+            XmlElement SFZ_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement SFZ_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement SFZ_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement SFZ_Unit = xml.CreateElement("si", "unitXMLList", si);
+            SFZ_Unit.InnerText = "\\dB";
+
+            string SFZ_Data = string.Join(" ", Sapma_Fark_Zayıflatma.ToArray());
+            SFZ_Value.InnerText = SFZ_Data;
+
+            SFZ_Name.AppendChild(SFZ_Content);
+            SFZ_RealList.AppendChild(SFZ_Value);
+            SFZ_RealList.AppendChild(SFZ_Unit);
+            SFZ_Hibrid.AppendChild(SFZ_RealList);
+            SFZ_Element.AppendChild(SFZ_Name);
+            SFZ_Element.AppendChild(SFZ_Hibrid);
+
+            xmlElements.Add(SFZ_Element);
+
+
+
+            // Üst sınır 
+            XmlElement Up_Limit_Element = xml.CreateElement("dcc", "quantity", dcc);
+            Up_Limit_Element.SetAttribute("refType", noisestr + "_Upper_Limit");
+
+            XmlElement Up_Limit_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement Up_Limit_Content = xml.CreateElement("dcc", "content", dcc);
+            Up_Limit_Content.InnerText = noisestr + "_Upper_Limit";
+
+            XmlElement Up_Limit_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement Up_Limit_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement Up_Limit_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement Up_Limit_Unit = xml.CreateElement("si", "unitXMLList", si);
+            Up_Limit_Unit.InnerText = "\\dB";
+
+            string Up_Limit_Data = string.Join(" ", UstSınır.ToArray());
+            Up_Limit_Value.InnerText = Up_Limit_Data;
+
+            Up_Limit_Name.AppendChild(Up_Limit_Content);
+            Up_Limit_RealList.AppendChild(Up_Limit_Value);
+            Up_Limit_RealList.AppendChild(Up_Limit_Unit);
+            Up_Limit_Hibrid.AppendChild(Up_Limit_RealList);
+            Up_Limit_Element.AppendChild(Up_Limit_Name);
+            Up_Limit_Element.AppendChild(Up_Limit_Hibrid);
+
+            xmlElements.Add(Up_Limit_Element);
+
+
+            // Belirsizlik
+            XmlElement UncertaintyElement = xml.CreateElement("dcc", "quantity", dcc);
+            UncertaintyElement.SetAttribute("refType", noisestr + "_RC_Phase");
+
+            XmlElement UncertaintyName = xml.CreateElement("dcc", "name", dcc);
+            XmlElement UncertaintyContent = xml.CreateElement("dcc", "content", dcc);
+            UncertaintyContent.InnerText = noisestr + "_RC_Phase";
+
+            XmlElement UncertaintyHibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement UncertaintyRealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement UncertaintyValue = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement UncertaintyUnit = xml.CreateElement("si", "unitXMLList", si);
+            UncertaintyUnit.InnerText = "\\dB";
+
+            string UncertaintyData = string.Join(" ", Belirsizlik.ToArray());
+            UncertaintyValue.InnerText = UncertaintyData;
+
+            UncertaintyName.AppendChild(UncertaintyContent);
+            UncertaintyRealList.AppendChild(UncertaintyValue);
+            UncertaintyRealList.AppendChild(UncertaintyUnit);
+            UncertaintyHibrid.AppendChild(UncertaintyRealList);
+            UncertaintyElement.AppendChild(UncertaintyName);
+            UncertaintyElement.AppendChild(UncertaintyHibrid);
+
+            xmlElements.Add(UncertaintyElement);
+
+
+            return xmlElements;
+
+        }
+
+        public List<XmlElement> Add_ARFP_2(XmlDocument xml, ArrayList seviye, ArrayList olculendeger, ArrayList MaksDeger, ArrayList belirsizlik, string Maks_Ust, string noisestr)
+        {
+            List<XmlElement> xmlElements = new List<XmlElement>();
+
+            //seviye
+            var nsmgr = new XmlNamespaceManager(xml.NameTable);
+            nsmgr.AddNamespace("dcc", "https://ptb.de/dcc");
+            nsmgr.AddNamespace("si", "https://ptb.de/si");
+
+            // Node oluşturulması
+            // lin Element Oluşturulması
+            XmlElement Level_Element = xml.CreateElement("dcc", "quantity", dcc);
+            Level_Element.SetAttribute("refType", noisestr + "_Level");
+
+            XmlElement Level_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement Level_Content = xml.CreateElement("dcc", "content", dcc);
+            Level_Content.InnerText = noisestr + "_Level";
+
+            XmlElement Level_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement Level_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement Level_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement Level_Unit = xml.CreateElement("si", "unitXMLList", si);
+            Level_Unit.InnerText = "\\dB";
+
+            string Level_Data = string.Join(" ", seviye.ToArray());
+            Level_Value.InnerText = Level_Data;
+
+            Level_Name.AppendChild(Level_Content);
+            Level_RealList.AppendChild(Level_Value);
+            Level_RealList.AppendChild(Level_Unit);
+            Level_Hibrid.AppendChild(Level_RealList);
+            Level_Element.AppendChild(Level_Name);
+            Level_Element.AppendChild(Level_Hibrid);
+
+            xmlElements.Add(Level_Element);
+
+
+
+            // OlculenDeger
+            XmlElement Measured_Val_Element = xml.CreateElement("dcc", "quantity", dcc);
+            Measured_Val_Element.SetAttribute("refType", noisestr + "_Measured_value");
+
+            XmlElement Measured_Val_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement Measured_Val_Content = xml.CreateElement("dcc", "content", dcc);
+            Measured_Val_Content.InnerText = noisestr + "_Measured_value";
+
+            XmlElement Measured_Val_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement Measured_Val_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement Measured_Val_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement Measured_Val_Unit = xml.CreateElement("si", "unitXMLList", si);
+            Measured_Val_Unit.InnerText = "\\dB";
+
+            string Measured_Val_Data = string.Join(" ", olculendeger.ToArray());
+            Measured_Val_Value.InnerText = Measured_Val_Data;
+
+            Measured_Val_Name.AppendChild(Measured_Val_Content);
+            Measured_Val_RealList.AppendChild(Measured_Val_Value);
+            Measured_Val_RealList.AppendChild(Measured_Val_Unit);
+            Measured_Val_Hibrid.AppendChild(Measured_Val_RealList);
+            Measured_Val_Element.AppendChild(Measured_Val_Name);
+            Measured_Val_Element.AppendChild(Measured_Val_Hibrid);
+
+            xmlElements.Add(Measured_Val_Element);
+
+
+            // Maksimum Değer
+            XmlElement Max_Val_Element = xml.CreateElement("dcc", "quantity", dcc);
+            Max_Val_Element.SetAttribute("refType", noisestr + "_"+ Maks_Ust);
+
+            XmlElement Max_Val_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement Max_Val_Content = xml.CreateElement("dcc", "content", dcc);
+            Max_Val_Content.InnerText = noisestr + "_" + Maks_Ust;
+
+            XmlElement Max_Val_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement Max_Val_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement Max_Val_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement Max_Val_Unit = xml.CreateElement("si", "unitXMLList", si);
+            Max_Val_Unit.InnerText = "\\dB";
+
+            string Max_Val_Data = string.Join(" ", MaksDeger.ToArray());
+            Max_Val_Value.InnerText = Max_Val_Data;
+
+            Max_Val_Name.AppendChild(Max_Val_Content);
+            Max_Val_RealList.AppendChild(Max_Val_Value);
+            Max_Val_RealList.AppendChild(Max_Val_Unit);
+            Max_Val_Hibrid.AppendChild(Max_Val_RealList);
+            Max_Val_Element.AppendChild(Max_Val_Name);
+            Max_Val_Element.AppendChild(Max_Val_Hibrid);
+
+            xmlElements.Add(Max_Val_Element);
+
+
+            // Belirsizlik
+            XmlElement Uncertainty_Element = xml.CreateElement("dcc", "quantity", dcc);
+            Uncertainty_Element.SetAttribute("refType", noisestr + "_RC_Phase");
+
+            XmlElement Uncertainty_Name = xml.CreateElement("dcc", "name", dcc);
+            XmlElement Uncertainty_Content = xml.CreateElement("dcc", "content", dcc);
+            Uncertainty_Content.InnerText = noisestr + "_RC_Phase";
+
+            XmlElement Uncertainty_Hibrid = xml.CreateElement("si", "hybrid", si);
+            XmlElement Uncertainty_RealList = xml.CreateElement("si", "realListXMLList", si);
+            XmlElement Uncertainty_Value = xml.CreateElement("si", "valueXMLList", si);
+            XmlElement Uncertainty_Unit = xml.CreateElement("si", "unitXMLList", si);
+            Uncertainty_Unit.InnerText = "\\dB";
+
+            string Uncertainty_Data = string.Join(" ", belirsizlik.ToArray());
+            Uncertainty_Value.InnerText = Uncertainty_Data;
+
+            Uncertainty_Name.AppendChild(Uncertainty_Content);
+            Uncertainty_RealList.AppendChild(Uncertainty_Value);
+            Uncertainty_RealList.AppendChild(Uncertainty_Unit);
+            Uncertainty_Hibrid.AppendChild(Uncertainty_RealList);
+            Uncertainty_Element.AppendChild(Uncertainty_Name);
+            Uncertainty_Element.AppendChild(Uncertainty_Hibrid);
+
+            xmlElements.Add(Uncertainty_Element);
+
+            return xmlElements;
+
+        }
+        #endregion
 
     }
 }
