@@ -181,6 +181,7 @@ namespace DCC
 
         public XML_Arrays()
         {
+
             XmlArrayFrekans = new ArrayList();
 
 
@@ -292,6 +293,87 @@ namespace DCC
             XML_NS_ArrayRC_Phase_DC_OFF = new ArrayList();
             XML_NS_ArrayRC_PhaseUnc_DC_OFF = new ArrayList();
             XML_NS_ArrayControl_DC_OFF = new ArrayList();
+
+            XML_ARFP_T1_Frekans = new ArrayList();
+            XML_ARFP_T1_Cıkıs_Gücü = new ArrayList();
+            XML_ARFP_T1_Olculen_Güc = new ArrayList();
+            XML_ARFP_T1_AltSınır = new ArrayList();
+            XML_ARFP_T1_Sapma = new ArrayList();
+            XML_ARFP_T1_ÜstSınır = new ArrayList();
+            XML_ARFP_T1_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T2_Frekans = new ArrayList();
+            XML_ARFP_T2_Cıkıs_Gücü = new ArrayList();
+            XML_ARFP_T2_OlculenDeger = new ArrayList();
+            XML_ARFP_T2_AltSınır = new ArrayList();
+            XML_ARFP_T2_Sapma = new ArrayList();
+            XML_ARFP_T2_ÜstSınır = new ArrayList();
+            XML_ARFP_T2_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T3_Frekans = new ArrayList();
+            XML_ARFP_T3_Cıkıs_Gücü = new ArrayList();
+            XML_ARFP_T3_OlculenZayıflatma = new ArrayList();
+            XML_ARFP_T3_AltSınır = new ArrayList();
+            XML_ARFP_T3_Sapma = new ArrayList();
+            XML_ARFP_T3_ÜstSınır = new ArrayList();
+            XML_ARFP_T3_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T4_T5_T6_frekans = new ArrayList();
+            XML_ARFP_T4_SWR_Seviye = new ArrayList();
+            XML_ARFP_T4_SWR_OlculenDeger = new ArrayList();
+            XML_ARFP_T4_SWR_MaksimumDeger = new ArrayList();
+            XML_ARFP_T4_SWR_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T5_SWR_Seviye = new ArrayList();
+            XML_ARFP_T5_SWR_OlculenDeger = new ArrayList();
+            XML_ARFP_T5_SWR_MaksimumDeger = new ArrayList();
+            XML_ARFP_T5_SWR_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T6_SWR_Seviye = new ArrayList();
+            XML_ARFP_T6_SWR_OlculenDeger = new ArrayList();
+            XML_ARFP_T6_SWR_MaksimumDeger = new ArrayList();
+            XML_ARFP_T6_SWR_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T7_Frekans = new ArrayList();
+            XML_ARFP_T7_Cıkıs_Gücü = new ArrayList();
+            XML_ARFP_T7_OlculenGuc = new ArrayList();
+            XML_ARFP_T7_AltSınır = new ArrayList();
+            XML_ARFP_T7_Sapma = new ArrayList();
+            XML_ARFP_T7_ÜstSınır = new ArrayList();
+            XML_ARFP_T7_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T8_Frekans = new ArrayList();
+            XML_ARFP_T8_Cıkıs_Gücü = new ArrayList();
+            XML_ARFP_T8_OlculenDeger = new ArrayList();
+            XML_ARFP_T8_AltSınır = new ArrayList();
+            XML_ARFP_T8_Sapma = new ArrayList();
+            XML_ARFP_T8_ÜstSınır = new ArrayList();
+            XML_ARFP_T8_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T9_T10_T11_frekans = new ArrayList();
+            XML_ARFP_T9_SWR_Seviye = new ArrayList();
+            XML_ARFP_T9_SWR_OlculenDeger = new ArrayList();
+            XML_ARFP_T9_SWR_MaksimumDeger = new ArrayList();
+            XML_ARFP_T9_SWR_Belirsizlik = new ArrayList();
+
+
+            XML_ARFP_T10_SWR_Seviye = new ArrayList();
+            XML_ARFP_T10_SWR_OlculenDeger = new ArrayList();
+            XML_ARFP_T10_SWR_MaksimumDeger = new ArrayList();
+            XML_ARFP_T10_SWR_Belirsizlik = new ArrayList();
+
+            XML_ARFP_T11_SWR_Seviye = new ArrayList();
+            XML_ARFP_T11_SWR_OlculenDeger = new ArrayList();
+            XML_ARFP_T11_SWR_MaksimumDeger = new ArrayList();
+            XML_ARFP_T11_SWR_Belirsizlik = new ArrayList();
         }
 
         public void SP_ClearData()
@@ -703,6 +785,372 @@ namespace DCC
             XML_NS_ArrayControl_DC_OFF.Clear();
 
         }
+        #endregion
+
+        #region ABSOLUTE RF POWER
+        public void ABS_RFP_Data_Xml(string ExcelDosyaYolu, string pageName, int satır, string sütun)
+        {
+            int harfIndex = columnName.IndexOf(sütun);
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            // Excel Verileri
+
+            using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
+            {
+
+
+                // Excel'in sabit olan sonuç sayfasındaki verilere göre hazırlanmıştır. 
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
+
+                int rowCount = worksheet.Dimension.Rows;
+                //int satirSayisi = rowCount - 6;
+
+                string[] cellValue = new string[rowCount];
+
+
+                // Frekans değerlerinin çekimi
+                for (int i = satır; i <= rowCount; i++)
+                {
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[sütun + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
+                    {
+                        XML_ARFP_T1_Frekans.Add(cellValue[i - satır]);
+                    }
+                }
+
+                for (int i = satır; i < XML_ARFP_T1_Frekans.Count + satır; i++)
+                {
+                    XML_ARFP_T1_Cıkıs_Gücü.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
+                    XML_ARFP_T1_Olculen_Güc.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
+                    XML_ARFP_T1_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 3] + i].Value));
+                    XML_ARFP_T1_Sapma.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 4] + i].Value));
+                    XML_ARFP_T1_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 5] + i].Value));
+                    XML_ARFP_T1_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 6] + i].Value));
+
+                }
+
+
+                for (int i = 7; i <=76 ; i++)
+                {
+                    cellValue[i - 7] = Convert.ToString(worksheet.Cells[columnName[harfIndex+8] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    {
+                        XML_ARFP_T2_Frekans.Add(cellValue[i - 7]);
+                    }
+                }
+
+
+                for (int i = 7; i < XML_ARFP_T2_Frekans.Count + 7; i++)
+                {
+                    XML_ARFP_T2_Cıkıs_Gücü.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
+                    XML_ARFP_T2_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 10] + i].Value));
+                    XML_ARFP_T2_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 11] + i].Value));
+                    XML_ARFP_T2_Sapma.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 12] + i].Value));
+                    XML_ARFP_T2_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 13] + i].Value));
+                    XML_ARFP_T2_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 14] + i].Value));
+
+                }
+
+
+
+                for (int i = 7; i <= 39; i++)
+                {
+                    cellValue[i - 7] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    {
+                        XML_ARFP_T3_Frekans.Add(cellValue[i - 7]);
+                    }
+                }
+
+
+                for (int i = 7; i < XML_ARFP_T3_Frekans.Count + 7; i++)
+                {
+                    XML_ARFP_T3_Cıkıs_Gücü.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 17] + i].Value));
+                    XML_ARFP_T3_OlculenZayıflatma.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 18] + i].Value));
+                    XML_ARFP_T3_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 19] + i].Value));
+                    XML_ARFP_T3_Sapma.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 20] + i].Value));
+                    XML_ARFP_T3_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 21] + i].Value));
+                    XML_ARFP_T3_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 22] + i].Value));
+
+                }
+
+
+                for (int i = 7; i <= 22; i++)
+                {
+                    cellValue[i - 7] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 24] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    {
+                        XML_ARFP_T4_T5_T6_frekans.Add(cellValue[i - 7]);
+                    }
+                }
+
+
+                for (int i = 7; i < XML_ARFP_T4_T5_T6_frekans.Count + 7; i++)
+                {
+                    
+                    XML_ARFP_T4_SWR_Seviye.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 25] + i].Value));
+                    XML_ARFP_T4_SWR_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 26] + i].Value));
+                    XML_ARFP_T4_SWR_MaksimumDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 27] + i].Value));
+                    XML_ARFP_T4_SWR_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 28] + i].Value));
+
+                    XML_ARFP_T5_SWR_Seviye.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 31] + i].Value));
+                    XML_ARFP_T5_SWR_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 32] + i].Value));
+                    XML_ARFP_T5_SWR_MaksimumDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 33] + i].Value));
+                    XML_ARFP_T5_SWR_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 34]+ i].Value));
+
+                    XML_ARFP_T5_SWR_Seviye.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 37] + i].Value));
+                    XML_ARFP_T5_SWR_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 38] + i].Value));
+                    XML_ARFP_T5_SWR_MaksimumDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 39] + i].Value));
+                    XML_ARFP_T5_SWR_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 40] + i].Value));
+
+
+                }
+
+
+                for (int i = 7; i <= 292; i++)
+                {
+                    cellValue[i - 7] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 42] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    {
+                        XML_ARFP_T7_Frekans.Add(cellValue[i - 7]);
+                    }
+                }
+
+
+                for (int i = 7; i < XML_ARFP_T7_Frekans.Count + 7; i++)
+                {
+
+                    XML_ARFP_T7_Cıkıs_Gücü.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 43] + i].Value));
+                    XML_ARFP_T7_OlculenGuc.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 44] + i].Value));
+                    XML_ARFP_T7_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 45] + i].Value));
+                    XML_ARFP_T7_Sapma.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 46] + i].Value));
+                    XML_ARFP_T7_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 47] + i].Value));
+                    XML_ARFP_T7_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 48] + i].Value));
+
+                }
+
+                for (int i = 7; i <= 86; i++)
+                {
+                    cellValue[i - 7] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 50] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    {
+                        XML_ARFP_T8_Frekans.Add(cellValue[i - 7]);
+                    }
+                }
+
+
+                for (int i = 7; i < XML_ARFP_T8_Frekans.Count + 7; i++)
+                {
+
+                    XML_ARFP_T8_Cıkıs_Gücü.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 51] + i].Value));
+                    XML_ARFP_T8_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 52] + i].Value));
+                    XML_ARFP_T8_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 53] + i].Value));
+                    XML_ARFP_T8_Sapma.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 54] + i].Value));
+                    XML_ARFP_T8_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 55] + i].Value));
+                    XML_ARFP_T8_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 56] + i].Value));
+
+                }
+
+
+                for (int i = 7; i <= 39; i++)
+                {
+                    cellValue[i - 7] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 58] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    {
+                        XML_ARFP_T9_T10_T11_frekans.Add(cellValue[i - 7]);
+                    }
+                }
+
+
+                for (int i = 7; i < XML_ARFP_T9_T10_T11_frekans.Count + 7; i++)
+                {
+
+                    XML_ARFP_T9_SWR_Seviye.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 59] + i].Value));
+                    XML_ARFP_T9_SWR_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 60] + i].Value));
+                    XML_ARFP_T9_SWR_MaksimumDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 61] + i].Value));
+                    XML_ARFP_T9_SWR_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 62] + i].Value));
+
+                    XML_ARFP_T10_SWR_Seviye.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 65] + i].Value));
+                    XML_ARFP_T10_SWR_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 66] + i].Value));
+                    XML_ARFP_T10_SWR_MaksimumDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 67] + i].Value));
+                    XML_ARFP_T10_SWR_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 68] + i].Value));
+
+                    XML_ARFP_T11_SWR_Seviye.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 71] + i].Value));
+                    XML_ARFP_T11_SWR_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 72] + i].Value));
+                    XML_ARFP_T11_SWR_MaksimumDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 73] + i].Value));
+                    XML_ARFP_T11_SWR_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 74] + i].Value));
+
+
+                }
+
+
+            }
+        }
+        public ArrayList XML_ARFP_T1_Frekans { get; set; }
+        public ArrayList XML_ARFP_T1_Cıkıs_Gücü { get; set; }
+        public ArrayList XML_ARFP_T1_Olculen_Güc { get; set; }
+        public ArrayList XML_ARFP_T1_AltSınır { get; set; }
+        public ArrayList XML_ARFP_T1_Sapma { get; set; }
+        public ArrayList XML_ARFP_T1_ÜstSınır { get; set; }
+        public ArrayList XML_ARFP_T1_Belirsizlik { get; set; }
+
+
+        public ArrayList XML_ARFP_T2_Frekans { get; set; }
+        public ArrayList XML_ARFP_T2_Cıkıs_Gücü { get; set; }
+        public ArrayList XML_ARFP_T2_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T2_AltSınır { get; set; }
+        public ArrayList XML_ARFP_T2_Sapma { get; set; }
+        public ArrayList XML_ARFP_T2_ÜstSınır { get; set; }
+        public ArrayList XML_ARFP_T2_Belirsizlik { get; set; }
+
+
+        public ArrayList XML_ARFP_T3_Frekans { get; set; }
+        public ArrayList XML_ARFP_T3_Cıkıs_Gücü { get; set; }
+        public ArrayList XML_ARFP_T3_OlculenZayıflatma { get; set; }
+        public ArrayList XML_ARFP_T3_AltSınır { get; set; }
+        public ArrayList XML_ARFP_T3_Sapma { get; set; }
+        public ArrayList XML_ARFP_T3_ÜstSınır { get; set; }
+        public ArrayList XML_ARFP_T3_Belirsizlik { get; set; }
+
+
+
+        public ArrayList XML_ARFP_T4_T5_T6_frekans { get; set; }
+        public ArrayList XML_ARFP_T4_SWR_Seviye { get; set; }
+        public ArrayList XML_ARFP_T4_SWR_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T4_SWR_MaksimumDeger { get; set; }
+        public ArrayList XML_ARFP_T4_SWR_Belirsizlik { get; set; }
+
+
+        public ArrayList XML_ARFP_T5_SWR_Seviye { get; set; }
+        public ArrayList XML_ARFP_T5_SWR_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T5_SWR_MaksimumDeger { get; set; }
+        public ArrayList XML_ARFP_T5_SWR_Belirsizlik { get; set; }
+
+
+        public ArrayList XML_ARFP_T6_SWR_Seviye { get; set; }
+        public ArrayList XML_ARFP_T6_SWR_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T6_SWR_MaksimumDeger { get; set; }
+        public ArrayList XML_ARFP_T6_SWR_Belirsizlik { get; set; }
+
+        public ArrayList XML_ARFP_T7_Frekans { get; set; }
+        public ArrayList XML_ARFP_T7_Cıkıs_Gücü { get; set; }
+        public ArrayList XML_ARFP_T7_OlculenGuc { get; set; }
+        public ArrayList XML_ARFP_T7_AltSınır { get; set; }
+        public ArrayList XML_ARFP_T7_Sapma { get; set; }
+        public ArrayList XML_ARFP_T7_ÜstSınır { get; set; }
+        public ArrayList XML_ARFP_T7_Belirsizlik { get; set; }
+
+        public ArrayList XML_ARFP_T8_Frekans { get; set; }
+        public ArrayList XML_ARFP_T8_Cıkıs_Gücü { get; set; }
+        public ArrayList XML_ARFP_T8_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T8_AltSınır { get; set; }
+        public ArrayList XML_ARFP_T8_Sapma { get; set; }
+        public ArrayList XML_ARFP_T8_ÜstSınır { get; set; }
+        public ArrayList XML_ARFP_T8_Belirsizlik { get; set; }
+
+        public ArrayList XML_ARFP_T9_T10_T11_frekans { get; set; }
+        public ArrayList XML_ARFP_T9_SWR_Seviye { get; set; }
+        public ArrayList XML_ARFP_T9_SWR_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T9_SWR_MaksimumDeger { get; set; }
+        public ArrayList XML_ARFP_T9_SWR_Belirsizlik { get; set; }
+
+        public ArrayList XML_ARFP_T10_SWR_Seviye { get; set; }
+        public ArrayList XML_ARFP_T10_SWR_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T10_SWR_MaksimumDeger { get; set; }
+        public ArrayList XML_ARFP_T10_SWR_Belirsizlik { get; set; }
+
+
+        public ArrayList XML_ARFP_T11_SWR_Seviye { get; set; }
+        public ArrayList XML_ARFP_T11_SWR_OlculenDeger { get; set; }
+        public ArrayList XML_ARFP_T11_SWR_MaksimumDeger { get; set; }
+        public ArrayList XML_ARFP_T11_SWR_Belirsizlik { get; set; }
+
+
+        public void ClearData()
+        {
+            XML_ARFP_T1_Frekans.Clear();
+            XML_ARFP_T1_Cıkıs_Gücü.Clear();
+            XML_ARFP_T1_Olculen_Güc.Clear();
+            XML_ARFP_T1_AltSınır.Clear();
+            XML_ARFP_T1_Sapma.Clear();
+            XML_ARFP_T1_ÜstSınır.Clear();
+            XML_ARFP_T1_Belirsizlik.Clear();
+
+
+            XML_ARFP_T2_Frekans.Clear();
+            XML_ARFP_T2_Cıkıs_Gücü.Clear();
+            XML_ARFP_T2_OlculenDeger.Clear();
+            XML_ARFP_T2_AltSınır.Clear();
+            XML_ARFP_T2_Sapma.Clear();
+            XML_ARFP_T2_ÜstSınır.Clear();
+            XML_ARFP_T2_Belirsizlik.Clear();
+
+
+            XML_ARFP_T3_Frekans.Clear();
+            XML_ARFP_T3_Cıkıs_Gücü.Clear();
+            XML_ARFP_T3_OlculenZayıflatma.Clear();
+            XML_ARFP_T3_AltSınır.Clear();
+            XML_ARFP_T3_Sapma.Clear();
+            XML_ARFP_T3_ÜstSınır.Clear();
+            XML_ARFP_T3_Belirsizlik.Clear();
+
+
+            XML_ARFP_T4_T5_T6_frekans.Clear();
+            XML_ARFP_T4_SWR_Seviye.Clear();
+            XML_ARFP_T4_SWR_OlculenDeger.Clear();
+            XML_ARFP_T4_SWR_MaksimumDeger.Clear();
+            XML_ARFP_T4_SWR_Belirsizlik.Clear();
+
+
+            XML_ARFP_T5_SWR_Seviye.Clear();
+            XML_ARFP_T5_SWR_OlculenDeger.Clear();
+            XML_ARFP_T5_SWR_MaksimumDeger.Clear();
+            XML_ARFP_T5_SWR_Belirsizlik.Clear();
+
+
+            XML_ARFP_T6_SWR_Seviye.Clear();
+            XML_ARFP_T6_SWR_OlculenDeger.Clear();
+            XML_ARFP_T6_SWR_MaksimumDeger.Clear();
+            XML_ARFP_T6_SWR_Belirsizlik.Clear();
+
+
+            XML_ARFP_T7_Frekans.Clear();
+            XML_ARFP_T7_Cıkıs_Gücü.Clear();
+            XML_ARFP_T7_OlculenGuc.Clear();
+            XML_ARFP_T7_AltSınır.Clear();
+            XML_ARFP_T7_Sapma.Clear();
+            XML_ARFP_T7_ÜstSınır.Clear();
+            XML_ARFP_T7_Belirsizlik.Clear();
+
+
+            XML_ARFP_T8_Frekans.Clear();
+            XML_ARFP_T8_Cıkıs_Gücü.Clear();
+            XML_ARFP_T8_OlculenDeger.Clear();
+            XML_ARFP_T8_AltSınır.Clear();
+            XML_ARFP_T8_Sapma.Clear();
+            XML_ARFP_T8_ÜstSınır.Clear();
+            XML_ARFP_T8_Belirsizlik.Clear();
+
+
+            XML_ARFP_T9_T10_T11_frekans.Clear();
+            XML_ARFP_T9_SWR_Seviye.Clear();
+            XML_ARFP_T9_SWR_OlculenDeger.Clear();
+            XML_ARFP_T9_SWR_MaksimumDeger.Clear();
+            XML_ARFP_T9_SWR_Belirsizlik.Clear();
+
+
+            XML_ARFP_T10_SWR_Seviye.Clear();
+            XML_ARFP_T10_SWR_OlculenDeger.Clear();
+            XML_ARFP_T10_SWR_MaksimumDeger.Clear();
+            XML_ARFP_T10_SWR_Belirsizlik.Clear();
+
+
+            XML_ARFP_T11_SWR_Seviye.Clear();
+            XML_ARFP_T11_SWR_OlculenDeger.Clear();
+            XML_ARFP_T11_SWR_MaksimumDeger.Clear();
+            XML_ARFP_T11_SWR_Belirsizlik.Clear();
+        }
+
         #endregion
     }
 }

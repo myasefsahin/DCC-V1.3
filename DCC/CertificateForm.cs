@@ -45,6 +45,8 @@ namespace DCC
         CreateTemplate createTemplate = new CreateTemplate();
         Noise_DataWord Noise_DataWord = new Noise_DataWord();
         Noise_WordTable Noise_WordTable = new Noise_WordTable();
+        Absolute_RF_Power_DataWord Absolute_RF_Power = new Absolute_RF_Power_DataWord();
+        AbsoluteRF_Power_Word_Table Absolute_WordTable = new AbsoluteRF_Power_Word_Table();
         int satır;
         string sütun;
 
@@ -56,6 +58,7 @@ namespace DCC
             InitializeComponent();
         }
         #region API PAGE
+
         private void CertificateForm_Load(object sender, EventArgs e)
         {
             LaboratoryComboBox.Enabled = false;
@@ -70,7 +73,7 @@ namespace DCC
             MeasurementsTextBox.Enabled = false;
             ReceiveData_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
-            BackBox3.Enabled = false;
+            BackBox3.Enabled = true;
 
 
         }
@@ -177,19 +180,27 @@ namespace DCC
             }
             if (MeasurementTypes_ComboBox.SelectedIndex == 3)
             {
-                CheckBoxTabControl.SelectedTab = RFPow_Page;
+                CheckBoxTabControl.SelectedTab = Absolute_RFPow_Page;
             }
             if (MeasurementTypes_ComboBox.SelectedIndex == 4)
             {
-                CheckBoxTabControl.SelectedTab = SParam_Page;
-            }
+                CheckBoxTabControl.SelectedTab = RF_Difference_Tabpage;
+            }        
             if (MeasurementTypes_ComboBox.SelectedIndex == 5)
             {
-                CheckBoxTabControl.SelectedTab = MetCH_Page;
+                CheckBoxTabControl.SelectedTab = RF_Gain_Tabpage;
             }
             if (MeasurementTypes_ComboBox.SelectedIndex == 6)
             {
+                CheckBoxTabControl.SelectedTab = SParam_Page;
+            }
+            if (MeasurementTypes_ComboBox.SelectedIndex == 7)
+            {
                 CheckBoxTabControl.SelectedTab = Noise_Page;
+            }
+            if (MeasurementTypes_ComboBox.SelectedIndex == 8)
+            {
+                CheckBoxTabControl.SelectedTab = MetCH_Page;
             }
         }
         #endregion
@@ -288,7 +299,7 @@ namespace DCC
             try
             {
                 #region S-Parametre
-                if (MeasurementTypes_ComboBox.SelectedIndex == 4)
+                if (MeasurementTypes_ComboBox.SelectedIndex == 6)
                 {
                     sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
@@ -568,10 +579,10 @@ namespace DCC
                 #endregion
 
                 #region Noise
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 6)
+                else if (MeasurementTypes_ComboBox.SelectedIndex == 7)
                 {
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
-                    XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu,pageName,satır,sütun);
+                    XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     listBox1.Items.Add("Noise-" + ExcelDosyaAdi);
 
 
@@ -612,7 +623,126 @@ namespace DCC
                 }
                 #endregion
 
-                for (int i = 0; i < 100; i++)
+                #region Absolute RF Power
+                else if (MeasurementTypes_ComboBox.SelectedIndex == 3)
+                {
+                    Absolute_RF_Power.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.ABS_RFP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
+
+                    List<bool>  ARFPBool = new List<bool>(3) { false, false, false,false,false,false,false,false,false, false,false};
+
+                    if (ARFP_1.Checked)
+                    {
+                        string txt_ARFP1 = TableName + "Head RF” Çıkışı Seviye Doğruluğu Testi\n";
+                        Table ARFP1_table = Absolute_WordTable.ARFP_CreateTable_1(Absolute_RF_Power.ARFP_T1_Frekans, Absolute_RF_Power.ARFP_T1_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T1_Olculen_Güc, Absolute_RF_Power.ARFP_T1_AltSınır,
+                                                                                  Absolute_RF_Power.ARFP_T1_Sapma, Absolute_RF_Power.ARFP_T1_ÜstSınır, Absolute_RF_Power.ARFP_T1_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma");
+                        tables.Add(ARFP1_table);
+                        header.Add(txt_ARFP1);
+                        ARFPBool[0] = true;
+                        SaveBasarim();
+                    }
+
+                    if (ARFP_2.Checked)
+                    {
+                        string txt_ARFP2 = TableName + "Güç Aralığına Göre Seviye Doğruluğu Testi\n";
+                        Table ARFP2_table = Absolute_WordTable.ARFP_CreateTable_1(Absolute_RF_Power.ARFP_T2_Frekans, Absolute_RF_Power.ARFP_T2_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T2_OlculenDeger, Absolute_RF_Power.ARFP_T2_AltSınır,
+                                                                                  Absolute_RF_Power.ARFP_T2_Fark, Absolute_RF_Power.ARFP_T2_ÜstSınır, Absolute_RF_Power.ARFP_T2_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
+                        tables.Add(ARFP2_table);
+                        header.Add(txt_ARFP2);
+                        ARFPBool[1] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_3.Checked)
+                    {
+                        string txt_ARFP3 = TableName + "Head RF” Çıkışı Zayıflatma Doğruluğu Testi\n";
+                        Table ARFP3_table = Absolute_WordTable.ARFP_CreateTable_1(Absolute_RF_Power.ARFP_T3_Frekans, Absolute_RF_Power.ARFP_T3_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T3_OlculenZayıflatma, Absolute_RF_Power.ARFP_T3_AltSınır,
+                                                                                  Absolute_RF_Power.ARFP_T3_Zayıflatma, Absolute_RF_Power.ARFP_T3_ÜstSınır, Absolute_RF_Power.ARFP_T3_Belirsizlik, "Ölçülen Zayıflatma (dB)", "Zayıflatma Hatası (dB)");
+                        tables.Add(ARFP3_table);
+                        header.Add(txt_ARFP3);
+                        ARFPBool[2] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_4.Checked)
+                    {
+                        string txt_ARFP4 = TableName + "Head RF” Çıkışı Duran Dalga Oranı (SWR) Testi @13dBm\n";
+                        Table ARFP4_table = Absolute_WordTable.ARFP_CreateTable_2(Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T4_SWR_Seviye, Absolute_RF_Power.ARFP_T4_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T4_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T4_SWR_Belirsizlik,"Maksimum Değer");
+                        tables.Add(ARFP4_table);
+                        header.Add(txt_ARFP4);
+                        ARFPBool[3] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_5.Checked)
+                    {
+                        string txt_ARFP5 = TableName + "Head RF” Çıkışı Duran Dalga Oranı (SWR) Testi @3dBm\n";
+                        Table ARFP5_table = Absolute_WordTable.ARFP_CreateTable_2(Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T5_SWR_Seviye, Absolute_RF_Power.ARFP_T5_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T5_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T5_SWR_Belirsizlik, "Maksimum Değer");
+                        tables.Add(ARFP5_table);
+                        header.Add(txt_ARFP5);
+                        ARFPBool[4] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_6.Checked)
+                    {
+                        string txt_ARFP6 = TableName + "Head RF” Çıkışı Duran Dalga Oranı (SWR) Testi @-7dBm\n";
+                        Table ARFP6_table = Absolute_WordTable.ARFP_CreateTable_2(Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T6_SWR_Seviye, Absolute_RF_Power.ARFP_T6_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T6_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T6_SWR_Belirsizlik, "Maksimum Değer");
+                        tables.Add(ARFP6_table);
+                        header.Add(txt_ARFP6);
+                        ARFPBool[5] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_7.Checked)
+                    {
+                        string txt_ARFP7 = TableName + "Mikrodalga Çıkışı Seviye Doğruluğu Testi \n";
+                        Table ARFP7_table = Absolute_WordTable.ARFP_CreateTable_1(Absolute_RF_Power.ARFP_T7_Frekans, Absolute_RF_Power.ARFP_T7_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T7_OlculenGuc, Absolute_RF_Power.ARFP_T7_AltSınır,
+                                                                                  Absolute_RF_Power.ARFP_T7_Sapma, Absolute_RF_Power.ARFP_T7_ÜstSınır, Absolute_RF_Power.ARFP_T7_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma(dB)");
+                        tables.Add(ARFP7_table);
+                        header.Add(txt_ARFP7);
+                        ARFPBool[6] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_8.Checked)
+                    {
+                        string txt_ARFP8 = TableName + "Güç Aralığına Göre Mikrodalga Çıkışı Seviye Doğruluğu Testi\n";
+                        Table ARFP8_table = Absolute_WordTable.ARFP_CreateTable_1(Absolute_RF_Power.ARFP_T8_Frekans, Absolute_RF_Power.ARFP_T8_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T8_OlculenDeger, Absolute_RF_Power.ARFP_T8_AltSınır,
+                                                                                  Absolute_RF_Power.ARFP_T8_Fark, Absolute_RF_Power.ARFP_T8_ÜstSınır, Absolute_RF_Power.ARFP_T8_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
+                        tables.Add(ARFP8_table);
+                        header.Add(txt_ARFP8);
+                        ARFPBool[7] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_9.Checked)
+                    {
+                        string txt_ARFP9 = TableName + "Mikrodalga Çıkışı Duran Dalga Oranı (SWR) Testi  @11 dBm\n";
+                        Table ARFP9_table = Absolute_WordTable.ARFP_CreateTable_2(Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T9_SWR_Seviye, Absolute_RF_Power.ARFP_T9_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T9_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T9_SWR_Belirsizlik, "Üst Sınır");
+                        tables.Add(ARFP9_table);
+                        header.Add(txt_ARFP9);
+                        ARFPBool[8] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_10.Checked)
+                    {
+                        string txt_ARFP10 = TableName + "Mikrodalga Çıkışı Duran Dalga Oranı (SWR) Testi  @3 dBm\n";
+                        Table ARFP10_table = Absolute_WordTable.ARFP_CreateTable_2(Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T10_SWR_Seviye, Absolute_RF_Power.ARFP_T10_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T10_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T10_SWR_Belirsizlik, "Üst Sınır");
+                        tables.Add(ARFP10_table);
+                        header.Add(txt_ARFP10);
+                        ARFPBool[9] = true;
+                        SaveBasarim();
+                    }
+                    if (ARFP_11.Checked)
+                    {
+                        string txt_ARFP11 = TableName + "Mikrodalga Çıkışı Duran Dalga Oranı (SWR) Testi  @-9 dBm\n";
+                        Table ARFP11_table = Absolute_WordTable.ARFP_CreateTable_2(Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T11_SWR_Seviye, Absolute_RF_Power.ARFP_T11_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T11_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T11_SWR_Belirsizlik, "Üst Sınır");
+                        tables.Add(ARFP11_table);
+                        header.Add(txt_ARFP11);
+                        ARFPBool[10] = true;
+                        SaveBasarim();
+                    }
+                    CreateXML.Add_ARFP_Result(xml, TableName, XML_Arrays, ARFPBool);
+
+                }
+
+                #endregion
+
+                    for (int i = 0; i < 100; i++)
                 {
 
                 }
