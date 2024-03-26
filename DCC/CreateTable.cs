@@ -1642,12 +1642,12 @@ namespace TabloOlusturma
         }
         public void HeaderPage(KbysEntity kbysEntity)
         {
-            string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifika.docx";
+            string originalFilePath = "C:\\Users\\burak\\source\\repos\\DCC-V1.3\\DCC\\bin\\Debug\\net8.0-windows\\sertifikaC.docx";
             string newFilePath = string.Empty;
 
             // Kullanıcıya kaydedilecek konumu seçme iletişim kutusunu göster
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = "C:\\Users\\ABDURRAHMAN\\Desktop";
+            saveFileDialog.InitialDirectory = "C:\\Users\\burak\\Desktop";
             saveFileDialog.Filter = "Word Dosyaları|*.docx";
             saveFileDialog.Title = "Kopyayı kaydedin";
 
@@ -1730,7 +1730,7 @@ namespace TabloOlusturma
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifikaC.docx";
+                    string originalFilePath = "C:\\Users\\burak\\source\\repos\\DCC-V1.3\\DCC\\bin\\Debug\\net8.0-windows\\sertifikaC.docx";
                     string copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
