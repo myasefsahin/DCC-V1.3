@@ -841,8 +841,6 @@ namespace DCC
                 XML_Arrays.EE_ClearData();
                 XML_Arrays.CF_ClearData();
                 XML_Arrays.CIS_ClearData();
-                XML_Arrays.Noise_ClearData();
-                XML_Arrays.Absolute_RF_Power_ClearData();
                 CreateCertificate_Button.Enabled = false;
 
             }
