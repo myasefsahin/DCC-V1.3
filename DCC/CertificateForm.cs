@@ -42,7 +42,7 @@ namespace DCC
         CIS_DataWord CIS_DataWord = new CIS_DataWord();
         CF_WordTable CF_Word_Table = new CF_WordTable();
         CIS_WordTable CIS_Word_Table = new CIS_WordTable();
-        CreateTable createTable = new CreateTable();
+        CreateTable createtable = new CreateTable();
         Noise_DataWord Noise_DataWord = new Noise_DataWord();
         Noise_WordTable Noise_WordTable = new Noise_WordTable();
         Absolute_RF_Power_DataWord Absolute_RF_Power = new Absolute_RF_Power_DataWord();
@@ -843,7 +843,7 @@ namespace DCC
                 XML_Arrays.CIS_ClearData();
                 XML_Arrays.Noise_ClearData();
                 XML_Arrays.Absolute_RF_Power_ClearData();
-
+                CreateCertificate_Button.Enabled = false;
 
             }
             else if (result == DialogResult.No)
@@ -895,7 +895,7 @@ namespace DCC
                     }
                 }
 
-                createTable.ResultPages(tables);
+                createtable.ResultPages(tables);
 
 
                 if (tables.Count >= 1)
