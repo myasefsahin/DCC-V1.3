@@ -14,6 +14,7 @@ using OfficeOpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DCC;
 using System.Xml;
+using TabloOlusturma;
 
 namespace DCC
 {
@@ -42,7 +43,7 @@ namespace DCC
         CIS_DataWord CIS_DataWord = new CIS_DataWord();
         CF_WordTable CF_Word_Table = new CF_WordTable();
         CIS_WordTable CIS_Word_Table = new CIS_WordTable();
-        CreateTemplate createTemplate = new CreateTemplate();
+        CreateTable createtable = new CreateTable();
         Noise_DataWord Noise_DataWord = new Noise_DataWord();
         Noise_WordTable Noise_WordTable = new Noise_WordTable();
         Absolute_RF_Power_DataWord Absolute_RF_Power = new Absolute_RF_Power_DataWord();
@@ -293,7 +294,7 @@ namespace DCC
 
         private void ReceiveData_Button_Click(object sender, EventArgs e)
         {
-            CreateCertificate_Button.Enabled = true;
+            
 
             #region dataword çalıştırma
             try
@@ -816,16 +817,17 @@ namespace DCC
                 XML_Arrays.EE_ClearData();
                 XML_Arrays.CF_ClearData();
                 XML_Arrays.CIS_ClearData();
-
+                CreateCertificate_Button.Enabled = false;
 
 
 
             }
             else if (result == DialogResult.No)
             {
+                CreateCertificate_Button.Enabled = true;
 
             }
-
+            ReceiveData_Button.Enabled = false;
             #endregion
 
 
@@ -871,7 +873,7 @@ namespace DCC
                     }
                 }
 
-                createTemplate.ResultPages(tables);
+                createtable.ResultPages(tables);
 
 
                 if (tables.Count >= 1)
@@ -927,6 +929,8 @@ namespace DCC
                 LabelProgress.Text = @"ERROR!: XML";
                 MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
 
         }
         #endregion
