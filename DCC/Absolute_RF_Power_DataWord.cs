@@ -24,7 +24,7 @@ namespace DCC
         public void main(string ExcelDosyaYolu, string pageName, int satır, string sütun)
         {
 
-          
+
 
             int harfIndex = columnName.IndexOf(sütun);
             using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
@@ -35,7 +35,7 @@ namespace DCC
 
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
 
-                int rowCount = worksheet.Dimension.Rows;
+                int rowCount = worksheet.Dimension.End.Row;
 
 
                 string[] cellValue = new string[rowCount];
@@ -52,7 +52,8 @@ namespace DCC
                 }
 
                 // S-Parametre değerlerinin çekimi
-                for (int i = satır; i < ARFP_T1_Frekans.Count + satır; i++){
+                for (int i = satır; i < ARFP_T1_Frekans.Count + satır; i++)
+                {
 
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -65,22 +66,22 @@ namespace DCC
                     calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 4] + i].Value);
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
                     CalculateEntity formattedEntity = NumberFormatter.deneme(calculateEntity);
-                    
+
                     ARFP_T1_Sapma.Add(formattedEntity.measurent);
                     ARFP_T1_Belirsizlik.Add(formattedEntity.uncertainty);
                 }
 
-                for (int i = 7; i <= 76; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["I" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T2_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T2_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T2_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T2_Frekans.Count + satır; i++)
                 {
 
                     NumberFormatter formatter = new NumberFormatter();
@@ -99,17 +100,17 @@ namespace DCC
                 }
 
 
-                for (int i = 7; i <= 39; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["Q" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T3_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T3_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T3_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T3_Frekans.Count + satır; i++)
                 {
 
                     NumberFormatter formatter = new NumberFormatter();
@@ -128,17 +129,17 @@ namespace DCC
                 }
 
 
-                for (int i = 7; i <= 22; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["Y" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 24] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T4_T5_T6_frekans.Add(cellValue[i - 7]);
+                        ARFP_T4_T5_T6_frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T4_T5_T6_frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T4_T5_T6_frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -171,17 +172,17 @@ namespace DCC
                 }
 
 
-                for (int i = 7; i <= 292; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["AQ" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 42] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T7_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T7_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T7_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T7_Frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -199,17 +200,17 @@ namespace DCC
 
                 }
 
-                for (int i = 7; i <= 86; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["AY" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 50] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T8_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T8_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T8_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T8_Frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -227,17 +228,17 @@ namespace DCC
 
                 }
 
-                for (int i = 7; i <= 39; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["BG" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 58] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T9_T10_T11_frekans.Add(cellValue[i - 7]);
+                        ARFP_T9_T10_T11_frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T9_T10_T11_frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T9_T10_T11_frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -305,8 +306,8 @@ namespace DCC
         public ArrayList ARFP_T3_ÜstSınır { get; set; }
         public ArrayList ARFP_T3_Belirsizlik { get; set; }
 
-   
-        
+
+
         public ArrayList ARFP_T4_T5_T6_frekans { get; set; }
         public ArrayList ARFP_T4_SWR_Seviye { get; set; }
         public ArrayList ARFP_T4_SWR_OlculenDeger { get; set; }
@@ -446,7 +447,7 @@ namespace DCC
 
         public void ClearData()
         {
-            ARFP_T1_Frekans.Clear();                      
+            ARFP_T1_Frekans.Clear();
             ARFP_T1_Cıkıs_Gücü.Clear();
             ARFP_T1_Olculen_Güc.Clear();
             ARFP_T1_AltSınır.Clear();
@@ -485,14 +486,14 @@ namespace DCC
             ARFP_T5_SWR_OlculenDeger.Clear();
             ARFP_T5_SWR_MaksimumDeger.Clear();
             ARFP_T5_SWR_Belirsizlik.Clear();
-            
+
 
             ARFP_T6_SWR_Seviye.Clear();
             ARFP_T6_SWR_OlculenDeger.Clear();
             ARFP_T6_SWR_MaksimumDeger.Clear();
             ARFP_T6_SWR_Belirsizlik.Clear();
 
-            
+
             ARFP_T7_Frekans.Clear();
             ARFP_T7_Cıkıs_Gücü.Clear();
             ARFP_T7_OlculenGuc.Clear();
@@ -529,10 +530,10 @@ namespace DCC
             ARFP_T11_SWR_MaksimumDeger.Clear();
             ARFP_T11_SWR_Belirsizlik.Clear();
         }
-         
-    }
-
-
-
 
     }
+
+
+
+
+}
