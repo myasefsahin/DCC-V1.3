@@ -35,7 +35,7 @@ namespace DCC
 
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
 
-                int rowCount = worksheet.Dimension.Rows;
+                int rowCount = worksheet.Dimension.End.Row;
 
 
                 string[] cellValue = new string[rowCount];
@@ -70,17 +70,17 @@ namespace DCC
                     ARFP_T1_Belirsizlik.Add(formattedEntity.uncertainty);
                 }
 
-                for (int i = 7; i <= 76; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["I" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T2_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T2_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T2_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T2_Frekans.Count + satır; i++)
                 {
 
                     NumberFormatter formatter = new NumberFormatter();
@@ -99,17 +99,17 @@ namespace DCC
                 }
 
 
-                for (int i = 7; i <= 39; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["Q" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T3_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T3_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T3_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T3_Frekans.Count + satır; i++)
                 {
 
                     NumberFormatter formatter = new NumberFormatter();
@@ -128,17 +128,17 @@ namespace DCC
                 }
 
 
-                for (int i = 7; i <= 22; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["Y" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 24] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T4_T5_T6_frekans.Add(cellValue[i - 7]);
+                        ARFP_T4_T5_T6_frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T4_T5_T6_frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T4_T5_T6_frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -171,17 +171,17 @@ namespace DCC
                 }
 
 
-                for (int i = 7; i <= 292; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["AQ" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 42] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T7_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T7_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T7_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T7_Frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -199,17 +199,17 @@ namespace DCC
 
                 }
 
-                for (int i = 7; i <= 86; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["AY" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 50] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T8_Frekans.Add(cellValue[i - 7]);
+                        ARFP_T8_Frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T8_Frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T8_Frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();
@@ -227,17 +227,17 @@ namespace DCC
 
                 }
 
-                for (int i = 7; i <= 39; i++)
+                for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = Convert.ToString(worksheet.Cells["BG" + i].Value);
-                    if (!string.IsNullOrEmpty(cellValue[i - 7]))
+                    cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 58] + i].Value);
+                    if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
-                        ARFP_T9_T10_T11_frekans.Add(cellValue[i - 7]);
+                        ARFP_T9_T10_T11_frekans.Add(cellValue[i - satır]);
                     }
                 }
 
 
-                for (int i = 7; i < ARFP_T9_T10_T11_frekans.Count + 7; i++)
+                for (int i = satır; i < ARFP_T9_T10_T11_frekans.Count + satır; i++)
                 {
                     NumberFormatter formatter = new NumberFormatter();
                     CalculateEntity calculateEntity = new CalculateEntity();

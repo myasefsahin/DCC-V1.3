@@ -18,7 +18,6 @@ using Table = DocumentFormat.OpenXml.Wordprocessing.Table;
 using System.IO;
 using System.Xml.XPath;
 using DocumentFormat.OpenXml.Presentation;
-using TabloOlusturma;
 
 namespace DCC
 {
