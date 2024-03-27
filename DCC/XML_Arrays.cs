@@ -374,6 +374,38 @@ namespace DCC
             XML_ARFP_T11_SWR_OlculenDeger = new ArrayList();
             XML_ARFP_T11_SWR_MaksimumDeger = new ArrayList();
             XML_ARFP_T11_SWR_Belirsizlik = new ArrayList();
+
+            XML_RFD_T1_Frekans = new ArrayList();
+            XML_RFD_T1_GostergeDegeri = new ArrayList();
+            XML_RFD_T1_AltSınır = new ArrayList();
+            XML_RFD_T1_OlculenDeger = new ArrayList();
+            XML_RFD_T1_OlculenFark = new ArrayList();
+            XML_RFD_T1_ÜstSınır = new ArrayList();
+            XML_RFD_T1_Belirsizlik = new ArrayList();
+
+            XML_RFD_T2_Frekans = new ArrayList();
+            XML_RFD_T2_Nom_Guc_Lvl = new ArrayList();
+            XML_RFD_T2_OlculenDeger = new ArrayList();
+            XML_RFD_T2_AltSınır = new ArrayList();
+            XML_RFD_T2_Nom_Guc_Lvl_fark = new ArrayList();
+            XML_RFD_T2_ÜstSınır = new ArrayList();
+            XML_RFD_T2_Belirsizlik = new ArrayList();
+
+            XML_RFD_T3_Frekans = new ArrayList();
+            XML_RFD_T3_NominalGuc = new ArrayList();
+            XML_RFD_T3_AltSınır = new ArrayList();
+            XML_RFD_T3_OlculenDeger = new ArrayList();
+            XML_RFD_T3_ÜstSınır = new ArrayList();
+            XML_RFD_T3_Fark = new ArrayList();
+            XML_RFD_T3_Belirsizlik = new ArrayList();
+
+            XML_RFD_T4_Min_Guc_lvl = new ArrayList();
+            XML_RFD_T4_Max_Guc_lvl = new ArrayList();
+            XML_RFD_T4_Frekans = new ArrayList();
+            XML_RFD_T4_AltSınır = new ArrayList();
+            XML_RFD_T4_Fark = new ArrayList();
+            XML_RFD_T4_UstSınır = new ArrayList();
+            XML_RFD_T4_Belirsizlik = new ArrayList();
         }
 
         public void SP_ClearData()
@@ -442,12 +474,11 @@ namespace DCC
             {
 
 
-                // Excel'in 13. sayfasındaki veriler
 
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
 
                 int rowCount = worksheet.Dimension.Rows;
-                //int satirSayisi = rowCount - 6;
+   
 
                 string[] cellValue = new string[rowCount];
 
@@ -1152,5 +1183,203 @@ namespace DCC
         }
 
         #endregion
+
+        #region RF Difference
+
+            public void RF_Diff_DataXml(string ExcelDosyaYolu, string pageName, int satır, string sütun)
+            {
+
+                int harfIndex = columnName.IndexOf(sütun);
+                using (var package = new ExcelPackage(new FileInfo(ExcelDosyaYolu)))
+                {
+
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[pageName];
+                    int rowCount = worksheet.Dimension.End.Row;
+                    string[] cellValue = new string[rowCount];
+
+
+                    for (int i = satır; i <= rowCount; i++)
+                    {
+                        cellValue[i - satır] = Convert.ToString(worksheet.Cells[sütun + i].Value);
+                        if (!string.IsNullOrEmpty(cellValue[i - satır]))
+                        {
+                            XML_RFD_T1_Frekans.Add(cellValue[i - satır]);
+                        }
+                    }
+
+
+                    for (int i = satır; i < XML_RFD_T1_Frekans.Count + satır; i++)
+                    {
+
+                        NumberFormatter formatter = new NumberFormatter();
+                        CalculateEntity calculateEntity = new CalculateEntity();
+
+                        XML_RFD_T1_GostergeDegeri.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
+                        XML_RFD_T1_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
+                        XML_RFD_T1_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 3] + i].Value));
+                        XML_RFD_T1_OlculenFark.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 4] + i].Value));
+                        XML_RFD_T1_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 5] + i].Value));
+                        XML_RFD_T1_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 6] + i].Value));
+
+
+                    }
+
+
+                    for (int i = satır; i <= rowCount; i++)
+                    {
+                        cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
+                        if (!string.IsNullOrEmpty(cellValue[i - satır]))
+                        {
+                            XML_RFD_T2_Frekans.Add(cellValue[i - satır]);
+                        }
+                    }
+
+
+                    for (int i = satır; i < XML_RFD_T2_Frekans.Count + satır; i++)
+                    {
+
+                        NumberFormatter formatter = new NumberFormatter();
+                        CalculateEntity calculateEntity = new CalculateEntity();
+
+                         XML_RFD_T2_Nom_Guc_Lvl.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
+                         XML_RFD_T2_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 10] + i].Value));
+                         XML_RFD_T2_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 11] + i].Value));
+                         XML_RFD_T2_Nom_Guc_Lvl_fark.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 12] + i].Value));
+                         XML_RFD_T2_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 13] + i].Value));
+                         XML_RFD_T2_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 14] + i].Value));
+
+
+                    }
+
+
+                    for (int i = satır; i <= rowCount; i++)
+                    {
+                        cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + i].Value);
+                        if (!string.IsNullOrEmpty(cellValue[i - satır]))
+                        {
+                            XML_RFD_T3_Frekans.Add(cellValue[i - satır]);
+                        }
+                    }
+
+
+                    for (int i = 7; i < XML_RFD_T3_Frekans.Count + satır; i++)
+                    {
+
+                        NumberFormatter formatter = new NumberFormatter();
+                        CalculateEntity calculateEntity = new CalculateEntity();
+
+                        XML_RFD_T3_NominalGuc.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 17] + i].Value));
+                        XML_RFD_T3_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 18] + i].Value));
+                        XML_RFD_T3_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 19] + i].Value));
+                        XML_RFD_T3_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 20] + i].Value));
+                        XML_RFD_T3_Fark.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 21] + i].Value));
+                        XML_RFD_T3_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 22] + i].Value));
+
+                    }
+
+
+                    for (int i = satır; i <= rowCount; i++)
+                    {
+                        cellValue[i - satır] = Convert.ToString(worksheet.Cells[columnName[harfIndex + 26] + i].Value);
+                        if (!string.IsNullOrEmpty(cellValue[i - satır]))
+                        {
+                            XML_RFD_T4_Frekans.Add(cellValue[i - satır]);
+                        }
+                    }
+
+
+                    for (int i = 7; i < XML_RFD_T4_Frekans.Count + satır; i++)
+                    {
+                        NumberFormatter formatter = new NumberFormatter();
+                        CalculateEntity calculateEntity = new CalculateEntity();
+
+                        XML_RFD_T4_Min_Guc_lvl.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 24] + i].Value));
+                        XML_RFD_T4_Max_Guc_lvl.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 25] + i].Value));
+                        XML_RFD_T4_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 27] + i].Value));
+                        XML_RFD_T4_Fark.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 28] + i].Value));
+                        XML_RFD_T4_UstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 29] + i].Value));
+                        XML_RFD_T4_Belirsizlik.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 30] + i].Value));
+
+                    }
+                }
+            }
+
+
+            public ArrayList XML_RFD_T1_Frekans { get; set; }
+            public ArrayList XML_RFD_T1_GostergeDegeri { get; set; }
+            public ArrayList XML_RFD_T1_AltSınır { get; set; }
+            public ArrayList XML_RFD_T1_OlculenDeger { get; set; }
+            public ArrayList XML_RFD_T1_OlculenFark { get; set; }
+            public ArrayList XML_RFD_T1_ÜstSınır { get; set; }
+            public ArrayList XML_RFD_T1_Belirsizlik { get; set; }
+
+
+            public ArrayList XML_RFD_T2_Frekans { get; set; }
+            public ArrayList XML_RFD_T2_Nom_Guc_Lvl { get; set; }
+            public ArrayList XML_RFD_T2_OlculenDeger { get; set; }
+            public ArrayList XML_RFD_T2_AltSınır { get; set; }
+            public ArrayList XML_RFD_T2_Nom_Guc_Lvl_fark { get; set; }
+            public ArrayList XML_RFD_T2_ÜstSınır { get; set; }
+            public ArrayList XML_RFD_T2_Belirsizlik { get; set; }
+
+
+            public ArrayList XML_RFD_T3_Frekans { get; set; }
+            public ArrayList XML_RFD_T3_NominalGuc { get; set; }
+            public ArrayList XML_RFD_T3_AltSınır { get; set; }
+            public ArrayList XML_RFD_T3_OlculenDeger { get; set; }
+            public ArrayList XML_RFD_T3_ÜstSınır { get; set; }
+            public ArrayList XML_RFD_T3_Fark { get; set; }
+            public ArrayList XML_RFD_T3_Belirsizlik { get; set; }
+
+
+
+            public ArrayList XML_RFD_T4_Min_Guc_lvl { get; set; }
+            public ArrayList XML_RFD_T4_Max_Guc_lvl { get; set; }
+            public ArrayList XML_RFD_T4_Frekans { get; set; }
+            public ArrayList XML_RFD_T4_AltSınır { get; set; }
+            public ArrayList XML_RFD_T4_Fark { get; set; }
+            public ArrayList XML_RFD_T4_UstSınır { get; set; }
+            public ArrayList XML_RFD_T4_Belirsizlik { get; set; }
+
+
+            public void RF_Difference_ClearData()
+            {
+                XML_RFD_T1_Frekans.Clear();
+                XML_RFD_T1_GostergeDegeri.Clear();
+                XML_RFD_T1_AltSınır.Clear();
+                XML_RFD_T1_OlculenDeger.Clear();
+                XML_RFD_T1_OlculenFark.Clear();
+                XML_RFD_T1_ÜstSınır.Clear();
+                XML_RFD_T1_Belirsizlik.Clear();
+
+                XML_RFD_T2_Frekans.Clear();
+                XML_RFD_T2_Nom_Guc_Lvl.Clear();
+                XML_RFD_T2_OlculenDeger.Clear();
+                XML_RFD_T2_AltSınır.Clear();
+                XML_RFD_T2_Nom_Guc_Lvl_fark.Clear();
+                XML_RFD_T2_ÜstSınır.Clear();
+                XML_RFD_T2_Belirsizlik.Clear();
+
+                XML_RFD_T3_Frekans.Clear();
+                XML_RFD_T3_NominalGuc.Clear();
+                XML_RFD_T3_AltSınır.Clear();
+                XML_RFD_T3_OlculenDeger.Clear();
+                XML_RFD_T3_ÜstSınır.Clear();
+                XML_RFD_T3_Fark.Clear();
+                XML_RFD_T3_Belirsizlik.Clear();
+
+                XML_RFD_T4_Min_Guc_lvl.Clear();
+                XML_RFD_T4_Max_Guc_lvl.Clear();
+                XML_RFD_T4_Frekans.Clear();
+                XML_RFD_T4_AltSınır.Clear();
+                XML_RFD_T4_Fark.Clear();
+                XML_RFD_T4_UstSınır.Clear();
+                XML_RFD_T4_Belirsizlik.Clear();
+            }
+        #endregion
     }
 }
+
+
+
+
