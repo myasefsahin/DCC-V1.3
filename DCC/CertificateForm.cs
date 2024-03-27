@@ -49,6 +49,7 @@ namespace DCC
         Absolute_RF_Power_DataWord Absolute_RF_Power = new Absolute_RF_Power_DataWord();
         AbsoluteRF_Power_Word_Table Absolute_WordTable = new AbsoluteRF_Power_Word_Table();
         RF_Difference_DataWord RF_Difference_DataWord = new RF_Difference_DataWord();
+        RF_Difference_WordTable RF_Difference_wordTable = new RF_Difference_WordTable();
         int satır;
         string sütun;
 
@@ -741,14 +742,72 @@ namespace DCC
                     CreateXML.Add_ARFP_Result(xml, TableName, XML_Arrays, ARFPBool);
 
                 }
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 4)
-                {
-                    RF_Difference_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
 
-                }
 
 
                 #endregion
+
+                #region RF Difference
+                else if (MeasurementTypes_ComboBox.SelectedIndex == 4)
+                {
+                    RF_Difference_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.RF_Diff_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
+
+                    List<bool> RFDBool = new List<bool>(3) { false, false, false, false};
+
+                    if (RF_Diff_1.Checked = true) {
+
+                        string txt_RFD1 = TableName + "Maksimum Çıkış Gücü Testi \n";
+                        Table RFD1_table = RF_Difference_wordTable.RF_Diff_Table(RF_Difference_DataWord.RFD_T1_Frekans, RF_Difference_DataWord.RFD_T1_GostergeDegeri, RF_Difference_DataWord.RFD_T1_AltSınır, RF_Difference_DataWord.RFD_T1_OlculenDeger, RF_Difference_DataWord.RFD_T1_OlculenFark,
+                                             RF_Difference_DataWord.RFD_T1_ÜstSınır, RF_Difference_DataWord.RFD_T1_Belirsizlik, "Frekans (GHz)","Gösterge Değeri (dBm)","Alt Sınır (dBm)","Ölçülen Değer (dBm)","Ölçülen Fark (dB)","Üst Sınır (dBm)","Belirsizlik (dB)");
+                        tables.Add(RFD1_table);
+                        header.Add(txt_RFD1);
+                        RFDBool[0] = true;
+                        SaveBasarim();
+                    }
+                    if (RF_Diff_2.Checked = true)
+                    {
+
+                        string txt_RFD2 = TableName + "  Frekansa Göre Seviye Doğruluğu Testi \n";
+                        Table RFD2_table = RF_Difference_wordTable.RF_Diff_Table(RF_Difference_DataWord.RFD_T2_Frekans, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl, RF_Difference_DataWord.RFD_T2_OlculenDeger, RF_Difference_DataWord.RFD_T2_AltSınır, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl_fark,
+                                             RF_Difference_DataWord.RFD_T2_ÜstSınır, RF_Difference_DataWord.RFD_T2_Belirsizlik, "Frekans (GHz))", "Nominal Güç Seviyesi(dBm)", "Ölçülen Değer (dBm)", "Ölçülen Değer (dBm)", "Nominal Güç Seviye Farkı (dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
+                        tables.Add(RFD2_table);
+                        header.Add(txt_RFD2);
+                        RFDBool[1] = true;
+                        SaveBasarim();
+                    }
+
+                    if (RF_Diff_3.Checked = true)
+                    {
+
+                        string txt_RFD3 = TableName + "  Güç Aralığına Göre Seviye Doğruluğu Testi\n";
+                        Table RFD3_table = RF_Difference_wordTable.RF_Diff_Table(RF_Difference_DataWord.RFD_T3_Frekans, RF_Difference_DataWord.RFD_T3_NominalGuc, RF_Difference_DataWord.RFD_T3_AltSınır, RF_Difference_DataWord.RFD_T3_OlculenDeger, RF_Difference_DataWord.RFD_T3_ÜstSınır,
+                                             RF_Difference_DataWord.RFD_T3_Fark, RF_Difference_DataWord.RFD_T3_Belirsizlik, "Frekans", "Nominal Güç (dBm)", "Alt sınır (dBm)", "Ölçülen Değer (dBm)", "Üst Sınır (dBm)","Fark(dB)","Belirsizlik (dB)");
+                        tables.Add(RFD3_table);
+                        header.Add(txt_RFD3);
+                        RFDBool[2] = true;
+                        SaveBasarim();
+                    }
+                    if (RF_Diff_4.Checked = true)
+                    {
+
+                        string txt_RFD3 = TableName + "  Özet\n";
+                        Table RFD3_table = RF_Difference_wordTable.RF_Diff_Table(RF_Difference_DataWord.RFD_T4_Min_Guc_lvl, RF_Difference_DataWord.RFD_T4_Max_Guc_lvl, RF_Difference_DataWord.RFD_T4_Frekans, RF_Difference_DataWord.RFD_T4_AltSınır, RF_Difference_DataWord.RFD_T4_Fark,
+                                             RF_Difference_DataWord.RFD_T4_UstSınır, RF_Difference_DataWord.RFD_T4_Belirsizlik, "Min.Güç Seviyesi (dBm)", "Max. Güç Seviyesi (dBm)", "Frekans", "Alt Sınır (dB)", "Fark(dB)", "Üst Sınır (dB)","Belirsizlik (dB)");  
+                        tables.Add(RFD3_table);
+                        header.Add(txt_RFD3);
+                        RFDBool[2] = true;
+                        SaveBasarim();
+                    }
+                    CreateXML.Add_RFD_result(xml, TableName, XML_Arrays, RFDBool);
+
+
+                }
+                #endregion
+
+
+                #endregion
+
                 #region Progress Bar Control
 
                 for (int i = 0; i < 100; i++)
@@ -767,49 +826,12 @@ namespace DCC
                 LabelProgress.Text = @"ERROR!: Excel";
                 MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            #endregion
+
             #endregion
 
             #region Yeniden Yazdırma
 
             DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-            checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
-            checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
-            checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
-            checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
-
-            checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
-
-            CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
-
-            CIS_CheckBox.Checked = false;
-
-            NS_checkBoxENR.Checked = false; NS_checkBox_DC_ON.Checked = false; NS_checkBox_DC_OFF.Checked = false;
-
-            ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
-            ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
-
-            ExcelDosyaYolu = "";
-            ExcelFileName_TextBox.Hint = "Please Select Xml File";
-            ExcelFileName_TextBox.Text = "";
-            ExcelPage_ComboBox.Items.Clear();
-            progressBar.Value = 0;
-            sp_DataWord.ClearData();
-            CF_DataWord.ClearData();
-            EE_DataWord.ClearData();
-            CIS_DataWord.ClearData();
-            Noise_DataWord.ClearData();
-            Absolute_RF_Power.ClearData();
-            XML_Arrays.SP_ClearData();
-            XML_Arrays.EE_ClearData();
-            XML_Arrays.CF_ClearData();
-            XML_Arrays.CIS_ClearData();
-            XML_Arrays.Noise_ClearData();
-            XML_Arrays.Absolute_RF_Power_ClearData();
-
-
-
 
             if (result == DialogResult.Yes)
             {
@@ -849,6 +871,40 @@ namespace DCC
             }
             else if (result == DialogResult.No)
             {
+                checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
+                checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
+                checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
+                checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
+
+                checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
+
+                CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
+
+                CIS_CheckBox.Checked = false;
+
+                NS_checkBoxENR.Checked = false; NS_checkBox_DC_ON.Checked = false; NS_checkBox_DC_OFF.Checked = false;
+
+                ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
+                ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
+
+                ExcelDosyaYolu = "";
+                ExcelFileName_TextBox.Hint = "Please Select Xml File";
+                ExcelFileName_TextBox.Text = "";
+                ExcelPage_ComboBox.Items.Clear();
+                progressBar.Value = 0;
+                sp_DataWord.ClearData();
+                CF_DataWord.ClearData();
+                EE_DataWord.ClearData();
+                CIS_DataWord.ClearData();
+                Noise_DataWord.ClearData();
+                Absolute_RF_Power.ClearData();
+                XML_Arrays.SP_ClearData();
+                XML_Arrays.EE_ClearData();
+                XML_Arrays.CF_ClearData();
+                XML_Arrays.CIS_ClearData();
+                XML_Arrays.Noise_ClearData();
+                XML_Arrays.Absolute_RF_Power_ClearData();
+
                 ReceiveData_Button.Enabled = false;
                 SelectExcel_Button.Enabled = false;
             }
