@@ -32,6 +32,8 @@ namespace DCC
 
         static (decimal, int) IlkAdim(decimal measurent, decimal uncertainty)
         {
+
+            
             int basamakSayisi = 0;
 
             if (uncertainty >= 0 && uncertainty < 1)
@@ -53,7 +55,7 @@ namespace DCC
 
                 // Virgülden sonraki ilk sıfırdan büyük basamağa kadar yuvarla
 
-                decimal uncertainty_formatli = Math.Round(uncertainty, basamakSayisi);
+                decimal uncertainty_formatli = Math.Round(uncertainty, basamakSayisi, MidpointRounding.ToPositiveInfinity);
                 string temp1 = uncertainty_formatli.ToString();
                 char sonIndex = temp1[temp1.Length - 1];
                 char sonOncekiIndex = temp1[temp1.Length - 2];
@@ -63,7 +65,18 @@ namespace DCC
                 {
                     temp1 = temp1 + "0";
                     Decimal formatliTemp1 = Convert.ToDecimal(temp1);
-                    formatliTemp1 = Math.Round(formatliTemp1, basamakSayisi + 1);
+                    
+                    formatliTemp1 = Math.Round(formatliTemp1, basamakSayisi+1, MidpointRounding.ToPositiveInfinity);
+                    uncertainty_formatli = formatliTemp1;
+
+                }
+
+                if (sonIndex != '0' && (sonOncekiIndex == '.' || sonOncekiIndex == ','))
+                {
+                    temp1 = temp1 + "0";
+                    Decimal formatliTemp1 = Convert.ToDecimal(temp1);
+                    
+                    formatliTemp1 = Math.Round(formatliTemp1, basamakSayisi+1, MidpointRounding.ToPositiveInfinity);
                     uncertainty_formatli = formatliTemp1;
 
                 }
@@ -71,15 +84,15 @@ namespace DCC
                 return (uncertainty_formatli, basamakSayisi);
             }
             else if (uncertainty >= 10)
-            {
-                decimal uncertainty_formatli = Math.Round(uncertainty);
-                Math.Round(measurent);
+            {   
+                decimal uncertainty_formatli = Math.Round(uncertainty, MidpointRounding.ToPositiveInfinity);
+                Math.Round(measurent, MidpointRounding.ToPositiveInfinity);
                 return (uncertainty_formatli, 0); // Virgül sonrası basamak sayısını 0 olarak döndür
             }
             else if (uncertainty > 1 && uncertainty < 10)
             {
 
-                decimal uncertainty_formatli = (decimal)Math.Round(uncertainty, 1);
+                decimal uncertainty_formatli = (decimal)Math.Round(uncertainty, 1, MidpointRounding.ToPositiveInfinity);
 
 
                 return (uncertainty_formatli, 1);
@@ -95,11 +108,12 @@ namespace DCC
 
         static string IkinciAdim(decimal measurent, int virgul_sonrasi_basamak_sayisi, decimal belirsizlik)
         {
-
+           
 
             if (belirsizlik > 1 && belirsizlik < 10)
             {
-                measurent = (decimal)Math.Round(measurent, 1);
+                
+                measurent = (decimal)Math.Round(measurent, 1, MidpointRounding.ToPositiveInfinity);
                 string formatli_measurent1 = measurent.ToString();
                 return formatli_measurent1;
 
