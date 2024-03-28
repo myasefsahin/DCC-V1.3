@@ -796,7 +796,7 @@ namespace DCC
                                              RF_Difference_DataWord.RFD_T4_UstSınır, RF_Difference_DataWord.RFD_T4_Belirsizlik, "Min.Güç Seviyesi (dBm)", "Max. Güç Seviyesi (dBm)", "Frekans", "Alt Sınır (dB)", "Fark(dB)", "Üst Sınır (dB)","Belirsizlik (dB)");  
                         tables.Add(RFD3_table);
                         header.Add(txt_RFD3);
-                        RFDBool[2] = true;
+                        RFDBool[3] = true;
                         SaveBasarim();
                     }
                     CreateXML.Add_RFD_result(xml, TableName, XML_Arrays, RFDBool);
