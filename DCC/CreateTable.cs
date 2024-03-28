@@ -18,8 +18,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace DCC
 {
-    class CreateTable
+    public class CreateTable
     {
+        public CreateTable()
+        {
+
+        }
+
         #region Reel & Imaginary
         public Table CreateReelImg(ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc)
         {
@@ -619,6 +624,7 @@ namespace DCC
                     new TableWidth() { Type = TableWidthUnitValues.Auto },
                     new TableLook() { Val = "04A0" }
                 ),
+
                 new TableGrid(
                     new GridColumn() { Width = "833" } // Define the width for each column
                 ),
@@ -630,6 +636,7 @@ namespace DCC
                     new InsideHorizontalBorder() { Val = BorderValues.Single, Size = 9 },
                     new InsideVerticalBorder() { Val = BorderValues.Single, Size = 9 }
                 ),
+
                 new TableRow(
 
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "1488" }),
@@ -701,20 +708,10 @@ namespace DCC
                 }
             }
 
-            // Apply bold formatting to the runs in the first row
-            //TableRow firstRow = table.Elements<TableRow>().FirstOrDefault();
-            //if (firstRow != null) {
-            //    foreach (Run run in firstRow.Descendants<Run>()) {
-            //        run.RunProperties = new RunProperties(new Bold());
-            //    }
-            //}
 
-            // Import data from Form Interface for Reel & Imaginary
             for (int i = 0; i < Freq.Count; i++)
             {
 
-                //double swrData = (double)System.Math.Round(Convert.ToDouble(Swr[i]), 4);
-                //double swruncData = (double)System.Math.Round(Convert.ToDouble(SwrUnc[i]), 4);
 
                 TableRow row = new TableRow(
 
@@ -788,6 +785,7 @@ namespace DCC
                 new TableGrid(
                     new GridColumn() { Width = "833" } // Define the width for each column
                 ),
+
                 new TableBorders(
                     new TopBorder() { Val = BorderValues.Single, Size = 9 },
                     new BottomBorder() { Val = BorderValues.Single, Size = 9 },
@@ -861,26 +859,16 @@ namespace DCC
                             paragraph.InsertAt(paragraphProperties, 0);
                         }
 
-                        // Set text alignment
+
                         paragraphProperties.Append(new Justification() { Val = JustificationValues.Center }); // Horizontally center
                     }
                 }
             }
 
-            // Apply bold formatting to the runs in the first row
-            //TableRow firstRow = table.Elements<TableRow>().FirstOrDefault();
-            //if (firstRow != null) {
-            //    foreach (Run run in firstRow.Descendants<Run>()) {
-            //        run.RunProperties = new RunProperties(new Bold());
-            //    }
-            //}
-
-            // Import data from Form Interface for Reel & Imaginary
             for (int i = 0; i < Freq.Count; i++)
             {
 
-                //double swrData = (double)System.Math.Round(Convert.ToDouble(Swr[i]), 4);
-                //double swruncData = (double)System.Math.Round(Convert.ToDouble(SwrUnc[i]), 4);
+
 
                 TableRow row = new TableRow(
 
@@ -954,6 +942,8 @@ namespace DCC
                 new TableGrid(
                     new GridColumn() { Width = "500" } // Define the width for each column
                 ),
+
+
                 new TableBorders(
                     new TopBorder() { Val = BorderValues.Single, Size = 9 },
                     new BottomBorder() { Val = BorderValues.Single, Size = 9 },
@@ -962,6 +952,7 @@ namespace DCC
                     new InsideHorizontalBorder() { Val = BorderValues.Single, Size = 9 },
                     new InsideVerticalBorder() { Val = BorderValues.Single, Size = 9 }
                 ),
+
                 new TableRow(
 
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "1488" }),
@@ -1642,12 +1633,12 @@ namespace DCC
         }
         public void HeaderPage(KbysEntity kbysEntity)
         {
-            string originalFilePath = "wordData/sertifikaC.docx";
+            string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifika.docx";
             string newFilePath = string.Empty;
 
             // Kullanıcıya kaydedilecek konumu seçme iletişim kutusunu göster
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = "wordData/sertifikaC.docx";
+            saveFileDialog.InitialDirectory = "C:\\Users\\ABDURRAHMAN\\Desktop";
             saveFileDialog.Filter = "Word Dosyaları|*.docx";
             saveFileDialog.Title = "Kopyayı kaydedin";
 
@@ -1717,8 +1708,9 @@ namespace DCC
                 table.AppendChild(row.CloneNode(true));
             }
         }
-        public void ResultPages(List<Table> tables)
+        public async void ResultPages(List<Table> tables)
         {
+
             try
             {
                 // Kullanıcıdan kaydedilecek dosya yolu al
@@ -1730,7 +1722,7 @@ namespace DCC
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    string originalFilePath = "wordData/sertifikaC.docx";
+                    string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifikaC.docx";
                     string copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
@@ -1767,18 +1759,19 @@ namespace DCC
                     table2 = UsedDevice(deviceEntities);
 
                     Dictionary<string, Table> replacementsTable = new Dictionary<string, Table>
-        {
+                  {
 
-            { "UsedDevice", table2 },
+                      { "UsedDevice", table2 },
             { "DeviceTable", table1 },
         };
 
 
                     Dictionary<string, string> replacements2 = new Dictionary<string, string>
             {
-                { "AS1", "TUBITAK UME" },
-                { "AS2", "2023.001" },
-                { "AS3", "Güç Algılayıcı" },
+
+                { "AS1", ""},
+                { "AS2", ""},
+                { "AS3", ""},
                 { "AS4", "Hewlett Packard" },
                 { "AS5", "8481A" },
                 { "AS6", "3318A97557" },
@@ -1875,6 +1868,44 @@ namespace DCC
                 MessageBox.Show("Hata: " + ex.Message);
             }
         }
+        public Table CreateTableWithCenteredParagraph(string paragraphText)
+        {
+            // Paragraf oluşturuluyor ve yatay olarak ortalanıyor
+            Paragraph centeredParagraph = new Paragraph(
+          new ParagraphProperties(
+              new Justification() { Val = JustificationValues.Center }
+          ),
+          new Run(
+              new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }), // Arial yazı tipi ve 22 boyutu (yaklaşık 11 pt)
+              new Text(paragraphText)
+          )
+      );
+
+            // Paragrafın içine bir hücre ekleniyor
+            TableCell cell = new TableCell(centeredParagraph);
+
+            // Hücrenin genişliği belirleniyor
+            TableCellProperties cellProperties = new TableCellProperties(
+                new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "10000" }
+            );
+            cell.AppendChild(cellProperties);
+
+            // Satır oluşturuluyor ve hücre ekleniyor
+            TableRow row = new TableRow(cell);
+
+            // Tablo oluşturuluyor ve satır ekleniyor
+            Table table = new Table(row);
+
+            // Tablonun genişliği ve yüksekliği belirleniyor
+            TableProperties tblProps = new TableProperties(
+                new TableWidth() { Type = TableWidthUnitValues.Dxa, Width = "7200" }, // Tablonun genişliği 7200 birim (100 mm) olarak belirlenmiş
+                new TableJustification() { Val = TableRowAlignmentValues.Center } // Tabloyu ortala
+            );
+            table.AppendChild(tblProps);
+
+            return table;
+        }
     }
+
 
 }

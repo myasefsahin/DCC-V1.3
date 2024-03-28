@@ -858,7 +858,6 @@ namespace DCC
 
             return boolList;
         }
-
         static void FormatData(ArrayList ArrayMeasurent, ArrayList ArrayUncertainty, ArrayList ArrayMsrt, ArrayList ArrayUnc, int counter)
         {
             ExcelData exd = new ExcelData();
@@ -871,7 +870,6 @@ namespace DCC
                 CalculateEntity formattedEntity = NumberFormatter.deneme(calculateEntity);
                 ArrayMsrt.Add(formattedEntity.measurent);
                 ArrayUnc.Add(formattedEntity.uncertainty);
-
             }
         }
 
