@@ -1633,12 +1633,11 @@ namespace DCC
         }
         public void HeaderPage(KbysEntity kbysEntity)
         {
-            string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifika.docx";
+            string originalFilePath = "wordData/sertifikaC.docx";
             string newFilePath = string.Empty;
 
             // Kullanıcıya kaydedilecek konumu seçme iletişim kutusunu göster
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = "C:\\Users\\ABDURRAHMAN\\Desktop";
             saveFileDialog.Filter = "Word Dosyaları|*.docx";
             saveFileDialog.Title = "Kopyayı kaydedin";
 
@@ -1722,7 +1721,7 @@ namespace DCC
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    string originalFilePath = "C:\\Users\\ABDURRAHMAN\\Desktop\\sertifikaC.docx";
+                    string originalFilePath = "wordData/sertifikaC.docx";
                     string copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
