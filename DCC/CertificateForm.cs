@@ -1192,5 +1192,158 @@ namespace DCC
         {
 
         }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox11.Checked == true)
+            {
+                RF_Diff_1.Checked = true;
+                RF_Diff_2.Checked = true;
+                RF_Diff_3.Checked = true;
+                RF_Diff_4.Checked = true;
+            }
+            if (checkBox11.Checked == false)
+            {
+                RF_Diff_1.Checked = false;
+                RF_Diff_2.Checked = false;
+                RF_Diff_3.Checked = false;
+                RF_Diff_4.Checked = false;
+            }
+
+        }
+
+        private void CIS_SelectAll_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CIS_SelectAll_CheckBox.Checked == true)
+            {
+                CIS_CheckBox.Checked = true;
+                CIS_CheckBox1.Checked = true;
+                CIS_CheckBox2.Checked = true;
+                CIS_CheckBox3.Checked = true;
+                CIS_CheckBox4.Checked = true;
+                CIS_CheckBox5.Checked = true;
+                CIS_CheckBox6.Checked = true;
+            }
+            if (CIS_SelectAll_CheckBox.Checked == false)
+            {
+                CIS_CheckBox.Checked = false;
+                CIS_CheckBox1.Checked = false;
+                CIS_CheckBox2.Checked = false;
+                CIS_CheckBox3.Checked = false;
+                CIS_CheckBox4.Checked = false;
+                CIS_CheckBox5.Checked = false;
+                CIS_CheckBox6.Checked = false;
+            }
+        }
+
+        private void RF_Gain_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RF_Gain_SelectAll.Checked == true)
+            {
+                RF_Gain1.Checked = true;
+                RF_Gain2.Checked = true;
+                RF_Gain3.Checked = true;
+                RF_Gain4.Checked = true;
+
+            }
+            if (RF_Gain_SelectAll.Checked == false)
+            {
+                RF_Gain1.Checked = false;
+                RF_Gain2.Checked = false;
+                RF_Gain3.Checked = false;
+                RF_Gain4.Checked = false;
+
+            }
+        }
+
+        private void EE_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EE_SelectAll.Checked == true)
+            {
+                checkBoxEE.Checked = true;
+                checkBox_EE_RI.Checked = true;
+                checkBoxRHO.Checked = true;
+                checkBox_EE_CF.Checked = true;
+
+            }
+            if (EE_SelectAll.Checked == false)
+            {
+                checkBoxEE.Checked = false;
+                checkBox_EE_RI.Checked = false;
+                checkBoxRHO.Checked = false;
+                checkBox_EE_CF.Checked = false;
+
+            }
+        }
+
+        private void ARFP_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ARFP_SelectAll.Checked == true)
+            {
+                ARFP_1.Checked = true;
+                ARFP_2.Checked = true;
+                ARFP_3.Checked = true;
+                ARFP_4.Checked = true;
+                ARFP_5.Checked = true;
+                ARFP_6.Checked = true;
+                ARFP_7.Checked = true;
+                ARFP_8.Checked = true;
+                ARFP_9.Checked = true;
+                ARFP_10.Checked = true;
+                ARFP_11.Checked = true;
+            }
+            if (ARFP_SelectAll.Checked == false)
+            {
+                ARFP_1.Checked = false;
+                ARFP_2.Checked = false;
+                ARFP_3.Checked = false;
+                ARFP_4.Checked = false;
+                ARFP_5.Checked = false;
+                ARFP_6.Checked = false;
+                ARFP_7.Checked = false;
+                ARFP_8.Checked = false;
+                ARFP_9.Checked = false;
+                ARFP_10.Checked = false;
+                ARFP_11.Checked = false;
+            }
+        }
+
+        private void S_Parameter_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (S_Parameter_SelectAll.Checked == true)
+            {
+                checkBoxS11Reel.Checked = true;
+                checkBoxS11Log.Checked = true;
+                checkBoxS11Lin.Checked = true;
+                checkBoxS11SWR.Checked = true;
+                checkBoxS12Reel.Checked = true;
+                checkBoxS12Log.Checked = true;
+                checkBoxS12Lin.Checked = true;
+                checkBoxS21Reel.Checked = true;
+                checkBoxS21Log.Checked = true;
+                checkBoxS21Lin.Checked = true;
+                checkBoxS22Reel.Checked = true;
+                checkBoxS22Log.Checked = true;
+                checkBoxS22Lin.Checked = true;
+                checkBoxS22SWR.Checked = true;
+            }
+            if (S_Parameter_SelectAll.Checked == false)
+            {
+                checkBoxS11Reel.Checked = false;
+                checkBoxS11Log.Checked = false;
+                checkBoxS11Lin.Checked = false;
+                checkBoxS11SWR.Checked = false;
+                checkBoxS12Reel.Checked = false;
+                checkBoxS12Log.Checked = false;
+                checkBoxS12Lin.Checked = false;
+                checkBoxS21Reel.Checked = false;
+                checkBoxS21Log.Checked = false;
+                checkBoxS21Lin.Checked = false;
+                checkBoxS22Reel.Checked = false;
+                checkBoxS22Log.Checked = false;
+                checkBoxS22Lin.Checked = false;
+                checkBoxS22SWR.Checked = false;
+            }
+        }
     }
 }
