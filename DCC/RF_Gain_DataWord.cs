@@ -164,5 +164,21 @@ namespace DCC
 
 
     }
-  }
+        public void ClearData()
+        {
+            RFG_T1_Frekans.Clear();
+            RFG_T1_GirisGucu.Clear();
+            RFG_T1_Belirsizlik.Clear();
+            RFG_T2_EnBuyukKazanc.Clear();
+            RFG_T2_EnKucukKazanc.Clear();
+            RFG_T2_Flatness.Clear();
+            RFG_T3_Nom_Giris_Gucu.Clear();
+            RFG_T3_Kazanc.Clear();
+            RFG_T3_Belirsizlik.Clear();
+            RFG_T4_Nom_Giris_Gucu.Clear();
+            RFG_T4_Kazanc.Clear();
+            RFG_T4_Belirsizlik.Clear();
+
+        }
+    }
 }
