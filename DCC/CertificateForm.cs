@@ -884,7 +884,12 @@ namespace DCC
 
             #endregion
 
-            #region Yeniden Yazdırma
+            refresh();
+
+
+        }
+        public void refresh()
+        {
 
             DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
@@ -905,6 +910,17 @@ namespace DCC
                 ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
                 ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
 
+                RF_Diff_1.Checked = false; RF_Diff_2.Checked = false; RF_Diff_3.Checked = false; RF_Diff_4.Checked = false;
+
+                RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
+
+                CIS_SelectAll_CheckBox.Checked=false;
+                ARFP_SelectAll.Checked=false;
+                S_Parameter_SelectAll.Checked = false;
+                RF_Gain_SelectAll.Checked=false;
+                checkBox11.Checked = false;
+                EE_SelectAll.Checked = false;
+
                 ExcelDosyaYolu = "";
                 ExcelPage_ComboBox.Items.Clear();
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
@@ -916,10 +932,15 @@ namespace DCC
                 CIS_DataWord.ClearData();
                 Noise_DataWord.ClearData();
                 Absolute_RF_Power.ClearData();
+                RF_Difference_DataWord.ClearData();
+                RF_Gain_DataWord.ClearData();
                 XML_Arrays.SP_ClearData();
                 XML_Arrays.EE_ClearData();
                 XML_Arrays.CF_ClearData();
                 XML_Arrays.CIS_ClearData();
+                XML_Arrays.Absolute_RF_Power_ClearData();
+                XML_Arrays.RF_Difference_ClearData();
+                XML_Arrays.XML_RFG_ClearData();
                 CreateCertificate_Button.Enabled = false;
                 ReceiveData_Button.Enabled = false;
 
@@ -942,6 +963,9 @@ namespace DCC
                 ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
                 ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
 
+                RF_Diff_1.Checked = false; RF_Diff_2.Checked = false; RF_Diff_3.Checked = false; RF_Diff_4.Checked = false;
+                RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
+
                 ExcelDosyaYolu = "";
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
                 ExcelFileName_TextBox.Text = "";
@@ -953,18 +977,20 @@ namespace DCC
                 CIS_DataWord.ClearData();
                 Noise_DataWord.ClearData();
                 Absolute_RF_Power.ClearData();
+                RF_Difference_DataWord.ClearData();
+                RF_Gain_DataWord.ClearData();
                 XML_Arrays.SP_ClearData();
                 XML_Arrays.EE_ClearData();
                 XML_Arrays.CF_ClearData();
                 XML_Arrays.CIS_ClearData();
                 XML_Arrays.Noise_ClearData();
                 XML_Arrays.Absolute_RF_Power_ClearData();
+                XML_Arrays.RF_Difference_ClearData();
+                XML_Arrays.XML_RFG_ClearData();
 
                 ReceiveData_Button.Enabled = false;
                 SelectExcel_Button.Enabled = false;
             }
-
-            #endregion
 
 
         }

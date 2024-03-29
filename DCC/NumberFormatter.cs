@@ -4,14 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using DCC;
 namespace DCC
 {
+    
     public class NumberFormatter
     {
+        
+
         public static CalculateEntity deneme(CalculateEntity calculate)
         {
-
+            
 
             (decimal formatli_belirsizlik, int basamak_sayisi) = IlkAdim(calculate.measurent, calculate.uncertainty);
 
@@ -34,9 +38,13 @@ namespace DCC
         {
             if (uncertainty == 0)
             {
+                XmlDocument temp11 = new XmlDocument();
+                CertificateForm hatarefresh = new CertificateForm(temp11);
                 string errorMessage = "Hata oluştu!\n\n";
                 errorMessage += "Belirsizlik değeri sıfır olamaz.\n";
                 errorMessage += "Lütfen Excel dosyanızı kontrol ediniz.";
+
+                hatarefresh.refresh();
 
                 MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -133,4 +141,6 @@ namespace DCC
 
         }
     }
+
 }
+
