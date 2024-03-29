@@ -32,13 +32,20 @@ namespace DCC
 
         static (decimal, int) IlkAdim(decimal measurent, decimal uncertainty)
         {
+            if (uncertainty == 0)
+            {
+                string errorMessage = "Hata oluştu!\n\n";
+                errorMessage += "Belirsizlik değeri sıfır olamaz.\n";
+                errorMessage += "Lütfen Excel dosyanızı kontrol ediniz.";
 
-            
+                MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             int basamakSayisi = 0;
 
-            if (uncertainty >= 0 && uncertainty < 1)
+            if (uncertainty > 0 && uncertainty < 1)
             {
-
+                
                 // İkinci sayıyı virgülden sonraki ilk sıfırdan büyük basamağa kadar yuvarla
 
                 decimal temp = uncertainty;
