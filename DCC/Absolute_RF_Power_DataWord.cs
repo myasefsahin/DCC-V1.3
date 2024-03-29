@@ -59,16 +59,21 @@ namespace DCC
                     CalculateEntity calculateEntity = new CalculateEntity();
 
                     ARFP_T1_Cıkıs_Gücü.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
-                    ARFP_T1_Olculen_Güc.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
                     ARFP_T1_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 3] + i].Value));
                     ARFP_T1_ÜstSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 5] + i].Value));
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 4] + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 2] + i].Value);
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
                     CalculateEntity formattedEntity = NumberFormatter.deneme(calculateEntity);
 
-                    ARFP_T1_Sapma.Add(formattedEntity.measurent);
-                    ARFP_T1_Belirsizlik.Add(formattedEntity.uncertainty);
+                    ARFP_T1_Olculen_Güc.Add(formattedEntity.measurent);
+
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 4] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
+                    CalculateEntity formattedEntity1 = NumberFormatter.deneme(calculateEntity);
+
+                    ARFP_T1_Sapma.Add(formattedEntity1.measurent);
+                    ARFP_T1_Belirsizlik.Add(formattedEntity1.uncertainty);
                 }
 
                 for (int i = satır; i <= rowCount; i++)

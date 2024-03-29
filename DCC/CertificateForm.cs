@@ -50,6 +50,8 @@ namespace DCC
         AbsoluteRF_Power_Word_Table Absolute_WordTable = new AbsoluteRF_Power_Word_Table();
         RF_Difference_DataWord RF_Difference_DataWord = new RF_Difference_DataWord();
         RF_Difference_WordTable RF_Difference_wordTable = new RF_Difference_WordTable();
+        RF_Gain_DataWord RF_Gain_DataWord = new RF_Gain_DataWord();
+        RF_Gain_WordTable RF_Gain_WordTable = new RF_Gain_WordTable(); 
         int satır;
         string sütun;
 
@@ -297,10 +299,11 @@ namespace DCC
         private void ReceiveData_Button_Click(object sender, EventArgs e)
         {
             CreateCertificate_Button.Enabled = true;
-
-            #region DATA CHECKBOX KONTROLLERİ
             try
             {
+
+            #region DATA CHECKBOX KONTROLLERİ
+           
                 #region S-Parametre
                 if (MeasurementTypes_ComboBox.SelectedIndex == 6)
                 {
@@ -796,14 +799,65 @@ namespace DCC
                                              RF_Difference_DataWord.RFD_T4_UstSınır, RF_Difference_DataWord.RFD_T4_Belirsizlik, "Min.Güç Seviyesi (dBm)", "Max. Güç Seviyesi (dBm)", "Frekans", "Alt Sınır (dB)", "Fark(dB)", "Üst Sınır (dB)","Belirsizlik (dB)");  
                         tables.Add(RFD3_table);
                         header.Add(txt_RFD3);
-                        RFDBool[2] = true;
+                        RFDBool[3] = true;
                         SaveBasarim();
                     }
                     CreateXML.Add_RFD_result(xml, TableName, XML_Arrays, RFDBool);
 
+                }
+                #endregion
+
+                #region RF GAİN
+
+                else if (MeasurementTypes_ComboBox.SelectedIndex == 5)
+                {
+                    RF_Gain_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
+                    XML_Arrays.RF_Gain_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
+
+                    List<bool> RFGBool = new List<bool>(3) { false, false, false, false };
+
+                    if (RF_Gain1.Checked = true)
+                    {
+                        string txt_RFG1 = TableName + "Maksimum Çıkış Gücü Testi \n";
+                        Table RFG1_table = RF_Gain_WordTable.RF_Gain_Table(RF_Gain_DataWord.RFG_T1_Frekans, RF_Gain_DataWord.RFG_T1_GirisGucu, RF_Gain_DataWord.RFG_T1_Belirsizlik, "Frekans", "Giriş Gücü", "Alt Sınır Belirsizlik (dB)");
+                        tables.Add(RFG1_table);
+                        header.Add(txt_RFG1);
+                        RFGBool[0] = true;
+                        SaveBasarim();
+                    }
+                    if (RF_Gain2.Checked = true)
+                    {
+                        string txt_RFG2 = TableName + "Tek satır tablo\n";
+                        Table RFG2_table = RF_Gain_WordTable.RF_Gain_Table(RF_Gain_DataWord.RFG_T2_EnBuyukKazanc, RF_Gain_DataWord.RFG_T2_EnKucukKazanc, RF_Gain_DataWord.RFG_T2_Flatness, "En Büyük Kazanç (dB)", "En Küçük Kazanç (dB)", "Flatness (±dB)");
+                        tables.Add(RFG2_table);
+                        header.Add(txt_RFG2);
+                        RFGBool[1] = true;
+                        SaveBasarim();
+                    }
+                    if (RF_Gain3.Checked = true)
+                    {
+                        string txt_RFG3 = TableName + "  Frekansa Göre Seviye Doğruluğu Testi\n";
+                        Table RFG3_table = RF_Gain_WordTable.RF_Gain_Table(RF_Gain_DataWord.RFG_T3_Nom_Giris_Gucu, RF_Gain_DataWord.RFG_T3_Kazanc, RF_Gain_DataWord.RFG_T3_Belirsizlik, "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
+                        tables.Add(RFG3_table);
+                        header.Add(txt_RFG3);
+                        RFGBool[2] = true;
+                        SaveBasarim();
+                    }
+                    if (RF_Gain4.Checked = true)
+                    {
+                        string txt_RFG3 = TableName + "  Frekansa Göre Seviye Doğruluğu Testi\n";
+                        Table RFG3_table = RF_Gain_WordTable.RF_Gain_Table(RF_Gain_DataWord.RFG_T4_Nom_Giris_Gucu, RF_Gain_DataWord.RFG_T4_Kazanc, RF_Gain_DataWord.RFG_T4_Belirsizlik, "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
+                        tables.Add(RFG3_table);
+                        header.Add(txt_RFG3);
+                        RFGBool[3] = true;
+                        SaveBasarim();
+                    }
+                    CreateXML.Add_RFG_result(xml, TableName, XML_Arrays, RFGBool);
+
 
                 }
                 #endregion
+
 
 
                 #endregion
