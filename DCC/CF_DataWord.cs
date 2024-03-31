@@ -66,33 +66,35 @@ namespace DCC
                     CF_Array.Add(formattedEntity.measurent);
                     CF_ArrayCFUnc.Add(formattedEntity.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 7] + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 5] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
                     CalculateEntity formattedEntity1 = NumberFormatter.deneme(calculateEntity);
                     CF_ArrayReel.Add(formattedEntity1.measurent);
                     CF_ArrayReelUnc.Add(formattedEntity1.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 9] + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 7] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 8] + i].Value);
                     CalculateEntity formattedEntity2 = NumberFormatter.deneme(calculateEntity);
                     CF_ArrayComplex.Add(formattedEntity2.measurent);
                     CF_ArrayComplexUnc.Add(formattedEntity2.uncertainty);
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 10] + i].Value);
-                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 11] + i].Value);
+                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 9] + i].Value);
+                    calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 10] + i].Value);
                     CalculateEntity formattedEntity3 = NumberFormatter.deneme(calculateEntity);
                     CF_YK.Add(formattedEntity3.measurent);
                     CF_YK_Unc.Add(formattedEntity3.uncertainty);
 
-
-
-
-
                 }
+                tableName1= Convert.ToString(worksheet.Cells[columnName[harfIndex] + (satır-3)].Value);
+                tableName2 = Convert.ToString(worksheet.Cells[columnName[harfIndex+4] + (satır - 3)].Value);
+
+
             }
 
         }
 
+        public string tableName1;
+        public string tableName2;
         public ArrayList CF_ArrayFrekans { get; set; }
 
 

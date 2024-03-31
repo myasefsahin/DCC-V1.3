@@ -75,17 +75,17 @@ namespace DCC
                     CIS_OCID.Add(formattedEntity.measurent);
                     CIS_OCID_Unc.Add(formattedEntity2.uncertainty);
 
-
+                   
 
 
 
                 }
+                tableName = Convert.ToString(worksheet.Cells[columnName[harfIndex] + (satır - 1)].Value);
 
             }
         }
+        public string tableName;
         public ArrayList CIS_Olcum_Adım { get; set; }
-
-
 
         public ArrayList CIS_ZP { get; set; }
         public ArrayList CIS_ZP_Unc { get; set; }

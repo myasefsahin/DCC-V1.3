@@ -120,12 +120,18 @@ namespace DCC
                     RFG_T4_Kazanc.Add(formattedEntity1.measurent);
                     RFG_T4_Belirsizlik.Add(formattedEntity1.uncertainty);
 
-
-
                 }
+                tableName1= Convert.ToString(worksheet.Cells[columnName[harfIndex] + (satır-2)].Value);
+                tableName2 = Convert.ToString(worksheet.Cells[columnName[harfIndex+4] + (satır - 2)].Value);
+                tableName3 = Convert.ToString(worksheet.Cells[columnName[harfIndex+8] + (satır - 2)].Value);
+                tableName4 = Convert.ToString(worksheet.Cells[columnName[harfIndex+12] + (satır - 2)].Value);
+
             }
         }
-
+        public string tableName1;
+        public string tableName2;
+        public string tableName3;
+        public string tableName4;
         public ArrayList RFG_T1_Frekans { get; set; }
         public ArrayList RFG_T1_GirisGucu { get; set; }
         public ArrayList RFG_T1_Belirsizlik { get; set; }

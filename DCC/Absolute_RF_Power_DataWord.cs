@@ -70,16 +70,16 @@ namespace DCC
                     ARFP_T1_Sapma.Add(formattedEntity.measurent);
                     ARFP_T1_Belirsizlik.Add(formattedEntity.uncertainty);
 
-
-
-
                     calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 2] + i].Value);
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 6] + i].Value);
                     CalculateEntity formattedEntity1 = NumberFormatter.deneme(calculateEntity);
 
                     ARFP_T1_Olculen_Güc.Add(formattedEntity1.measurent);
 
+                    
+
                 }
+                tableName1 = Convert.ToString(worksheet.Cells[columnName[harfIndex] + (satır-2)].Value);
 
                 for (int i = satır; i <= rowCount; i++)
                 {
@@ -114,6 +114,8 @@ namespace DCC
 
 
                 }
+                tableName2 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 8] + (satır - 2)].Value);
+
 
 
                 for (int i = satır; i <= rowCount; i++)
@@ -148,6 +150,8 @@ namespace DCC
                     ARFP_T3_OlculenZayıflatma.Add(formattedEntity1.measurent);
 
                 }
+
+                tableName3 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + (satır - 2)].Value);
 
 
                 for (int i = satır; i <= rowCount; i++)
@@ -191,6 +195,10 @@ namespace DCC
                     ARFP_T6_SWR_Belirsizlik.Add(formattedEntity2.uncertainty);
 
                 }
+                tableName4 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 24] + (satır - 2)].Value);
+                tableName5 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 30] + (satır - 2)].Value);
+                tableName6 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 36] + (satır - 2)].Value);
+
 
 
                 for (int i = satır; i <= rowCount; i++)
@@ -226,11 +234,9 @@ namespace DCC
 
 
 
-
-
-
-
                 }
+                tableName7 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 42] + (satır - 2)].Value);
+
 
                 for (int i = satır; i <= rowCount; i++)
                 {
@@ -264,6 +270,9 @@ namespace DCC
                     ARFP_T8_OlculenDeger.Add(formattedEntity1.measurent);
 
                 }
+
+                tableName8 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 50] + (satır - 2)].Value);
+
 
                 for (int i = satır; i <= rowCount; i++)
                 {
@@ -306,6 +315,10 @@ namespace DCC
 
 
                 }
+                tableName9 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 58] + (satır - 2)].Value);
+                tableName10 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 64] + (satır - 2)].Value);
+                tableName11 = Convert.ToString(worksheet.Cells[columnName[harfIndex + 70] + (satır - 2)].Value);
+
 
 
 
@@ -313,6 +326,17 @@ namespace DCC
 
             }
         }
+        public string tableName1;
+        public string tableName2;
+        public string tableName3;
+        public string tableName4;
+        public string tableName5;
+        public string tableName6;
+        public string tableName7;
+        public string tableName8;
+        public string tableName9;
+        public string tableName10;
+        public string tableName11;
         public ArrayList ARFP_T1_Frekans { get; set; }
 
         // S11
