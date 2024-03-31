@@ -105,10 +105,16 @@ namespace DCC
 
 
                 }
+                tableName1= Convert.ToString(worksheet.Cells[columnName[harfIndex] + (satır-2)].Value);
+                tableName2 = Convert.ToString(worksheet.Cells[columnName[harfIndex+4] + (satır - 2)].Value);
+                tableName3 = Convert.ToString(worksheet.Cells[columnName[harfIndex+11] + (satır - 2)].Value);
+
             }
 
         }
-
+        public string tableName1;
+        public string tableName2;
+        public string tableName3;
         public ArrayList NS_ArrayFrekans { get; set; }
 
         public ArrayList NS_ArrayENR { get; set; }

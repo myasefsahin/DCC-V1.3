@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using System.Xml;
 
 namespace DCC
@@ -17,6 +18,7 @@ namespace DCC
         public HomePage()
         {
             InitializeComponent();
+            CheckUserLogin();
         }
 
         private void XMLtoWordPageButton_Click(object sender, EventArgs e)
@@ -130,6 +132,21 @@ namespace DCC
                 labelProgress.Text = @"ERROR!: XML to Word";
                 MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CheckUserLogin()
+        {
+            // Windows kimlik nesnesi oluþtur
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+
+            // Kullanýcýnýn adýný al
+            string userName = identity.Name;
+
+            // Bilgisayar oturumuna giriþ yapan kullanýcýnýn adýný al
+            string user = userName.Split('\\')[1];
+
+            // Hoþgeldin mesajýný göster
+            label1.Text = "HOÞ GELDÝNÝZ " + user;
         }
     }
 

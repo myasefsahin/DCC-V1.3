@@ -10,41 +10,65 @@ namespace DCC
 {
      class AbsoluteRF_Power_Word_Table
     {
-        public Table ARFP_CreateTable_1(ArrayList Freq, ArrayList CikisGucu, ArrayList Olculen, ArrayList AltSınır, ArrayList SapmaFarkZayıflatma, ArrayList UstSınır, ArrayList Belirsizlik,string olculen,string measurement)
+        public Table ARFP_CreateTable_1(int sayac,string tableName,ArrayList Freq, ArrayList CikisGucu, ArrayList Olculen, ArrayList AltSınır, ArrayList SapmaFarkZayıflatma, ArrayList UstSınır, ArrayList Belirsizlik,string olculen,string measurement)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
             int cellWidth = tableWidth / 7; // Yedi sütun var, bu yüzden hücre genişliğini buna göre ayarlayın
 
             // Tablo başlığı
+
+            TableRow headerRow1 = new TableRow(
+           new TableRowProperties(
+               new TableHeader()
+           ),
+           new TableCell(
+               new TableCellProperties(
+                   new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() },
+                   new GridSpan() { Val = 7 } // 3 hücreyi birleştir
+               ),
+               new Paragraph(
+                   new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center } // Paragrafı ortala
+                   ),
+                   new Run(
+                       new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
+                       new Text("Tablo"+sayac+". "+tableName)
+                   )
+               )
+           )
+       );
             TableRow headerRow = new TableRow(
+                   new TableRowProperties(
+               new TableHeader()
+           ),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(),new FontSize() { Val="22"}),
                         new Text("Frekans (GHz)")))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Çıkış Gücü (x)")))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text(olculen)))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(),new FontSize() { Val = "22" }),
                         new Text("Alt Sınır")))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(),new FontSize() { Val = "22" }),
                         new Text(measurement)))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Üst Sınır")))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Belirsizlik"))))
             );
 
@@ -64,7 +88,7 @@ namespace DCC
                         new InsideVerticalBorder() { Val = BorderValues.Single, Size = 9 }
                     )
                 ),
-                headerRow
+                headerRow1,headerRow
             );
 
             // Veri satırlarını ekle
@@ -73,31 +97,31 @@ namespace DCC
                 TableRow dataRow = new TableRow(
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(Freq[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(CikisGucu[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(Olculen[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(AltSınır[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(SapmaFarkZayıflatma[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(UstSınır[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(Belirsizlik[i].ToString()))))
                 );
 
@@ -125,33 +149,57 @@ namespace DCC
             return table;
         }
 
-        public Table ARFP_CreateTable_2(ArrayList Freq, ArrayList Seviye, ArrayList OlculenDeger, ArrayList MaxUstSınır, ArrayList Belirsizlik,string max_ustsınır)
+        public Table ARFP_CreateTable_2(int sayac,string tableName,ArrayList Freq, ArrayList Seviye, ArrayList OlculenDeger, ArrayList MaxUstSınır, ArrayList Belirsizlik,string max_ustsınır)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
             int cellWidth = tableWidth / 3; // Üç sütun var, bu yüzden hücre genişliğini buna göre ayarlayın
 
+            TableRow headerRow1 = new TableRow(
+           new TableRowProperties(
+               new TableHeader()
+           ),
+           new TableCell(
+               new TableCellProperties(
+                   new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() },
+                   new GridSpan() { Val = 6 } // 3 hücreyi birleştir
+               ),
+               new Paragraph(
+                   new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center } // Paragrafı ortala
+                   ),
+                   new Run(
+                       new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
+                       new Text("Tablo" + sayac + ". " + tableName)
+                   )
+               )
+           )
+       );
+
             // Tablo başlığı
             TableRow headerRow = new TableRow(
+                   new TableRowProperties(
+               new TableHeader()
+           ),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Frekans")))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Seviye (dBm)")))),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Ölçülen Değer")))),
                  new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text(max_ustsınır)))),
                   new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
-                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text("Belirsizlik"))))
             );
 
@@ -170,7 +218,7 @@ namespace DCC
                         new InsideVerticalBorder() { Val = BorderValues.Single, Size = 9 }
                     )
                 ),
-                headerRow
+                headerRow1,headerRow
             );
 
             // Veri satırlarını ekle
@@ -179,23 +227,23 @@ namespace DCC
                 TableRow dataRow = new TableRow(
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(Freq[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(Seviye[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(OlculenDeger[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(MaxUstSınır[i].ToString())))),
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                         new Paragraph(new Run(
-                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(Belirsizlik[i].ToString()))))
                 );
 

@@ -1,4 +1,5 @@
-﻿using OfficeOpenXml;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using OfficeOpenXml;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -90,12 +91,23 @@ namespace DCC
                     EE_ArrayCF.Add(formattedEntity13.measurent);
                     EE_ArrayCFUnc.Add(formattedEntity13.uncertainty);
 
-
+                    
 
                 }
+                tableName1= Convert.ToString(worksheet.Cells[columnName[harfIndex ] + (satır-2)].Value);
+                tableName2 = Convert.ToString(worksheet.Cells[columnName[harfIndex+4] + (satır - 2)].Value);
+                tableName3 = Convert.ToString(worksheet.Cells[columnName[harfIndex+9] + (satır - 2)].Value);
+                tableName4 = Convert.ToString(worksheet.Cells[columnName[harfIndex+12] + (satır - 2)].Value);
+
             }
 
         }
+
+        public string tableName1;
+        public string tableName2;
+        public string tableName3;
+        public string tableName4;
+
 
         public ArrayList EE_ArrayFrekans { get; set; }
 

@@ -47,6 +47,7 @@
             CertificatePageShowButton = new MaterialSkin.Controls.MaterialButton();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
+            label1 = new Label();
             XMLtoWordPage.SuspendLayout();
             groupBox2.SuspendLayout();
             panel2.SuspendLayout();
@@ -65,7 +66,7 @@
             XMLtoWordPage.Controls.Add(panel2);
             XMLtoWordPage.Location = new Point(4, 29);
             XMLtoWordPage.Name = "XMLtoWordPage";
-            XMLtoWordPage.Padding = new Padding(3, 3, 3, 3);
+            XMLtoWordPage.Padding = new Padding(3);
             XMLtoWordPage.Size = new Size(697, 707);
             XMLtoWordPage.TabIndex = 1;
             XMLtoWordPage.Text = "tabPage2";
@@ -155,7 +156,7 @@
             createWordFile.HighEmphasis = true;
             createWordFile.Icon = null;
             createWordFile.Location = new Point(99, 227);
-            createWordFile.Margin = new Padding(5, 5, 5, 5);
+            createWordFile.Margin = new Padding(5);
             createWordFile.MouseState = MaterialSkin.MouseState.HOVER;
             createWordFile.Name = "createWordFile";
             createWordFile.NoAccentTextColor = Color.Empty;
@@ -205,7 +206,7 @@
             selectXmlFile.HighEmphasis = true;
             selectXmlFile.Icon = null;
             selectXmlFile.Location = new Point(99, 159);
-            selectXmlFile.Margin = new Padding(5, 5, 5, 5);
+            selectXmlFile.Margin = new Padding(5);
             selectXmlFile.MouseState = MaterialSkin.MouseState.HOVER;
             selectXmlFile.Name = "selectXmlFile";
             selectXmlFile.NoAccentTextColor = Color.Empty;
@@ -235,7 +236,7 @@
             HomeTab.ImeMode = ImeMode.NoControl;
             HomeTab.Location = new Point(4, 29);
             HomeTab.Name = "HomeTab";
-            HomeTab.Padding = new Padding(3, 3, 3, 3);
+            HomeTab.Padding = new Padding(3);
             HomeTab.Size = new Size(697, 707);
             HomeTab.TabIndex = 0;
             HomeTab.Text = "tabPage1";
@@ -243,6 +244,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(XMLtoWordPageButton);
             panel1.Controls.Add(CertificatePageShowButton);
             panel1.Controls.Add(pictureBox1);
@@ -261,7 +263,7 @@
             XMLtoWordPageButton.HighEmphasis = true;
             XMLtoWordPageButton.Icon = null;
             XMLtoWordPageButton.Location = new Point(375, 437);
-            XMLtoWordPageButton.Margin = new Padding(5, 5, 5, 5);
+            XMLtoWordPageButton.Margin = new Padding(5);
             XMLtoWordPageButton.MouseState = MaterialSkin.MouseState.HOVER;
             XMLtoWordPageButton.Name = "XMLtoWordPageButton";
             XMLtoWordPageButton.NoAccentTextColor = Color.Empty;
@@ -282,7 +284,7 @@
             CertificatePageShowButton.HighEmphasis = true;
             CertificatePageShowButton.Icon = null;
             CertificatePageShowButton.Location = new Point(109, 437);
-            CertificatePageShowButton.Margin = new Padding(5, 5, 5, 5);
+            CertificatePageShowButton.Margin = new Padding(5);
             CertificatePageShowButton.MouseState = MaterialSkin.MouseState.HOVER;
             CertificatePageShowButton.Name = "CertificatePageShowButton";
             CertificatePageShowButton.NoAccentTextColor = Color.Empty;
@@ -314,6 +316,16 @@
             tabControl1.Size = new Size(705, 740);
             tabControl1.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label1.Location = new Point(209, 351);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 28);
+            label1.TabIndex = 3;
+            label1.Text = "label1";
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -335,6 +347,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             HomeTab.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tabControl1.ResumeLayout(false);
             ResumeLayout(false);
@@ -360,5 +373,6 @@
         private MaterialSkin.Controls.MaterialButton CertificatePageShowButton;
         private PictureBox pictureBox1;
         private TabControl tabControl1;
+        private Label label1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using OfficeOpenXml;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using OfficeOpenXml;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -70,6 +71,7 @@ namespace DCC
 
 
                 }
+                
 
 
                 for (int i = satır; i <= rowCount; i++)
@@ -175,10 +177,18 @@ namespace DCC
 
 
                 }
+                tableName1= Convert.ToString(worksheet.Cells[columnName[harfIndex] + (satır-2)].Value);
+                tableName2 = Convert.ToString(worksheet.Cells[columnName[harfIndex+8] + (satır - 2)].Value);
+                tableName3 = Convert.ToString(worksheet.Cells[columnName[harfIndex+16] + (satır - 2)].Value);
+                tableName4 = Convert.ToString(worksheet.Cells[columnName[harfIndex+24] + (satır - 2)].Value);
+
             }
         }
 
-
+        public string tableName1;
+        public string tableName2;
+        public string tableName3;
+        public string tableName4;
         public ArrayList RFD_T1_Frekans { get; set; }
         public ArrayList RFD_T1_GostergeDegeri { get; set; }
         public ArrayList RFD_T1_AltSınır { get; set; }
