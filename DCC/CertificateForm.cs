@@ -866,7 +866,7 @@ namespace DCC
         public void refresh()
         {
 
-            DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("Measurement values have been saved for " + MeasurementTypes_ComboBox.Text+"\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
             {
@@ -1070,7 +1070,7 @@ namespace DCC
             }
             LabelProgress.Visible = true;
             LabelProgress.ForeColor = System.Drawing.Color.Green;
-            LabelProgress.Text = @"Transfer to word successful";
+            LabelProgress.Text = "Human Readable Certificate Was Created";
         }
         public void XMLBasarim()
         {
@@ -1083,7 +1083,7 @@ namespace DCC
             }
             LabelProgress.Visible = true;
             LabelProgress.ForeColor = System.Drawing.Color.Green;
-            LabelProgress.Text = @"Transfer to XML successful";
+            LabelProgress.Text = "Machine Readable Certificate Was Created";
         }
         private string GetExcelColumnName(int columnIndex)
         {

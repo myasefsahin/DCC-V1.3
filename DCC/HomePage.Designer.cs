@@ -43,11 +43,11 @@
             pictureBox3 = new PictureBox();
             HomeTab = new TabPage();
             panel1 = new Panel();
+            label1 = new Label();
             XMLtoWordPageButton = new MaterialSkin.Controls.MaterialButton();
             CertificatePageShowButton = new MaterialSkin.Controls.MaterialButton();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
-            label1 = new Label();
             XMLtoWordPage.SuspendLayout();
             groupBox2.SuspendLayout();
             panel2.SuspendLayout();
@@ -254,6 +254,16 @@
             panel1.Size = new Size(691, 701);
             panel1.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label1.Location = new Point(209, 351);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 28);
+            label1.TabIndex = 3;
+            label1.Text = "label1";
+            // 
             // XMLtoWordPageButton
             // 
             XMLtoWordPageButton.AutoSize = false;
@@ -316,16 +326,6 @@
             tabControl1.Size = new Size(705, 740);
             tabControl1.TabIndex = 1;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.Location = new Point(209, 351);
-            label1.Name = "label1";
-            label1.Size = new Size(70, 28);
-            label1.TabIndex = 3;
-            label1.Text = "label1";
-            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -337,6 +337,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DCC CREATER ";
             FormClosed += HomePage_FormClosed;
+            Load += HomePage_Load;
             XMLtoWordPage.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
