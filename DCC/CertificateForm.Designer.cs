@@ -56,6 +56,7 @@
             NextBox1 = new PictureBox();
             BackBox2 = new PictureBox();
             groupBox10 = new GroupBox();
+            label7 = new Label();
             CreateCertificate_Button = new MaterialSkin.Controls.MaterialButton();
             groupBox11 = new GroupBox();
             ReceiveData_Button = new MaterialSkin.Controls.MaterialButton();
@@ -669,6 +670,7 @@
             // 
             // groupBox10
             // 
+            groupBox10.Controls.Add(label7);
             groupBox10.Controls.Add(CreateCertificate_Button);
             groupBox10.Controls.Add(groupBox11);
             groupBox10.Controls.Add(listBox1);
@@ -677,6 +679,17 @@
             groupBox10.Size = new Size(406, 665);
             groupBox10.TabIndex = 11;
             groupBox10.TabStop = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label7.ForeColor = Color.Navy;
+            label7.Location = new Point(71, 108);
+            label7.Name = "label7";
+            label7.Size = new Size(268, 35);
+            label7.TabIndex = 11;
+            label7.Text = "Data Transfer File List";
             // 
             // CreateCertificate_Button
             // 
@@ -795,7 +808,7 @@
             ExcelFileName_TextBox.Name = "ExcelFileName_TextBox";
             ExcelFileName_TextBox.PasswordChar = '\0';
             ExcelFileName_TextBox.PrefixSuffixText = null;
-            ExcelFileName_TextBox.ReadOnly = false;
+            ExcelFileName_TextBox.ReadOnly = true;
             ExcelFileName_TextBox.RightToLeft = RightToLeft.No;
             ExcelFileName_TextBox.SelectedText = "";
             ExcelFileName_TextBox.SelectionLength = 0;
@@ -816,7 +829,6 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(369, 224);
             listBox1.TabIndex = 2;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // groupBox5
             // 
@@ -2056,5 +2068,6 @@
         public CheckBox RF_Gain_SelectAll;
         public CheckBox checkBox11;
         public CheckBox EE_SelectAll;
+        private Label label7;
     }
 }

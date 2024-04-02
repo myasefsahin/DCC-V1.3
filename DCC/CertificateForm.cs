@@ -301,14 +301,17 @@ namespace DCC
             CreateCertificate_Button.Enabled = true;
             try
             {
+                
 
 
                 #region S-Parametre
                 if (MeasurementTypes_ComboBox.SelectedIndex == 6)
                 {
+                    
                     sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("S Parametre-" + ExcelDosyaAdi);
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count+1) + "_" + ExcelDosyaAdi + "_" + pageName);
 
                     #region S parametre Checkbox Kontrolleri
 
@@ -359,7 +362,8 @@ namespace DCC
 
 
                     if (checkBoxS12Reel.Checked)
-                    {  sayac++;
+                    {
+                        sayac++;
                         Table s12reelTable = SP_WordTable.CreateReelImg(sayac, sp_DataWord.tableName5, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Reel, sp_DataWord.ArrayS12ReelUnc, sp_DataWord.ArrayS12Complex, sp_DataWord.ArrayS12ComplexUnc);
                         tables.Add(s12reelTable);
                         dataList[4] = true;
@@ -453,9 +457,11 @@ namespace DCC
 
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 0)
                 {
+                    
                     EE_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.EE_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("Effective Effiency-" + ExcelDosyaAdi);
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
 
                     #region EE ChechkBox Kontrolleri
                     List<bool> dataListEE = new List<bool>(14) { false, false, false, false };
@@ -505,9 +511,11 @@ namespace DCC
                 #region Calibration Factor
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 1)
                 {
+                   
                     CF_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("Calibration Factor-" + ExcelDosyaAdi);
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
                     #region CF CheckBox Kontrolleri
 
                     List<bool> dataListCF = new List<bool>(14) { false, false };
@@ -525,7 +533,7 @@ namespace DCC
                     if (CF_checkBox_RIRC.Checked)
                     {
                         sayac++;
-                        Table CF_table = CF_Word_Table.CF_CreateCF(sayac,CF_DataWord.tableName2,CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_Array, CF_DataWord.CF_ArrayCFUnc);
+                        Table CF_table = CF_Word_Table.CF_CreateCF(sayac, CF_DataWord.tableName2, CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_Array, CF_DataWord.CF_ArrayCFUnc);
                         tables.Add(CF_table);
                         dataListCF[1] = true;
                         SaveBasarim();
@@ -540,10 +548,11 @@ namespace DCC
                 #region CIS
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 2)
                 {
-
+                    
                     CIS_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("Calculable Impedance Standard" + ExcelDosyaAdi);
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
 
                     bool CIS_bool = false;
 
@@ -551,10 +560,10 @@ namespace DCC
                     if (CIS_CheckBox.Checked)
                     {
                         sayac++;
-                       
-                        Table CIS_table = CIS_Word_Table.Create_Z_Position(sayac,CIS_DataWord.tableName,CIS_DataWord.CIS_Olcum_Adım, CIS_DataWord.CIS_ZP, CIS_DataWord.CIS_ZP_Unc, CIS_DataWord.CIS_ICOD, CIS_DataWord.CIS_ICOD_Unc, CIS_DataWord.CIS_OCID, CIS_DataWord.CIS_OCID_Unc);
+
+                        Table CIS_table = CIS_Word_Table.Create_Z_Position(sayac, CIS_DataWord.tableName, CIS_DataWord.CIS_Olcum_Adım, CIS_DataWord.CIS_ZP, CIS_DataWord.CIS_ZP_Unc, CIS_DataWord.CIS_ICOD, CIS_DataWord.CIS_ICOD_Unc, CIS_DataWord.CIS_OCID, CIS_DataWord.CIS_OCID_Unc);
                         tables.Add(CIS_table);
-                        
+
                         CIS_bool = true;
                         SaveBasarim();
                     }
@@ -566,10 +575,12 @@ namespace DCC
                 #region Noise
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 7)
                 {
+                    
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("Noise-" + ExcelDosyaAdi);
-
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
+                    
 
                     List<bool> NoiseBool = new List<bool>(3) { false, false, false };
 
@@ -608,16 +619,18 @@ namespace DCC
                 #region Absolute RF Power
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 3)
                 {
+                   
                     Absolute_RF_Power.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.ABS_RFP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("Absolute RF Power-" + ExcelDosyaAdi);
-
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
+                    
 
                     List<bool> ARFPBool = new List<bool>(3) { false, false, false, false, false, false, false, false, false, false, false };
 
                     if (ARFP_1.Checked)
                     {
-                        sayac++;                       
+                        sayac++;
                         Table ARFP1_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName1, Absolute_RF_Power.ARFP_T1_Frekans, Absolute_RF_Power.ARFP_T1_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T1_Olculen_Güc, Absolute_RF_Power.ARFP_T1_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T1_Sapma, Absolute_RF_Power.ARFP_T1_ÜstSınır, Absolute_RF_Power.ARFP_T1_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma");
                         tables.Add(ARFP1_table);
@@ -628,7 +641,7 @@ namespace DCC
                     if (ARFP_2.Checked)
                     {
                         sayac++;
-                        Table ARFP2_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName2,Absolute_RF_Power.ARFP_T2_Frekans, Absolute_RF_Power.ARFP_T2_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T2_OlculenDeger, Absolute_RF_Power.ARFP_T2_AltSınır,
+                        Table ARFP2_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName2, Absolute_RF_Power.ARFP_T2_Frekans, Absolute_RF_Power.ARFP_T2_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T2_OlculenDeger, Absolute_RF_Power.ARFP_T2_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T2_Fark, Absolute_RF_Power.ARFP_T2_ÜstSınır, Absolute_RF_Power.ARFP_T2_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
                         tables.Add(ARFP2_table);
                         ARFPBool[1] = true;
@@ -670,7 +683,7 @@ namespace DCC
                     if (ARFP_7.Checked)
                     {
                         sayac++;
-                        Table ARFP7_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName7,Absolute_RF_Power.ARFP_T7_Frekans, Absolute_RF_Power.ARFP_T7_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T7_OlculenGuc, Absolute_RF_Power.ARFP_T7_AltSınır,
+                        Table ARFP7_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName7, Absolute_RF_Power.ARFP_T7_Frekans, Absolute_RF_Power.ARFP_T7_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T7_OlculenGuc, Absolute_RF_Power.ARFP_T7_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T7_Sapma, Absolute_RF_Power.ARFP_T7_ÜstSınır, Absolute_RF_Power.ARFP_T7_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma(dB)");
                         tables.Add(ARFP7_table);
                         ARFPBool[6] = true;
@@ -679,7 +692,7 @@ namespace DCC
                     if (ARFP_8.Checked)
                     {
                         sayac++;
-                        Table ARFP8_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName8,Absolute_RF_Power.ARFP_T8_Frekans, Absolute_RF_Power.ARFP_T8_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T8_OlculenDeger, Absolute_RF_Power.ARFP_T8_AltSınır,
+                        Table ARFP8_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName8, Absolute_RF_Power.ARFP_T8_Frekans, Absolute_RF_Power.ARFP_T8_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T8_OlculenDeger, Absolute_RF_Power.ARFP_T8_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T8_Fark, Absolute_RF_Power.ARFP_T8_ÜstSınır, Absolute_RF_Power.ARFP_T8_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
                         tables.Add(ARFP8_table);
                         ARFPBool[7] = true;
@@ -702,7 +715,7 @@ namespace DCC
                         SaveBasarim();
                     }
                     if (ARFP_11.Checked)
-                    {                    
+                    {
                         sayac++;
                         Table ARFP11_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName11, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T11_SWR_Seviye, Absolute_RF_Power.ARFP_T11_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T11_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T11_SWR_Belirsizlik, "Üst Sınır");
                         tables.Add(ARFP11_table);
@@ -720,10 +733,12 @@ namespace DCC
                 #region RF Difference
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 4)
                 {
+                    
                     RF_Difference_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.RF_Diff_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("RF Difference-" + ExcelDosyaAdi);
-
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
+                    
 
                     List<bool> RFDBool = new List<bool>(3) { false, false, false, false };
 
@@ -733,7 +748,7 @@ namespace DCC
                         sayac++;
                         Table RFD1_table = RF_Difference_wordTable.RF_Diff_Table(sayac, RF_Difference_DataWord.tableName1, RF_Difference_DataWord.RFD_T1_Frekans, RF_Difference_DataWord.RFD_T1_GostergeDegeri, RF_Difference_DataWord.RFD_T1_AltSınır, RF_Difference_DataWord.RFD_T1_OlculenDeger, RF_Difference_DataWord.RFD_T1_OlculenFark,
                                              RF_Difference_DataWord.RFD_T1_ÜstSınır, RF_Difference_DataWord.RFD_T1_Belirsizlik, "Frekans (GHz)", "Gösterge Değeri (dBm)", "Alt Sınır (dBm)", "Ölçülen Değer (dBm)", "Ölçülen Fark (dB)", "Üst Sınır (dBm)", "Belirsizlik (dB)");
-                        tables.Add(RFD1_table);                      
+                        tables.Add(RFD1_table);
                         RFDBool[0] = true;
                         SaveBasarim();
                     }
@@ -743,7 +758,7 @@ namespace DCC
                         sayac++;
                         Table RFD2_table = RF_Difference_wordTable.RF_Diff_Table(sayac, RF_Difference_DataWord.tableName2, RF_Difference_DataWord.RFD_T2_Frekans, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl, RF_Difference_DataWord.RFD_T2_OlculenDeger, RF_Difference_DataWord.RFD_T2_AltSınır, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl_fark,
                                              RF_Difference_DataWord.RFD_T2_ÜstSınır, RF_Difference_DataWord.RFD_T2_Belirsizlik, "Frekans (GHz))", "Nominal Güç Seviyesi(dBm)", "Ölçülen Değer (dBm)", "Ölçülen Değer (dBm)", "Nominal Güç Seviye Farkı (dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
-                        tables.Add(RFD2_table);                        
+                        tables.Add(RFD2_table);
                         RFDBool[1] = true;
                         SaveBasarim();
                     }
@@ -777,7 +792,9 @@ namespace DCC
                 {
                     RF_Gain_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.RF_Gain_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
-                    listBox1.Items.Add("RF Gain-" + ExcelDosyaAdi);
+                    label7.Visible = false;
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
+                    
 
 
                     List<bool> RFGBool = new List<bool>(3) { false, false, false, false };
@@ -819,7 +836,7 @@ namespace DCC
 
                 }
                 #endregion
-   
+
                 #region Progress Bar Control
 
                 for (int i = 0; i < 100; i++)
@@ -872,10 +889,10 @@ namespace DCC
 
                 RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
 
-                CIS_SelectAll_CheckBox.Checked=false;
-                ARFP_SelectAll.Checked=false;
+                CIS_SelectAll_CheckBox.Checked = false;
+                ARFP_SelectAll.Checked = false;
                 S_Parameter_SelectAll.Checked = false;
-                RF_Gain_SelectAll.Checked=false;
+                RF_Gain_SelectAll.Checked = false;
                 checkBox11.Checked = false;
                 EE_SelectAll.Checked = false;
 
@@ -906,25 +923,6 @@ namespace DCC
             else if (result == DialogResult.No)
             {
                 sayac = 0;
-
-                checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
-                checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
-                checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
-                checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
-
-                checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
-
-                CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
-
-                CIS_CheckBox.Checked = false;
-
-                NS_checkBoxENR.Checked = false; NS_checkBox_DC_ON.Checked = false; NS_checkBox_DC_OFF.Checked = false;
-
-                ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
-                ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
-
-                RF_Diff_1.Checked = false; RF_Diff_2.Checked = false; RF_Diff_3.Checked = false; RF_Diff_4.Checked = false;
-                RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
                 
                 ExcelDosyaYolu = "";
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
@@ -971,6 +969,7 @@ namespace DCC
 
         private void CreateCertificate_Button_Click(object sender, EventArgs e)
         {
+            
             LabelProgress.Visible = false;
             progressBar.Value = 0;
 
@@ -990,6 +989,10 @@ namespace DCC
                         LabelProgress.Text = @"Folder selection successful";
 
                         WordFolderPath = folderDialog.SelectedPath;
+
+                    }
+                    else
+                    {
 
                     }
                 }
@@ -1174,10 +1177,7 @@ namespace DCC
         }
 
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void checkBox11_CheckedChanged(object sender, EventArgs e)
         {
@@ -1332,6 +1332,6 @@ namespace DCC
             }
         }
 
-
+        
     }
 }
