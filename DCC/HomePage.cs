@@ -114,7 +114,7 @@ namespace DCC
 
         private void createWordFile_Click(object sender, EventArgs e)
         {
-            
+
 
             labelProgress.Visible = false;
             progressBar.Value = 0;
@@ -123,7 +123,7 @@ namespace DCC
             {
                 XmlToWord xmlToWord = new XmlToWord();
                 xmlToWord.Try(XMLDosyaYolu);
-             
+
             }
             catch (Exception err)
             {
@@ -144,9 +144,15 @@ namespace DCC
 
             // Bilgisayar oturumuna giriþ yapan kullanýcýnýn adýný al
             string user = userName.Split('\\')[1];
-
+            user = user.ToUpper();
+            string hosgeldiniz = "hoþ geldiniz ";
             // Hoþgeldin mesajýný göster
-            label1.Text = "HOÞ GELDÝNÝZ " + user;
+            label1.Text = hosgeldiniz + user;
+        }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
