@@ -1464,6 +1464,7 @@
             checkBoxS11SWR.TabIndex = 9;
             checkBoxS11SWR.Text = "SWR";
             checkBoxS11SWR.UseVisualStyleBackColor = true;
+            
             // 
             // checkBoxS11Log
             // 

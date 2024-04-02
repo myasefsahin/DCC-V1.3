@@ -79,6 +79,7 @@ namespace DCC
             ReceiveData_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
             BackBox3.Enabled = true;
+            
 
 
         }
@@ -301,17 +302,17 @@ namespace DCC
             CreateCertificate_Button.Enabled = true;
             try
             {
-                
+
 
 
                 #region S-Parametre
                 if (MeasurementTypes_ComboBox.SelectedIndex == 6)
                 {
-                    
+
                     sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.SP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
-                    listBox1.Items.Add((listBox1.Items.Count+1) + "_" + ExcelDosyaAdi + "_" + pageName);
+                    listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
 
                     #region S parametre Checkbox Kontrolleri
 
@@ -457,7 +458,7 @@ namespace DCC
 
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 0)
                 {
-                    
+
                     EE_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.EE_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
@@ -511,7 +512,7 @@ namespace DCC
                 #region Calibration Factor
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 1)
                 {
-                   
+
                     CF_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.CF_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
@@ -548,7 +549,7 @@ namespace DCC
                 #region CIS
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 2)
                 {
-                    
+
                     CIS_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.CIS_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
@@ -575,12 +576,12 @@ namespace DCC
                 #region Noise
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 7)
                 {
-                    
+
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.Noise_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
                     listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
-                    
+
 
                     List<bool> NoiseBool = new List<bool>(3) { false, false, false };
 
@@ -619,12 +620,12 @@ namespace DCC
                 #region Absolute RF Power
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 3)
                 {
-                   
+
                     Absolute_RF_Power.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.ABS_RFP_Data_Xml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
                     listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
-                    
+
 
                     List<bool> ARFPBool = new List<bool>(3) { false, false, false, false, false, false, false, false, false, false, false };
 
@@ -733,12 +734,12 @@ namespace DCC
                 #region RF Difference
                 else if (MeasurementTypes_ComboBox.SelectedIndex == 4)
                 {
-                    
+
                     RF_Difference_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.RF_Diff_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
                     listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
-                    
+
 
                     List<bool> RFDBool = new List<bool>(3) { false, false, false, false };
 
@@ -794,7 +795,7 @@ namespace DCC
                     XML_Arrays.RF_Gain_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
                     label7.Visible = false;
                     listBox1.Items.Add((listBox1.Items.Count + 1) + "_" + ExcelDosyaAdi + "_" + pageName);
-                    
+
 
 
                     List<bool> RFGBool = new List<bool>(3) { false, false, false, false };
@@ -866,7 +867,7 @@ namespace DCC
         public void refresh()
         {
 
-            DialogResult result = MessageBox.Show("Measurement values have been saved for " + MeasurementTypes_ComboBox.Text+"\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("Measurement values have been saved for " + MeasurementTypes_ComboBox.Text + "\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
             {
@@ -923,7 +924,7 @@ namespace DCC
             else if (result == DialogResult.No)
             {
                 sayac = 0;
-                
+
                 ExcelDosyaYolu = "";
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
                 ExcelFileName_TextBox.Text = "";
@@ -969,7 +970,7 @@ namespace DCC
 
         private void CreateCertificate_Button_Click(object sender, EventArgs e)
         {
-            
+
             LabelProgress.Visible = false;
             progressBar.Value = 0;
 
@@ -1177,7 +1178,7 @@ namespace DCC
         }
 
 
-        
+
 
         private void checkBox11_CheckedChanged(object sender, EventArgs e)
         {
@@ -1332,6 +1333,6 @@ namespace DCC
             }
         }
 
-        
+       
     }
 }
