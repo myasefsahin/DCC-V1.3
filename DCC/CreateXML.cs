@@ -1996,11 +1996,11 @@ namespace DCC
 
             // rcphaseunc Element Oluşturulması
             XmlElement rcphaseuncElement = xml.CreateElement("dcc", "quantity", dcc);
-            rcphaseuncElement.SetAttribute("refType", noisestr + "_RC_Phase");
+            rcphaseuncElement.SetAttribute("refType", noisestr + "_RC_Phase_Unc");
 
             XmlElement rcphaseuncName = xml.CreateElement("dcc", "name", dcc);
             XmlElement rcphaseuncContent = xml.CreateElement("dcc", "content", dcc);
-            rcphaseuncContent.InnerText = noisestr + "_RC_Phase";
+            rcphaseuncContent.InnerText = noisestr + "_RC_Phase_Unc";
 
             XmlElement rcphaseuncHibrid = xml.CreateElement("si", "hybrid", si);
             XmlElement rcphaseuncRealList = xml.CreateElement("si", "realListXMLList", si);
