@@ -331,58 +331,58 @@ namespace DCC
                     XmlArrayS11ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
                     XmlArrayS11Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 3] + i].Value));
                     XmlArrayS11ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 4] + i].Value));
-                    XmlArrayS11Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 5] + i].Value));
-                    XmlArrayS11LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 6] + i].Value));
-                    XmlArrayS11LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 7] + i].Value));
-                    XmlArrayS11LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 8] + i].Value));
-                    XmlArrayS11Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
-                    XmlArrayS11LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 10] + i].Value));
-                    XmlArrayS11LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 11] + i].Value));
-                    XmlArrayS11LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 12] + i].Value));
-                    XmlArrayS11SWR.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 13] + i].Value));
-                    XmlArrayS11SWRUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 14] + i].Value));
+                    XmlArrayS11Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 6] + i].Value));
+                    XmlArrayS11LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 7] + i].Value));
+                    XmlArrayS11LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 8] + i].Value));
+                    XmlArrayS11LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
+                    XmlArrayS11Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 11] + i].Value));
+                    XmlArrayS11LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 12] + i].Value));
+                    XmlArrayS11LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 13] + i].Value));
+                    XmlArrayS11LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 14] + i].Value));
+                    XmlArrayS11SWR.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 16] + i].Value));
+                    XmlArrayS11SWRUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 17] + i].Value));
 
-                    XmlArrayS12Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 16] + i].Value));
-                    XmlArrayS12ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 17] + i].Value));
-                    XmlArrayS12Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 18] + i].Value));
-                    XmlArrayS12ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 19] + i].Value));
-                    XmlArrayS12Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 20] + i].Value));
-                    XmlArrayS12LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 21] + i].Value));
-                    XmlArrayS12LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 22] + i].Value));
-                    XmlArrayS12LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 23] + i].Value));
-                    XmlArrayS12Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 24] + i].Value));
-                    XmlArrayS12LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 25] + i].Value));
-                    XmlArrayS12LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 26] + i].Value));
-                    XmlArrayS12LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 27] + i].Value));
+                    XmlArrayS12Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 19] + i].Value));
+                    XmlArrayS12ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 20] + i].Value));
+                    XmlArrayS12Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 21] + i].Value));
+                    XmlArrayS12ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 22] + i].Value));
+                    XmlArrayS12Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 24] + i].Value));
+                    XmlArrayS12LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 25] + i].Value));
+                    XmlArrayS12LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 26] + i].Value));
+                    XmlArrayS12LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 27] + i].Value));
+                    XmlArrayS12Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 29] + i].Value));
+                    XmlArrayS12LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 30] + i].Value));
+                    XmlArrayS12LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 31] + i].Value));
+                    XmlArrayS12LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 32] + i].Value));
 
 
-                    XmlArrayS21Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 29] + i].Value));
-                    XmlArrayS21ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 30] + i].Value));
-                    XmlArrayS21Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 31] + i].Value));
-                    XmlArrayS21ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 32] + i].Value));
-                    XmlArrayS21Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 33] + i].Value));
-                    XmlArrayS21LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 34] + i].Value));
-                    XmlArrayS21LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 35] + i].Value));
-                    XmlArrayS21LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 36] + i].Value));
-                    XmlArrayS21Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 37] + i].Value));
-                    XmlArrayS21LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 38] + i].Value));
-                    XmlArrayS21LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 39] + i].Value));
-                    XmlArrayS21LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 40] + i].Value));
+                    XmlArrayS21Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 34] + i].Value));
+                    XmlArrayS21ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 35] + i].Value));
+                    XmlArrayS21Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 36] + i].Value));
+                    XmlArrayS21ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 37] + i].Value));
+                    XmlArrayS21Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 39] + i].Value));
+                    XmlArrayS21LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 40] + i].Value));
+                    XmlArrayS21LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 41] + i].Value));
+                    XmlArrayS21LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 42] + i].Value));
+                    XmlArrayS21Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 44] + i].Value));
+                    XmlArrayS21LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 45] + i].Value));
+                    XmlArrayS21LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 46] + i].Value));
+                    XmlArrayS21LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 47] + i].Value));
 
-                    XmlArrayS22Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 42] + i].Value));
-                    XmlArrayS22ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 43] + i].Value));
-                    XmlArrayS22Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 44] + i].Value));
-                    XmlArrayS22ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 45] + i].Value));
-                    XmlArrayS22Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 46] + i].Value));
-                    XmlArrayS22LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 47] + i].Value));
-                    XmlArrayS22LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 48] + i].Value));
-                    XmlArrayS22LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 49] + i].Value));
-                    XmlArrayS22Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 50] + i].Value));
-                    XmlArrayS22LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 51] + i].Value));
-                    XmlArrayS22LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 52] + i].Value));
-                    XmlArrayS22LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 53] + i].Value));
-                    XmlArrayS22SWR.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 54] + i].Value));
-                    XmlArrayS22SWRUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 55] + i].Value));
+                    XmlArrayS22Reel.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 49] + i].Value));
+                    XmlArrayS22ReelUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 50] + i].Value));
+                    XmlArrayS22Complex.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 51] + i].Value));
+                    XmlArrayS22ComplexUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 52] + i].Value));
+                    XmlArrayS22Lin.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 54] + i].Value));
+                    XmlArrayS22LinUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 55] + i].Value));
+                    XmlArrayS22LinPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 56] + i].Value));
+                    XmlArrayS22LinPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 57] + i].Value));
+                    XmlArrayS22Log.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 59] + i].Value));
+                    XmlArrayS22LogUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 60] + i].Value));
+                    XmlArrayS22LogPhase.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 61] + i].Value));
+                    XmlArrayS22LogPhaseUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 62] + i].Value));
+                    XmlArrayS22SWR.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 64] + i].Value));
+                    XmlArrayS22SWRUnc.Add(Convert.ToDouble(worksheet.Cells[columnName[harfIndex + 65] + i].Value));
                 }
             }
         }
@@ -1009,7 +1009,7 @@ namespace DCC
 
                 for (int i = satır; i <= rowCount; i++)
                 {
-                    cellValue[i - 7] = frekansSil(Convert.ToString(worksheet.Cells[columnName[harfIndex + 50] + i].Value));
+                    cellValue[i - satır] = frekansSil(Convert.ToString(worksheet.Cells[columnName[harfIndex + 50] + i].Value));
                     if (!string.IsNullOrEmpty(cellValue[i - satır]))
                     {
                         XML_ARFP_T8_Frekans.Add(cellValue[i - satır]);
@@ -1258,8 +1258,7 @@ namespace DCC
                 for (int i = satır; i < XML_RFD_T1_Frekans.Count + satır; i++)
                 {
 
-                    NumberFormatter formatter = new NumberFormatter();
-                    CalculateEntity calculateEntity = new CalculateEntity();
+                    ;
 
                     XML_RFD_T1_GostergeDegeri.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 1] + i].Value));
                     XML_RFD_T1_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 2] + i].Value));
@@ -1288,8 +1287,7 @@ namespace DCC
                 for (int i = satır; i < XML_RFD_T2_Frekans.Count + satır; i++)
                 {
 
-                    NumberFormatter formatter = new NumberFormatter();
-                    CalculateEntity calculateEntity = new CalculateEntity();
+                    
 
                     XML_RFD_T2_Nom_Guc_Lvl.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
                     XML_RFD_T2_OlculenDeger.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 10] + i].Value));
@@ -1319,8 +1317,7 @@ namespace DCC
                 for (int i = 7; i < XML_RFD_T3_Frekans.Count + satır; i++)
                 {
 
-                    NumberFormatter formatter = new NumberFormatter();
-                    CalculateEntity calculateEntity = new CalculateEntity();
+                    
 
                     XML_RFD_T3_NominalGuc.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 17] + i].Value));
                     XML_RFD_T3_AltSınır.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 18] + i].Value));
@@ -1349,8 +1346,7 @@ namespace DCC
 
                 for (int i = 7; i < XML_RFD_T4_Frekans.Count + satır; i++)
                 {
-                    NumberFormatter formatter = new NumberFormatter();
-                    CalculateEntity calculateEntity = new CalculateEntity();
+                    
 
                     XML_RFD_T4_Min_Guc_lvl.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 24] + i].Value));
                     XML_RFD_T4_Max_Guc_lvl.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 25] + i].Value));

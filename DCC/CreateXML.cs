@@ -2530,10 +2530,10 @@ namespace DCC
 
             if (control[0])
             {
-                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T1_Frekans, "MaxOutPowTest"));
+                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T1_Frekans, "RF_Diff_t1"));
 
                 List<XmlElement> xmlList = Add_RF_Difference(xml, dataXml.XML_RFD_T1_GostergeDegeri, dataXml.XML_RFD_T1_AltSınır, dataXml.XML_RFD_T1_OlculenDeger, dataXml.XML_RFD_T1_OlculenFark, dataXml.XML_RFD_T1_ÜstSınır, dataXml.XML_RFD_T1_Belirsizlik,
-                                           "RFD", "IndıcatorVal", "lowerLimit", "measuredVal", "measureDiff", "upperLimit", "uncertainty");
+                                           "RFD", "IndıcatorVal_t1", "lowerLimit_t1", "measuredVal_t1", "measureDiff_t1", "upperLimit_t1", "uncertainty_t1");
                 foreach (XmlElement xmlElement in xmlList)
                 {
                     list.AppendChild(xmlElement);
@@ -2542,10 +2542,10 @@ namespace DCC
 
             if (control[1])
             {
-                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T2_Frekans, "LevelAccTestFreq"));
+                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T2_Frekans, "RF_Diff_t2"));
 
                 List<XmlElement> xmlList = Add_RF_Difference(xml, dataXml.XML_RFD_T2_Nom_Guc_Lvl, dataXml.XML_RFD_T2_OlculenDeger, dataXml.XML_RFD_T2_AltSınır, dataXml.XML_RFD_T2_Nom_Guc_Lvl_fark, dataXml.XML_RFD_T2_ÜstSınır, dataXml.XML_RFD_T2_Belirsizlik,
-                                           "RFD", "NomPowlvl", "measuredVal", "lowerLimit", "NomPowlvlDiff", "upperLimit", "uncertainty");
+                                           "RFD", "NomPowlvl_t2", "measuredVal_t2", "lowerLimit_t2", "NomPowlvlDiff_t2", "upperLimit_t2", "uncertainty_t2");
                 foreach (XmlElement xmlElement in xmlList)
                 {
                     list.AppendChild(xmlElement);
@@ -2553,10 +2553,10 @@ namespace DCC
             }
             if (control[2])
             {
-                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T3_Frekans, "LevelAccTestPowRange"));
+                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T3_Frekans, "RF_Diff_t3"));
 
                 List<XmlElement> xmlList = Add_RF_Difference(xml, dataXml.XML_RFD_T3_NominalGuc, dataXml.XML_RFD_T3_AltSınır, dataXml.XML_RFD_T3_OlculenDeger, dataXml.XML_RFD_T3_ÜstSınır, dataXml.XML_RFD_T3_Fark, dataXml.XML_RFD_T3_Belirsizlik,
-                                           "RFD", "Nom_pow", "lowerLimit", "measuredVal", "upperLimit", "difference", "uncertainty");
+                                           "RFD", "Nom_pow_t3", "lowerLimit_t3", "measuredVal_t3", "upperLimit_t3", "difference_t3", "uncertainty_t3");
                 foreach (XmlElement xmlElement in xmlList)
                 {
                     list.AppendChild(xmlElement);
@@ -2564,10 +2564,10 @@ namespace DCC
             }
             if (control[3])
             {
-                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T4_Frekans, "Summary"));
+                list.AppendChild(add_RFD_Frekans(xml, dataXml.XML_RFD_T4_Frekans, "RF_Diff_t4"));
 
                 List<XmlElement> xmlList = Add_RF_Difference(xml, dataXml.XML_RFD_T4_Min_Guc_lvl, dataXml.XML_RFD_T4_Max_Guc_lvl, dataXml.XML_RFD_T4_AltSınır, dataXml.XML_RFD_T4_Fark, dataXml.XML_RFD_T4_UstSınır, dataXml.XML_RFD_T4_Belirsizlik,
-                                           "RFD", "MinPowLevel", "MaxPowLevel", "LowerLimit", "difference", "upper_limit", "uncertainty");
+                                           "RFD", "MinPowLevel_t4", "MaxPowLevel_t4", "LowerLimit_t4", "difference_t4", "upper_limit_t4", "uncertainty_t4");
                 foreach (XmlElement xmlElement in xmlList)
                 {
                     list.AppendChild(xmlElement);
