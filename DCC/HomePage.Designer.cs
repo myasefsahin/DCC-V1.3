@@ -65,10 +65,11 @@
             // 
             XMLtoWordPage.Controls.Add(groupBox2);
             XMLtoWordPage.Controls.Add(panel2);
-            XMLtoWordPage.Location = new Point(4, 29);
+            XMLtoWordPage.Location = new Point(4, 24);
+            XMLtoWordPage.Margin = new Padding(3, 2, 3, 2);
             XMLtoWordPage.Name = "XMLtoWordPage";
-            XMLtoWordPage.Padding = new Padding(3);
-            XMLtoWordPage.Size = new Size(642, 641);
+            XMLtoWordPage.Padding = new Padding(3, 2, 3, 2);
+            XMLtoWordPage.Size = new Size(561, 478);
             XMLtoWordPage.TabIndex = 1;
             XMLtoWordPage.Text = "tabPage2";
             XMLtoWordPage.UseVisualStyleBackColor = true;
@@ -77,26 +78,29 @@
             // 
             groupBox2.Controls.Add(progressBar);
             groupBox2.Controls.Add(labelProgress);
-            groupBox2.Location = new Point(-3, 648);
+            groupBox2.Location = new Point(-3, 486);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(702, 53);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(614, 40);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             // 
             // progressBar
             // 
             progressBar.BackColor = Color.White;
-            progressBar.Location = new Point(526, 17);
+            progressBar.Location = new Point(460, 13);
+            progressBar.Margin = new Padding(3, 2, 3, 2);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(125, 29);
+            progressBar.Size = new Size(109, 22);
             progressBar.TabIndex = 2;
             // 
             // labelProgress
             // 
             labelProgress.AutoSize = true;
-            labelProgress.Location = new Point(373, 19);
+            labelProgress.Location = new Point(326, 14);
             labelProgress.Name = "labelProgress";
-            labelProgress.Size = new Size(101, 20);
+            labelProgress.Size = new Size(80, 15);
             labelProgress.TabIndex = 3;
             labelProgress.Text = "LabelProgress";
             labelProgress.Visible = false;
@@ -107,17 +111,19 @@
             panel2.Controls.Add(groupBox1);
             panel2.Controls.Add(pictureBox3);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
+            panel2.Location = new Point(3, 2);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(636, 635);
+            panel2.Size = new Size(555, 474);
             panel2.TabIndex = 6;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(209, 16);
+            pictureBox2.Location = new Point(183, 12);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(259, 280);
+            pictureBox2.Size = new Size(227, 210);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -131,9 +137,11 @@
             groupBox1.Controls.Add(selectXmlFile);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             groupBox1.ForeColor = Color.Navy;
-            groupBox1.Location = new Point(162, 325);
+            groupBox1.Location = new Point(142, 244);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(353, 308);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(309, 231);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "MACHİNE READABLE TO HUMAN READABLE";
@@ -141,9 +149,10 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(350, 300);
+            checkBox1.Location = new Point(306, 225);
+            checkBox1.Margin = new Padding(3, 2, 3, 2);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(106, 24);
+            checkBox1.Size = new Size(88, 19);
             checkBox1.TabIndex = 4;
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
@@ -156,12 +165,12 @@
             createWordFile.Depth = 0;
             createWordFile.HighEmphasis = true;
             createWordFile.Icon = null;
-            createWordFile.Location = new Point(99, 227);
-            createWordFile.Margin = new Padding(5);
+            createWordFile.Location = new Point(87, 170);
+            createWordFile.Margin = new Padding(4, 4, 4, 4);
             createWordFile.MouseState = MaterialSkin.MouseState.HOVER;
             createWordFile.Name = "createWordFile";
             createWordFile.NoAccentTextColor = Color.Empty;
-            createWordFile.Size = new Size(158, 36);
+            createWordFile.Size = new Size(138, 27);
             createWordFile.TabIndex = 3;
             createWordFile.Text = "CREATE HUMAN READABLE FİLE";
             createWordFile.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -179,7 +188,8 @@
             materialTextBox22.HideSelection = true;
             materialTextBox22.Hint = "XML file name";
             materialTextBox22.LeadingIcon = null;
-            materialTextBox22.Location = new Point(35, 81);
+            materialTextBox22.Location = new Point(31, 61);
+            materialTextBox22.Margin = new Padding(3, 2, 3, 2);
             materialTextBox22.MaxLength = 32767;
             materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox22.Name = "materialTextBox22";
@@ -191,7 +201,7 @@
             materialTextBox22.SelectionLength = 0;
             materialTextBox22.SelectionStart = 0;
             materialTextBox22.ShortcutsEnabled = true;
-            materialTextBox22.Size = new Size(283, 48);
+            materialTextBox22.Size = new Size(248, 48);
             materialTextBox22.TabIndex = 1;
             materialTextBox22.TabStop = false;
             materialTextBox22.TextAlign = HorizontalAlignment.Left;
@@ -206,12 +216,12 @@
             selectXmlFile.Depth = 0;
             selectXmlFile.HighEmphasis = true;
             selectXmlFile.Icon = null;
-            selectXmlFile.Location = new Point(99, 159);
-            selectXmlFile.Margin = new Padding(5);
+            selectXmlFile.Location = new Point(87, 119);
+            selectXmlFile.Margin = new Padding(4, 4, 4, 4);
             selectXmlFile.MouseState = MaterialSkin.MouseState.HOVER;
             selectXmlFile.Name = "selectXmlFile";
             selectXmlFile.NoAccentTextColor = Color.Empty;
-            selectXmlFile.Size = new Size(158, 36);
+            selectXmlFile.Size = new Size(138, 27);
             selectXmlFile.TabIndex = 2;
             selectXmlFile.Text = "SELECT XML FİLE";
             selectXmlFile.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -222,9 +232,10 @@
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(15, 16);
+            pictureBox3.Location = new Point(13, 12);
+            pictureBox3.Margin = new Padding(3, 2, 3, 2);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(62, 35);
+            pictureBox3.Size = new Size(54, 26);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
@@ -235,10 +246,11 @@
             HomeTab.BackColor = Color.White;
             HomeTab.Controls.Add(panel1);
             HomeTab.ImeMode = ImeMode.NoControl;
-            HomeTab.Location = new Point(4, 29);
+            HomeTab.Location = new Point(4, 24);
+            HomeTab.Margin = new Padding(3, 2, 3, 2);
             HomeTab.Name = "HomeTab";
-            HomeTab.Padding = new Padding(3);
-            HomeTab.Size = new Size(642, 641);
+            HomeTab.Padding = new Padding(3, 2, 3, 2);
+            HomeTab.Size = new Size(561, 478);
             HomeTab.TabIndex = 0;
             HomeTab.Text = "tabPage1";
             // 
@@ -251,19 +263,19 @@
             panel1.Controls.Add(CertificatePageShowButton);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 2);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(636, 635);
+            panel1.Size = new Size(555, 474);
             panel1.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(327, 337);
+            label2.Location = new Point(286, 253);
             label2.Name = "label2";
-            label2.Size = new Size(81, 35);
+            label2.Size = new Size(65, 28);
             label2.TabIndex = 4;
             label2.Text = "label2";
             // 
@@ -271,9 +283,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
-            label1.Location = new Point(208, 337);
+            label1.Location = new Point(182, 253);
             label1.Name = "label1";
-            label1.Size = new Size(88, 35);
+            label1.Size = new Size(70, 28);
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
@@ -285,14 +297,14 @@
             XMLtoWordPageButton.Depth = 0;
             XMLtoWordPageButton.HighEmphasis = true;
             XMLtoWordPageButton.Icon = null;
-            XMLtoWordPageButton.Location = new Point(360, 475);
-            XMLtoWordPageButton.Margin = new Padding(5);
+            XMLtoWordPageButton.Location = new Point(286, 356);
+            XMLtoWordPageButton.Margin = new Padding(4, 4, 4, 4);
             XMLtoWordPageButton.MouseState = MaterialSkin.MouseState.HOVER;
             XMLtoWordPageButton.Name = "XMLtoWordPageButton";
             XMLtoWordPageButton.NoAccentTextColor = Color.Empty;
-            XMLtoWordPageButton.Size = new Size(200, 50);
+            XMLtoWordPageButton.Size = new Size(237, 59);
             XMLtoWordPageButton.TabIndex = 2;
-            XMLtoWordPageButton.Text = "MACHİNE READABLE TO HUMAN READABLE";
+            XMLtoWordPageButton.Text = "CONVERT CERTIFICATE FROM MACHINE READABLE TO HUMAN READABLE";
             XMLtoWordPageButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             XMLtoWordPageButton.UseAccentColor = false;
             XMLtoWordPageButton.UseVisualStyleBackColor = true;
@@ -306,14 +318,14 @@
             CertificatePageShowButton.Depth = 0;
             CertificatePageShowButton.HighEmphasis = true;
             CertificatePageShowButton.Icon = null;
-            CertificatePageShowButton.Location = new Point(80, 475);
-            CertificatePageShowButton.Margin = new Padding(5);
+            CertificatePageShowButton.Location = new Point(25, 356);
+            CertificatePageShowButton.Margin = new Padding(4, 4, 4, 4);
             CertificatePageShowButton.MouseState = MaterialSkin.MouseState.HOVER;
             CertificatePageShowButton.Name = "CertificatePageShowButton";
             CertificatePageShowButton.NoAccentTextColor = Color.Empty;
-            CertificatePageShowButton.Size = new Size(200, 50);
+            CertificatePageShowButton.Size = new Size(237, 59);
             CertificatePageShowButton.TabIndex = 1;
-            CertificatePageShowButton.Text = "CREATE CERTİFİCATE";
+            CertificatePageShowButton.Text = "CREATE CERTIFICATE AS HUMAN  AND MACHINE READABLE";
             CertificatePageShowButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             CertificatePageShowButton.UseAccentColor = false;
             CertificatePageShowButton.UseVisualStyleBackColor = true;
@@ -322,9 +334,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(225, 35);
+            pictureBox1.Location = new Point(197, 26);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 250);
+            pictureBox1.Size = new Size(175, 188);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -333,20 +346,21 @@
             // 
             tabControl1.Controls.Add(HomeTab);
             tabControl1.Controls.Add(XMLtoWordPage);
-            tabControl1.Location = new Point(-10, -35);
+            tabControl1.Location = new Point(-9, -26);
             tabControl1.Margin = new Padding(0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(650, 674);
+            tabControl1.Size = new Size(569, 506);
             tabControl1.TabIndex = 1;
             // 
             // HomePage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(632, 631);
+            ClientSize = new Size(553, 473);
             Controls.Add(tabControl1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "HomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DCC CREATER ";
