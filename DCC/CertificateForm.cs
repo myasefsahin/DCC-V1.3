@@ -79,7 +79,7 @@ namespace DCC
             ReceiveData_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
             BackBox3.Enabled = true;
-
+            
 
 
         }
@@ -1333,6 +1333,6 @@ namespace DCC
             }
         }
 
-
+       
     }
 }
