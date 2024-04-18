@@ -282,7 +282,6 @@ namespace DCC
         public ArrayList ARFP_T1_Cıkıs_Gücü { get; set; }
         public ArrayList ARFP_T1_Olculen_Güc { get; set; }
 
-
         public ArrayList ARFP_T1_AltSınır { get; set; }
         public ArrayList ARFP_T1_Sapma { get; set; }
         public ArrayList ARFP_T1_ÜstSınır { get; set; }

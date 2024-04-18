@@ -14,6 +14,7 @@ using OfficeOpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DCC;
 using System.Xml;
+using System.Text.Json;
 
 
 namespace DCC
@@ -64,72 +65,88 @@ namespace DCC
 
         private void CertificateForm_Load(object sender, EventArgs e)
         {
-            LaboratoryComboBox.Enabled = false;
-            DeviceNameTextBox.Enabled = false;
-            ModelNameTextBox.Enabled = false;
-            SerialNumberTextBox.Enabled = false;
-            CalCodeTextBox.Enabled = false;
-            SelectDeviceButton.Enabled = false;
-            DeviceTextBox.Enabled = false;
-            MethodTextBox.Enabled = false;
-            CalibrationDescTextBox.Enabled = false;
-            MeasurementsTextBox.Enabled = false;
-            ReceiveData_Button.Enabled = false;
-            CreateCertificate_Button.Enabled = false;
-            BackBox3.Enabled = true;
-
-
+  
         }
 
         private void OrderNumberTextBox_TextChanged(object sender, EventArgs e)
         {
-            LaboratoryComboBox.Enabled = true;
         }
 
         private void LaboratoryComboBox_TextChanged(object sender, EventArgs e)
         {
-            DeviceNameTextBox.Enabled = true;
         }
 
         private void DeviceNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            ModelNameTextBox.Enabled = true;
         }
 
         private void ModelNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            SerialNumberTextBox.Enabled = true;
         }
 
         private void SerialNumberTextBox_TextChanged(object sender, EventArgs e)
         {
-            CalCodeTextBox.Enabled = true;
 
         }
 
         private void CalCodeTextBox_TextChanged(object sender, EventArgs e)
         {
-            SelectDeviceButton.Enabled = true;
         }
 
-        private void SelectDeviceButton_Click(object sender, EventArgs e)
+        private async void SelectDeviceButton_Click(object sender, EventArgs e)
         {
-            DeviceTextBox.Enabled = true;
+            string apiUrl = "https://localhost:7166/AdministrativeData/GetAdministrativeDataSipNo?dataId=" + OrderNumberTextBox.Text;
+
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    var response = await httpClient.GetAsync(apiUrl);
+                    response.EnsureSuccessStatusCode();
+
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var options = new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        };
+
+                        var responseData = await JsonSerializer.DeserializeAsync<ApiResponse>(responseStream, options);
+
+                        if (responseData != null && responseData.Data.SiparisCihazlari != null && responseData.Data.SiparisCihazlari.Any())
+                        {
+                            foreach (var item in responseData.Data.SiparisCihazlari)
+                            {
+                                DeviceComboBox.Items.Add(item.CihazNoNavigation.CihazAdi);
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Api'den Gelen Veride Hata Var");
+                        }
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"HTTP request error: {ex.Message}");
+                }
+
+            }
         }
 
         private void DeviceTextBox_TextChanged(object sender, EventArgs e)
         {
-            MethodTextBox.Enabled = true;
+          
         }
 
         private void MethodTextBox_TextChanged(object sender, EventArgs e)
         {
-            CalibrationDescTextBox.Enabled = true;
         }
 
         private void CalibrationDescTextBox_TextChanged(object sender, EventArgs e)
         {
-            MeasurementsTextBox.Enabled = true;
+         
         }
         #endregion
 

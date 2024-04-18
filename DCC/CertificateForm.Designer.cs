@@ -48,6 +48,7 @@
             ModelNameTextBox = new MaterialSkin.Controls.MaterialTextBox2();
             DeviceNameTextBox = new MaterialSkin.Controls.MaterialTextBox2();
             groupBox2 = new GroupBox();
+            DeviceComboBox = new MaterialSkin.Controls.MaterialComboBox();
             LaboratoryComboBox = new MaterialSkin.Controls.MaterialComboBox();
             OrderNumberTextBox = new MaterialSkin.Controls.MaterialTextBox2();
             label1 = new Label();
@@ -74,6 +75,12 @@
             CF_checkBox_RIRC = new CheckBox();
             CheckBox_CF = new CheckBox();
             CIS_Page = new TabPage();
+            checkBox6 = new CheckBox();
+            checkBox5 = new CheckBox();
+            checkBox4 = new CheckBox();
+            checkBox3 = new CheckBox();
+            checkBox2 = new CheckBox();
+            checkBox1 = new CheckBox();
             CIS_CheckBox = new CheckBox();
             Absolute_RFPow_Page = new TabPage();
             ARFP_11 = new CheckBox();
@@ -134,12 +141,6 @@
             label6 = new Label();
             groupBox12 = new GroupBox();
             LabelProgress = new Label();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox5 = new CheckBox();
-            checkBox6 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)BackBox1).BeginInit();
             CertificateTabControl.SuspendLayout();
             API_PAGE.SuspendLayout();
@@ -178,9 +179,9 @@
             // BackBox1
             // 
             BackBox1.Image = (Image)resources.GetObject("BackBox1.Image");
-            BackBox1.Location = new Point(5, 14);
+            BackBox1.Location = new Point(6, 12);
             BackBox1.Name = "BackBox1";
-            BackBox1.Size = new Size(62, 35);
+            BackBox1.Size = new Size(35, 26);
             BackBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             BackBox1.TabIndex = 6;
             BackBox1.TabStop = false;
@@ -200,10 +201,10 @@
             // API_PAGE
             // 
             API_PAGE.Controls.Add(panel1);
-            API_PAGE.Location = new Point(4, 29);
+            API_PAGE.Location = new Point(4, 24);
             API_PAGE.Name = "API_PAGE";
             API_PAGE.Padding = new Padding(3);
-            API_PAGE.Size = new Size(1219, 721);
+            API_PAGE.Size = new Size(1219, 726);
             API_PAGE.TabIndex = 0;
             API_PAGE.Text = "tabPage1";
             API_PAGE.UseVisualStyleBackColor = true;
@@ -217,7 +218,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1213, 715);
+            panel1.Size = new Size(1213, 720);
             panel1.TabIndex = 7;
             // 
             // groupBox4
@@ -367,7 +368,7 @@
             label2.ForeColor = Color.Navy;
             label2.Location = new Point(52, 32);
             label2.Name = "label2";
-            label2.Size = new Size(560, 23);
+            label2.Size = new Size(465, 19);
             label2.TabIndex = 0;
             label2.Text = "Device, Method, Calibration and Measurement Description Windows";
             // 
@@ -391,7 +392,7 @@
             SelectDeviceButton.Depth = 0;
             SelectDeviceButton.HighEmphasis = true;
             SelectDeviceButton.Icon = null;
-            SelectDeviceButton.Location = new Point(138, 660);
+            SelectDeviceButton.Location = new Point(155, 665);
             SelectDeviceButton.Margin = new Padding(4, 6, 4, 6);
             SelectDeviceButton.MouseState = MaterialSkin.MouseState.HOVER;
             SelectDeviceButton.Name = "SelectDeviceButton";
@@ -541,6 +542,7 @@
             // groupBox2
             // 
             groupBox2.BackColor = Color.White;
+            groupBox2.Controls.Add(DeviceComboBox);
             groupBox2.Controls.Add(LaboratoryComboBox);
             groupBox2.Controls.Add(OrderNumberTextBox);
             groupBox2.Location = new Point(24, 71);
@@ -548,6 +550,28 @@
             groupBox2.Size = new Size(385, 175);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
+            // 
+            // DeviceComboBox
+            // 
+            DeviceComboBox.AutoResize = false;
+            DeviceComboBox.BackColor = Color.FromArgb(255, 255, 255);
+            DeviceComboBox.Depth = 0;
+            DeviceComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+            DeviceComboBox.DropDownHeight = 174;
+            DeviceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            DeviceComboBox.DropDownWidth = 121;
+            DeviceComboBox.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            DeviceComboBox.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            DeviceComboBox.FormattingEnabled = true;
+            DeviceComboBox.IntegralHeight = false;
+            DeviceComboBox.ItemHeight = 43;
+            DeviceComboBox.Location = new Point(25, 108);
+            DeviceComboBox.MaxDropDownItems = 4;
+            DeviceComboBox.MouseState = MaterialSkin.MouseState.OUT;
+            DeviceComboBox.Name = "DeviceComboBox";
+            DeviceComboBox.Size = new Size(324, 49);
+            DeviceComboBox.StartIndex = 0;
+            DeviceComboBox.TabIndex = 2;
             // 
             // LaboratoryComboBox
             // 
@@ -611,7 +635,7 @@
             label1.ForeColor = Color.Navy;
             label1.Location = new Point(96, 32);
             label1.Name = "label1";
-            label1.Size = new Size(202, 23);
+            label1.Size = new Size(167, 19);
             label1.TabIndex = 0;
             label1.Text = "Certificate Informations";
             // 
@@ -619,10 +643,10 @@
             // 
             DATA_PAGE.BackColor = Color.White;
             DATA_PAGE.Controls.Add(panel2);
-            DATA_PAGE.Location = new Point(4, 29);
+            DATA_PAGE.Location = new Point(4, 24);
             DATA_PAGE.Name = "DATA_PAGE";
             DATA_PAGE.Padding = new Padding(3);
-            DATA_PAGE.Size = new Size(1219, 721);
+            DATA_PAGE.Size = new Size(1219, 726);
             DATA_PAGE.TabIndex = 1;
             DATA_PAGE.Text = "tabPage2";
             // 
@@ -636,7 +660,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1213, 715);
+            panel2.Size = new Size(1213, 720);
             panel2.TabIndex = 8;
             // 
             // NextBox1
@@ -806,9 +830,10 @@
             // 
             listBox1.BackColor = Color.White;
             listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
             listBox1.Location = new Point(18, 21);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(369, 224);
+            listBox1.Size = new Size(369, 214);
             listBox1.TabIndex = 2;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
@@ -850,10 +875,10 @@
             EE_Page.Controls.Add(checkBoxRHO);
             EE_Page.Controls.Add(checkBox_EE_RI);
             EE_Page.Controls.Add(checkBoxEE);
-            EE_Page.Location = new Point(4, 54);
+            EE_Page.Location = new Point(4, 44);
             EE_Page.Name = "EE_Page";
             EE_Page.Padding = new Padding(3);
-            EE_Page.Size = new Size(571, 450);
+            EE_Page.Size = new Size(571, 460);
             EE_Page.TabIndex = 0;
             EE_Page.Text = "Effective Efficiency";
             // 
@@ -864,7 +889,7 @@
             checkBox_EE_CF.ForeColor = Color.Navy;
             checkBox_EE_CF.Location = new Point(66, 270);
             checkBox_EE_CF.Name = "checkBox_EE_CF";
-            checkBox_EE_CF.Size = new Size(155, 24);
+            checkBox_EE_CF.Size = new Size(123, 19);
             checkBox_EE_CF.TabIndex = 3;
             checkBox_EE_CF.Text = "Calibration Factor";
             checkBox_EE_CF.UseVisualStyleBackColor = true;
@@ -876,7 +901,7 @@
             checkBoxRHO.ForeColor = Color.Navy;
             checkBoxRHO.Location = new Point(66, 206);
             checkBoxRHO.Name = "checkBoxRHO";
-            checkBoxRHO.Size = new Size(313, 24);
+            checkBoxRHO.Size = new Size(252, 19);
             checkBoxRHO.TabIndex = 2;
             checkBoxRHO.Text = "Reflection Coefficient Linear Magnitude ";
             checkBoxRHO.UseVisualStyleBackColor = true;
@@ -888,7 +913,7 @@
             checkBox_EE_RI.ForeColor = Color.Navy;
             checkBox_EE_RI.Location = new Point(66, 142);
             checkBox_EE_RI.Name = "checkBox_EE_RI";
-            checkBox_EE_RI.Size = new Size(291, 24);
+            checkBox_EE_RI.Size = new Size(236, 19);
             checkBox_EE_RI.TabIndex = 1;
             checkBox_EE_RI.Text = "Reflection Coefficient, Reel, Imaginer";
             checkBox_EE_RI.UseVisualStyleBackColor = true;
@@ -900,7 +925,7 @@
             checkBoxEE.ForeColor = Color.Navy;
             checkBoxEE.Location = new Point(66, 78);
             checkBoxEE.Name = "checkBoxEE";
-            checkBoxEE.Size = new Size(163, 24);
+            checkBoxEE.Size = new Size(134, 19);
             checkBoxEE.TabIndex = 0;
             checkBoxEE.Text = "Effective Efficiency";
             checkBoxEE.UseVisualStyleBackColor = true;
@@ -909,10 +934,10 @@
             // 
             CalFactor_Page.Controls.Add(CF_checkBox_RIRC);
             CalFactor_Page.Controls.Add(CheckBox_CF);
-            CalFactor_Page.Location = new Point(4, 54);
+            CalFactor_Page.Location = new Point(4, 44);
             CalFactor_Page.Name = "CalFactor_Page";
             CalFactor_Page.Padding = new Padding(3);
-            CalFactor_Page.Size = new Size(571, 450);
+            CalFactor_Page.Size = new Size(571, 460);
             CalFactor_Page.TabIndex = 1;
             CalFactor_Page.Text = "Cal Factor";
             CalFactor_Page.UseVisualStyleBackColor = true;
@@ -924,7 +949,7 @@
             CF_checkBox_RIRC.ForeColor = Color.Navy;
             CF_checkBox_RIRC.Location = new Point(66, 142);
             CF_checkBox_RIRC.Name = "CF_checkBox_RIRC";
-            CF_checkBox_RIRC.Size = new Size(321, 24);
+            CF_checkBox_RIRC.Size = new Size(259, 19);
             CF_checkBox_RIRC.TabIndex = 5;
             CF_checkBox_RIRC.Text = "Reflection Coefficient and Reel, Imaginer ";
             CF_checkBox_RIRC.UseVisualStyleBackColor = true;
@@ -936,7 +961,7 @@
             CheckBox_CF.ForeColor = Color.Navy;
             CheckBox_CF.Location = new Point(66, 78);
             CheckBox_CF.Name = "CheckBox_CF";
-            CheckBox_CF.Size = new Size(155, 24);
+            CheckBox_CF.Size = new Size(123, 19);
             CheckBox_CF.TabIndex = 4;
             CheckBox_CF.Text = "Calibration Factor";
             CheckBox_CF.UseVisualStyleBackColor = true;
@@ -950,13 +975,85 @@
             CIS_Page.Controls.Add(checkBox2);
             CIS_Page.Controls.Add(checkBox1);
             CIS_Page.Controls.Add(CIS_CheckBox);
-            CIS_Page.Location = new Point(4, 54);
+            CIS_Page.Location = new Point(4, 44);
             CIS_Page.Name = "CIS_Page";
             CIS_Page.Padding = new Padding(3);
-            CIS_Page.Size = new Size(571, 450);
+            CIS_Page.Size = new Size(571, 460);
             CIS_Page.TabIndex = 2;
             CIS_Page.Text = "CIS";
             CIS_Page.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            checkBox6.AutoSize = true;
+            checkBox6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBox6.ForeColor = Color.Navy;
+            checkBox6.Location = new Point(66, 339);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new Size(234, 34);
+            checkBox6.TabIndex = 11;
+            checkBox6.Text = "The Linear Magnitude of Reverse and\r\nForward Transmission Coefficient";
+            checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            checkBox5.AutoSize = true;
+            checkBox5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBox5.ForeColor = Color.Navy;
+            checkBox5.Location = new Point(66, 293);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(233, 19);
+            checkBox5.TabIndex = 10;
+            checkBox5.Text = "Forward and Transmission Coefficient";
+            checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            checkBox4.AutoSize = true;
+            checkBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBox4.ForeColor = Color.Navy;
+            checkBox4.Location = new Point(66, 251);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(248, 19);
+            checkBox4.TabIndex = 9;
+            checkBox4.Text = "Input and Output Reflection Coefficient";
+            checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBox3.ForeColor = Color.Navy;
+            checkBox3.Location = new Point(66, 208);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(104, 19);
+            checkBox3.TabIndex = 8;
+            checkBox3.Text = "CIS Diamaters";
+            checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            checkBox2.AutoSize = true;
+            checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBox2.ForeColor = Color.Navy;
+            checkBox2.Location = new Point(66, 166);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(252, 19);
+            checkBox2.TabIndex = 7;
+            checkBox2.Text = "The Length of Inner Conducter of Airline";
+            checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBox1.ForeColor = Color.Navy;
+            checkBox1.Location = new Point(66, 123);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(255, 19);
+            checkBox1.TabIndex = 6;
+            checkBox1.Text = "The Length of Outer Conducter of Airline";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // CIS_CheckBox
             // 
@@ -965,7 +1062,7 @@
             CIS_CheckBox.ForeColor = Color.Navy;
             CIS_CheckBox.Location = new Point(66, 78);
             CIS_CheckBox.Name = "CIS_CheckBox";
-            CIS_CheckBox.Size = new Size(199, 24);
+            CIS_CheckBox.Size = new Size(158, 19);
             CIS_CheckBox.TabIndex = 5;
             CIS_CheckBox.Text = "Z-Position , ICOD , OCID";
             CIS_CheckBox.UseVisualStyleBackColor = true;
@@ -983,10 +1080,10 @@
             Absolute_RFPow_Page.Controls.Add(ARFP_3);
             Absolute_RFPow_Page.Controls.Add(ARFP_2);
             Absolute_RFPow_Page.Controls.Add(ARFP_1);
-            Absolute_RFPow_Page.Location = new Point(4, 54);
+            Absolute_RFPow_Page.Location = new Point(4, 44);
             Absolute_RFPow_Page.Name = "Absolute_RFPow_Page";
             Absolute_RFPow_Page.Padding = new Padding(3);
-            Absolute_RFPow_Page.Size = new Size(571, 450);
+            Absolute_RFPow_Page.Size = new Size(571, 460);
             Absolute_RFPow_Page.TabIndex = 3;
             Absolute_RFPow_Page.Text = "Absolute RF Power";
             Absolute_RFPow_Page.UseVisualStyleBackColor = true;
@@ -998,7 +1095,7 @@
             ARFP_11.ForeColor = Color.Navy;
             ARFP_11.Location = new Point(30, 367);
             ARFP_11.Name = "ARFP_11";
-            ARFP_11.Size = new Size(462, 24);
+            ARFP_11.Size = new Size(369, 19);
             ARFP_11.TabIndex = 16;
             ARFP_11.Text = "Microwave Output Standing Wave Ratio (SWR) Test @-9 dBm";
             ARFP_11.UseVisualStyleBackColor = true;
@@ -1010,7 +1107,7 @@
             ARFP_10.ForeColor = Color.Navy;
             ARFP_10.Location = new Point(30, 332);
             ARFP_10.Name = "ARFP_10";
-            ARFP_10.Size = new Size(456, 24);
+            ARFP_10.Size = new Size(364, 19);
             ARFP_10.TabIndex = 15;
             ARFP_10.Text = "Microwave Output Standing Wave Ratio (SWR) Test @3 dBm";
             ARFP_10.UseVisualStyleBackColor = true;
@@ -1022,7 +1119,7 @@
             ARFP_9.ForeColor = Color.Navy;
             ARFP_9.Location = new Point(30, 297);
             ARFP_9.Name = "ARFP_9";
-            ARFP_9.Size = new Size(465, 24);
+            ARFP_9.Size = new Size(371, 19);
             ARFP_9.TabIndex = 14;
             ARFP_9.Text = "Microwave Output Standing Wave Ratio (SWR) Test @11 dBm";
             ARFP_9.UseVisualStyleBackColor = true;
@@ -1034,7 +1131,7 @@
             ARFP_8.ForeColor = Color.Navy;
             ARFP_8.Location = new Point(30, 262);
             ARFP_8.Name = "ARFP_8";
-            ARFP_8.Size = new Size(418, 24);
+            ARFP_8.Size = new Size(336, 19);
             ARFP_8.TabIndex = 13;
             ARFP_8.Text = "Microwave Output Level Accuracy Test by Power Range";
             ARFP_8.UseVisualStyleBackColor = true;
@@ -1046,7 +1143,7 @@
             ARFP_7.ForeColor = Color.Navy;
             ARFP_7.Location = new Point(30, 227);
             ARFP_7.Name = "ARFP_7";
-            ARFP_7.Size = new Size(301, 24);
+            ARFP_7.Size = new Size(243, 19);
             ARFP_7.TabIndex = 12;
             ARFP_7.Text = "Microwave Output Level Accuracy Test";
             ARFP_7.UseVisualStyleBackColor = true;
@@ -1058,7 +1155,7 @@
             ARFP_6.ForeColor = Color.Navy;
             ARFP_6.Location = new Point(30, 192);
             ARFP_6.Name = "ARFP_6";
-            ARFP_6.Size = new Size(454, 24);
+            ARFP_6.Size = new Size(362, 19);
             ARFP_6.TabIndex = 10;
             ARFP_6.Text = "“Head RF” Output Standing Wave Ratio (SWR) Test @-7dBm";
             ARFP_6.UseVisualStyleBackColor = true;
@@ -1070,7 +1167,7 @@
             ARFP_5.ForeColor = Color.Navy;
             ARFP_5.Location = new Point(30, 157);
             ARFP_5.Name = "ARFP_5";
-            ARFP_5.Size = new Size(448, 24);
+            ARFP_5.Size = new Size(357, 19);
             ARFP_5.TabIndex = 9;
             ARFP_5.Text = "“Head RF” Output Standing Wave Ratio (SWR) Test @3dBm";
             ARFP_5.UseVisualStyleBackColor = true;
@@ -1082,7 +1179,7 @@
             ARFP_4.ForeColor = Color.Navy;
             ARFP_4.Location = new Point(30, 122);
             ARFP_4.Name = "ARFP_4";
-            ARFP_4.Size = new Size(457, 24);
+            ARFP_4.Size = new Size(364, 19);
             ARFP_4.TabIndex = 8;
             ARFP_4.Text = "“Head RF” Output Standing Wave Ratio (SWR) Test @13dBm";
             ARFP_4.UseVisualStyleBackColor = true;
@@ -1094,7 +1191,7 @@
             ARFP_3.ForeColor = Color.Navy;
             ARFP_3.Location = new Point(30, 87);
             ARFP_3.Name = "ARFP_3";
-            ARFP_3.Size = new Size(346, 24);
+            ARFP_3.Size = new Size(276, 19);
             ARFP_3.TabIndex = 7;
             ARFP_3.Text = "“Head RF” Output Attenuation Accuracy Test";
             ARFP_3.UseVisualStyleBackColor = true;
@@ -1106,7 +1203,7 @@
             ARFP_2.ForeColor = Color.Navy;
             ARFP_2.Location = new Point(30, 52);
             ARFP_2.Name = "ARFP_2";
-            ARFP_2.Size = new Size(284, 24);
+            ARFP_2.Size = new Size(228, 19);
             ARFP_2.TabIndex = 6;
             ARFP_2.Text = "Level Accuracy Test by Power Range";
             ARFP_2.UseVisualStyleBackColor = true;
@@ -1118,7 +1215,7 @@
             ARFP_1.ForeColor = Color.Navy;
             ARFP_1.Location = new Point(30, 17);
             ARFP_1.Name = "ARFP_1";
-            ARFP_1.Size = new Size(297, 24);
+            ARFP_1.Size = new Size(239, 19);
             ARFP_1.TabIndex = 5;
             ARFP_1.Text = "\"Head RF” Output Level Accuracy Test";
             ARFP_1.UseVisualStyleBackColor = true;
@@ -1129,10 +1226,10 @@
             SParam_Page.Controls.Add(groupBox8);
             SParam_Page.Controls.Add(groupBox7);
             SParam_Page.Controls.Add(groupBox6);
-            SParam_Page.Location = new Point(4, 54);
+            SParam_Page.Location = new Point(4, 44);
             SParam_Page.Name = "SParam_Page";
             SParam_Page.Padding = new Padding(3);
-            SParam_Page.Size = new Size(571, 450);
+            SParam_Page.Size = new Size(571, 460);
             SParam_Page.TabIndex = 4;
             SParam_Page.Text = "S-Parameter";
             SParam_Page.UseVisualStyleBackColor = true;
@@ -1157,7 +1254,7 @@
             checkBoxS22SWR.ForeColor = Color.Navy;
             checkBoxS22SWR.Location = new Point(31, 107);
             checkBoxS22SWR.Name = "checkBoxS22SWR";
-            checkBoxS22SWR.Size = new Size(64, 24);
+            checkBoxS22SWR.Size = new Size(53, 19);
             checkBoxS22SWR.TabIndex = 9;
             checkBoxS22SWR.Text = "SWR";
             checkBoxS22SWR.UseVisualStyleBackColor = true;
@@ -1169,7 +1266,7 @@
             checkBoxS22Log.ForeColor = Color.Navy;
             checkBoxS22Log.Location = new Point(31, 47);
             checkBoxS22Log.Name = "checkBoxS22Log";
-            checkBoxS22Log.Size = new Size(216, 24);
+            checkBoxS22Log.Size = new Size(170, 19);
             checkBoxS22Log.TabIndex = 8;
             checkBoxS22Log.Text = "Logaritmic Mag and Phase";
             checkBoxS22Log.UseVisualStyleBackColor = true;
@@ -1181,7 +1278,7 @@
             checkBoxS22Lin.ForeColor = Color.Navy;
             checkBoxS22Lin.Location = new Point(31, 77);
             checkBoxS22Lin.Name = "checkBoxS22Lin";
-            checkBoxS22Lin.Size = new Size(184, 24);
+            checkBoxS22Lin.Size = new Size(145, 19);
             checkBoxS22Lin.TabIndex = 7;
             checkBoxS22Lin.Text = "Linear Mag and Phase";
             checkBoxS22Lin.UseVisualStyleBackColor = true;
@@ -1193,7 +1290,7 @@
             checkBoxS22Reel.ForeColor = Color.Navy;
             checkBoxS22Reel.Location = new Point(31, 17);
             checkBoxS22Reel.Name = "checkBoxS22Reel";
-            checkBoxS22Reel.Size = new Size(158, 24);
+            checkBoxS22Reel.Size = new Size(127, 19);
             checkBoxS22Reel.TabIndex = 6;
             checkBoxS22Reel.Text = "Reel and Imaginer";
             checkBoxS22Reel.UseVisualStyleBackColor = true;
@@ -1217,7 +1314,7 @@
             checkBoxS21Log.ForeColor = Color.Navy;
             checkBoxS21Log.Location = new Point(35, 47);
             checkBoxS21Log.Name = "checkBoxS21Log";
-            checkBoxS21Log.Size = new Size(216, 24);
+            checkBoxS21Log.Size = new Size(170, 19);
             checkBoxS21Log.TabIndex = 8;
             checkBoxS21Log.Text = "Logaritmic Mag and Phase";
             checkBoxS21Log.UseVisualStyleBackColor = true;
@@ -1229,7 +1326,7 @@
             checkBoxS21Lin.ForeColor = Color.Navy;
             checkBoxS21Lin.Location = new Point(35, 77);
             checkBoxS21Lin.Name = "checkBoxS21Lin";
-            checkBoxS21Lin.Size = new Size(184, 24);
+            checkBoxS21Lin.Size = new Size(145, 19);
             checkBoxS21Lin.TabIndex = 7;
             checkBoxS21Lin.Text = "Linear Mag and Phase";
             checkBoxS21Lin.UseVisualStyleBackColor = true;
@@ -1241,7 +1338,7 @@
             checkBoxS21Reel.ForeColor = Color.Navy;
             checkBoxS21Reel.Location = new Point(35, 17);
             checkBoxS21Reel.Name = "checkBoxS21Reel";
-            checkBoxS21Reel.Size = new Size(158, 24);
+            checkBoxS21Reel.Size = new Size(127, 19);
             checkBoxS21Reel.TabIndex = 6;
             checkBoxS21Reel.Text = "Reel and Imaginer";
             checkBoxS21Reel.UseVisualStyleBackColor = true;
@@ -1265,7 +1362,7 @@
             checkBoxS12Log.ForeColor = Color.Navy;
             checkBoxS12Log.Location = new Point(35, 46);
             checkBoxS12Log.Name = "checkBoxS12Log";
-            checkBoxS12Log.Size = new Size(216, 24);
+            checkBoxS12Log.Size = new Size(170, 19);
             checkBoxS12Log.TabIndex = 8;
             checkBoxS12Log.Text = "Logaritmic Mag and Phase";
             checkBoxS12Log.UseVisualStyleBackColor = true;
@@ -1277,7 +1374,7 @@
             checkBoxS12Lin.ForeColor = Color.Navy;
             checkBoxS12Lin.Location = new Point(35, 76);
             checkBoxS12Lin.Name = "checkBoxS12Lin";
-            checkBoxS12Lin.Size = new Size(184, 24);
+            checkBoxS12Lin.Size = new Size(145, 19);
             checkBoxS12Lin.TabIndex = 7;
             checkBoxS12Lin.Text = "Linear Mag and Phase";
             checkBoxS12Lin.UseVisualStyleBackColor = true;
@@ -1289,7 +1386,7 @@
             checkBoxS12Reel.ForeColor = Color.Navy;
             checkBoxS12Reel.Location = new Point(35, 16);
             checkBoxS12Reel.Name = "checkBoxS12Reel";
-            checkBoxS12Reel.Size = new Size(158, 24);
+            checkBoxS12Reel.Size = new Size(127, 19);
             checkBoxS12Reel.TabIndex = 6;
             checkBoxS12Reel.Text = "Reel and Imaginer";
             checkBoxS12Reel.UseVisualStyleBackColor = true;
@@ -1314,7 +1411,7 @@
             checkBoxS11SWR.ForeColor = Color.Navy;
             checkBoxS11SWR.Location = new Point(35, 101);
             checkBoxS11SWR.Name = "checkBoxS11SWR";
-            checkBoxS11SWR.Size = new Size(64, 24);
+            checkBoxS11SWR.Size = new Size(53, 19);
             checkBoxS11SWR.TabIndex = 9;
             checkBoxS11SWR.Text = "SWR";
             checkBoxS11SWR.UseVisualStyleBackColor = true;
@@ -1326,7 +1423,7 @@
             checkBoxS11Log.ForeColor = Color.Navy;
             checkBoxS11Log.Location = new Point(35, 41);
             checkBoxS11Log.Name = "checkBoxS11Log";
-            checkBoxS11Log.Size = new Size(216, 24);
+            checkBoxS11Log.Size = new Size(170, 19);
             checkBoxS11Log.TabIndex = 8;
             checkBoxS11Log.Text = "Logaritmic Mag and Phase";
             checkBoxS11Log.UseVisualStyleBackColor = true;
@@ -1338,7 +1435,7 @@
             checkBoxS11Lin.ForeColor = Color.Navy;
             checkBoxS11Lin.Location = new Point(35, 71);
             checkBoxS11Lin.Name = "checkBoxS11Lin";
-            checkBoxS11Lin.Size = new Size(184, 24);
+            checkBoxS11Lin.Size = new Size(145, 19);
             checkBoxS11Lin.TabIndex = 7;
             checkBoxS11Lin.Text = "Linear Mag and Phase";
             checkBoxS11Lin.UseVisualStyleBackColor = true;
@@ -1350,17 +1447,17 @@
             checkBoxS11Reel.ForeColor = Color.Navy;
             checkBoxS11Reel.Location = new Point(35, 11);
             checkBoxS11Reel.Name = "checkBoxS11Reel";
-            checkBoxS11Reel.Size = new Size(158, 24);
+            checkBoxS11Reel.Size = new Size(127, 19);
             checkBoxS11Reel.TabIndex = 6;
             checkBoxS11Reel.Text = "Reel and Imaginer";
             checkBoxS11Reel.UseVisualStyleBackColor = true;
             // 
             // MetCH_Page
             // 
-            MetCH_Page.Location = new Point(4, 54);
+            MetCH_Page.Location = new Point(4, 44);
             MetCH_Page.Name = "MetCH_Page";
             MetCH_Page.Padding = new Padding(3);
-            MetCH_Page.Size = new Size(571, 450);
+            MetCH_Page.Size = new Size(571, 460);
             MetCH_Page.TabIndex = 5;
             MetCH_Page.Text = "Meteral Ch.";
             MetCH_Page.UseVisualStyleBackColor = true;
@@ -1370,10 +1467,10 @@
             Noise_Page.Controls.Add(NS_checkBox_DC_OFF);
             Noise_Page.Controls.Add(NS_checkBox_DC_ON);
             Noise_Page.Controls.Add(NS_checkBoxENR);
-            Noise_Page.Location = new Point(4, 54);
+            Noise_Page.Location = new Point(4, 44);
             Noise_Page.Name = "Noise_Page";
             Noise_Page.Padding = new Padding(3);
-            Noise_Page.Size = new Size(571, 450);
+            Noise_Page.Size = new Size(571, 460);
             Noise_Page.TabIndex = 6;
             Noise_Page.Text = "Noise";
             Noise_Page.UseVisualStyleBackColor = true;
@@ -1385,7 +1482,7 @@
             NS_checkBox_DC_OFF.ForeColor = Color.Navy;
             NS_checkBox_DC_OFF.Location = new Point(68, 261);
             NS_checkBox_DC_OFF.Name = "NS_checkBox_DC_OFF";
-            NS_checkBox_DC_OFF.Size = new Size(239, 44);
+            NS_checkBox_DC_OFF.Size = new Size(189, 34);
             NS_checkBox_DC_OFF.TabIndex = 9;
             NS_checkBox_DC_OFF.Text = "Reflection Coefficient Linear\r\nMagnitude and Phase DC-OFF";
             NS_checkBox_DC_OFF.UseVisualStyleBackColor = true;
@@ -1397,7 +1494,7 @@
             NS_checkBox_DC_ON.ForeColor = Color.Navy;
             NS_checkBox_DC_ON.Location = new Point(68, 166);
             NS_checkBox_DC_ON.Name = "NS_checkBox_DC_ON";
-            NS_checkBox_DC_ON.Size = new Size(235, 44);
+            NS_checkBox_DC_ON.Size = new Size(186, 34);
             NS_checkBox_DC_ON.TabIndex = 8;
             NS_checkBox_DC_ON.Text = "Reflection Coefficient Linear\r\nMagnitude and Phase DC-ON";
             NS_checkBox_DC_ON.UseVisualStyleBackColor = true;
@@ -1409,7 +1506,7 @@
             NS_checkBoxENR.ForeColor = Color.Navy;
             NS_checkBoxENR.Location = new Point(68, 84);
             NS_checkBoxENR.Name = "NS_checkBoxENR";
-            NS_checkBoxENR.Size = new Size(61, 24);
+            NS_checkBoxENR.Size = new Size(49, 19);
             NS_checkBoxENR.TabIndex = 7;
             NS_checkBoxENR.Text = "ENR";
             NS_checkBoxENR.UseVisualStyleBackColor = true;
@@ -1420,10 +1517,10 @@
             RF_Difference_Tabpage.Controls.Add(RF_Diff_3);
             RF_Difference_Tabpage.Controls.Add(RF_Diff_2);
             RF_Difference_Tabpage.Controls.Add(RF_Diff_1);
-            RF_Difference_Tabpage.Location = new Point(4, 54);
+            RF_Difference_Tabpage.Location = new Point(4, 44);
             RF_Difference_Tabpage.Name = "RF_Difference_Tabpage";
             RF_Difference_Tabpage.Padding = new Padding(3);
-            RF_Difference_Tabpage.Size = new Size(571, 450);
+            RF_Difference_Tabpage.Size = new Size(571, 460);
             RF_Difference_Tabpage.TabIndex = 7;
             RF_Difference_Tabpage.Text = "RF Difference";
             RF_Difference_Tabpage.UseVisualStyleBackColor = true;
@@ -1435,7 +1532,7 @@
             RF_Diff_4.ForeColor = Color.Navy;
             RF_Diff_4.Location = new Point(47, 158);
             RF_Diff_4.Name = "RF_Diff_4";
-            RF_Diff_4.Size = new Size(94, 24);
+            RF_Diff_4.Size = new Size(76, 19);
             RF_Diff_4.TabIndex = 10;
             RF_Diff_4.Text = "Min-max";
             RF_Diff_4.UseVisualStyleBackColor = true;
@@ -1447,7 +1544,7 @@
             RF_Diff_3.ForeColor = Color.Navy;
             RF_Diff_3.Location = new Point(47, 118);
             RF_Diff_3.Name = "RF_Diff_3";
-            RF_Diff_3.Size = new Size(284, 24);
+            RF_Diff_3.Size = new Size(228, 19);
             RF_Diff_3.TabIndex = 9;
             RF_Diff_3.Text = "Level Accuracy Test by Power Range";
             RF_Diff_3.UseVisualStyleBackColor = true;
@@ -1459,7 +1556,7 @@
             RF_Diff_2.ForeColor = Color.Navy;
             RF_Diff_2.Location = new Point(47, 78);
             RF_Diff_2.Name = "RF_Diff_2";
-            RF_Diff_2.Size = new Size(264, 24);
+            RF_Diff_2.Size = new Size(212, 19);
             RF_Diff_2.TabIndex = 8;
             RF_Diff_2.Text = "Level Accuracy Test by Frequency";
             RF_Diff_2.UseVisualStyleBackColor = true;
@@ -1471,7 +1568,7 @@
             RF_Diff_1.ForeColor = Color.Navy;
             RF_Diff_1.Location = new Point(47, 38);
             RF_Diff_1.Name = "RF_Diff_1";
-            RF_Diff_1.Size = new Size(237, 24);
+            RF_Diff_1.Size = new Size(190, 19);
             RF_Diff_1.TabIndex = 7;
             RF_Diff_1.Text = "Maximum Output Power Test";
             RF_Diff_1.UseVisualStyleBackColor = true;
@@ -1482,10 +1579,10 @@
             RF_Gain_Tabpage.Controls.Add(RF_Gain2);
             RF_Gain_Tabpage.Controls.Add(RF_Gain3);
             RF_Gain_Tabpage.Controls.Add(RF_Gain1);
-            RF_Gain_Tabpage.Location = new Point(4, 54);
+            RF_Gain_Tabpage.Location = new Point(4, 44);
             RF_Gain_Tabpage.Name = "RF_Gain_Tabpage";
             RF_Gain_Tabpage.Padding = new Padding(3);
-            RF_Gain_Tabpage.Size = new Size(571, 450);
+            RF_Gain_Tabpage.Size = new Size(571, 460);
             RF_Gain_Tabpage.TabIndex = 8;
             RF_Gain_Tabpage.Text = "RF Gain";
             RF_Gain_Tabpage.UseVisualStyleBackColor = true;
@@ -1497,7 +1594,7 @@
             RF_Gain4.ForeColor = Color.Navy;
             RF_Gain4.Location = new Point(47, 158);
             RF_Gain4.Name = "RF_Gain4";
-            RF_Gain4.Size = new Size(375, 24);
+            RF_Gain4.Size = new Size(301, 19);
             RF_Gain4.TabIndex = 11;
             RF_Gain4.Text = "Gain change for different input powers for 1 GHz";
             RF_Gain4.UseVisualStyleBackColor = true;
@@ -1509,7 +1606,7 @@
             RF_Gain2.ForeColor = Color.Navy;
             RF_Gain2.Location = new Point(47, 78);
             RF_Gain2.Name = "RF_Gain2";
-            RF_Gain2.Size = new Size(153, 24);
+            RF_Gain2.Size = new Size(121, 19);
             RF_Gain2.TabIndex = 10;
             RF_Gain2.Text = "Max,Min,Flatness";
             RF_Gain2.UseVisualStyleBackColor = true;
@@ -1521,7 +1618,7 @@
             RF_Gain3.ForeColor = Color.Navy;
             RF_Gain3.Location = new Point(47, 118);
             RF_Gain3.Name = "RF_Gain3";
-            RF_Gain3.Size = new Size(468, 24);
+            RF_Gain3.Size = new Size(374, 19);
             RF_Gain3.TabIndex = 9;
             RF_Gain3.Text = "Gain change in response to different input powers for 100 kHz";
             RF_Gain3.UseVisualStyleBackColor = true;
@@ -1533,7 +1630,7 @@
             RF_Gain1.ForeColor = Color.Navy;
             RF_Gain1.Location = new Point(47, 38);
             RF_Gain1.Name = "RF_Gain1";
-            RF_Gain1.Size = new Size(296, 24);
+            RF_Gain1.Size = new Size(232, 19);
             RF_Gain1.TabIndex = 8;
             RF_Gain1.Text = "Gain (Input power: -33 dBm nominal)";
             RF_Gain1.UseVisualStyleBackColor = true;
@@ -1569,7 +1666,7 @@
             label3.ForeColor = Color.Navy;
             label3.Location = new Point(266, 23);
             label3.Name = "label3";
-            label3.Size = new Size(169, 23);
+            label3.Size = new Size(142, 19);
             label3.TabIndex = 8;
             label3.Text = "Measurement Types";
             // 
@@ -1577,10 +1674,10 @@
             // 
             ExcelView_Page.BackColor = Color.White;
             ExcelView_Page.Controls.Add(panel3);
-            ExcelView_Page.Location = new Point(4, 29);
+            ExcelView_Page.Location = new Point(4, 24);
             ExcelView_Page.Name = "ExcelView_Page";
             ExcelView_Page.Padding = new Padding(3);
-            ExcelView_Page.Size = new Size(1219, 721);
+            ExcelView_Page.Size = new Size(1219, 726);
             ExcelView_Page.TabIndex = 2;
             ExcelView_Page.Text = "tabPage3";
             // 
@@ -1595,7 +1692,7 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1213, 715);
+            panel3.Size = new Size(1213, 720);
             panel3.TabIndex = 0;
             // 
             // Save_Row_Col_Button
@@ -1641,7 +1738,7 @@
             label4.ForeColor = Color.Navy;
             label4.Location = new Point(345, 53);
             label4.Name = "label4";
-            label4.Size = new Size(513, 31);
+            label4.Size = new Size(427, 25);
             label4.TabIndex = 9;
             label4.Text = "Please double click starter corner of your table";
             // 
@@ -1667,9 +1764,9 @@
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(438, 20);
+            progressBar.Location = new Point(390, 13);
             progressBar.Name = "progressBar";
-            progressBar.Size = new Size(125, 29);
+            progressBar.Size = new Size(125, 25);
             progressBar.TabIndex = 0;
             // 
             // label6
@@ -1679,7 +1776,7 @@
             label6.ForeColor = Color.Navy;
             label6.Location = new Point(19, 20);
             label6.Name = "label6";
-            label6.Size = new Size(344, 23);
+            label6.Size = new Size(280, 19);
             label6.TabIndex = 2;
             label6.Text = "TÜBİTAK ULUSAL METROLOJİ ENSTİTÜSÜ";
             // 
@@ -1701,89 +1798,17 @@
             LabelProgress.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             LabelProgress.Location = new Point(599, 22);
             LabelProgress.Name = "LabelProgress";
-            LabelProgress.Size = new Size(121, 23);
+            LabelProgress.Size = new Size(104, 19);
             LabelProgress.TabIndex = 3;
             LabelProgress.Text = "LabelProgress";
             LabelProgress.Visible = false;
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBox1.ForeColor = Color.Navy;
-            checkBox1.Location = new Point(66, 123);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(318, 24);
-            checkBox1.TabIndex = 6;
-            checkBox1.Text = "The Length of Outer Conducter of Airline";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox2
-            // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBox2.ForeColor = Color.Navy;
-            checkBox2.Location = new Point(66, 166);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(315, 24);
-            checkBox2.TabIndex = 7;
-            checkBox2.Text = "The Length of Inner Conducter of Airline";
-            checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            checkBox3.AutoSize = true;
-            checkBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBox3.ForeColor = Color.Navy;
-            checkBox3.Location = new Point(66, 208);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(129, 24);
-            checkBox3.TabIndex = 8;
-            checkBox3.Text = "CIS Diamaters";
-            checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            checkBox4.AutoSize = true;
-            checkBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBox4.ForeColor = Color.Navy;
-            checkBox4.Location = new Point(66, 251);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(308, 24);
-            checkBox4.TabIndex = 9;
-            checkBox4.Text = "Input and Output Reflection Coefficient";
-            checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            checkBox5.AutoSize = true;
-            checkBox5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBox5.ForeColor = Color.Navy;
-            checkBox5.Location = new Point(66, 293);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(296, 24);
-            checkBox5.TabIndex = 10;
-            checkBox5.Text = "Forward and Transmission Coefficient";
-            checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            checkBox6.AutoSize = true;
-            checkBox6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBox6.ForeColor = Color.Navy;
-            checkBox6.Location = new Point(66, 339);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(292, 44);
-            checkBox6.TabIndex = 11;
-            checkBox6.Text = "The Linear Magnitude of Reverse and\r\nForward Transmission Coefficient";
-            checkBox6.UseVisualStyleBackColor = true;
-            // 
             // CertificateForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1223, 778);
+            ClientSize = new Size(1223, 749);
             Controls.Add(groupBox12);
             Controls.Add(CertificateTabControl);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 162);
@@ -1959,5 +1984,6 @@
         private CheckBox checkBox2;
         private CheckBox checkBox1;
         private CheckBox checkBox6;
+        private MaterialSkin.Controls.MaterialComboBox DeviceComboBox;
     }
 }
