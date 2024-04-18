@@ -284,6 +284,9 @@ namespace DCC
                 CertificateTabControl.SelectedTab = DATA_PAGE;
                 label4.Text = "Please double click on the cell to select it.";
             }
+            progressBar.Value = 0;
+            LabelProgress.Text = "";
+
         }
 
         private void SelectExcel_Button_Click(object sender, EventArgs e)
@@ -1212,7 +1215,15 @@ namespace DCC
             label4.Text = ($"Selection cell:  {"Column: "}{columnName}{"  Row: "}{rowNumber}");
             LabelProgress.Text = "Cell selection successful";
 
-
+            Thread.Sleep(10);
+            progressBar.Value = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                progressBar.Value += 1;
+            }
+            LabelProgress.Visible = true;
+            LabelProgress.ForeColor = System.Drawing.Color.Green;
+            
 
 
 
