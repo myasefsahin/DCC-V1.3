@@ -410,7 +410,6 @@
             SelectDeviceButton.UseAccentColor = false;
             SelectDeviceButton.UseVisualStyleBackColor = true;
             SelectDeviceButton.Click += SelectDeviceButton_Click;
-
             // 
             // groupBox3
             // 
@@ -1465,7 +1464,6 @@
             checkBoxS11SWR.TabIndex = 9;
             checkBoxS11SWR.Text = "SWR";
             checkBoxS11SWR.UseVisualStyleBackColor = true;
-            
             // 
             // checkBoxS11Log
             // 
@@ -1782,7 +1780,7 @@
             Save_Row_Col_Button.Depth = 0;
             Save_Row_Col_Button.HighEmphasis = true;
             Save_Row_Col_Button.Icon = null;
-            Save_Row_Col_Button.Location = new Point(1076, 17);
+            Save_Row_Col_Button.Location = new Point(1104, 664);
             Save_Row_Col_Button.Margin = new Padding(4, 6, 4, 6);
             Save_Row_Col_Button.MouseState = MaterialSkin.MouseState.HOVER;
             Save_Row_Col_Button.Name = "Save_Row_Col_Button";
@@ -1802,7 +1800,7 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(50, 113);
+            dataGridView1.Location = new Point(54, 96);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
@@ -1837,7 +1835,7 @@
             groupBox13.BackColor = Color.White;
             groupBox13.Location = new Point(29, 58);
             groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(1162, 629);
+            groupBox13.Size = new Size(1162, 602);
             groupBox13.TabIndex = 14;
             groupBox13.TabStop = false;
             // 
