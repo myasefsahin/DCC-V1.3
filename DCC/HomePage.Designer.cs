@@ -43,6 +43,7 @@
             pictureBox3 = new PictureBox();
             HomeTab = new TabPage();
             panel1 = new Panel();
+            label2 = new Label();
             label1 = new Label();
             XMLtoWordPageButton = new MaterialSkin.Controls.MaterialButton();
             CertificatePageShowButton = new MaterialSkin.Controls.MaterialButton();
@@ -244,6 +245,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(XMLtoWordPageButton);
             panel1.Controls.Add(CertificatePageShowButton);
@@ -255,13 +257,23 @@
             panel1.Size = new Size(636, 635);
             panel1.TabIndex = 1;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F);
+            label2.Location = new Point(327, 337);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 35);
+            label2.TabIndex = 4;
+            label2.Text = "label2";
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.Location = new Point(210, 360);
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 162);
+            label1.Location = new Point(208, 337);
             label1.Name = "label1";
-            label1.Size = new Size(70, 28);
+            label1.Size = new Size(88, 35);
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
@@ -377,5 +389,6 @@
         private PictureBox pictureBox1;
         private TabControl tabControl1;
         private Label label1;
+        private Label label2;
     }
 }

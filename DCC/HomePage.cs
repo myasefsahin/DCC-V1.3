@@ -144,11 +144,12 @@ namespace DCC
 
             // Bilgisayar oturumuna giriþ yapan kullanýcýnýn adýný al
             string user = userName.Split('\\')[1];
-            user = user.ToUpper();
-            user = '"' + user + '"';
-            string hosgeldiniz = "Hoþ geldiniz ";
+            
+            
+            string hosgeldiniz = "Welcome";
             // Hoþgeldin mesajýný göster
-            label1.Text = hosgeldiniz + user;
+            label1.Text = hosgeldiniz ;
+            label2.Text = user;
         }
 
         private void HomePage_Load(object sender, EventArgs e)
