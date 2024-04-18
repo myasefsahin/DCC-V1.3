@@ -123,6 +123,143 @@ namespace ExcelToInterface
         public ArrayList ArrayNoiseDCOFFRCPhaseUnc { get; set; }
         public ArrayList ArrayNoiseDCOFFControl { get; set; }
 
+        public ArrayList ArrayRFD_T1_Frekans { get; set; }
+        public ArrayList ArrayRFD_T1_GostergeDegeri { get; set; }
+        public ArrayList ArrayRFD_T1_AltSınır { get; set; }
+        public ArrayList ArrayRFD_T1_OlculenDeger { get; set; }
+        public ArrayList ArrayRFD_T1_OlculenFark { get; set; }
+        public ArrayList ArrayRFD_T1_UstSınır { get; set; }
+        public ArrayList ArrayRFD_T1_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayRFD_T2_Frekans { get; set; }
+        public ArrayList ArrayRFD_T2_Nom_Guc_Lvl { get; set; }
+        public ArrayList ArrayRFD_T2_OlculenDeger { get; set; }
+        public ArrayList ArrayRFD_T2_AltSınır { get; set; }
+        public ArrayList ArrayRFD_T2_Nom_Guc_Lvl_fark { get; set; }
+        public ArrayList ArrayRFD_T2_UstSınır { get; set; }
+        public ArrayList ArrayRFD_T2_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayRFD_T3_Frekans { get; set; }
+        public ArrayList ArrayRFD_T3_NominalGuc { get; set; }
+        public ArrayList ArrayRFD_T3_AltSınır { get; set; }
+        public ArrayList ArrayRFD_T3_OlculenDeger { get; set; }
+        public ArrayList ArrayRFD_T3_UstSınır { get; set; }
+        public ArrayList ArrayRFD_T3_Fark { get; set; }
+        public ArrayList ArrayRFD_T3_Belirsizlik { get; set; }
+
+
+
+        public ArrayList ArrayRFD_T4_Min_Guc_lvl { get; set; }
+        public ArrayList ArrayRFD_T4_Max_Guc_lvl { get; set; }
+        public ArrayList ArrayRFD_T4_Frekans { get; set; }
+        public ArrayList ArrayRFD_T4_AltSınır { get; set; }
+        public ArrayList ArrayRFD_T4_Fark { get; set; }
+        public ArrayList ArrayRFD_T4_UstSınır { get; set; }
+        public ArrayList ArrayRFD_T4_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayRFG_T1_Frekans { get; set; }
+        public ArrayList ArrayRFG_T1_GirisGucu { get; set; }
+        public ArrayList ArrayRFG_T1_Belirsizlik { get; set; }
+
+        public ArrayList ArrayRFG_T2_EnBuyukKazanc { get; set; }
+        public ArrayList ArrayRFG_T2_EnKucukKazanc { get; set; }
+        public ArrayList ArrayRFG_T2_Flatness { get; set; }
+
+
+        public ArrayList ArrayRFG_T3_Nom_Giris_Gucu { get; set; }
+        public ArrayList ArrayRFG_T3_Kazanc { get; set; }
+        public ArrayList ArrayRFG_T3_Belirsizlik { get; set; }
+
+        public ArrayList ArrayRFG_T4_Nom_Giris_Gucu { get; set; }
+        public ArrayList ArrayRFG_T4_Kazanc { get; set; }
+        public ArrayList ArrayRFG_T4_Belirsizlik { get; set; }
+        public ArrayList ArrayARFP_T1_Frekans { get; set; }
+
+        // S11
+        public ArrayList ArrayARFP_T1_Cıkıs_Gücü { get; set; }
+        public ArrayList ArrayARFP_T1_Olculen_Güc { get; set; }
+
+
+        public ArrayList ArrayARFP_T1_AltSınır { get; set; }
+        public ArrayList ArrayARFP_T1_Sapma { get; set; }
+        public ArrayList ArrayARFP_T1_ÜstSınır { get; set; }
+        public ArrayList ArrayARFP_T1_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayARFP_T2_Frekans { get; set; }
+        public ArrayList ArrayARFP_T2_Cıkıs_Gücü { get; set; }
+        public ArrayList ArrayARFP_T2_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T2_AltSınır { get; set; }
+        public ArrayList ArrayARFP_T2_Fark { get; set; }
+        public ArrayList ArrayARFP_T2_ÜstSınır { get; set; }
+        public ArrayList ArrayARFP_T2_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayARFP_T3_Frekans { get; set; }
+        public ArrayList ArrayARFP_T3_Cıkıs_Gücü { get; set; }
+        public ArrayList ArrayARFP_T3_OlculenZayıflatma { get; set; }
+        public ArrayList ArrayARFP_T3_AltSınır { get; set; }
+        public ArrayList ArrayARFP_T3_Zayıflatma { get; set; }
+        public ArrayList ArrayARFP_T3_ÜstSınır { get; set; }
+        public ArrayList ArrayARFP_T3_Belirsizlik { get; set; }
+
+
+
+        public ArrayList ArrayARFP_T4_T5_T6_frekans { get; set; }
+        public ArrayList ArrayARFP_T4_SWR_Seviye { get; set; }
+        public ArrayList ArrayARFP_T4_SWR_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T4_SWR_MaksimumDeger { get; set; }
+        public ArrayList ArrayARFP_T4_SWR_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayARFP_T5_SWR_Seviye { get; set; }
+        public ArrayList ArrayARFP_T5_SWR_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T5_SWR_MaksimumDeger { get; set; }
+        public ArrayList ArrayARFP_T5_SWR_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayARFP_T6_SWR_Seviye { get; set; }
+        public ArrayList ArrayARFP_T6_SWR_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T6_SWR_MaksimumDeger { get; set; }
+        public ArrayList ArrayARFP_T6_SWR_Belirsizlik { get; set; }
+
+        public ArrayList ArrayARFP_T7_Frekans { get; set; }
+        public ArrayList ArrayARFP_T7_Cıkıs_Gücü { get; set; }
+        public ArrayList ArrayARFP_T7_OlculenGuc { get; set; }
+        public ArrayList ArrayARFP_T7_AltSınır { get; set; }
+        public ArrayList ArrayARFP_T7_Sapma { get; set; }
+        public ArrayList ArrayARFP_T7_ÜstSınır { get; set; }
+        public ArrayList ArrayARFP_T7_Belirsizlik { get; set; }
+
+        public ArrayList ArrayARFP_T8_Frekans { get; set; }
+        public ArrayList ArrayARFP_T8_Cıkıs_Gücü { get; set; }
+        public ArrayList ArrayARFP_T8_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T8_AltSınır { get; set; }
+        public ArrayList ArrayARFP_T8_Fark { get; set; }
+        public ArrayList ArrayARFP_T8_ÜstSınır { get; set; }
+        public ArrayList ArrayARFP_T8_Belirsizlik { get; set; }
+
+        public ArrayList ArrayARFP_T9_T10_T11_frekans { get; set; }
+        public ArrayList ArrayARFP_T9_SWR_Seviye { get; set; }
+        public ArrayList ArrayARFP_T9_SWR_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T9_SWR_MaksimumDeger { get; set; }
+        public ArrayList ArrayARFP_T9_SWR_Belirsizlik { get; set; }
+
+        public ArrayList ArrayARFP_T10_SWR_Seviye { get; set; }
+        public ArrayList ArrayARFP_T10_SWR_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T10_SWR_MaksimumDeger { get; set; }
+        public ArrayList ArrayARFP_T10_SWR_Belirsizlik { get; set; }
+
+
+        public ArrayList ArrayARFP_T11_SWR_Seviye { get; set; }
+        public ArrayList ArrayARFP_T11_SWR_OlculenDeger { get; set; }
+        public ArrayList ArrayARFP_T11_SWR_MaksimumDeger { get; set; }
+        public ArrayList ArrayARFP_T11_SWR_Belirsizlik { get; set; }
+
+
 
 
 
@@ -243,6 +380,135 @@ namespace ExcelToInterface
             ArrayNoiseDCOFFRCPhaseUnc = new ArrayList();
             ArrayNoiseDCOFFControl = new ArrayList();
 
+            ArrayRFD_T1_Frekans = new ArrayList();
+            ArrayRFD_T1_GostergeDegeri = new ArrayList();
+            ArrayRFD_T1_AltSınır = new ArrayList();
+            ArrayRFD_T1_OlculenDeger = new ArrayList();
+            ArrayRFD_T1_OlculenFark = new ArrayList();
+            ArrayRFD_T1_UstSınır = new ArrayList();
+            ArrayRFD_T1_Belirsizlik = new ArrayList();
+
+            ArrayRFD_T2_Frekans = new ArrayList();
+            ArrayRFD_T2_Nom_Guc_Lvl = new ArrayList();
+            ArrayRFD_T2_OlculenDeger = new ArrayList();
+            ArrayRFD_T2_AltSınır = new ArrayList();
+            ArrayRFD_T2_Nom_Guc_Lvl_fark = new ArrayList();
+            ArrayRFD_T2_UstSınır = new ArrayList();
+            ArrayRFD_T2_Belirsizlik = new ArrayList();
+
+            ArrayRFD_T3_Frekans = new ArrayList();
+            ArrayRFD_T3_NominalGuc = new ArrayList();
+            ArrayRFD_T3_AltSınır = new ArrayList();
+            ArrayRFD_T3_OlculenDeger = new ArrayList();
+            ArrayRFD_T3_UstSınır = new ArrayList();
+            ArrayRFD_T3_Fark = new ArrayList();
+            ArrayRFD_T3_Belirsizlik = new ArrayList();
+
+            ArrayRFD_T4_Min_Guc_lvl = new ArrayList();
+            ArrayRFD_T4_Max_Guc_lvl = new ArrayList();
+            ArrayRFD_T4_Frekans = new ArrayList();
+            ArrayRFD_T4_AltSınır = new ArrayList();
+            ArrayRFD_T4_Fark = new ArrayList();
+            ArrayRFD_T4_UstSınır = new ArrayList();
+            ArrayRFD_T4_Belirsizlik = new ArrayList();
+
+            ArrayRFG_T1_Frekans = new ArrayList();
+            ArrayRFG_T1_GirisGucu = new ArrayList();
+            ArrayRFG_T1_Belirsizlik = new ArrayList();
+
+            ArrayRFG_T2_EnBuyukKazanc = new ArrayList();
+            ArrayRFG_T2_EnKucukKazanc = new ArrayList();
+            ArrayRFG_T2_Flatness = new ArrayList();
+
+            ArrayRFG_T3_Nom_Giris_Gucu = new ArrayList();
+            ArrayRFG_T3_Kazanc = new ArrayList();
+            ArrayRFG_T3_Belirsizlik = new ArrayList();
+
+            ArrayRFG_T4_Nom_Giris_Gucu = new ArrayList();
+            ArrayRFG_T4_Kazanc = new ArrayList();
+            ArrayRFG_T4_Belirsizlik = new ArrayList();
+
+            ArrayARFP_T1_Frekans = new ArrayList();
+            ArrayARFP_T1_Cıkıs_Gücü = new ArrayList();
+            ArrayARFP_T1_Olculen_Güc = new ArrayList();
+            ArrayARFP_T1_AltSınır = new ArrayList();
+            ArrayARFP_T1_Sapma = new ArrayList();
+            ArrayARFP_T1_ÜstSınır = new ArrayList();
+            ArrayARFP_T1_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T2_Frekans = new ArrayList();
+            ArrayARFP_T2_Cıkıs_Gücü = new ArrayList();
+            ArrayARFP_T2_OlculenDeger = new ArrayList();
+            ArrayARFP_T2_AltSınır = new ArrayList();
+            ArrayARFP_T2_Fark = new ArrayList();
+            ArrayARFP_T2_ÜstSınır = new ArrayList();
+            ArrayARFP_T2_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T3_Frekans = new ArrayList();
+            ArrayARFP_T3_Cıkıs_Gücü = new ArrayList();
+            ArrayARFP_T3_OlculenZayıflatma = new ArrayList();
+            ArrayARFP_T3_AltSınır = new ArrayList();
+            ArrayARFP_T3_Zayıflatma = new ArrayList();
+            ArrayARFP_T3_ÜstSınır = new ArrayList();
+            ArrayARFP_T3_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T4_T5_T6_frekans = new ArrayList();
+            ArrayARFP_T4_SWR_Seviye = new ArrayList();
+            ArrayARFP_T4_SWR_OlculenDeger = new ArrayList();
+            ArrayARFP_T4_SWR_MaksimumDeger = new ArrayList();
+            ArrayARFP_T4_SWR_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T5_SWR_Seviye = new ArrayList();
+            ArrayARFP_T5_SWR_OlculenDeger = new ArrayList();
+            ArrayARFP_T5_SWR_MaksimumDeger = new ArrayList();
+            ArrayARFP_T5_SWR_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T6_SWR_Seviye = new ArrayList();
+            ArrayARFP_T6_SWR_OlculenDeger = new ArrayList();
+            ArrayARFP_T6_SWR_MaksimumDeger = new ArrayList();
+            ArrayARFP_T6_SWR_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T7_Frekans = new ArrayList();
+            ArrayARFP_T7_Cıkıs_Gücü = new ArrayList();
+            ArrayARFP_T7_OlculenGuc = new ArrayList();
+            ArrayARFP_T7_AltSınır = new ArrayList();
+            ArrayARFP_T7_Sapma = new ArrayList();
+            ArrayARFP_T7_ÜstSınır = new ArrayList();
+            ArrayARFP_T7_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T8_Frekans = new ArrayList();
+            ArrayARFP_T8_Cıkıs_Gücü = new ArrayList();
+            ArrayARFP_T8_OlculenDeger = new ArrayList();
+            ArrayARFP_T8_AltSınır = new ArrayList();
+            ArrayARFP_T8_Fark = new ArrayList();
+            ArrayARFP_T8_ÜstSınır = new ArrayList();
+            ArrayARFP_T8_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T9_T10_T11_frekans = new ArrayList();
+            ArrayARFP_T9_SWR_Seviye = new ArrayList();
+            ArrayARFP_T9_SWR_OlculenDeger = new ArrayList();
+            ArrayARFP_T9_SWR_MaksimumDeger = new ArrayList();
+            ArrayARFP_T9_SWR_Belirsizlik = new ArrayList();
+
+
+            ArrayARFP_T10_SWR_Seviye = new ArrayList();
+            ArrayARFP_T10_SWR_OlculenDeger = new ArrayList();
+            ArrayARFP_T10_SWR_MaksimumDeger = new ArrayList();
+            ArrayARFP_T10_SWR_Belirsizlik = new ArrayList();
+
+            ArrayARFP_T11_SWR_Seviye = new ArrayList();
+            ArrayARFP_T11_SWR_OlculenDeger = new ArrayList();
+            ArrayARFP_T11_SWR_MaksimumDeger = new ArrayList();
+            ArrayARFP_T11_SWR_Belirsizlik = new ArrayList();
+
         }
 
         public void ClearData()
@@ -346,6 +612,136 @@ namespace ExcelToInterface
             ArrayNoiseDCOFFRCPhase.Clear();
             ArrayNoiseDCOFFRCPhaseUnc.Clear();
             ArrayNoiseDCOFFControl.Clear();
+
+            ArrayRFD_T1_Frekans.Clear();
+            ArrayRFD_T1_GostergeDegeri.Clear();
+            ArrayRFD_T1_AltSınır.Clear();
+            ArrayRFD_T1_OlculenDeger.Clear();
+            ArrayRFD_T1_OlculenFark.Clear();
+            ArrayRFD_T1_UstSınır.Clear();
+            ArrayRFD_T1_Belirsizlik.Clear();
+
+            ArrayRFD_T2_Frekans.Clear();
+            ArrayRFD_T2_Nom_Guc_Lvl.Clear();
+            ArrayRFD_T2_OlculenDeger.Clear();
+            ArrayRFD_T2_AltSınır.Clear();
+            ArrayRFD_T2_Nom_Guc_Lvl_fark.Clear();
+            ArrayRFD_T2_UstSınır.Clear();
+            ArrayRFD_T2_Belirsizlik.Clear();
+
+            ArrayRFD_T3_Frekans.Clear();
+            ArrayRFD_T3_NominalGuc.Clear();
+            ArrayRFD_T3_AltSınır.Clear();
+            ArrayRFD_T3_OlculenDeger.Clear();
+            ArrayRFD_T3_UstSınır.Clear();
+            ArrayRFD_T3_Fark.Clear();
+            ArrayRFD_T3_Belirsizlik.Clear();
+
+            ArrayRFD_T4_Min_Guc_lvl.Clear();
+            ArrayRFD_T4_Max_Guc_lvl.Clear();
+            ArrayRFD_T4_Frekans.Clear();
+            ArrayRFD_T4_AltSınır.Clear();
+            ArrayRFD_T4_Fark.Clear();
+            ArrayRFD_T4_UstSınır.Clear();
+            ArrayRFD_T4_Belirsizlik.Clear();
+
+            ArrayRFG_T1_Frekans.Clear();
+            ArrayRFG_T1_GirisGucu.Clear();
+            ArrayRFG_T1_Belirsizlik.Clear();
+            ArrayRFG_T2_EnBuyukKazanc.Clear();
+            ArrayRFG_T2_EnKucukKazanc.Clear();
+            ArrayRFG_T2_Flatness.Clear();
+            ArrayRFG_T3_Nom_Giris_Gucu.Clear();
+            ArrayRFG_T3_Kazanc.Clear();
+            ArrayRFG_T3_Belirsizlik.Clear();
+            ArrayRFG_T4_Nom_Giris_Gucu.Clear();
+            ArrayRFG_T4_Kazanc.Clear();
+            ArrayRFG_T4_Belirsizlik.Clear();
+
+
+            ArrayARFP_T1_Frekans.Clear();
+            ArrayARFP_T1_Cıkıs_Gücü.Clear();
+            ArrayARFP_T1_Olculen_Güc.Clear();
+            ArrayARFP_T1_AltSınır.Clear();
+            ArrayARFP_T1_Sapma.Clear();
+            ArrayARFP_T1_ÜstSınır.Clear();
+            ArrayARFP_T1_Belirsizlik.Clear();
+
+
+            ArrayARFP_T2_Frekans.Clear();
+            ArrayARFP_T2_Cıkıs_Gücü.Clear();
+            ArrayARFP_T2_OlculenDeger.Clear();
+            ArrayARFP_T2_AltSınır.Clear();
+            ArrayARFP_T2_Fark.Clear();
+            ArrayARFP_T2_ÜstSınır.Clear();
+            ArrayARFP_T2_Belirsizlik.Clear();
+
+
+            ArrayARFP_T3_Frekans.Clear();
+            ArrayARFP_T3_Cıkıs_Gücü.Clear();
+            ArrayARFP_T3_OlculenZayıflatma.Clear();
+            ArrayARFP_T3_AltSınır.Clear();
+            ArrayARFP_T3_Zayıflatma.Clear();
+            ArrayARFP_T3_ÜstSınır.Clear();
+            ArrayARFP_T3_Belirsizlik.Clear();
+
+
+
+            ArrayARFP_T4_T5_T6_frekans.Clear();
+            ArrayARFP_T4_SWR_Seviye.Clear();
+            ArrayARFP_T4_SWR_OlculenDeger.Clear();
+            ArrayARFP_T4_SWR_MaksimumDeger.Clear();
+            ArrayARFP_T4_SWR_Belirsizlik.Clear();
+
+
+            ArrayARFP_T5_SWR_Seviye.Clear();
+            ArrayARFP_T5_SWR_OlculenDeger.Clear();
+            ArrayARFP_T5_SWR_MaksimumDeger.Clear();
+            ArrayARFP_T5_SWR_Belirsizlik.Clear();
+
+
+            ArrayARFP_T6_SWR_Seviye.Clear();
+            ArrayARFP_T6_SWR_OlculenDeger.Clear();
+            ArrayARFP_T6_SWR_MaksimumDeger.Clear();
+            ArrayARFP_T6_SWR_Belirsizlik.Clear();
+
+
+            ArrayARFP_T7_Frekans.Clear();
+            ArrayARFP_T7_Cıkıs_Gücü.Clear();
+            ArrayARFP_T7_OlculenGuc.Clear();
+            ArrayARFP_T7_AltSınır.Clear();
+            ArrayARFP_T7_Sapma.Clear();
+            ArrayARFP_T7_ÜstSınır.Clear();
+            ArrayARFP_T7_Belirsizlik.Clear();
+
+
+            ArrayARFP_T8_Frekans.Clear();
+            ArrayARFP_T8_Cıkıs_Gücü.Clear();
+            ArrayARFP_T8_OlculenDeger.Clear();
+            ArrayARFP_T8_AltSınır.Clear();
+            ArrayARFP_T8_Fark.Clear();
+            ArrayARFP_T8_ÜstSınır.Clear();
+            ArrayARFP_T8_Belirsizlik.Clear();
+
+
+            ArrayARFP_T9_T10_T11_frekans.Clear();
+            ArrayARFP_T9_SWR_Seviye.Clear();
+            ArrayARFP_T9_SWR_OlculenDeger.Clear();
+            ArrayARFP_T9_SWR_MaksimumDeger.Clear();
+            ArrayARFP_T9_SWR_Belirsizlik.Clear();
+
+
+            ArrayARFP_T10_SWR_Seviye.Clear();
+            ArrayARFP_T10_SWR_OlculenDeger.Clear();
+            ArrayARFP_T10_SWR_MaksimumDeger.Clear();
+            ArrayARFP_T10_SWR_Belirsizlik.Clear();
+
+
+            ArrayARFP_T11_SWR_Seviye.Clear();
+            ArrayARFP_T11_SWR_OlculenDeger.Clear();
+            ArrayARFP_T11_SWR_MaksimumDeger.Clear();
+            ArrayARFP_T11_SWR_Belirsizlik.Clear();
+
         }
 
     }

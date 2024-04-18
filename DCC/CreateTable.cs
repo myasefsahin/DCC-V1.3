@@ -773,7 +773,7 @@ namespace DCC
         }
         #endregion
         #region CreateForTwoRow
-        public Table CreateForTwoRow(ArrayList Freq, ArrayList Value1, ArrayList Value1Unc, String Title, String TitleEng)
+        public Table CreateForTwoRow(ArrayList Freq, ArrayList Value1, ArrayList Value1Unc, String FrequencyType, String Title, String TitleEng, String Title2, String Title2Eng)
         {
             // Table properties and some other specs
             Table table = new Table(
@@ -799,11 +799,11 @@ namespace DCC
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "1488" }),
                         new Paragraph(new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
-                            new Text("Frekans (GHz)"))),
+                            new Text("Frekans (" + FrequencyType + ")"))),
                         new Break() { Type = BreakValues.TextWrapping },
                         new Paragraph(new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Italic()),
-                            new Text("Frequency (GHz)")))),
+                            new Text("Frequency (" + FrequencyType + ")")))),
 
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "4430" }),
                         new Paragraph(new Run(
@@ -815,11 +815,11 @@ namespace DCC
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "4430" }),
                         new Paragraph(new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
-                            new Text(Title + " Belirsizliği"))),
+                            new Text(Title2))),
                         new Break() { Type = BreakValues.TextWrapping },
                         new Paragraph(new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Italic()),
-                            new Text(TitleEng + " Uncertainty"))))
+                            new Text(Title2Eng))))
                 ),
                 new TableJustification() { Val = TableRowAlignmentValues.Center }
             // Continue adding rows here...
@@ -1120,6 +1120,138 @@ namespace DCC
         }
 
         #endregion
+        #region For Five
+        public Table CreateForFiveRow(ArrayList Freq, ArrayList Value1, ArrayList Value1Unc, ArrayList Value2, ArrayList Value2Unc, ArrayList Value3)
+        {
+
+            int tableWidth = 10000;
+            int cellWidth = tableWidth / 6;
+
+
+
+            TableRow headerRow1 = new TableRow(
+new TableRowProperties(
+new TableHeader()
+),
+new TableCell(
+new TableCellProperties(
+    new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() },
+    new GridSpan() { Val = 7 } // 3 hücreyi birleştir
+),
+new Paragraph(
+    new ParagraphProperties(
+        new Justification() { Val = JustificationValues.Center } // Paragrafı ortala
+    ),
+    new Run(
+        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+        new Text("Birleşik Satır")
+    )
+)
+)
+);
+
+            TableRow headerRow = new TableRow(
+                new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                    new Paragraph(new Run(
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new Text("Frekans (GHz)")))),
+                new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                    new Paragraph(new Run(
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new Text("Gerçel Bileşen (x)")))),
+                new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                    new Paragraph(new Run(
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new Text("Gerçel Bileşen Belirsizliği")))),
+                new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                    new Paragraph(new Run(
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new Text("Sanal Bileşen (y)")))),
+                new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                    new Paragraph(new Run(
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new Text("Sanal Bileşen Belirsizliği")))),
+                new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                    new Paragraph(new Run(
+                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+                        new Text("Yansıma Katsayısı"))))
+            );
+
+            // Tablo oluştur
+            Table table = new Table(
+                new TableProperties(
+                    new TableStyle() { Val = "TableGrid" },
+                    new TableWidth() { Type = TableWidthUnitValues.Dxa, Width = tableWidth.ToString() },
+                    new TableLook() { Val = "04A0" },
+                    // Kenar çizgileri ekle
+                    new TableBorders(
+                        new TopBorder() { Val = BorderValues.Single, Size = 9 },
+                        new BottomBorder() { Val = BorderValues.Single, Size = 9 },
+                        new LeftBorder() { Val = BorderValues.Single, Size = 9 },
+                        new RightBorder() { Val = BorderValues.Single, Size = 9 },
+                        new InsideHorizontalBorder() { Val = BorderValues.Single, Size = 9 },
+                        new InsideVerticalBorder() { Val = BorderValues.Single, Size = 9 }
+                    )
+                ),
+               headerRow1, headerRow
+            );
+
+            // Veri satırlarını ekle
+            for (int i = 0; i < Freq.Count; i++)
+            {
+                TableRow dataRow = new TableRow(
+                    new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                        new Paragraph(new Run(
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new Text(Freq[i].ToString())))),
+                    new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                        new Paragraph(new Run(
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new Text(Value1[i].ToString())))),
+                    new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                        new Paragraph(new Run(
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new Text(Value1Unc[i].ToString())))),
+                    new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                        new Paragraph(new Run(
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new Text(Value2[i].ToString())))),
+                    new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                        new Paragraph(new Run(
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new Text(Value2Unc[i].ToString())))),
+                    new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
+                        new Paragraph(new Run(
+                            new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }),
+                            new Text(Value3[i].ToString()))))
+
+                );
+
+                // Hücrelerin kenar çizgilerini ayarla
+                foreach (TableCell cell in dataRow.Elements<TableCell>())
+                {
+                    TableCellProperties cellProperties = cell.GetFirstChild<TableCellProperties>();
+                    if (cellProperties == null)
+                    {
+                        cellProperties = new TableCellProperties();
+                        cell.AppendChild(cellProperties);
+                    }
+
+                    cellProperties.Append(new TableCellBorders(
+                        new TopBorder() { Val = BorderValues.Single, Size = 9 },
+                        new BottomBorder() { Val = BorderValues.Single, Size = 9 },
+                        new LeftBorder() { Val = BorderValues.Single, Size = 9 },
+                        new RightBorder() { Val = BorderValues.Single, Size = 9 }
+                    ));
+                }
+
+                table.Append(dataRow);
+            }
+
+            return table;
+        }
+
+        #endregion
         #region Cover Page
         public Table CoverPage(string Customer, string Order, string Device, string Manufacturer, string Type, string Serial, string dateOfCalibration)
         {
@@ -1270,6 +1402,27 @@ namespace DCC
             int tableWidth = 10000;
             int cellWidth = tableWidth / 7;
 
+            TableRow headerRow1 = new TableRow(
+new TableRowProperties(
+new TableHeader()
+),
+new TableCell(
+new TableCellProperties(
+    new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() },
+    new GridSpan() { Val = 7 } // 3 hücreyi birleştir
+),
+new Paragraph(
+    new ParagraphProperties(
+        new Justification() { Val = JustificationValues.Center } // Paragrafı ortala
+    ),
+    new Run(
+        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()),
+        new Text("Birleşik Satır")
+    )
+)
+)
+);
+
             TableRow headerRow = new TableRow(
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
                     new Paragraph(new Run(
@@ -1317,7 +1470,7 @@ namespace DCC
                         new InsideVerticalBorder() { Val = BorderValues.Single, Size = 9 }
                     )
                 ),
-                headerRow
+                headerRow1, headerRow
             );
 
             // Veri satırlarını ekle
@@ -1378,7 +1531,6 @@ namespace DCC
             return table;
         }
         #endregion
-
         public Table UsedDevice(List<UsedDeviceEntity> usedDeviceEntities)
         {
             Table table = new Table();

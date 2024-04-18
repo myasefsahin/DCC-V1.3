@@ -14,6 +14,7 @@ using OfficeOpenXml;
 using DocumentFormat.OpenXml.Wordprocessing;
 using DCC;
 using System.Xml;
+using System.Text.Json;
 
 
 namespace DCC
@@ -83,6 +84,49 @@ namespace DCC
 
 
         }
+        private async void SelectDeviceButton_Click(object sender, EventArgs e)
+        {
+            string apiUrl = "https://localhost:7166/AdministrativeData/GetAdministrativeDataSipNo?dataId=" + OrderNumberTextBox.Text;
+
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    var response = await httpClient.GetAsync(apiUrl);
+                    response.EnsureSuccessStatusCode();
+
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var options = new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        };
+
+                        var responseData = await JsonSerializer.DeserializeAsync<ApiResponse>(responseStream, options);
+
+                        if (responseData != null && responseData.Data.SiparisCihazlari != null && responseData.Data.SiparisCihazlari.Any())
+                        {
+                            foreach (var item in responseData.Data.SiparisCihazlari)
+                            {
+                               
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Api'den Gelen Veride Hata Var");
+                        }
+                    }
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"HTTP request error: {ex.Message}");
+                }
+
+            }
+            DeviceTextBox.Enabled = true;
+
+        }
 
         private void OrderNumberTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -115,10 +159,7 @@ namespace DCC
             SelectDeviceButton.Enabled = true;
         }
 
-        private void SelectDeviceButton_Click(object sender, EventArgs e)
-        {
-            DeviceTextBox.Enabled = true;
-        }
+       
 
         private void DeviceTextBox_TextChanged(object sender, EventArgs e)
         {
