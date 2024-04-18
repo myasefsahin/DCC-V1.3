@@ -405,12 +405,11 @@
             SelectDeviceButton.NoAccentTextColor = Color.Empty;
             SelectDeviceButton.Size = new Size(127, 36);
             SelectDeviceButton.TabIndex = 3;
-            SelectDeviceButton.Text = "Select Device";
+            SelectDeviceButton.Text = "Select Devıce";
             SelectDeviceButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             SelectDeviceButton.UseAccentColor = false;
             SelectDeviceButton.UseVisualStyleBackColor = true;
             SelectDeviceButton.Click += SelectDeviceButton_Click;
-
             // 
             // groupBox3
             // 
@@ -1465,7 +1464,6 @@
             checkBoxS11SWR.TabIndex = 9;
             checkBoxS11SWR.Text = "SWR";
             checkBoxS11SWR.UseVisualStyleBackColor = true;
-            
             // 
             // checkBoxS11Log
             // 
@@ -1893,7 +1891,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 162);
             Name = "CertificateForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "API OPERATİONS";
+            Text = "API OPERATIONS";
             TransparencyKey = SystemColors.Control;
             FormClosed += CertificateForm_FormClosed;
             Load += CertificateForm_Load;
