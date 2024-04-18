@@ -67,7 +67,7 @@
             XMLtoWordPage.Location = new Point(4, 29);
             XMLtoWordPage.Name = "XMLtoWordPage";
             XMLtoWordPage.Padding = new Padding(3);
-            XMLtoWordPage.Size = new Size(697, 707);
+            XMLtoWordPage.Size = new Size(642, 641);
             XMLtoWordPage.TabIndex = 1;
             XMLtoWordPage.Text = "tabPage2";
             XMLtoWordPage.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(691, 701);
+            panel2.Size = new Size(636, 635);
             panel2.TabIndex = 6;
             // 
             // pictureBox2
@@ -237,7 +237,7 @@
             HomeTab.Location = new Point(4, 29);
             HomeTab.Name = "HomeTab";
             HomeTab.Padding = new Padding(3);
-            HomeTab.Size = new Size(697, 707);
+            HomeTab.Size = new Size(642, 641);
             HomeTab.TabIndex = 0;
             HomeTab.Text = "tabPage1";
             // 
@@ -250,15 +250,16 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
+            panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(691, 701);
+            panel1.Size = new Size(636, 635);
             panel1.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label1.Location = new Point(209, 351);
+            label1.Location = new Point(210, 360);
             label1.Name = "label1";
             label1.Size = new Size(70, 28);
             label1.TabIndex = 3;
@@ -272,12 +273,12 @@
             XMLtoWordPageButton.Depth = 0;
             XMLtoWordPageButton.HighEmphasis = true;
             XMLtoWordPageButton.Icon = null;
-            XMLtoWordPageButton.Location = new Point(375, 437);
+            XMLtoWordPageButton.Location = new Point(360, 475);
             XMLtoWordPageButton.Margin = new Padding(5);
             XMLtoWordPageButton.MouseState = MaterialSkin.MouseState.HOVER;
             XMLtoWordPageButton.Name = "XMLtoWordPageButton";
             XMLtoWordPageButton.NoAccentTextColor = Color.Empty;
-            XMLtoWordPageButton.Size = new Size(173, 67);
+            XMLtoWordPageButton.Size = new Size(200, 50);
             XMLtoWordPageButton.TabIndex = 2;
             XMLtoWordPageButton.Text = "MACHİNE READABLE TO HUMAN READABLE";
             XMLtoWordPageButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -293,12 +294,12 @@
             CertificatePageShowButton.Depth = 0;
             CertificatePageShowButton.HighEmphasis = true;
             CertificatePageShowButton.Icon = null;
-            CertificatePageShowButton.Location = new Point(109, 437);
+            CertificatePageShowButton.Location = new Point(80, 475);
             CertificatePageShowButton.Margin = new Padding(5);
             CertificatePageShowButton.MouseState = MaterialSkin.MouseState.HOVER;
             CertificatePageShowButton.Name = "CertificatePageShowButton";
             CertificatePageShowButton.NoAccentTextColor = Color.Empty;
-            CertificatePageShowButton.Size = new Size(173, 67);
+            CertificatePageShowButton.Size = new Size(200, 50);
             CertificatePageShowButton.TabIndex = 1;
             CertificatePageShowButton.Text = "CREATE CERTİFİCATE";
             CertificatePageShowButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -309,9 +310,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(209, 16);
+            pictureBox1.Location = new Point(225, 35);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(259, 280);
+            pictureBox1.Size = new Size(200, 250);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -320,10 +321,11 @@
             // 
             tabControl1.Controls.Add(HomeTab);
             tabControl1.Controls.Add(XMLtoWordPage);
-            tabControl1.Location = new Point(0, -36);
+            tabControl1.Location = new Point(-10, -35);
+            tabControl1.Margin = new Padding(0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(705, 740);
+            tabControl1.Size = new Size(650, 674);
             tabControl1.TabIndex = 1;
             // 
             // HomePage
@@ -331,7 +333,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(699, 707);
+            ClientSize = new Size(632, 631);
             Controls.Add(tabControl1);
             Name = "HomePage";
             StartPosition = FormStartPosition.CenterScreen;
