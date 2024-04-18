@@ -410,6 +410,7 @@
             SelectDeviceButton.UseAccentColor = false;
             SelectDeviceButton.UseVisualStyleBackColor = true;
             SelectDeviceButton.Click += SelectDeviceButton_Click;
+
             // 
             // groupBox3
             // 
