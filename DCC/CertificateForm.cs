@@ -17,6 +17,7 @@ using System.Xml;
 using System.Text.Json;
 using CheckBox = System.Windows.Forms.CheckBox;
 using Control = System.Windows.Forms.Control;
+using System.Xml.Linq;
 
 
 namespace DCC
@@ -910,33 +911,7 @@ namespace DCC
 
             if (result == DialogResult.Yes)
             {
-
-                checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
-                checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
-                checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
-                checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
-
-                checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
-                CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
-                CIS_CheckBox.Checked = false;
-
-                NS_checkBoxENR.Checked = false; NS_checkBox_DC_ON.Checked = false; NS_checkBox_DC_OFF.Checked = false;
-
-                ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
-                ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
-
-                RF_Diff_1.Checked = false; RF_Diff_2.Checked = false; RF_Diff_3.Checked = false; RF_Diff_4.Checked = false;
-
-                RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
-
-   
-
-                CIS_SelectAll_CheckBox.Checked = false;
-                ARFP_SelectAll.Checked = false;
-                S_Parameter_SelectAll.Checked = false;
-                RF_Gain_SelectAll.Checked = false;
-                checkBox11.Checked = false;
-                EE_SelectAll.Checked = false;
+                UncheckAllCheckBoxes(this);
                 ExcelDosyaYolu = "";
                 ExcelPage_ComboBox.Items.Clear();
                 ExcelPage_ComboBox.Refresh();
@@ -965,31 +940,10 @@ namespace DCC
             else if (result == DialogResult.No)
             {
                 sayac = 0;
-                checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
-                checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
-                checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
-                checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
-
-                checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
-
-                CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
-
-                CIS_CheckBox.Checked = false;
-
-                NS_checkBoxENR.Checked = false; NS_checkBox_DC_ON.Checked = false; NS_checkBox_DC_OFF.Checked = false;
-
-                ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
-                ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
-
-                RF_Diff_1.Checked = false; RF_Diff_2.Checked = false; RF_Diff_3.Checked = false; RF_Diff_4.Checked = false;
-                RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
-
-
+                UnEnabledAllCheckBoxes(this);
                 ExcelDosyaYolu = "";
-                ExcelFileName_TextBox.Hint = "Please Select Xml File";
-                ExcelFileName_TextBox.Text = "";
-                ExcelPage_ComboBox.Items.Clear();
                 ExcelPage_ComboBox.Refresh();
+                ExcelPage_ComboBox.Enabled = false;
                 progressBar.Value = 0;
                 sp_DataWord.ClearData();
                 CF_DataWord.ClearData();
@@ -1115,10 +1069,19 @@ namespace DCC
                 LabelProgress.Text = @"ERROR!: XML";
                 MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            SelectExcel_Button.Enabled = true;
+            SelectExcel_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
             LabelProgress.Text = "";
             progressBar.Value = 0;
+            UncheckAllCheckBoxes(this);
+            EnabledAllCheckBoxes(this);
+            ExcelPage_ComboBox.Items.Clear();
+            ExcelPage_ComboBox.Refresh();
+            ExcelFileName_TextBox.Hint = "Please Select Xml File";
+            ExcelFileName_TextBox.Text = "";
+            listBox1.Items.Clear();
+            label7.Visible = true;
+
         }
         #endregion
         public void WordBasarim()
@@ -1464,6 +1427,65 @@ namespace DCC
 
         }
 
+        private void UncheckAllCheckBoxes(Control container)
+        {
+            // Konteyner içindeki tüm kontrol elemanlarını döngü ile kontrol et
+            foreach (Control control in container.Controls)
+            {
+                // Eğer kontrol elemanı bir konteyner ise (groupbox, panel vb.), içindeki kontrol elemanlarını kontrol et
+                if (control.HasChildren)
+                {
+                    UncheckAllCheckBoxes(control);
+                }
+
+                // Kontrol elemanı bir checkbox ise, checked özelliğini false yap
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    checkBox.Checked = false;
+                }
+            }
+        }
+
+        private void UnEnabledAllCheckBoxes(Control container)
+        {
+            // Konteyner içindeki tüm kontrol elemanlarını döngü ile kontrol et
+            foreach (Control control in container.Controls)
+            {
+                // Eğer kontrol elemanı bir konteyner ise (groupbox, panel vb.), içindeki kontrol elemanlarını kontrol et
+                if (control.HasChildren)
+                {
+                    UnEnabledAllCheckBoxes(control);
+                }
+
+                // Kontrol elemanı bir checkbox ise, checked özelliğini false yap
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    checkBox.Enabled = false;
+                }
+            }
+        }
+
+        private void EnabledAllCheckBoxes(Control container)
+        {
+            // Konteyner içindeki tüm kontrol elemanlarını döngü ile kontrol et
+            foreach (Control control in container.Controls)
+            {
+                // Eğer kontrol elemanı bir konteyner ise (groupbox, panel vb.), içindeki kontrol elemanlarını kontrol et
+                if (control.HasChildren)
+                {
+                    EnabledAllCheckBoxes(control);
+                }
+
+                // Kontrol elemanı bir checkbox ise, checked özelliğini false yap
+                if (control is CheckBox)
+                {
+                    CheckBox checkBox = (CheckBox)control;
+                    checkBox.Enabled = true;
+                }
+            }
+        }
 
     }
 }
