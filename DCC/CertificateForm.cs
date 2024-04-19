@@ -25,6 +25,20 @@ namespace DCC
 
     public partial class CertificateForm : Form
     {
+        public CertificateForm(XmlDocument xml)
+        {
+            this.xml = xml;
+            InitializeComponent();
+            CheckBoxTabpagecontrol();
+            RFPowtabpageControl();
+            SelectExcel_Button.Enabled = false;
+
+        }
+        private void CertificateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         #region Tanımlamalar
 
         OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -59,17 +73,10 @@ namespace DCC
         int satır;
         string sütun;
 
+
+
         #endregion
 
-        public CertificateForm(XmlDocument xml)
-        {
-            this.xml = xml;
-            InitializeComponent();
-            CheckBoxTabpagecontrol();
-            RFPowtabpageControl();
-            SelectExcel_Button.Enabled = false;
-
-        }
         #region API PAGE
 
         private void CertificateForm_Load(object sender, EventArgs e)
@@ -87,7 +94,7 @@ namespace DCC
             ReceiveData_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
             BackBox3.Enabled = true;
-            
+
 
 
         }
@@ -115,7 +122,7 @@ namespace DCC
                         {
                             foreach (var item in responseData.Data.SiparisCihazlari)
                             {
-                               
+
                             }
 
                         }
@@ -166,7 +173,7 @@ namespace DCC
             SelectDeviceButton.Enabled = true;
         }
 
-       
+
 
         private void DeviceTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -252,7 +259,7 @@ namespace DCC
         }
         #endregion
 
-
+        #region Button
         private void ExcelPage_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.Text = "EXCEL ROW AND COLUMN SELECT";
@@ -268,7 +275,7 @@ namespace DCC
 
             ReceiveData_Button.Enabled = true;
         }
-        #region Button
+        
         private void Save_Row_Col_Button_Click(object sender, EventArgs e)
         {
             if (satır == 0 && sütun == null)
@@ -343,7 +350,6 @@ namespace DCC
 
         private void ReceiveData_Button_Click(object sender, EventArgs e)
         {
-            CreateCertificate_Button.Enabled = true;
             try
             {
 
@@ -660,7 +666,7 @@ namespace DCC
                 #endregion
 
                 #region Absolute RF Power
-                else if (RFPowTabControl.SelectedTab==Abs_RF_Power_tabpage)
+                else if (RFPowTabControl.SelectedTab == Abs_RF_Power_tabpage)
                 {
 
                     Absolute_RF_Power.main(ExcelDosyaYolu, pageName, satır, sütun);
@@ -939,6 +945,7 @@ namespace DCC
             }
             else if (result == DialogResult.No)
             {
+                CreateCertificate_Button.Enabled = true;
                 sayac = 0;
                 UnEnabledAllCheckBoxes(this);
                 ExcelDosyaYolu = "";
@@ -969,19 +976,7 @@ namespace DCC
 
         }
 
-        public void SaveBasarim()
-        {
-            LabelProgress.Visible = false;
-            Thread.Sleep(5);
-            progressBar.Value = 0;
-            for (int i = 0; i < 100; i++)
-            {
-                progressBar.Value += 1;
-            }
-            LabelProgress.Visible = true;
-            LabelProgress.ForeColor = System.Drawing.Color.Green;
-            LabelProgress.Text = @"Save successful";
-        }
+
 
         private void CreateCertificate_Button_Click(object sender, EventArgs e)
         {
@@ -1084,6 +1079,21 @@ namespace DCC
 
         }
         #endregion
+
+        #region ProgressBar Control 
+        public void SaveBasarim()
+        {
+            LabelProgress.Visible = false;
+            Thread.Sleep(5);
+            progressBar.Value = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                progressBar.Value += 1;
+            }
+            LabelProgress.Visible = true;
+            LabelProgress.ForeColor = System.Drawing.Color.Green;
+            LabelProgress.Text = @"Save successful";
+        }
         public void WordBasarim()
         {
             LabelProgress.Visible = false;
@@ -1124,7 +1134,9 @@ namespace DCC
 
             return columnName;
         }
+        #endregion
 
+        #region ExcelViewPage Kontrolleri
         private void DisplayExcelWorksheet(string worksheetName)
         {
             using (ExcelPackage package = new ExcelPackage(new System.IO.FileInfo(openFileDialog.FileName)))
@@ -1172,11 +1184,7 @@ namespace DCC
             }
         }
 
-        private void CertificateForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
+      
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
@@ -1203,33 +1211,15 @@ namespace DCC
             }
             LabelProgress.Visible = true;
             LabelProgress.ForeColor = System.Drawing.Color.Green;
-            
+
 
 
 
         }
-
+        #endregion
 
         #region SelectAll Button Kontrol
 
-        private void checkBox11_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox11.Checked == true)
-            {
-                RF_Diff_1.Checked = true;
-                RF_Diff_2.Checked = true;
-                RF_Diff_3.Checked = true;
-                RF_Diff_4.Checked = true;
-            }
-            if (checkBox11.Checked == false)
-            {
-                RF_Diff_1.Checked = false;
-                RF_Diff_2.Checked = false;
-                RF_Diff_3.Checked = false;
-                RF_Diff_4.Checked = false;
-            }
-
-        }
 
         private void CIS_SelectAll_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -1252,46 +1242,6 @@ namespace DCC
                 CIS_CheckBox4.Checked = false;
                 CIS_CheckBox5.Checked = false;
                 CIS_CheckBox6.Checked = false;
-            }
-        }
-
-        private void RF_Gain_SelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (RF_Gain_SelectAll.Checked == true)
-            {
-                RF_Gain1.Checked = true;
-                RF_Gain2.Checked = true;
-                RF_Gain3.Checked = true;
-                RF_Gain4.Checked = true;
-
-            }
-            if (RF_Gain_SelectAll.Checked == false)
-            {
-                RF_Gain1.Checked = false;
-                RF_Gain2.Checked = false;
-                RF_Gain3.Checked = false;
-                RF_Gain4.Checked = false;
-
-            }
-        }
-
-        private void EE_SelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (EE_SelectAll.Checked == true)
-            {
-                checkBoxEE.Checked = true;
-                checkBox_EE_RI.Checked = true;
-                checkBoxRHO.Checked = true;
-                checkBox_EE_CF.Checked = true;
-
-            }
-            if (EE_SelectAll.Checked == false)
-            {
-                checkBoxEE.Checked = false;
-                checkBox_EE_RI.Checked = false;
-                checkBoxRHO.Checked = false;
-                checkBox_EE_CF.Checked = false;
-
             }
         }
 
@@ -1326,6 +1276,66 @@ namespace DCC
                 ARFP_11.Checked = false;
             }
         }
+
+        private void RF_Diff_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RF_Diff_SelectAll.Checked == true)
+            {
+                RF_Diff_1.Checked = true;
+                RF_Diff_2.Checked = true;
+                RF_Diff_3.Checked = true;
+                RF_Diff_4.Checked = true;
+            }
+            if (RF_Diff_SelectAll.Checked == false)
+            {
+                RF_Diff_1.Checked = false;
+                RF_Diff_2.Checked = false;
+                RF_Diff_3.Checked = false;
+                RF_Diff_4.Checked = false;
+            }
+        }
+
+        private void RF_Gain_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RF_Gain_SelectAll.Checked == true)
+            {
+                RF_Gain1.Checked = true;
+                RF_Gain2.Checked = true;
+                RF_Gain3.Checked = true;
+                RF_Gain4.Checked = true;
+
+            }
+            if (RF_Gain_SelectAll.Checked == false)
+            {
+                RF_Gain1.Checked = false;
+                RF_Gain2.Checked = false;
+                RF_Gain3.Checked = false;
+                RF_Gain4.Checked = false;
+
+            }
+        }
+
+
+        private void EE_SelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (EE_SelectAll.Checked == true)
+            {
+                checkBoxEE.Checked = true;
+                checkBox_EE_RI.Checked = true;
+                checkBoxRHO.Checked = true;
+                checkBox_EE_CF.Checked = true;
+
+            }
+            if (EE_SelectAll.Checked == false)
+            {
+                checkBoxEE.Checked = false;
+                checkBox_EE_RI.Checked = false;
+                checkBoxRHO.Checked = false;
+                checkBox_EE_CF.Checked = false;
+
+            }
+        }
+
 
         private void S_Parameter_SelectAll_CheckedChanged(object sender, EventArgs e)
         {
@@ -1366,6 +1376,7 @@ namespace DCC
         }
         #endregion
 
+        #region Checkbox Seçim Kontrolleri
         public void CheckBoxTabpagecontrol()
         {
             foreach (Control control in CheckBoxTabControl.Controls)
@@ -1486,6 +1497,10 @@ namespace DCC
                 }
             }
         }
+
+        #endregion
+
+
 
     }
 }
