@@ -80,7 +80,6 @@ namespace DCC
                     CalculateEntity formattedEntity7 = NumberFormatter.deneme(calculateEntity);
                     NS_ArrayRC_Phase.Add(formattedEntity7.measurent);
                     NS_ArrayRC_PhaseUnc.Add(formattedEntity7.uncertainty);
-                    NS_ArrayControl_DC_ON.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 9] + i].Value));
 
 
 
@@ -99,8 +98,6 @@ namespace DCC
                     CalculateEntity formattedEntity13 = NumberFormatter.deneme(calculateEntity);
                     NS_ArrayRC_Phase_DC_OFF.Add(formattedEntity13.measurent);
                     NS_ArrayRC_PhaseUnc_DC_OFF.Add(formattedEntity13.uncertainty);
-
-                    NS_ArrayControl_DC_OFF.Add(Convert.ToString(worksheet.Cells[columnName[harfIndex + 16] + i].Value));
 
 
 
@@ -125,7 +122,6 @@ namespace DCC
         public ArrayList NS_ArrayRCUnc { get; set; }
         public ArrayList NS_ArrayRC_Phase { get; set; }
         public ArrayList NS_ArrayRC_PhaseUnc { get; set; }
-        public ArrayList NS_ArrayControl_DC_ON { get; set; }
 
 
 
@@ -135,7 +131,6 @@ namespace DCC
         public ArrayList NS_ArrayRCUnc_DC_OFF { get; set; }
         public ArrayList NS_ArrayRC_Phase_DC_OFF { get; set; }
         public ArrayList NS_ArrayRC_PhaseUnc_DC_OFF { get; set; }
-        public ArrayList NS_ArrayControl_DC_OFF { get; set; }
 
 
 
@@ -153,14 +148,12 @@ namespace DCC
             NS_ArrayRCUnc = new ArrayList();
             NS_ArrayRC_Phase = new ArrayList();
             NS_ArrayRC_PhaseUnc = new ArrayList();
-            NS_ArrayControl_DC_ON = new ArrayList();
 
             NS_ArrayRC_DC_OFF = new ArrayList();
             NS_ArrayRC_ustlimit_DC_OFF = new ArrayList();
             NS_ArrayRCUnc_DC_OFF = new ArrayList();
             NS_ArrayRC_Phase_DC_OFF = new ArrayList();
             NS_ArrayRC_PhaseUnc_DC_OFF = new ArrayList();
-            NS_ArrayControl_DC_OFF = new ArrayList();
 
 
         }
@@ -175,13 +168,11 @@ namespace DCC
             NS_ArrayRCUnc.Clear();
             NS_ArrayRC_Phase.Clear();
             NS_ArrayRC_PhaseUnc.Clear();
-            NS_ArrayControl_DC_ON.Clear();
             NS_ArrayRC_DC_OFF.Clear();
             NS_ArrayRC_ustlimit_DC_OFF.Clear();
             NS_ArrayRCUnc_DC_OFF.Clear();
             NS_ArrayRC_Phase_DC_OFF.Clear();
             NS_ArrayRC_PhaseUnc_DC_OFF.Clear();
-            NS_ArrayControl_DC_OFF.Clear();
            
         }
     }

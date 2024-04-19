@@ -354,7 +354,7 @@ namespace DCC
             {
 
                 #region S-Parametre
-                if (MeasurementTypes_ComboBox.SelectedIndex == 6)
+                if (MeasurementTypes_ComboBox.SelectedIndex == 4)
                 {
 
                     sp_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
@@ -622,7 +622,7 @@ namespace DCC
                 #endregion
 
                 #region Noise
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 7)
+                else if (MeasurementTypes_ComboBox.SelectedIndex == 5)
                 {
 
                     Noise_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
