@@ -348,7 +348,7 @@
             DeviceTextBox.CharacterCasing = CharacterCasing.Normal;
             DeviceTextBox.Depth = 0;
             DeviceTextBox.HideSelection = true;
-            DeviceTextBox.Hint = "DEVİCE";
+            DeviceTextBox.Hint = "INSTRUMENT / DEVICE";
             DeviceTextBox.Location = new Point(76, 103);
             DeviceTextBox.MaxLength = 32767;
             DeviceTextBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -372,11 +372,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label2.ForeColor = Color.Navy;
-            label2.Location = new Point(52, 32);
+            label2.Location = new Point(241, 32);
             label2.Name = "label2";
-            label2.Size = new Size(560, 23);
+            label2.Size = new Size(181, 23);
             label2.TabIndex = 0;
-            label2.Text = "Device, Method, Calibration and Measurement Description Windows";
+            label2.Text = "Description Windows";
             // 
             // groupBox1
             // 
@@ -1780,7 +1780,7 @@
             Save_Row_Col_Button.Depth = 0;
             Save_Row_Col_Button.HighEmphasis = true;
             Save_Row_Col_Button.Icon = null;
-            Save_Row_Col_Button.Location = new Point(1076, 17);
+            Save_Row_Col_Button.Location = new Point(1065, 663);
             Save_Row_Col_Button.Margin = new Padding(4, 6, 4, 6);
             Save_Row_Col_Button.MouseState = MaterialSkin.MouseState.HOVER;
             Save_Row_Col_Button.Name = "Save_Row_Col_Button";
@@ -1800,12 +1800,13 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(50, 113);
+            dataGridView1.Location = new Point(50, 93);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1113, 552);
+            dataGridView1.Size = new Size(1113, 551);
             dataGridView1.TabIndex = 10;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // label4
@@ -1835,7 +1836,7 @@
             groupBox13.BackColor = Color.White;
             groupBox13.Location = new Point(29, 58);
             groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(1162, 629);
+            groupBox13.Size = new Size(1162, 596);
             groupBox13.TabIndex = 14;
             groupBox13.TabStop = false;
             // 
