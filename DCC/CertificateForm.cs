@@ -15,6 +15,8 @@ using DocumentFormat.OpenXml.Wordprocessing;
 using DCC;
 using System.Xml;
 using System.Text.Json;
+using CheckBox = System.Windows.Forms.CheckBox;
+using Control = System.Windows.Forms.Control;
 
 
 namespace DCC
@@ -62,6 +64,10 @@ namespace DCC
         {
             this.xml = xml;
             InitializeComponent();
+            CheckBoxTabpagecontrol();
+            RFPowtabpageControl();
+            SelectExcel_Button.Enabled = false;
+
         }
         #region API PAGE
 
@@ -227,25 +233,18 @@ namespace DCC
             }
             if (MeasurementTypes_ComboBox.SelectedIndex == 3)
             {
-                CheckBoxTabControl.SelectedTab = Absolute_RFPow_Page;
+                CheckBoxTabControl.SelectedTab = RFPow_Page;
             }
+
             if (MeasurementTypes_ComboBox.SelectedIndex == 4)
-            {
-                CheckBoxTabControl.SelectedTab = RF_Difference_Tabpage;
-            }
-            if (MeasurementTypes_ComboBox.SelectedIndex == 5)
-            {
-                CheckBoxTabControl.SelectedTab = RF_Gain_Tabpage;
-            }
-            if (MeasurementTypes_ComboBox.SelectedIndex == 6)
             {
                 CheckBoxTabControl.SelectedTab = SParam_Page;
             }
-            if (MeasurementTypes_ComboBox.SelectedIndex == 7)
+            if (MeasurementTypes_ComboBox.SelectedIndex == 5)
             {
                 CheckBoxTabControl.SelectedTab = Noise_Page;
             }
-            if (MeasurementTypes_ComboBox.SelectedIndex == 8)
+            if (MeasurementTypes_ComboBox.SelectedIndex == 6)
             {
                 CheckBoxTabControl.SelectedTab = MetCH_Page;
             }
@@ -346,8 +345,6 @@ namespace DCC
             CreateCertificate_Button.Enabled = true;
             try
             {
-
-
 
                 #region S-Parametre
                 if (MeasurementTypes_ComboBox.SelectedIndex == 6)
@@ -662,7 +659,7 @@ namespace DCC
                 #endregion
 
                 #region Absolute RF Power
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 3)
+                else if (RFPowTabControl.SelectedTab==Abs_RF_Power_tabpage)
                 {
 
                     Absolute_RF_Power.main(ExcelDosyaYolu, pageName, satır, sütun);
@@ -776,7 +773,7 @@ namespace DCC
                 #endregion
 
                 #region RF Difference
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 4)
+                else if (RFPowTabControl.SelectedTab == RF_Diff_tabpage)
                 {
 
                     RF_Difference_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
@@ -833,7 +830,7 @@ namespace DCC
 
                 #region RF GAİN
 
-                else if (MeasurementTypes_ComboBox.SelectedIndex == 5)
+                else if (RFPowTabControl.SelectedTab == RF_Gain_tabpage)
                 {
                     RF_Gain_DataWord.main(ExcelDosyaYolu, pageName, satır, sütun);
                     XML_Arrays.RF_Gain_DataXml(ExcelDosyaYolu, pageName, satır, sütun);
@@ -905,13 +902,11 @@ namespace DCC
             #endregion
 
 
-
-
         }
         public void refresh()
         {
 
-            DialogResult result = MessageBox.Show("Measurement values have been saved for " + MeasurementTypes_ComboBox.Text + "\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
             {
@@ -934,15 +929,17 @@ namespace DCC
 
                 RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
 
+   
+
                 CIS_SelectAll_CheckBox.Checked = false;
                 ARFP_SelectAll.Checked = false;
                 S_Parameter_SelectAll.Checked = false;
                 RF_Gain_SelectAll.Checked = false;
                 checkBox11.Checked = false;
                 EE_SelectAll.Checked = false;
-
                 ExcelDosyaYolu = "";
                 ExcelPage_ComboBox.Items.Clear();
+                ExcelPage_ComboBox.Refresh();
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
                 ExcelFileName_TextBox.Text = "";
                 progressBar.Value = 0;
@@ -968,11 +965,31 @@ namespace DCC
             else if (result == DialogResult.No)
             {
                 sayac = 0;
+                checkBoxS11Reel.Checked = false; checkBoxS12Reel.Checked = false; checkBoxS21Reel.Checked = false; checkBoxS22Reel.Checked = false;
+                checkBoxS11Lin.Checked = false; checkBoxS12Lin.Checked = false; checkBoxS21Lin.Checked = false; checkBoxS22Lin.Checked = false;
+                checkBoxS11Log.Checked = false; checkBoxS12Log.Checked = false; checkBoxS21Log.Checked = false; checkBoxS22Log.Checked = false;
+                checkBoxS11SWR.Checked = false; checkBoxS22SWR.Checked = false;
+
+                checkBoxEE.Checked = false; checkBox_EE_RI.Checked = false; checkBoxRHO.Checked = false; checkBox_EE_CF.Checked = false;
+
+                CF_checkBox_RIRC.Checked = false; CheckBox_CF.Checked = false;
+
+                CIS_CheckBox.Checked = false;
+
+                NS_checkBoxENR.Checked = false; NS_checkBox_DC_ON.Checked = false; NS_checkBox_DC_OFF.Checked = false;
+
+                ARFP_1.Checked = false; ARFP_2.Checked = false; ARFP_3.Checked = false; ARFP_4.Checked = false; ARFP_5.Checked = false; ARFP_6.Checked = false;
+                ARFP_7.Checked = false; ARFP_8.Checked = false; ARFP_9.Checked = false; ARFP_10.Checked = false; ARFP_11.Checked = false;
+
+                RF_Diff_1.Checked = false; RF_Diff_2.Checked = false; RF_Diff_3.Checked = false; RF_Diff_4.Checked = false;
+                RF_Gain1.Checked = false; RF_Gain2.Checked = false; RF_Gain3.Checked = false; RF_Gain4.Checked = false;
+
 
                 ExcelDosyaYolu = "";
                 ExcelFileName_TextBox.Hint = "Please Select Xml File";
                 ExcelFileName_TextBox.Text = "";
                 ExcelPage_ComboBox.Items.Clear();
+                ExcelPage_ComboBox.Refresh();
                 progressBar.Value = 0;
                 sp_DataWord.ClearData();
                 CF_DataWord.ClearData();
@@ -1230,7 +1247,7 @@ namespace DCC
         }
 
 
-
+        #region SelectAll Button Kontrol
 
         private void checkBox11_CheckedChanged(object sender, EventArgs e)
         {
@@ -1384,7 +1401,69 @@ namespace DCC
                 checkBoxS22SWR.Checked = false;
             }
         }
+        #endregion
 
-       
+        public void CheckBoxTabpagecontrol()
+        {
+            foreach (Control control in CheckBoxTabControl.Controls)
+            {
+                if (control is TabPage tabPage)
+                {
+                    foreach (Control tabPageControl in tabPage.Controls)
+                    {
+                        if (tabPageControl is CheckBox checkBox)
+                        {
+                            checkBox.CheckedChanged += CheckBox_CheckedChanged;
+                        }
+                    }
+                }
+            }
+        }
+        public void RFPowtabpageControl()
+        {
+            foreach (Control control in RFPowTabControl.Controls)
+            {
+                if (control is TabPage tabPage)
+                {
+                    foreach (Control tabPageControl in tabPage.Controls)
+                    {
+                        if (tabPageControl is CheckBox checkBox)
+                        {
+                            checkBox.CheckedChanged += RFPowtabpageCheckBox_CheckedChanged;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void RFPowtabpageCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // CheckBox'ın durumuna göre ComboBox'ın tıklanabilirliğini ayarla
+            bool anyCheckBoxChecked = RFPowTabControl.TabPages.Cast<TabPage>()
+                .SelectMany(tabPage => tabPage.Controls.Cast<Control>()
+                    .Where(control => control is CheckBox)
+                    .Cast<CheckBox>())
+                .Any(checkBox => checkBox.Checked);
+
+            MeasurementTypes_ComboBox.Enabled = !anyCheckBoxChecked;
+            materialTabSelector1.Enabled = !anyCheckBoxChecked;
+            SelectExcel_Button.Enabled = anyCheckBoxChecked;
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // CheckBox'ın durumuna göre ComboBox'ın tıklanabilirliğini ayarla
+            bool anyCheckBoxChecked = CheckBoxTabControl.TabPages.Cast<TabPage>()
+                .SelectMany(tabPage => tabPage.Controls.Cast<Control>()
+                    .Where(control => control is CheckBox)
+                    .Cast<CheckBox>())
+                .Any(checkBox => checkBox.Checked);
+
+            MeasurementTypes_ComboBox.Enabled = !anyCheckBoxChecked;
+            SelectExcel_Button.Enabled = anyCheckBoxChecked;
+
+        }
+
+
     }
 }
