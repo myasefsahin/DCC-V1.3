@@ -44,31 +44,51 @@ namespace DCC
                 new TableHeader()
             ),
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(),new FontSize() { Val = "22" }),
                         new Text(Col1)))),
+
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(),new FontSize() { Val = "22" }),
                         new Text(Col2)))),
+
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text(Col3)))),
+
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold()), new FontSize() { Val = "22" },
                         new Text(Col4)))),
+
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text(Col5)))),
+
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text(Col6)))),
+
                 new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                    new Paragraph(new Run(
+                    new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                        new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new Bold(), new FontSize() { Val = "22" }),
                         new Text(Col7))))
             );
@@ -97,31 +117,51 @@ namespace DCC
             {
                 TableRow dataRow = new TableRow(
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col1[i].ToString())))),
+
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col2[i].ToString())))),
+
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col3[i].ToString())))),
+
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col4[i].ToString())))),
+
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col5[i].ToString())))),
+
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col6[i].ToString())))),
+
                     new TableCell(new TableCellProperties(new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = cellWidth.ToString() }),
-                        new Paragraph(new Run(
+                        new Paragraph(new ParagraphProperties(
+                       new Justification() { Val = JustificationValues.Center }),
+                            new Run(
                             new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
                             new Text(col7[i].ToString()))))
                 );
