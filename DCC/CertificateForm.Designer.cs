@@ -271,7 +271,7 @@
             MeasurementsTextBox.CharacterCasing = CharacterCasing.Normal;
             MeasurementsTextBox.Depth = 0;
             MeasurementsTextBox.HideSelection = true;
-            MeasurementsTextBox.Hint = "MEASUREMENTS";
+            MeasurementsTextBox.Hint = "COMMENTS,  REMARKS AND STATEMENT OF COMPLIANCE";
             MeasurementsTextBox.Location = new Point(76, 505);
             MeasurementsTextBox.MaxLength = 32767;
             MeasurementsTextBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -296,7 +296,7 @@
             CalibrationDescTextBox.CharacterCasing = CharacterCasing.Normal;
             CalibrationDescTextBox.Depth = 0;
             CalibrationDescTextBox.HideSelection = true;
-            CalibrationDescTextBox.Hint = "CALİBRATİON";
+            CalibrationDescTextBox.Hint = "MEASUREMENT UNCERTAINTY";
             CalibrationDescTextBox.Location = new Point(76, 362);
             CalibrationDescTextBox.MaxLength = 32767;
             CalibrationDescTextBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -322,7 +322,7 @@
             MethodTextBox.CharacterCasing = CharacterCasing.Normal;
             MethodTextBox.Depth = 0;
             MethodTextBox.HideSelection = true;
-            MethodTextBox.Hint = "METHOD";
+            MethodTextBox.Hint = "CALIBRATION METHOD AND PROCEDURE";
             MethodTextBox.Location = new Point(76, 234);
             MethodTextBox.MaxLength = 32767;
             MethodTextBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -349,7 +349,7 @@
             DeviceTextBox.CharacterCasing = CharacterCasing.Normal;
             DeviceTextBox.Depth = 0;
             DeviceTextBox.HideSelection = true;
-            DeviceTextBox.Hint = "DEVİCE";
+            DeviceTextBox.Hint = "INSTRUMENT / DEVICE";
             DeviceTextBox.Location = new Point(76, 103);
             DeviceTextBox.MaxLength = 32767;
             DeviceTextBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -373,11 +373,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 162);
             label2.ForeColor = Color.Navy;
-            label2.Location = new Point(52, 32);
+            label2.Location = new Point(240, 32);
             label2.Name = "label2";
-            label2.Size = new Size(560, 23);
+            label2.Size = new Size(181, 23);
             label2.TabIndex = 0;
-            label2.Text = "Device, Method, Calibration and Measurement Description Windows";
+            label2.Text = "Description Windows";
             // 
             // groupBox1
             // 
