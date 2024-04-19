@@ -45,10 +45,10 @@
             panel1 = new Panel();
             label2 = new Label();
             label1 = new Label();
-            XMLtoWordPageButton = new MaterialSkin.Controls.MaterialButton();
-            CertificatePageShowButton = new MaterialSkin.Controls.MaterialButton();
             pictureBox1 = new PictureBox();
             tabControl1 = new TabControl();
+            XMLtoWordPageButton = new MaterialSkin.Controls.MaterialButton();
+            CertificatePageShowButton = new MaterialSkin.Controls.MaterialButton();
             XMLtoWordPage.SuspendLayout();
             groupBox2.SuspendLayout();
             panel2.SuspendLayout();
@@ -245,10 +245,10 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
             panel1.Controls.Add(XMLtoWordPageButton);
             panel1.Controls.Add(CertificatePageShowButton);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
@@ -277,48 +277,6 @@
             label1.TabIndex = 3;
             label1.Text = "label1";
             // 
-            // XMLtoWordPageButton
-            // 
-            XMLtoWordPageButton.AutoSize = false;
-            XMLtoWordPageButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            XMLtoWordPageButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            XMLtoWordPageButton.Depth = 0;
-            XMLtoWordPageButton.HighEmphasis = true;
-            XMLtoWordPageButton.Icon = null;
-            XMLtoWordPageButton.Location = new Point(360, 475);
-            XMLtoWordPageButton.Margin = new Padding(5);
-            XMLtoWordPageButton.MouseState = MaterialSkin.MouseState.HOVER;
-            XMLtoWordPageButton.Name = "XMLtoWordPageButton";
-            XMLtoWordPageButton.NoAccentTextColor = Color.Empty;
-            XMLtoWordPageButton.Size = new Size(200, 50);
-            XMLtoWordPageButton.TabIndex = 2;
-            XMLtoWordPageButton.Text = "MACHİNE READABLE TO HUMAN READABLE";
-            XMLtoWordPageButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            XMLtoWordPageButton.UseAccentColor = false;
-            XMLtoWordPageButton.UseVisualStyleBackColor = true;
-            XMLtoWordPageButton.Click += XMLtoWordPageButton_Click;
-            // 
-            // CertificatePageShowButton
-            // 
-            CertificatePageShowButton.AutoSize = false;
-            CertificatePageShowButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            CertificatePageShowButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            CertificatePageShowButton.Depth = 0;
-            CertificatePageShowButton.HighEmphasis = true;
-            CertificatePageShowButton.Icon = null;
-            CertificatePageShowButton.Location = new Point(80, 475);
-            CertificatePageShowButton.Margin = new Padding(5);
-            CertificatePageShowButton.MouseState = MaterialSkin.MouseState.HOVER;
-            CertificatePageShowButton.Name = "CertificatePageShowButton";
-            CertificatePageShowButton.NoAccentTextColor = Color.Empty;
-            CertificatePageShowButton.Size = new Size(200, 50);
-            CertificatePageShowButton.TabIndex = 1;
-            CertificatePageShowButton.Text = "CREATE CERTİFİCATE";
-            CertificatePageShowButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            CertificatePageShowButton.UseAccentColor = false;
-            CertificatePageShowButton.UseVisualStyleBackColor = true;
-            CertificatePageShowButton.Click += CertificatePageShowButton_Click;
-            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -339,6 +297,46 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(650, 674);
             tabControl1.TabIndex = 1;
+            // 
+            // XMLtoWordPageButton
+            // 
+            XMLtoWordPageButton.AutoSize = false;
+            XMLtoWordPageButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            XMLtoWordPageButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            XMLtoWordPageButton.Depth = 0;
+            XMLtoWordPageButton.HighEmphasis = true;
+            XMLtoWordPageButton.Icon = null;
+            XMLtoWordPageButton.Location = new Point(339, 481);
+            XMLtoWordPageButton.Margin = new Padding(5);
+            XMLtoWordPageButton.MouseState = MaterialSkin.MouseState.HOVER;
+            XMLtoWordPageButton.Name = "XMLtoWordPageButton";
+            XMLtoWordPageButton.NoAccentTextColor = Color.Empty;
+            XMLtoWordPageButton.Size = new Size(246, 68);
+            XMLtoWordPageButton.TabIndex = 6;
+            XMLtoWordPageButton.Text = "convert certıfıcate from machıne readable to human readable";
+            XMLtoWordPageButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            XMLtoWordPageButton.UseAccentColor = false;
+            XMLtoWordPageButton.UseVisualStyleBackColor = true;
+            // 
+            // CertificatePageShowButton
+            // 
+            CertificatePageShowButton.AutoSize = false;
+            CertificatePageShowButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            CertificatePageShowButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            CertificatePageShowButton.Depth = 0;
+            CertificatePageShowButton.HighEmphasis = true;
+            CertificatePageShowButton.Icon = null;
+            CertificatePageShowButton.Location = new Point(59, 481);
+            CertificatePageShowButton.Margin = new Padding(5);
+            CertificatePageShowButton.MouseState = MaterialSkin.MouseState.HOVER;
+            CertificatePageShowButton.Name = "CertificatePageShowButton";
+            CertificatePageShowButton.NoAccentTextColor = Color.Empty;
+            CertificatePageShowButton.Size = new Size(246, 68);
+            CertificatePageShowButton.TabIndex = 5;
+            CertificatePageShowButton.Text = "create certıfıcate as machıne and human readable";
+            CertificatePageShowButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            CertificatePageShowButton.UseAccentColor = false;
+            CertificatePageShowButton.UseVisualStyleBackColor = true;
             // 
             // HomePage
             // 
@@ -384,11 +382,11 @@
         private PictureBox pictureBox3;
         private TabPage HomeTab;
         private Panel panel1;
-        private MaterialSkin.Controls.MaterialButton XMLtoWordPageButton;
-        private MaterialSkin.Controls.MaterialButton CertificatePageShowButton;
         private PictureBox pictureBox1;
         private TabControl tabControl1;
         private Label label1;
         private Label label2;
+        private MaterialSkin.Controls.MaterialButton XMLtoWordPageButton;
+        private MaterialSkin.Controls.MaterialButton CertificatePageShowButton;
     }
 }
