@@ -66,9 +66,6 @@ namespace DCC
         public int? EtiketSayisi { get; set; }
         public string ParaCinsi { get; set; }
 
-        public virtual KbysFirmaCihaz? CihazNoNavigation { get; set; }
-
-        public virtual ICollection<KbysSiparisAyrinti> KbysSiparisAyrintis { get; set; } = new List<KbysSiparisAyrinti>();
     }
 
 }

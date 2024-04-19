@@ -118,18 +118,7 @@ namespace DCC
 
                         var responseData = await JsonSerializer.DeserializeAsync<ApiResponse>(responseStream, options);
 
-                        if (responseData != null && responseData.Data.SiparisCihazlari != null && responseData.Data.SiparisCihazlari.Any())
-                        {
-                            foreach (var item in responseData.Data.SiparisCihazlari)
-                            {
-
-                            }
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Api'den Gelen Veride Hata Var");
-                        }
+                      
                     }
                 }
                 catch (HttpRequestException ex)

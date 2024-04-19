@@ -2,7 +2,7 @@
 
 public class ApiResponse
 {
-    public AdministrativeData Data { get; set; }
+    public ApiData Data { get; set; }
     public bool Succes { get; set; }
     public string Message { get; set; }
 }
