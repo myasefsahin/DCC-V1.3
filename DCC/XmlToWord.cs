@@ -1385,6 +1385,7 @@ namespace DCC
                     exd.ClearData();
                     #endregion
                 }
+
                 ctb.ResultPages(tables);
             }
             catch (Exception ex)

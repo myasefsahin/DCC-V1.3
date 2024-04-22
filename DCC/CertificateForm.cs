@@ -31,7 +31,12 @@ namespace DCC
             InitializeComponent();
             CheckBoxTabpagecontrol();
             RFPowtabpageControl();
+            ExcelPage_ComboBox.Enabled = false;
             SelectExcel_Button.Enabled = false;
+            LaboratoryComboBox.Items.Add("RF ve Mikrodalga Laboratuvarı");
+            Measurement_Unc_TextBox.Text = "Beyan edilen genişletilmiş ölçüm belirsizliği, standart ölçüm belirsizliğinin normal dağılım için yaklaşık  " +
+             "  % 95 güvenilirlik seviyesini sağlayan k = 2 kapsam faktörü ile çarpımının sonucudur. Standart ölçüm belirsizliği GUM ve EA-4/02 dokümanlarına uygun " +
+             "olarak belirlenmiştir.";
 
         }
         private void CertificateForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -87,10 +92,10 @@ namespace DCC
             SerialNumberTextBox.Enabled = false;
             CalCodeTextBox.Enabled = false;
             SelectDeviceButton.Enabled = false;
-            DeviceTextBox.Enabled = false;
-            MethodTextBox.Enabled = false;
-            CalibrationDescTextBox.Enabled = false;
-            MeasurementsTextBox.Enabled = false;
+            Instrument_DeviceTextBox.Enabled = false;
+            Cal_MethodTextBox.Enabled = false;
+            Measurement_Unc_TextBox.Enabled = false;
+            Comments_TextBox.Enabled = false;
             ReceiveData_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
             BackBox3.Enabled = true;
@@ -100,6 +105,7 @@ namespace DCC
         }
         private async void SelectDeviceButton_Click(object sender, EventArgs e)
         {
+            Instrument_DeviceTextBox.Enabled = true;
             string apiUrl = "https://localhost:7166/AdministrativeData/GetAdministrativeDataSipNo?dataId=" + OrderNumberTextBox.Text;
 
             using (var httpClient = new HttpClient())
@@ -118,7 +124,7 @@ namespace DCC
 
                         var responseData = await JsonSerializer.DeserializeAsync<ApiResponse>(responseStream, options);
 
-                      
+
                     }
                 }
                 catch (HttpRequestException ex)
@@ -127,7 +133,7 @@ namespace DCC
                 }
 
             }
-            DeviceTextBox.Enabled = true;
+
 
         }
 
@@ -166,17 +172,17 @@ namespace DCC
 
         private void DeviceTextBox_TextChanged(object sender, EventArgs e)
         {
-            MethodTextBox.Enabled = true;
+            Cal_MethodTextBox.Enabled = true;
         }
 
         private void MethodTextBox_TextChanged(object sender, EventArgs e)
         {
-            CalibrationDescTextBox.Enabled = true;
+            Measurement_Unc_TextBox.Enabled = true;
         }
 
         private void CalibrationDescTextBox_TextChanged(object sender, EventArgs e)
         {
-            MeasurementsTextBox.Enabled = true;
+            Comments_TextBox.Enabled = true;
         }
         #endregion
 
@@ -264,7 +270,7 @@ namespace DCC
 
             ReceiveData_Button.Enabled = true;
         }
-        
+
         private void Save_Row_Col_Button_Click(object sender, EventArgs e)
         {
             if (satır == 0 && sütun == null)
@@ -315,6 +321,7 @@ namespace DCC
                             {
                                 ExcelPage_ComboBox.Items.Add(sayfa.Name);
                             }
+                            ExcelPage_ComboBox.Enabled = true;
 
                         }
 
@@ -902,7 +909,7 @@ namespace DCC
         public void refresh()
         {
 
-            DialogResult result = MessageBox.Show("Information have been saved.\nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show("Have been saved for " + MeasurementTypes_ComboBox.SelectedItem as String + " \nIf you want to add more results click Yes.\nIf not click No.", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
             {
@@ -1173,7 +1180,7 @@ namespace DCC
             }
         }
 
-      
+
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1 || e.ColumnIndex == -1)
@@ -1487,9 +1494,39 @@ namespace DCC
             }
         }
 
-        #endregion
+#endregion
 
+        private void NSSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NSSelectAll.Checked == true)
+            {
+               NS_checkBox_DC_ON.Checked = true;
+               NS_checkBox_DC_OFF.Checked = true;
+               NS_checkBoxENR.Checked = true;
+            }
+            if (NSSelectAll.Checked == false)
+            {
+                NS_checkBox_DC_ON.Checked = false;
+                NS_checkBox_DC_OFF.Checked = false;
+                NS_checkBoxENR.Checked = false;
+            }
 
+        
+        }
 
+        private void CFSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CFSelectAll.Checked == true)
+            {
+                CheckBox_CF.Checked = true;
+                CF_checkBox_RIRC.Checked = true;
+            }
+            if (CFSelectAll.Checked == false)
+            {
+                CheckBox_CF.Checked = false;
+                CF_checkBox_RIRC.Checked = false;
+            }
+           
+        }
     }
 }
