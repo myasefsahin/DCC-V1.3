@@ -35,10 +35,10 @@
             panel1 = new Panel();
             groupBox4 = new GroupBox();
             NextButton = new MaterialSkin.Controls.MaterialButton();
-            MeasurementsTextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            CalibrationDescTextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            MethodTextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            DeviceTextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            Comments_TextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            Measurement_Unc_TextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            Cal_MethodTextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            Instrument_DeviceTextBox = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             label2 = new Label();
             groupBox1 = new GroupBox();
             SelectDeviceButton = new MaterialSkin.Controls.MaterialButton();
@@ -73,6 +73,7 @@
             checkBox_EE_RI = new CheckBox();
             checkBoxEE = new CheckBox();
             CalFactor_Page = new TabPage();
+            CFSelectAll = new CheckBox();
             CF_checkBox_RIRC = new CheckBox();
             CheckBox_CF = new CheckBox();
             CIS_Page = new TabPage();
@@ -115,17 +116,17 @@
             SParam_Page = new TabPage();
             checkBoxS22SWR = new CheckBox();
             checkBoxS21Log = new CheckBox();
-            checkBoxS22Log = new CheckBox();
-            checkBoxS22Lin = new CheckBox();
             checkBoxS21Lin = new CheckBox();
-            checkBoxS22Reel = new CheckBox();
             checkBoxS12Log = new CheckBox();
+            checkBoxS22Log = new CheckBox();
             checkBoxS21Reel = new CheckBox();
+            checkBoxS22Lin = new CheckBox();
             checkBoxS12Lin = new CheckBox();
             checkBoxS11SWR = new CheckBox();
             checkBoxS12Reel = new CheckBox();
-            label10 = new Label();
+            checkBoxS22Reel = new CheckBox();
             checkBoxS11Log = new CheckBox();
+            label10 = new Label();
             checkBoxS11Lin = new CheckBox();
             label9 = new Label();
             checkBoxS11Reel = new CheckBox();
@@ -134,6 +135,7 @@
             S_Parameter_SelectAll = new CheckBox();
             MetCH_Page = new TabPage();
             Noise_Page = new TabPage();
+            NSSelectAll = new CheckBox();
             NS_checkBox_DC_OFF = new CheckBox();
             NS_checkBox_DC_ON = new CheckBox();
             NS_checkBoxENR = new CheckBox();
@@ -232,10 +234,10 @@
             // 
             groupBox4.BackColor = Color.White;
             groupBox4.Controls.Add(NextButton);
-            groupBox4.Controls.Add(MeasurementsTextBox);
-            groupBox4.Controls.Add(CalibrationDescTextBox);
-            groupBox4.Controls.Add(MethodTextBox);
-            groupBox4.Controls.Add(DeviceTextBox);
+            groupBox4.Controls.Add(Comments_TextBox);
+            groupBox4.Controls.Add(Measurement_Unc_TextBox);
+            groupBox4.Controls.Add(Cal_MethodTextBox);
+            groupBox4.Controls.Add(Instrument_DeviceTextBox);
             groupBox4.Controls.Add(label2);
             groupBox4.Location = new Point(540, 3);
             groupBox4.Name = "groupBox4";
@@ -264,109 +266,109 @@
             NextButton.UseVisualStyleBackColor = true;
             NextButton.Click += NextButton_Click;
             // 
-            // MeasurementsTextBox
+            // Comments_TextBox
             // 
-            MeasurementsTextBox.AnimateReadOnly = false;
-            MeasurementsTextBox.BackgroundImageLayout = ImageLayout.None;
-            MeasurementsTextBox.CharacterCasing = CharacterCasing.Normal;
-            MeasurementsTextBox.Depth = 0;
-            MeasurementsTextBox.HideSelection = true;
-            MeasurementsTextBox.Hint = "COMMENTS,  REMARKS AND STATEMENT OF COMPLIANCE";
-            MeasurementsTextBox.Location = new Point(76, 505);
-            MeasurementsTextBox.MaxLength = 32767;
-            MeasurementsTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            MeasurementsTextBox.Name = "MeasurementsTextBox";
-            MeasurementsTextBox.PasswordChar = '\0';
-            MeasurementsTextBox.ReadOnly = false;
-            MeasurementsTextBox.ScrollBars = ScrollBars.None;
-            MeasurementsTextBox.SelectedText = "";
-            MeasurementsTextBox.SelectionLength = 0;
-            MeasurementsTextBox.SelectionStart = 0;
-            MeasurementsTextBox.ShortcutsEnabled = true;
-            MeasurementsTextBox.Size = new Size(512, 101);
-            MeasurementsTextBox.TabIndex = 5;
-            MeasurementsTextBox.TabStop = false;
-            MeasurementsTextBox.TextAlign = HorizontalAlignment.Left;
-            MeasurementsTextBox.UseSystemPasswordChar = false;
+            Comments_TextBox.AnimateReadOnly = false;
+            Comments_TextBox.BackgroundImageLayout = ImageLayout.None;
+            Comments_TextBox.CharacterCasing = CharacterCasing.Normal;
+            Comments_TextBox.Depth = 0;
+            Comments_TextBox.HideSelection = true;
+            Comments_TextBox.Hint = "COMMENTS,  REMARKS AND STATEMENT OF COMPLIANCE";
+            Comments_TextBox.Location = new Point(76, 505);
+            Comments_TextBox.MaxLength = 32767;
+            Comments_TextBox.MouseState = MaterialSkin.MouseState.OUT;
+            Comments_TextBox.Name = "Comments_TextBox";
+            Comments_TextBox.PasswordChar = '\0';
+            Comments_TextBox.ReadOnly = false;
+            Comments_TextBox.ScrollBars = ScrollBars.None;
+            Comments_TextBox.SelectedText = "";
+            Comments_TextBox.SelectionLength = 0;
+            Comments_TextBox.SelectionStart = 0;
+            Comments_TextBox.ShortcutsEnabled = true;
+            Comments_TextBox.Size = new Size(512, 101);
+            Comments_TextBox.TabIndex = 5;
+            Comments_TextBox.TabStop = false;
+            Comments_TextBox.TextAlign = HorizontalAlignment.Left;
+            Comments_TextBox.UseSystemPasswordChar = false;
             // 
-            // CalibrationDescTextBox
+            // Measurement_Unc_TextBox
             // 
-            CalibrationDescTextBox.AnimateReadOnly = false;
-            CalibrationDescTextBox.BackgroundImageLayout = ImageLayout.None;
-            CalibrationDescTextBox.CharacterCasing = CharacterCasing.Normal;
-            CalibrationDescTextBox.Depth = 0;
-            CalibrationDescTextBox.HideSelection = true;
-            CalibrationDescTextBox.Hint = "MEASUREMENT UNCERTAINTY";
-            CalibrationDescTextBox.Location = new Point(76, 362);
-            CalibrationDescTextBox.MaxLength = 32767;
-            CalibrationDescTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            CalibrationDescTextBox.Name = "CalibrationDescTextBox";
-            CalibrationDescTextBox.PasswordChar = '\0';
-            CalibrationDescTextBox.ReadOnly = false;
-            CalibrationDescTextBox.ScrollBars = ScrollBars.None;
-            CalibrationDescTextBox.SelectedText = "";
-            CalibrationDescTextBox.SelectionLength = 0;
-            CalibrationDescTextBox.SelectionStart = 0;
-            CalibrationDescTextBox.ShortcutsEnabled = true;
-            CalibrationDescTextBox.Size = new Size(512, 101);
-            CalibrationDescTextBox.TabIndex = 4;
-            CalibrationDescTextBox.TabStop = false;
-            CalibrationDescTextBox.TextAlign = HorizontalAlignment.Left;
-            CalibrationDescTextBox.UseSystemPasswordChar = false;
-            CalibrationDescTextBox.TextChanged += CalibrationDescTextBox_TextChanged;
+            Measurement_Unc_TextBox.AnimateReadOnly = false;
+            Measurement_Unc_TextBox.BackgroundImageLayout = ImageLayout.None;
+            Measurement_Unc_TextBox.CharacterCasing = CharacterCasing.Normal;
+            Measurement_Unc_TextBox.Depth = 0;
+            Measurement_Unc_TextBox.HideSelection = true;
+            Measurement_Unc_TextBox.Hint = "MEASUREMENT UNCERTAINTY";
+            Measurement_Unc_TextBox.Location = new Point(76, 362);
+            Measurement_Unc_TextBox.MaxLength = 32767;
+            Measurement_Unc_TextBox.MouseState = MaterialSkin.MouseState.OUT;
+            Measurement_Unc_TextBox.Name = "Measurement_Unc_TextBox";
+            Measurement_Unc_TextBox.PasswordChar = '\0';
+            Measurement_Unc_TextBox.ReadOnly = false;
+            Measurement_Unc_TextBox.ScrollBars = ScrollBars.None;
+            Measurement_Unc_TextBox.SelectedText = "";
+            Measurement_Unc_TextBox.SelectionLength = 0;
+            Measurement_Unc_TextBox.SelectionStart = 0;
+            Measurement_Unc_TextBox.ShortcutsEnabled = true;
+            Measurement_Unc_TextBox.Size = new Size(512, 101);
+            Measurement_Unc_TextBox.TabIndex = 4;
+            Measurement_Unc_TextBox.TabStop = false;
+            Measurement_Unc_TextBox.TextAlign = HorizontalAlignment.Left;
+            Measurement_Unc_TextBox.UseSystemPasswordChar = false;
+            Measurement_Unc_TextBox.TextChanged += CalibrationDescTextBox_TextChanged;
             // 
-            // MethodTextBox
+            // Cal_MethodTextBox
             // 
-            MethodTextBox.AnimateReadOnly = false;
-            MethodTextBox.BackgroundImageLayout = ImageLayout.None;
-            MethodTextBox.CharacterCasing = CharacterCasing.Normal;
-            MethodTextBox.Depth = 0;
-            MethodTextBox.HideSelection = true;
-            MethodTextBox.Hint = "CALIBRATION METHOD AND PROCEDURE";
-            MethodTextBox.Location = new Point(76, 234);
-            MethodTextBox.MaxLength = 32767;
-            MethodTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            MethodTextBox.Name = "MethodTextBox";
-            MethodTextBox.PasswordChar = '\0';
-            MethodTextBox.ReadOnly = false;
-            MethodTextBox.ScrollBars = ScrollBars.None;
-            MethodTextBox.SelectedText = "";
-            MethodTextBox.SelectionLength = 0;
-            MethodTextBox.SelectionStart = 0;
-            MethodTextBox.ShortcutsEnabled = true;
-            MethodTextBox.Size = new Size(512, 101);
-            MethodTextBox.TabIndex = 3;
-            MethodTextBox.TabStop = false;
-            MethodTextBox.TextAlign = HorizontalAlignment.Left;
-            MethodTextBox.UseSystemPasswordChar = false;
-            MethodTextBox.TextChanged += MethodTextBox_TextChanged;
+            Cal_MethodTextBox.AnimateReadOnly = false;
+            Cal_MethodTextBox.BackgroundImageLayout = ImageLayout.None;
+            Cal_MethodTextBox.CharacterCasing = CharacterCasing.Normal;
+            Cal_MethodTextBox.Depth = 0;
+            Cal_MethodTextBox.HideSelection = true;
+            Cal_MethodTextBox.Hint = "CALIBRATION METHOD AND PROCEDURE";
+            Cal_MethodTextBox.Location = new Point(76, 234);
+            Cal_MethodTextBox.MaxLength = 32767;
+            Cal_MethodTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            Cal_MethodTextBox.Name = "Cal_MethodTextBox";
+            Cal_MethodTextBox.PasswordChar = '\0';
+            Cal_MethodTextBox.ReadOnly = false;
+            Cal_MethodTextBox.ScrollBars = ScrollBars.None;
+            Cal_MethodTextBox.SelectedText = "";
+            Cal_MethodTextBox.SelectionLength = 0;
+            Cal_MethodTextBox.SelectionStart = 0;
+            Cal_MethodTextBox.ShortcutsEnabled = true;
+            Cal_MethodTextBox.Size = new Size(512, 101);
+            Cal_MethodTextBox.TabIndex = 3;
+            Cal_MethodTextBox.TabStop = false;
+            Cal_MethodTextBox.TextAlign = HorizontalAlignment.Left;
+            Cal_MethodTextBox.UseSystemPasswordChar = false;
+            Cal_MethodTextBox.TextChanged += MethodTextBox_TextChanged;
             // 
-            // DeviceTextBox
+            // Instrument_DeviceTextBox
             // 
-            DeviceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            DeviceTextBox.AnimateReadOnly = false;
-            DeviceTextBox.BackgroundImageLayout = ImageLayout.None;
-            DeviceTextBox.CharacterCasing = CharacterCasing.Normal;
-            DeviceTextBox.Depth = 0;
-            DeviceTextBox.HideSelection = true;
-            DeviceTextBox.Hint = "INSTRUMENT / DEVICE";
-            DeviceTextBox.Location = new Point(76, 103);
-            DeviceTextBox.MaxLength = 32767;
-            DeviceTextBox.MouseState = MaterialSkin.MouseState.OUT;
-            DeviceTextBox.Name = "DeviceTextBox";
-            DeviceTextBox.PasswordChar = '\0';
-            DeviceTextBox.ReadOnly = false;
-            DeviceTextBox.ScrollBars = ScrollBars.None;
-            DeviceTextBox.SelectedText = "";
-            DeviceTextBox.SelectionLength = 0;
-            DeviceTextBox.SelectionStart = 0;
-            DeviceTextBox.ShortcutsEnabled = true;
-            DeviceTextBox.Size = new Size(512, 101);
-            DeviceTextBox.TabIndex = 2;
-            DeviceTextBox.TabStop = false;
-            DeviceTextBox.TextAlign = HorizontalAlignment.Left;
-            DeviceTextBox.UseSystemPasswordChar = false;
-            DeviceTextBox.TextChanged += DeviceTextBox_TextChanged;
+            Instrument_DeviceTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            Instrument_DeviceTextBox.AnimateReadOnly = false;
+            Instrument_DeviceTextBox.BackgroundImageLayout = ImageLayout.None;
+            Instrument_DeviceTextBox.CharacterCasing = CharacterCasing.Normal;
+            Instrument_DeviceTextBox.Depth = 0;
+            Instrument_DeviceTextBox.HideSelection = true;
+            Instrument_DeviceTextBox.Hint = "INSTRUMENT / DEVICE";
+            Instrument_DeviceTextBox.Location = new Point(76, 103);
+            Instrument_DeviceTextBox.MaxLength = 32767;
+            Instrument_DeviceTextBox.MouseState = MaterialSkin.MouseState.OUT;
+            Instrument_DeviceTextBox.Name = "Instrument_DeviceTextBox";
+            Instrument_DeviceTextBox.PasswordChar = '\0';
+            Instrument_DeviceTextBox.ReadOnly = false;
+            Instrument_DeviceTextBox.ScrollBars = ScrollBars.None;
+            Instrument_DeviceTextBox.SelectedText = "";
+            Instrument_DeviceTextBox.SelectionLength = 0;
+            Instrument_DeviceTextBox.SelectionStart = 0;
+            Instrument_DeviceTextBox.ShortcutsEnabled = true;
+            Instrument_DeviceTextBox.Size = new Size(512, 101);
+            Instrument_DeviceTextBox.TabIndex = 2;
+            Instrument_DeviceTextBox.TabStop = false;
+            Instrument_DeviceTextBox.TextAlign = HorizontalAlignment.Left;
+            Instrument_DeviceTextBox.UseSystemPasswordChar = false;
+            Instrument_DeviceTextBox.TextChanged += DeviceTextBox_TextChanged;
             // 
             // label2
             // 
@@ -572,7 +574,6 @@
             LaboratoryComboBox.Hint = "Please Select Laboratory";
             LaboratoryComboBox.IntegralHeight = false;
             LaboratoryComboBox.ItemHeight = 43;
-            LaboratoryComboBox.Items.AddRange(new object[] { "RF ve Mikrodalga Laboratuvarı", "Empedans Laboratuvarı" });
             LaboratoryComboBox.Location = new Point(37, 108);
             LaboratoryComboBox.MaxDropDownItems = 4;
             LaboratoryComboBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -858,7 +859,7 @@
             CheckBoxTabControl.Multiline = true;
             CheckBoxTabControl.Name = "CheckBoxTabControl";
             CheckBoxTabControl.SelectedIndex = 0;
-            CheckBoxTabControl.Size = new Size(579, 515);
+            CheckBoxTabControl.Size = new Size(579, 530);
             CheckBoxTabControl.TabIndex = 10;
             // 
             // EE_Page
@@ -872,7 +873,7 @@
             EE_Page.Location = new Point(4, 54);
             EE_Page.Name = "EE_Page";
             EE_Page.Padding = new Padding(3);
-            EE_Page.Size = new Size(571, 457);
+            EE_Page.Size = new Size(571, 472);
             EE_Page.TabIndex = 0;
             EE_Page.Text = "Effective Efficiency";
             // 
@@ -881,7 +882,7 @@
             EE_SelectAll.AutoSize = true;
             EE_SelectAll.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             EE_SelectAll.ForeColor = Color.Navy;
-            EE_SelectAll.Location = new Point(6, 6);
+            EE_SelectAll.Location = new Point(29, 51);
             EE_SelectAll.Name = "EE_SelectAll";
             EE_SelectAll.Size = new Size(95, 24);
             EE_SelectAll.TabIndex = 13;
@@ -894,7 +895,7 @@
             checkBox_EE_CF.AutoSize = true;
             checkBox_EE_CF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBox_EE_CF.ForeColor = Color.Navy;
-            checkBox_EE_CF.Location = new Point(147, 303);
+            checkBox_EE_CF.Location = new Point(29, 191);
             checkBox_EE_CF.Name = "checkBox_EE_CF";
             checkBox_EE_CF.Size = new Size(155, 24);
             checkBox_EE_CF.TabIndex = 3;
@@ -906,7 +907,7 @@
             checkBoxRHO.AutoSize = true;
             checkBoxRHO.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxRHO.ForeColor = Color.Navy;
-            checkBoxRHO.Location = new Point(147, 239);
+            checkBoxRHO.Location = new Point(29, 161);
             checkBoxRHO.Name = "checkBoxRHO";
             checkBoxRHO.Size = new Size(313, 24);
             checkBoxRHO.TabIndex = 2;
@@ -918,7 +919,7 @@
             checkBox_EE_RI.AutoSize = true;
             checkBox_EE_RI.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBox_EE_RI.ForeColor = Color.Navy;
-            checkBox_EE_RI.Location = new Point(147, 175);
+            checkBox_EE_RI.Location = new Point(29, 131);
             checkBox_EE_RI.Name = "checkBox_EE_RI";
             checkBox_EE_RI.Size = new Size(291, 24);
             checkBox_EE_RI.TabIndex = 1;
@@ -930,7 +931,7 @@
             checkBoxEE.AutoSize = true;
             checkBoxEE.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxEE.ForeColor = Color.Navy;
-            checkBoxEE.Location = new Point(147, 111);
+            checkBoxEE.Location = new Point(29, 101);
             checkBoxEE.Name = "checkBoxEE";
             checkBoxEE.Size = new Size(163, 24);
             checkBoxEE.TabIndex = 0;
@@ -939,22 +940,36 @@
             // 
             // CalFactor_Page
             // 
+            CalFactor_Page.Controls.Add(CFSelectAll);
             CalFactor_Page.Controls.Add(CF_checkBox_RIRC);
             CalFactor_Page.Controls.Add(CheckBox_CF);
             CalFactor_Page.Location = new Point(4, 54);
             CalFactor_Page.Name = "CalFactor_Page";
             CalFactor_Page.Padding = new Padding(3);
-            CalFactor_Page.Size = new Size(571, 457);
+            CalFactor_Page.Size = new Size(571, 472);
             CalFactor_Page.TabIndex = 1;
             CalFactor_Page.Text = "Cal Factor";
             CalFactor_Page.UseVisualStyleBackColor = true;
+            // 
+            // CFSelectAll
+            // 
+            CFSelectAll.AutoSize = true;
+            CFSelectAll.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            CFSelectAll.ForeColor = Color.DarkBlue;
+            CFSelectAll.Location = new Point(29, 51);
+            CFSelectAll.Name = "CFSelectAll";
+            CFSelectAll.Size = new Size(95, 24);
+            CFSelectAll.TabIndex = 6;
+            CFSelectAll.Text = "Select All";
+            CFSelectAll.UseVisualStyleBackColor = true;
+            CFSelectAll.CheckedChanged += CFSelectAll_CheckedChanged;
             // 
             // CF_checkBox_RIRC
             // 
             CF_checkBox_RIRC.AutoSize = true;
             CF_checkBox_RIRC.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CF_checkBox_RIRC.ForeColor = Color.Navy;
-            CF_checkBox_RIRC.Location = new Point(151, 221);
+            CF_checkBox_RIRC.Location = new Point(29, 131);
             CF_checkBox_RIRC.Name = "CF_checkBox_RIRC";
             CF_checkBox_RIRC.Size = new Size(321, 24);
             CF_checkBox_RIRC.TabIndex = 5;
@@ -966,7 +981,7 @@
             CheckBox_CF.AutoSize = true;
             CheckBox_CF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CheckBox_CF.ForeColor = Color.Navy;
-            CheckBox_CF.Location = new Point(151, 157);
+            CheckBox_CF.Location = new Point(29, 101);
             CheckBox_CF.Name = "CheckBox_CF";
             CheckBox_CF.Size = new Size(155, 24);
             CheckBox_CF.TabIndex = 4;
@@ -986,7 +1001,7 @@
             CIS_Page.Location = new Point(4, 54);
             CIS_Page.Name = "CIS_Page";
             CIS_Page.Padding = new Padding(3);
-            CIS_Page.Size = new Size(571, 457);
+            CIS_Page.Size = new Size(571, 472);
             CIS_Page.TabIndex = 2;
             CIS_Page.Text = "CIS";
             CIS_Page.UseVisualStyleBackColor = true;
@@ -996,7 +1011,7 @@
             CIS_SelectAll_CheckBox.AutoSize = true;
             CIS_SelectAll_CheckBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_SelectAll_CheckBox.ForeColor = Color.Navy;
-            CIS_SelectAll_CheckBox.Location = new Point(6, 6);
+            CIS_SelectAll_CheckBox.Location = new Point(29, 51);
             CIS_SelectAll_CheckBox.Name = "CIS_SelectAll_CheckBox";
             CIS_SelectAll_CheckBox.Size = new Size(95, 24);
             CIS_SelectAll_CheckBox.TabIndex = 12;
@@ -1009,11 +1024,11 @@
             CIS_CheckBox6.AutoSize = true;
             CIS_CheckBox6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox6.ForeColor = Color.Navy;
-            CIS_CheckBox6.Location = new Point(125, 339);
+            CIS_CheckBox6.Location = new Point(29, 281);
             CIS_CheckBox6.Name = "CIS_CheckBox6";
-            CIS_CheckBox6.Size = new Size(292, 44);
+            CIS_CheckBox6.Size = new Size(531, 24);
             CIS_CheckBox6.TabIndex = 11;
-            CIS_CheckBox6.Text = "The Linear Magnitude of Reverse and\r\nForward Transmission Coefficient";
+            CIS_CheckBox6.Text = "The Linear Magnitude of Reverse and Forward Transmission Coefficient";
             CIS_CheckBox6.UseVisualStyleBackColor = true;
             // 
             // CIS_CheckBox5
@@ -1021,7 +1036,7 @@
             CIS_CheckBox5.AutoSize = true;
             CIS_CheckBox5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox5.ForeColor = Color.Navy;
-            CIS_CheckBox5.Location = new Point(125, 293);
+            CIS_CheckBox5.Location = new Point(29, 251);
             CIS_CheckBox5.Name = "CIS_CheckBox5";
             CIS_CheckBox5.Size = new Size(296, 24);
             CIS_CheckBox5.TabIndex = 10;
@@ -1033,7 +1048,7 @@
             CIS_CheckBox4.AutoSize = true;
             CIS_CheckBox4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox4.ForeColor = Color.Navy;
-            CIS_CheckBox4.Location = new Point(125, 251);
+            CIS_CheckBox4.Location = new Point(29, 221);
             CIS_CheckBox4.Name = "CIS_CheckBox4";
             CIS_CheckBox4.Size = new Size(308, 24);
             CIS_CheckBox4.TabIndex = 9;
@@ -1045,7 +1060,7 @@
             CIS_CheckBox3.AutoSize = true;
             CIS_CheckBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox3.ForeColor = Color.Navy;
-            CIS_CheckBox3.Location = new Point(125, 208);
+            CIS_CheckBox3.Location = new Point(29, 191);
             CIS_CheckBox3.Name = "CIS_CheckBox3";
             CIS_CheckBox3.Size = new Size(129, 24);
             CIS_CheckBox3.TabIndex = 8;
@@ -1057,7 +1072,7 @@
             CIS_CheckBox2.AutoSize = true;
             CIS_CheckBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox2.ForeColor = Color.Navy;
-            CIS_CheckBox2.Location = new Point(125, 166);
+            CIS_CheckBox2.Location = new Point(29, 161);
             CIS_CheckBox2.Name = "CIS_CheckBox2";
             CIS_CheckBox2.Size = new Size(315, 24);
             CIS_CheckBox2.TabIndex = 7;
@@ -1069,7 +1084,7 @@
             CIS_CheckBox1.AutoSize = true;
             CIS_CheckBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox1.ForeColor = Color.Navy;
-            CIS_CheckBox1.Location = new Point(125, 123);
+            CIS_CheckBox1.Location = new Point(29, 131);
             CIS_CheckBox1.Name = "CIS_CheckBox1";
             CIS_CheckBox1.Size = new Size(318, 24);
             CIS_CheckBox1.TabIndex = 6;
@@ -1081,7 +1096,7 @@
             CIS_CheckBox.AutoSize = true;
             CIS_CheckBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             CIS_CheckBox.ForeColor = Color.Navy;
-            CIS_CheckBox.Location = new Point(125, 78);
+            CIS_CheckBox.Location = new Point(29, 101);
             CIS_CheckBox.Name = "CIS_CheckBox";
             CIS_CheckBox.Size = new Size(199, 24);
             CIS_CheckBox.TabIndex = 5;
@@ -1095,7 +1110,7 @@
             RFPow_Page.Location = new Point(4, 54);
             RFPow_Page.Name = "RFPow_Page";
             RFPow_Page.Padding = new Padding(3);
-            RFPow_Page.Size = new Size(571, 457);
+            RFPow_Page.Size = new Size(571, 472);
             RFPow_Page.TabIndex = 3;
             RFPow_Page.Text = " RF Power";
             RFPow_Page.UseVisualStyleBackColor = true;
@@ -1122,12 +1137,12 @@
             RFPowTabControl.Controls.Add(RF_Diff_tabpage);
             RFPowTabControl.Controls.Add(RF_Gain_tabpage);
             RFPowTabControl.Depth = 0;
-            RFPowTabControl.Location = new Point(6, 41);
+            RFPowTabControl.Location = new Point(3, 39);
             RFPowTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             RFPowTabControl.Multiline = true;
             RFPowTabControl.Name = "RFPowTabControl";
             RFPowTabControl.SelectedIndex = 0;
-            RFPowTabControl.Size = new Size(559, 410);
+            RFPowTabControl.Size = new Size(565, 430);
             RFPowTabControl.TabIndex = 11;
             // 
             // Abs_RF_Power_tabpage
@@ -1147,7 +1162,7 @@
             Abs_RF_Power_tabpage.Location = new Point(4, 29);
             Abs_RF_Power_tabpage.Name = "Abs_RF_Power_tabpage";
             Abs_RF_Power_tabpage.Padding = new Padding(3);
-            Abs_RF_Power_tabpage.Size = new Size(551, 377);
+            Abs_RF_Power_tabpage.Size = new Size(557, 397);
             Abs_RF_Power_tabpage.TabIndex = 0;
             Abs_RF_Power_tabpage.Text = "Absolute RF Power";
             Abs_RF_Power_tabpage.UseVisualStyleBackColor = true;
@@ -1170,7 +1185,7 @@
             ARFP_11.AutoSize = true;
             ARFP_11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_11.ForeColor = Color.Navy;
-            ARFP_11.Location = new Point(26, 342);
+            ARFP_11.Location = new Point(26, 362);
             ARFP_11.Name = "ARFP_11";
             ARFP_11.Size = new Size(462, 24);
             ARFP_11.TabIndex = 28;
@@ -1182,7 +1197,7 @@
             ARFP_10.AutoSize = true;
             ARFP_10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_10.ForeColor = Color.Navy;
-            ARFP_10.Location = new Point(26, 312);
+            ARFP_10.Location = new Point(26, 332);
             ARFP_10.Name = "ARFP_10";
             ARFP_10.Size = new Size(456, 24);
             ARFP_10.TabIndex = 27;
@@ -1194,7 +1209,7 @@
             ARFP_9.AutoSize = true;
             ARFP_9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_9.ForeColor = Color.Navy;
-            ARFP_9.Location = new Point(26, 282);
+            ARFP_9.Location = new Point(26, 302);
             ARFP_9.Name = "ARFP_9";
             ARFP_9.Size = new Size(465, 24);
             ARFP_9.TabIndex = 26;
@@ -1206,7 +1221,7 @@
             ARFP_8.AutoSize = true;
             ARFP_8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_8.ForeColor = Color.Navy;
-            ARFP_8.Location = new Point(26, 252);
+            ARFP_8.Location = new Point(26, 272);
             ARFP_8.Name = "ARFP_8";
             ARFP_8.Size = new Size(418, 24);
             ARFP_8.TabIndex = 25;
@@ -1218,7 +1233,7 @@
             ARFP_7.AutoSize = true;
             ARFP_7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_7.ForeColor = Color.Navy;
-            ARFP_7.Location = new Point(26, 222);
+            ARFP_7.Location = new Point(26, 242);
             ARFP_7.Name = "ARFP_7";
             ARFP_7.Size = new Size(301, 24);
             ARFP_7.TabIndex = 24;
@@ -1230,7 +1245,7 @@
             ARFP_6.AutoSize = true;
             ARFP_6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_6.ForeColor = Color.Navy;
-            ARFP_6.Location = new Point(26, 192);
+            ARFP_6.Location = new Point(26, 212);
             ARFP_6.Name = "ARFP_6";
             ARFP_6.Size = new Size(454, 24);
             ARFP_6.TabIndex = 23;
@@ -1242,7 +1257,7 @@
             ARFP_5.AutoSize = true;
             ARFP_5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_5.ForeColor = Color.Navy;
-            ARFP_5.Location = new Point(26, 162);
+            ARFP_5.Location = new Point(26, 182);
             ARFP_5.Name = "ARFP_5";
             ARFP_5.Size = new Size(448, 24);
             ARFP_5.TabIndex = 22;
@@ -1254,7 +1269,7 @@
             ARFP_4.AutoSize = true;
             ARFP_4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_4.ForeColor = Color.Navy;
-            ARFP_4.Location = new Point(26, 132);
+            ARFP_4.Location = new Point(26, 152);
             ARFP_4.Name = "ARFP_4";
             ARFP_4.Size = new Size(457, 24);
             ARFP_4.TabIndex = 21;
@@ -1266,7 +1281,7 @@
             ARFP_3.AutoSize = true;
             ARFP_3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_3.ForeColor = Color.Navy;
-            ARFP_3.Location = new Point(26, 102);
+            ARFP_3.Location = new Point(26, 122);
             ARFP_3.Name = "ARFP_3";
             ARFP_3.Size = new Size(346, 24);
             ARFP_3.TabIndex = 20;
@@ -1278,7 +1293,7 @@
             ARFP_2.AutoSize = true;
             ARFP_2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_2.ForeColor = Color.Navy;
-            ARFP_2.Location = new Point(27, 72);
+            ARFP_2.Location = new Point(27, 92);
             ARFP_2.Name = "ARFP_2";
             ARFP_2.Size = new Size(284, 24);
             ARFP_2.TabIndex = 19;
@@ -1290,7 +1305,7 @@
             ARFP_1.AutoSize = true;
             ARFP_1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             ARFP_1.ForeColor = Color.Navy;
-            ARFP_1.Location = new Point(26, 42);
+            ARFP_1.Location = new Point(26, 62);
             ARFP_1.Name = "ARFP_1";
             ARFP_1.Size = new Size(297, 24);
             ARFP_1.TabIndex = 18;
@@ -1307,7 +1322,7 @@
             RF_Diff_tabpage.Location = new Point(4, 29);
             RF_Diff_tabpage.Name = "RF_Diff_tabpage";
             RF_Diff_tabpage.Padding = new Padding(3);
-            RF_Diff_tabpage.Size = new Size(551, 377);
+            RF_Diff_tabpage.Size = new Size(557, 397);
             RF_Diff_tabpage.TabIndex = 1;
             RF_Diff_tabpage.Text = "RF Difference";
             RF_Diff_tabpage.UseVisualStyleBackColor = true;
@@ -1317,7 +1332,7 @@
             RF_Diff_SelectAll.AutoSize = true;
             RF_Diff_SelectAll.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Diff_SelectAll.ForeColor = Color.Navy;
-            RF_Diff_SelectAll.Location = new Point(20, 29);
+            RF_Diff_SelectAll.Location = new Point(26, 12);
             RF_Diff_SelectAll.Name = "RF_Diff_SelectAll";
             RF_Diff_SelectAll.Size = new Size(95, 24);
             RF_Diff_SelectAll.TabIndex = 16;
@@ -1330,7 +1345,7 @@
             RF_Diff_4.AutoSize = true;
             RF_Diff_4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Diff_4.ForeColor = Color.Navy;
-            RF_Diff_4.Location = new Point(58, 205);
+            RF_Diff_4.Location = new Point(26, 152);
             RF_Diff_4.Name = "RF_Diff_4";
             RF_Diff_4.Size = new Size(94, 24);
             RF_Diff_4.TabIndex = 15;
@@ -1342,7 +1357,7 @@
             RF_Diff_3.AutoSize = true;
             RF_Diff_3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Diff_3.ForeColor = Color.Navy;
-            RF_Diff_3.Location = new Point(58, 165);
+            RF_Diff_3.Location = new Point(26, 122);
             RF_Diff_3.Name = "RF_Diff_3";
             RF_Diff_3.Size = new Size(284, 24);
             RF_Diff_3.TabIndex = 14;
@@ -1354,7 +1369,7 @@
             RF_Diff_2.AutoSize = true;
             RF_Diff_2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Diff_2.ForeColor = Color.Navy;
-            RF_Diff_2.Location = new Point(58, 125);
+            RF_Diff_2.Location = new Point(26, 92);
             RF_Diff_2.Name = "RF_Diff_2";
             RF_Diff_2.Size = new Size(264, 24);
             RF_Diff_2.TabIndex = 13;
@@ -1366,7 +1381,7 @@
             RF_Diff_1.AutoSize = true;
             RF_Diff_1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Diff_1.ForeColor = Color.Navy;
-            RF_Diff_1.Location = new Point(58, 85);
+            RF_Diff_1.Location = new Point(26, 62);
             RF_Diff_1.Name = "RF_Diff_1";
             RF_Diff_1.Size = new Size(237, 24);
             RF_Diff_1.TabIndex = 12;
@@ -1383,7 +1398,7 @@
             RF_Gain_tabpage.Location = new Point(4, 29);
             RF_Gain_tabpage.Name = "RF_Gain_tabpage";
             RF_Gain_tabpage.Padding = new Padding(3);
-            RF_Gain_tabpage.Size = new Size(551, 377);
+            RF_Gain_tabpage.Size = new Size(557, 397);
             RF_Gain_tabpage.TabIndex = 2;
             RF_Gain_tabpage.Text = "RF Gain";
             RF_Gain_tabpage.UseVisualStyleBackColor = true;
@@ -1393,7 +1408,7 @@
             RF_Gain_SelectAll.AutoSize = true;
             RF_Gain_SelectAll.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Gain_SelectAll.ForeColor = Color.Navy;
-            RF_Gain_SelectAll.Location = new Point(22, 22);
+            RF_Gain_SelectAll.Location = new Point(26, 12);
             RF_Gain_SelectAll.Name = "RF_Gain_SelectAll";
             RF_Gain_SelectAll.Size = new Size(95, 24);
             RF_Gain_SelectAll.TabIndex = 17;
@@ -1406,11 +1421,11 @@
             RF_Gain4.AutoSize = true;
             RF_Gain4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Gain4.ForeColor = Color.Navy;
-            RF_Gain4.Location = new Point(63, 220);
+            RF_Gain4.Location = new Point(26, 152);
             RF_Gain4.Name = "RF_Gain4";
-            RF_Gain4.Size = new Size(212, 44);
+            RF_Gain4.Size = new Size(375, 24);
             RF_Gain4.TabIndex = 16;
-            RF_Gain4.Text = "Gain change for different \r\ninput powers for 1 GHz";
+            RF_Gain4.Text = "Gain change for different input powers for 1 GHz";
             RF_Gain4.UseVisualStyleBackColor = true;
             // 
             // RF_Gain2
@@ -1418,7 +1433,7 @@
             RF_Gain2.AutoSize = true;
             RF_Gain2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Gain2.ForeColor = Color.Navy;
-            RF_Gain2.Location = new Point(63, 118);
+            RF_Gain2.Location = new Point(26, 92);
             RF_Gain2.Name = "RF_Gain2";
             RF_Gain2.Size = new Size(153, 24);
             RF_Gain2.TabIndex = 15;
@@ -1430,11 +1445,11 @@
             RF_Gain3.AutoSize = true;
             RF_Gain3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Gain3.ForeColor = Color.Navy;
-            RF_Gain3.Location = new Point(63, 157);
+            RF_Gain3.Location = new Point(26, 122);
             RF_Gain3.Name = "RF_Gain3";
-            RF_Gain3.Size = new Size(275, 44);
+            RF_Gain3.Size = new Size(468, 24);
             RF_Gain3.TabIndex = 14;
-            RF_Gain3.Text = "Gain change in response to \r\ndifferent input powers for 100 kHz";
+            RF_Gain3.Text = "Gain change in response to different input powers for 100 kHz";
             RF_Gain3.UseVisualStyleBackColor = true;
             // 
             // RF_Gain1
@@ -1442,7 +1457,7 @@
             RF_Gain1.AutoSize = true;
             RF_Gain1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             RF_Gain1.ForeColor = Color.Navy;
-            RF_Gain1.Location = new Point(63, 75);
+            RF_Gain1.Location = new Point(26, 62);
             RF_Gain1.Name = "RF_Gain1";
             RF_Gain1.Size = new Size(296, 24);
             RF_Gain1.TabIndex = 13;
@@ -1453,17 +1468,17 @@
             // 
             SParam_Page.Controls.Add(checkBoxS22SWR);
             SParam_Page.Controls.Add(checkBoxS21Log);
-            SParam_Page.Controls.Add(checkBoxS22Log);
-            SParam_Page.Controls.Add(checkBoxS22Lin);
             SParam_Page.Controls.Add(checkBoxS21Lin);
-            SParam_Page.Controls.Add(checkBoxS22Reel);
             SParam_Page.Controls.Add(checkBoxS12Log);
+            SParam_Page.Controls.Add(checkBoxS22Log);
             SParam_Page.Controls.Add(checkBoxS21Reel);
+            SParam_Page.Controls.Add(checkBoxS22Lin);
             SParam_Page.Controls.Add(checkBoxS12Lin);
             SParam_Page.Controls.Add(checkBoxS11SWR);
             SParam_Page.Controls.Add(checkBoxS12Reel);
-            SParam_Page.Controls.Add(label10);
+            SParam_Page.Controls.Add(checkBoxS22Reel);
             SParam_Page.Controls.Add(checkBoxS11Log);
+            SParam_Page.Controls.Add(label10);
             SParam_Page.Controls.Add(checkBoxS11Lin);
             SParam_Page.Controls.Add(label9);
             SParam_Page.Controls.Add(checkBoxS11Reel);
@@ -1473,7 +1488,7 @@
             SParam_Page.Location = new Point(4, 54);
             SParam_Page.Name = "SParam_Page";
             SParam_Page.Padding = new Padding(3);
-            SParam_Page.Size = new Size(571, 457);
+            SParam_Page.Size = new Size(571, 472);
             SParam_Page.TabIndex = 4;
             SParam_Page.Text = "S-Parameter";
             SParam_Page.UseVisualStyleBackColor = true;
@@ -1483,7 +1498,7 @@
             checkBoxS22SWR.AutoSize = true;
             checkBoxS22SWR.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS22SWR.ForeColor = Color.Navy;
-            checkBoxS22SWR.Location = new Point(53, 342);
+            checkBoxS22SWR.Location = new Point(29, 397);
             checkBoxS22SWR.Name = "checkBoxS22SWR";
             checkBoxS22SWR.Size = new Size(64, 24);
             checkBoxS22SWR.TabIndex = 9;
@@ -1495,91 +1510,79 @@
             checkBoxS21Log.AutoSize = true;
             checkBoxS21Log.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS21Log.ForeColor = Color.Navy;
-            checkBoxS21Log.Location = new Point(299, 293);
+            checkBoxS21Log.Location = new Point(265, 337);
             checkBoxS21Log.Name = "checkBoxS21Log";
             checkBoxS21Log.Size = new Size(216, 24);
             checkBoxS21Log.TabIndex = 8;
             checkBoxS21Log.Text = "Logaritmic Mag and Phase";
             checkBoxS21Log.UseVisualStyleBackColor = true;
             // 
-            // checkBoxS22Log
-            // 
-            checkBoxS22Log.AutoSize = true;
-            checkBoxS22Log.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBoxS22Log.ForeColor = Color.Navy;
-            checkBoxS22Log.Location = new Point(53, 282);
-            checkBoxS22Log.Name = "checkBoxS22Log";
-            checkBoxS22Log.Size = new Size(216, 24);
-            checkBoxS22Log.TabIndex = 8;
-            checkBoxS22Log.Text = "Logaritmic Mag and Phase";
-            checkBoxS22Log.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxS22Lin
-            // 
-            checkBoxS22Lin.AutoSize = true;
-            checkBoxS22Lin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBoxS22Lin.ForeColor = Color.Navy;
-            checkBoxS22Lin.Location = new Point(53, 312);
-            checkBoxS22Lin.Name = "checkBoxS22Lin";
-            checkBoxS22Lin.Size = new Size(184, 24);
-            checkBoxS22Lin.TabIndex = 7;
-            checkBoxS22Lin.Text = "Linear Mag and Phase";
-            checkBoxS22Lin.UseVisualStyleBackColor = true;
-            // 
             // checkBoxS21Lin
             // 
             checkBoxS21Lin.AutoSize = true;
             checkBoxS21Lin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS21Lin.ForeColor = Color.Navy;
-            checkBoxS21Lin.Location = new Point(299, 323);
+            checkBoxS21Lin.Location = new Point(265, 367);
             checkBoxS21Lin.Name = "checkBoxS21Lin";
             checkBoxS21Lin.Size = new Size(184, 24);
             checkBoxS21Lin.TabIndex = 7;
             checkBoxS21Lin.Text = "Linear Mag and Phase";
             checkBoxS21Lin.UseVisualStyleBackColor = true;
             // 
-            // checkBoxS22Reel
-            // 
-            checkBoxS22Reel.AutoSize = true;
-            checkBoxS22Reel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            checkBoxS22Reel.ForeColor = Color.Navy;
-            checkBoxS22Reel.Location = new Point(53, 252);
-            checkBoxS22Reel.Name = "checkBoxS22Reel";
-            checkBoxS22Reel.Size = new Size(158, 24);
-            checkBoxS22Reel.TabIndex = 6;
-            checkBoxS22Reel.Text = "Reel and Imaginer";
-            checkBoxS22Reel.UseVisualStyleBackColor = true;
-            // 
             // checkBoxS12Log
             // 
             checkBoxS12Log.AutoSize = true;
             checkBoxS12Log.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS12Log.ForeColor = Color.Navy;
-            checkBoxS12Log.Location = new Point(305, 120);
+            checkBoxS12Log.Location = new Point(267, 154);
             checkBoxS12Log.Name = "checkBoxS12Log";
             checkBoxS12Log.Size = new Size(216, 24);
             checkBoxS12Log.TabIndex = 8;
             checkBoxS12Log.Text = "Logaritmic Mag and Phase";
             checkBoxS12Log.UseVisualStyleBackColor = true;
             // 
+            // checkBoxS22Log
+            // 
+            checkBoxS22Log.AutoSize = true;
+            checkBoxS22Log.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBoxS22Log.ForeColor = Color.Navy;
+            checkBoxS22Log.Location = new Point(29, 337);
+            checkBoxS22Log.Name = "checkBoxS22Log";
+            checkBoxS22Log.Size = new Size(216, 24);
+            checkBoxS22Log.TabIndex = 8;
+            checkBoxS22Log.Text = "Logaritmic Mag and Phase";
+            checkBoxS22Log.UseVisualStyleBackColor = true;
+            // 
             // checkBoxS21Reel
             // 
             checkBoxS21Reel.AutoSize = true;
             checkBoxS21Reel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS21Reel.ForeColor = Color.Navy;
-            checkBoxS21Reel.Location = new Point(299, 263);
+            checkBoxS21Reel.Location = new Point(265, 307);
             checkBoxS21Reel.Name = "checkBoxS21Reel";
             checkBoxS21Reel.Size = new Size(158, 24);
             checkBoxS21Reel.TabIndex = 6;
             checkBoxS21Reel.Text = "Reel and Imaginer";
             checkBoxS21Reel.UseVisualStyleBackColor = true;
             // 
+            // checkBoxS22Lin
+            // 
+            checkBoxS22Lin.AutoSize = true;
+            checkBoxS22Lin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBoxS22Lin.ForeColor = Color.Navy;
+            checkBoxS22Lin.Location = new Point(29, 367);
+            checkBoxS22Lin.Name = "checkBoxS22Lin";
+            checkBoxS22Lin.Size = new Size(184, 24);
+            checkBoxS22Lin.TabIndex = 7;
+            checkBoxS22Lin.Text = "Linear Mag and Phase";
+            checkBoxS22Lin.UseVisualStyleBackColor = true;
+            // 
             // checkBoxS12Lin
             // 
             checkBoxS12Lin.AutoSize = true;
             checkBoxS12Lin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS12Lin.ForeColor = Color.Navy;
-            checkBoxS12Lin.Location = new Point(305, 150);
+            checkBoxS12Lin.Location = new Point(267, 184);
             checkBoxS12Lin.Name = "checkBoxS12Lin";
             checkBoxS12Lin.Size = new Size(184, 24);
             checkBoxS12Lin.TabIndex = 7;
@@ -1591,7 +1594,7 @@
             checkBoxS11SWR.AutoSize = true;
             checkBoxS11SWR.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS11SWR.ForeColor = Color.Navy;
-            checkBoxS11SWR.Location = new Point(47, 180);
+            checkBoxS11SWR.Location = new Point(29, 214);
             checkBoxS11SWR.Name = "checkBoxS11SWR";
             checkBoxS11SWR.Size = new Size(64, 24);
             checkBoxS11SWR.TabIndex = 9;
@@ -1603,41 +1606,53 @@
             checkBoxS12Reel.AutoSize = true;
             checkBoxS12Reel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS12Reel.ForeColor = Color.Navy;
-            checkBoxS12Reel.Location = new Point(305, 90);
+            checkBoxS12Reel.Location = new Point(267, 124);
             checkBoxS12Reel.Name = "checkBoxS12Reel";
             checkBoxS12Reel.Size = new Size(158, 24);
             checkBoxS12Reel.TabIndex = 6;
             checkBoxS12Reel.Text = "Reel and Imaginer";
             checkBoxS12Reel.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // checkBoxS22Reel
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label10.Location = new Point(47, 229);
-            label10.Name = "label10";
-            label10.Size = new Size(35, 20);
-            label10.TabIndex = 13;
-            label10.Text = "S22";
+            checkBoxS22Reel.AutoSize = true;
+            checkBoxS22Reel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            checkBoxS22Reel.ForeColor = Color.Navy;
+            checkBoxS22Reel.Location = new Point(29, 307);
+            checkBoxS22Reel.Name = "checkBoxS22Reel";
+            checkBoxS22Reel.Size = new Size(158, 24);
+            checkBoxS22Reel.TabIndex = 6;
+            checkBoxS22Reel.Text = "Reel and Imaginer";
+            checkBoxS22Reel.UseVisualStyleBackColor = true;
             // 
             // checkBoxS11Log
             // 
             checkBoxS11Log.AutoSize = true;
             checkBoxS11Log.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS11Log.ForeColor = Color.Navy;
-            checkBoxS11Log.Location = new Point(47, 120);
+            checkBoxS11Log.Location = new Point(29, 154);
             checkBoxS11Log.Name = "checkBoxS11Log";
             checkBoxS11Log.Size = new Size(216, 24);
             checkBoxS11Log.TabIndex = 8;
             checkBoxS11Log.Text = "Logaritmic Mag and Phase";
             checkBoxS11Log.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            label10.Location = new Point(25, 284);
+            label10.Name = "label10";
+            label10.Size = new Size(35, 20);
+            label10.TabIndex = 13;
+            label10.Text = "S22";
+            // 
             // checkBoxS11Lin
             // 
             checkBoxS11Lin.AutoSize = true;
             checkBoxS11Lin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS11Lin.ForeColor = Color.Navy;
-            checkBoxS11Lin.Location = new Point(47, 150);
+            checkBoxS11Lin.Location = new Point(29, 184);
             checkBoxS11Lin.Name = "checkBoxS11Lin";
             checkBoxS11Lin.Size = new Size(184, 24);
             checkBoxS11Lin.TabIndex = 7;
@@ -1648,7 +1663,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label9.Location = new Point(299, 229);
+            label9.Location = new Point(261, 284);
             label9.Name = "label9";
             label9.Size = new Size(35, 20);
             label9.TabIndex = 12;
@@ -1659,7 +1674,7 @@
             checkBoxS11Reel.AutoSize = true;
             checkBoxS11Reel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             checkBoxS11Reel.ForeColor = Color.Navy;
-            checkBoxS11Reel.Location = new Point(47, 90);
+            checkBoxS11Reel.Location = new Point(29, 124);
             checkBoxS11Reel.Name = "checkBoxS11Reel";
             checkBoxS11Reel.Size = new Size(158, 24);
             checkBoxS11Reel.TabIndex = 6;
@@ -1670,7 +1685,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label8.Location = new Point(299, 67);
+            label8.Location = new Point(261, 101);
             label8.Name = "label8";
             label8.Size = new Size(35, 20);
             label8.TabIndex = 11;
@@ -1680,7 +1695,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
-            label5.Location = new Point(47, 67);
+            label5.Location = new Point(25, 101);
             label5.Name = "label5";
             label5.Size = new Size(35, 20);
             label5.TabIndex = 10;
@@ -1691,7 +1706,7 @@
             S_Parameter_SelectAll.AutoSize = true;
             S_Parameter_SelectAll.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             S_Parameter_SelectAll.ForeColor = Color.Navy;
-            S_Parameter_SelectAll.Location = new Point(6, 6);
+            S_Parameter_SelectAll.Location = new Point(29, 51);
             S_Parameter_SelectAll.Name = "S_Parameter_SelectAll";
             S_Parameter_SelectAll.Size = new Size(95, 24);
             S_Parameter_SelectAll.TabIndex = 9;
@@ -1704,34 +1719,48 @@
             MetCH_Page.Location = new Point(4, 54);
             MetCH_Page.Name = "MetCH_Page";
             MetCH_Page.Padding = new Padding(3);
-            MetCH_Page.Size = new Size(571, 457);
+            MetCH_Page.Size = new Size(571, 472);
             MetCH_Page.TabIndex = 5;
             MetCH_Page.Text = "Meteral Ch.";
             MetCH_Page.UseVisualStyleBackColor = true;
             // 
             // Noise_Page
             // 
+            Noise_Page.Controls.Add(NSSelectAll);
             Noise_Page.Controls.Add(NS_checkBox_DC_OFF);
             Noise_Page.Controls.Add(NS_checkBox_DC_ON);
             Noise_Page.Controls.Add(NS_checkBoxENR);
             Noise_Page.Location = new Point(4, 54);
             Noise_Page.Name = "Noise_Page";
             Noise_Page.Padding = new Padding(3);
-            Noise_Page.Size = new Size(571, 457);
+            Noise_Page.Size = new Size(571, 472);
             Noise_Page.TabIndex = 6;
             Noise_Page.Text = "Noise";
             Noise_Page.UseVisualStyleBackColor = true;
+            // 
+            // NSSelectAll
+            // 
+            NSSelectAll.AutoSize = true;
+            NSSelectAll.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
+            NSSelectAll.ForeColor = Color.Navy;
+            NSSelectAll.Location = new Point(29, 51);
+            NSSelectAll.Name = "NSSelectAll";
+            NSSelectAll.Size = new Size(95, 24);
+            NSSelectAll.TabIndex = 10;
+            NSSelectAll.Text = "Select All";
+            NSSelectAll.UseVisualStyleBackColor = true;
+            NSSelectAll.CheckedChanged += NSSelectAll_CheckedChanged;
             // 
             // NS_checkBox_DC_OFF
             // 
             NS_checkBox_DC_OFF.AutoSize = true;
             NS_checkBox_DC_OFF.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             NS_checkBox_DC_OFF.ForeColor = Color.Navy;
-            NS_checkBox_DC_OFF.Location = new Point(161, 284);
+            NS_checkBox_DC_OFF.Location = new Point(29, 161);
             NS_checkBox_DC_OFF.Name = "NS_checkBox_DC_OFF";
-            NS_checkBox_DC_OFF.Size = new Size(239, 44);
+            NS_checkBox_DC_OFF.Size = new Size(441, 24);
             NS_checkBox_DC_OFF.TabIndex = 9;
-            NS_checkBox_DC_OFF.Text = "Reflection Coefficient Linear\r\nMagnitude and Phase DC-OFF";
+            NS_checkBox_DC_OFF.Text = "Reflection Coefficient Linear Magnitude and Phase DC-OFF";
             NS_checkBox_DC_OFF.UseVisualStyleBackColor = true;
             // 
             // NS_checkBox_DC_ON
@@ -1739,11 +1768,11 @@
             NS_checkBox_DC_ON.AutoSize = true;
             NS_checkBox_DC_ON.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             NS_checkBox_DC_ON.ForeColor = Color.Navy;
-            NS_checkBox_DC_ON.Location = new Point(161, 189);
+            NS_checkBox_DC_ON.Location = new Point(29, 131);
             NS_checkBox_DC_ON.Name = "NS_checkBox_DC_ON";
-            NS_checkBox_DC_ON.Size = new Size(235, 44);
+            NS_checkBox_DC_ON.Size = new Size(437, 24);
             NS_checkBox_DC_ON.TabIndex = 8;
-            NS_checkBox_DC_ON.Text = "Reflection Coefficient Linear\r\nMagnitude and Phase DC-ON";
+            NS_checkBox_DC_ON.Text = "Reflection Coefficient Linear Magnitude and Phase DC-ON";
             NS_checkBox_DC_ON.UseVisualStyleBackColor = true;
             // 
             // NS_checkBoxENR
@@ -1751,7 +1780,7 @@
             NS_checkBoxENR.AutoSize = true;
             NS_checkBoxENR.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 162);
             NS_checkBoxENR.ForeColor = Color.Navy;
-            NS_checkBoxENR.Location = new Point(161, 107);
+            NS_checkBoxENR.Location = new Point(29, 101);
             NS_checkBoxENR.Name = "NS_checkBoxENR";
             NS_checkBoxENR.Size = new Size(61, 24);
             NS_checkBoxENR.TabIndex = 7;
@@ -2009,10 +2038,10 @@
         private MaterialSkin.Controls.MaterialButton SelectDeviceButton;
         private GroupBox groupBox4;
         private Label label2;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 MeasurementsTextBox;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 CalibrationDescTextBox;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 MethodTextBox;
-        private MaterialSkin.Controls.MaterialMultiLineTextBox2 DeviceTextBox;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 Comments_TextBox;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 Measurement_Unc_TextBox;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 Cal_MethodTextBox;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 Instrument_DeviceTextBox;
         private MaterialSkin.Controls.MaterialButton NextButton;
         private Panel panel2;
         private GroupBox groupBox5;
@@ -2112,5 +2141,7 @@
         private Label label9;
         private Label label8;
         private Label label5;
+        private CheckBox CFSelectAll;
+        public CheckBox NSSelectAll;
     }
 }
