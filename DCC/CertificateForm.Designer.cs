@@ -657,6 +657,7 @@
             NextBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             NextBox1.TabIndex = 13;
             NextBox1.TabStop = false;
+            NextBox1.Visible = false;
             NextBox1.Click += NextBox1_Click;
             // 
             // BackBox2
@@ -854,12 +855,12 @@
             CheckBoxTabControl.Controls.Add(MetCH_Page);
             CheckBoxTabControl.Controls.Add(Noise_Page);
             CheckBoxTabControl.Depth = 0;
-            CheckBoxTabControl.Location = new Point(64, 129);
+            CheckBoxTabControl.Location = new Point(64, 132);
             CheckBoxTabControl.MouseState = MaterialSkin.MouseState.HOVER;
             CheckBoxTabControl.Multiline = true;
             CheckBoxTabControl.Name = "CheckBoxTabControl";
             CheckBoxTabControl.SelectedIndex = 0;
-            CheckBoxTabControl.Size = new Size(579, 530);
+            CheckBoxTabControl.Size = new Size(579, 527);
             CheckBoxTabControl.TabIndex = 10;
             // 
             // EE_Page
@@ -873,7 +874,7 @@
             EE_Page.Location = new Point(4, 54);
             EE_Page.Name = "EE_Page";
             EE_Page.Padding = new Padding(3);
-            EE_Page.Size = new Size(571, 472);
+            EE_Page.Size = new Size(571, 469);
             EE_Page.TabIndex = 0;
             EE_Page.Text = "Effective Efficiency";
             // 
@@ -946,7 +947,7 @@
             CalFactor_Page.Location = new Point(4, 54);
             CalFactor_Page.Name = "CalFactor_Page";
             CalFactor_Page.Padding = new Padding(3);
-            CalFactor_Page.Size = new Size(571, 472);
+            CalFactor_Page.Size = new Size(571, 469);
             CalFactor_Page.TabIndex = 1;
             CalFactor_Page.Text = "Cal Factor";
             CalFactor_Page.UseVisualStyleBackColor = true;
@@ -1001,7 +1002,7 @@
             CIS_Page.Location = new Point(4, 54);
             CIS_Page.Name = "CIS_Page";
             CIS_Page.Padding = new Padding(3);
-            CIS_Page.Size = new Size(571, 472);
+            CIS_Page.Size = new Size(571, 469);
             CIS_Page.TabIndex = 2;
             CIS_Page.Text = "CIS";
             CIS_Page.UseVisualStyleBackColor = true;
@@ -1110,7 +1111,7 @@
             RFPow_Page.Location = new Point(4, 54);
             RFPow_Page.Name = "RFPow_Page";
             RFPow_Page.Padding = new Padding(3);
-            RFPow_Page.Size = new Size(571, 472);
+            RFPow_Page.Size = new Size(571, 469);
             RFPow_Page.TabIndex = 3;
             RFPow_Page.Text = " RF Power";
             RFPow_Page.UseVisualStyleBackColor = true;
@@ -1128,7 +1129,7 @@
             materialTabSelector1.Name = "materialTabSelector1";
             materialTabSelector1.Size = new Size(565, 30);
             materialTabSelector1.TabIndex = 14;
-            materialTabSelector1.TabIndicatorHeight = 5;
+            materialTabSelector1.TabIndicatorHeight = 8;
             materialTabSelector1.Text = "materialTabSelector1";
             // 
             // RFPowTabControl
@@ -1488,7 +1489,7 @@
             SParam_Page.Location = new Point(4, 54);
             SParam_Page.Name = "SParam_Page";
             SParam_Page.Padding = new Padding(3);
-            SParam_Page.Size = new Size(571, 472);
+            SParam_Page.Size = new Size(571, 469);
             SParam_Page.TabIndex = 4;
             SParam_Page.Text = "S-Parameter";
             SParam_Page.UseVisualStyleBackColor = true;
@@ -1719,7 +1720,7 @@
             MetCH_Page.Location = new Point(4, 54);
             MetCH_Page.Name = "MetCH_Page";
             MetCH_Page.Padding = new Padding(3);
-            MetCH_Page.Size = new Size(571, 472);
+            MetCH_Page.Size = new Size(571, 469);
             MetCH_Page.TabIndex = 5;
             MetCH_Page.Text = "Meteral Ch.";
             MetCH_Page.UseVisualStyleBackColor = true;
@@ -1733,7 +1734,7 @@
             Noise_Page.Location = new Point(4, 54);
             Noise_Page.Name = "Noise_Page";
             Noise_Page.Padding = new Padding(3);
-            Noise_Page.Size = new Size(571, 472);
+            Noise_Page.Size = new Size(571, 469);
             Noise_Page.TabIndex = 6;
             Noise_Page.Text = "Noise";
             Noise_Page.UseVisualStyleBackColor = true;
@@ -1782,9 +1783,9 @@
             NS_checkBoxENR.ForeColor = Color.Navy;
             NS_checkBoxENR.Location = new Point(29, 101);
             NS_checkBoxENR.Name = "NS_checkBoxENR";
-            NS_checkBoxENR.Size = new Size(61, 24);
+            NS_checkBoxENR.Size = new Size(181, 24);
             NS_checkBoxENR.TabIndex = 7;
-            NS_checkBoxENR.Text = "ENR";
+            NS_checkBoxENR.Text = "Extended Noise Ratio";
             NS_checkBoxENR.UseVisualStyleBackColor = true;
             // 
             // MeasurementTypes_ComboBox
@@ -1855,7 +1856,7 @@
             Save_Row_Col_Button.Depth = 0;
             Save_Row_Col_Button.HighEmphasis = true;
             Save_Row_Col_Button.Icon = null;
-            Save_Row_Col_Button.Location = new Point(1104, 664);
+            Save_Row_Col_Button.Location = new Point(1104, 668);
             Save_Row_Col_Button.Margin = new Padding(4, 6, 4, 6);
             Save_Row_Col_Button.MouseState = MaterialSkin.MouseState.HOVER;
             Save_Row_Col_Button.Name = "Save_Row_Col_Button";

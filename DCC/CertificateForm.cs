@@ -86,6 +86,14 @@ namespace DCC
 
         private void CertificateForm_Load(object sender, EventArgs e)
         {
+            CheckBoxTabpagecontrol();
+            RFPowtabpageControl();
+            ExcelPage_ComboBox.Enabled = false;
+            SelectExcel_Button.Enabled = false;
+            LaboratoryComboBox.Items.Add("RF ve Mikrodalga Laboratuvarı");
+            Measurement_Unc_TextBox.Text = "Beyan edilen genişletilmiş ölçüm belirsizliği, standart ölçüm belirsizliğinin normal dağılım için yaklaşık  " +
+             "  % 95 güvenilirlik seviyesini sağlayan k = 2 kapsam faktörü ile çarpımının sonucudur. Standart ölçüm belirsizliği GUM ve EA-4/02 dokümanlarına uygun " +
+             "olarak belirlenmiştir.";
             LaboratoryComboBox.Enabled = false;
             DeviceNameTextBox.Enabled = false;
             ModelNameTextBox.Enabled = false;
@@ -285,6 +293,9 @@ namespace DCC
                 this.Text = "DATA OPERATIONS";
                 CertificateTabControl.SelectedTab = DATA_PAGE;
                 label4.Text = "Please double click on the cell to select it.";
+                UnEnabledAllCheckBoxes(this);
+                NextBox1.Visible = true;
+
             }
             progressBar.Value = 0;
             LabelProgress.Text = "";
@@ -900,7 +911,7 @@ namespace DCC
                 LabelProgress.Text = @"ERROR!: Excel";
                 MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            NextBox1.Visible = false;
             refresh();
             #endregion
 
@@ -937,7 +948,8 @@ namespace DCC
                 XML_Arrays.XML_RFG_ClearData();
                 CreateCertificate_Button.Enabled = false;
                 ReceiveData_Button.Enabled = false;
-
+                ExcelPage_ComboBox.Enabled = false;
+                EnabledAllCheckBoxes(this);
             }
             else if (result == DialogResult.No)
             {
@@ -964,7 +976,7 @@ namespace DCC
                 XML_Arrays.Absolute_RF_Power_ClearData();
                 XML_Arrays.RF_Difference_ClearData();
                 XML_Arrays.XML_RFG_ClearData();
-
+                ExcelPage_ComboBox.Enabled = false;
                 ReceiveData_Button.Enabled = false;
                 SelectExcel_Button.Enabled = false;
             }
@@ -1369,6 +1381,38 @@ namespace DCC
                 checkBoxS22Lin.Checked = false;
                 checkBoxS22SWR.Checked = false;
             }
+
+        }
+
+        private void NSSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NSSelectAll.Checked == true)
+            {
+                NS_checkBox_DC_ON.Checked = true;
+                NS_checkBox_DC_OFF.Checked = true;
+                NS_checkBoxENR.Checked = true;
+            }
+            if (NSSelectAll.Checked == false)
+            {
+                NS_checkBox_DC_ON.Checked = false;
+                NS_checkBox_DC_OFF.Checked = false;
+                NS_checkBoxENR.Checked = false;
+            }
+        }
+
+        private void CFSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CFSelectAll.Checked == true)
+            {
+                CheckBox_CF.Checked = true;
+                CF_checkBox_RIRC.Checked = true;
+            }
+            if (CFSelectAll.Checked == false)
+            {
+                CheckBox_CF.Checked = false;
+                CF_checkBox_RIRC.Checked = false;
+            }
+
         }
         #endregion
 
@@ -1496,37 +1540,6 @@ namespace DCC
 
 #endregion
 
-        private void NSSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (NSSelectAll.Checked == true)
-            {
-               NS_checkBox_DC_ON.Checked = true;
-               NS_checkBox_DC_OFF.Checked = true;
-               NS_checkBoxENR.Checked = true;
-            }
-            if (NSSelectAll.Checked == false)
-            {
-                NS_checkBox_DC_ON.Checked = false;
-                NS_checkBox_DC_OFF.Checked = false;
-                NS_checkBoxENR.Checked = false;
-            }
-
         
-        }
-
-        private void CFSelectAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CFSelectAll.Checked == true)
-            {
-                CheckBox_CF.Checked = true;
-                CF_checkBox_RIRC.Checked = true;
-            }
-            if (CFSelectAll.Checked == false)
-            {
-                CheckBox_CF.Checked = false;
-                CF_checkBox_RIRC.Checked = false;
-            }
-           
-        }
     }
 }
