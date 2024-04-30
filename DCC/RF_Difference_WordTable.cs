@@ -10,7 +10,7 @@ namespace DCC
 {
      class RF_Difference_WordTable
     {
-        public Table RF_Diff_Table(int sayac,string tableName,ArrayList col1, ArrayList col2, ArrayList col3, ArrayList col4, ArrayList col5, ArrayList col6, ArrayList col7,string Col1, string Col2, string Col3, string Col4, string Col5, string Col6, string Col7)
+        public Table RF_Diff_Table(string filename, int sayac,string tableName,ArrayList col1, ArrayList col2, ArrayList col3, ArrayList col4, ArrayList col5, ArrayList col6, ArrayList col7,string Col1, string Col2, string Col3, string Col4, string Col5, string Col6, string Col7)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
@@ -34,7 +34,7 @@ namespace DCC
                  ),
                  new Run(
                      new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },new FontSize() { Val="22"}),
-                     new Text("Tablo "+sayac+". "+tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                  )
              )
          )

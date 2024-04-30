@@ -10,7 +10,7 @@ namespace DCC
 {
     class EE_WordTable
     {
-        public Table EECreateReelImg(int sayac,string tableName,ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc)
+        public Table EECreateReelImg(string filename, int sayac,string tableName,ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc)
         {
             int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -31,7 +31,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },new FontSize() { Val="22"}),
-                          new Text("Tablo "+sayac+". "+tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )
@@ -143,7 +143,7 @@ namespace DCC
         }
 
 
-        public Table CreateEE(int sayac, string tableName, ArrayList Freq, ArrayList EE, ArrayList EE_Unc)
+        public Table CreateEE(string filename, int sayac, string tableName, ArrayList Freq, ArrayList EE, ArrayList EE_Unc)
         {
             int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -164,7 +164,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },  new FontSize() { Val = "22" }),
-                          new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )
@@ -247,7 +247,7 @@ namespace DCC
             return table;
         }
 
-        public Table CreateRHO(int sayac, string tableName, ArrayList Freq, ArrayList Rho_Lin, ArrayList RhoUnc)
+        public Table CreateRHO(string filename, int sayac, string tableName, ArrayList Freq, ArrayList Rho_Lin, ArrayList RhoUnc)
         {
             int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -268,7 +268,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },  new FontSize() { Val = "22" }),
-                          new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )
@@ -350,7 +350,7 @@ namespace DCC
 
             return table;
         }
-        public Table CreateCF(int sayac, string tableName, ArrayList Freq, ArrayList CF, ArrayList CF_Unc)
+        public Table CreateCF(string filename, int sayac, string tableName, ArrayList Freq, ArrayList CF, ArrayList CF_Unc)
         {
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
             int cellWidth = tableWidth / 3; // Üç sütun var, bu yüzden hücre genişliğini buna göre ayarlayın
@@ -370,7 +370,7 @@ namespace DCC
                    ),
                    new Run(
                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                       new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                    )
                )
            )

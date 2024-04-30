@@ -33,10 +33,7 @@ namespace DCC
             RFPowtabpageControl();
             ExcelPage_ComboBox.Enabled = false;
             SelectExcel_Button.Enabled = false;
-            LaboratoryComboBox.Items.Add("RF ve Mikrodalga Laboratuvarı");
-            Measurement_Unc_TextBox.Text = "Beyan edilen genişletilmiş ölçüm belirsizliği, standart ölçüm belirsizliğinin normal dağılım için yaklaşık  " +
-             "  % 95 güvenilirlik seviyesini sağlayan k = 2 kapsam faktörü ile çarpımının sonucudur. Standart ölçüm belirsizliği GUM ve EA-4/02 dokümanlarına uygun " +
-             "olarak belirlenmiştir.";
+
 
         }
         private void CertificateForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -91,9 +88,9 @@ namespace DCC
             ExcelPage_ComboBox.Enabled = false;
             SelectExcel_Button.Enabled = false;
             LaboratoryComboBox.Items.Add("RF ve Mikrodalga Laboratuvarı");
-            Measurement_Unc_TextBox.Text = "Beyan edilen genişletilmiş ölçüm belirsizliği, standart ölçüm belirsizliğinin normal dağılım için yaklaşık  " +
-             "  % 95 güvenilirlik seviyesini sağlayan k = 2 kapsam faktörü ile çarpımının sonucudur. Standart ölçüm belirsizliği GUM ve EA-4/02 dokümanlarına uygun " +
-             "olarak belirlenmiştir.";
+            Measurement_Unc_TextBox.Text = "                                                                                                                                                                                                                                             Beyan edilen genişletilmiş ölçüm belirsizliği, standart ölçüm belirsizliğinin normal dağılım için yaklaşık  " +
+            "  % 95 güvenilirlik seviyesini sağlayan k = 2 kapsam faktörü ile çarpımının sonucudur. Standart ölçüm belirsizliği GUM ve EA-4/02 dokümanlarına uygun " +
+            "olarak belirlenmiştir.";
             LaboratoryComboBox.Enabled = false;
             DeviceNameTextBox.Enabled = false;
             ModelNameTextBox.Enabled = false;
@@ -385,7 +382,7 @@ namespace DCC
                     if (checkBoxS11Reel.Checked)
                     {
                         sayac++;
-                        Table s11reelTable = SP_WordTable.CreateReelImg(sayac, sp_DataWord.tableName1, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Reel, sp_DataWord.ArrayS11ReelUnc, sp_DataWord.ArrayS11Complex, sp_DataWord.ArrayS11ComplexUnc);
+                        Table s11reelTable = SP_WordTable.CreateReelImg(ExcelDosyaAdi, sayac, sp_DataWord.tableName1, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Reel, sp_DataWord.ArrayS11ReelUnc, sp_DataWord.ArrayS11Complex, sp_DataWord.ArrayS11ComplexUnc);
                         tables.Add(s11reelTable);
                         dataList[0] = true;
                         SaveBasarim();
@@ -394,7 +391,7 @@ namespace DCC
                     if (checkBoxS11Lin.Checked)
                     {
                         sayac++;
-                        Table s11linTable = SP_WordTable.CreateLinPhase(sayac, sp_DataWord.tableName2, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Lin, sp_DataWord.ArrayS11LinUnc, sp_DataWord.ArrayS11LinPhase, sp_DataWord.ArrayS11LinPhaseUnc);
+                        Table s11linTable = SP_WordTable.CreateLinPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName2, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Lin, sp_DataWord.ArrayS11LinUnc, sp_DataWord.ArrayS11LinPhase, sp_DataWord.ArrayS11LinPhaseUnc);
                         tables.Add(s11linTable);
                         dataList[1] = true;
                         SaveBasarim();
@@ -402,7 +399,7 @@ namespace DCC
                     if (checkBoxS11Log.Checked)
                     {
                         sayac++;
-                        Table s11logTable = SP_WordTable.CreateLogPhase(sayac, sp_DataWord.tableName3, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Log, sp_DataWord.ArrayS11LogUnc, sp_DataWord.ArrayS11LogPhase, sp_DataWord.ArrayS11LogPhaseUnc);
+                        Table s11logTable = SP_WordTable.CreateLogPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName3, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11Log, sp_DataWord.ArrayS11LogUnc, sp_DataWord.ArrayS11LogPhase, sp_DataWord.ArrayS11LogPhaseUnc);
                         tables.Add(s11logTable);
                         dataList[2] = true;
                         SaveBasarim();
@@ -410,7 +407,7 @@ namespace DCC
                     if (checkBoxS11SWR.Checked)
                     {
                         sayac++;
-                        Table s11swrTable = SP_WordTable.CreateSWR(sayac, sp_DataWord.tableName4, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11SWR, sp_DataWord.ArrayS11SWRUnc);
+                        Table s11swrTable = SP_WordTable.CreateSWR(ExcelDosyaAdi, sayac, sp_DataWord.tableName4, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS11SWR, sp_DataWord.ArrayS11SWRUnc);
                         tables.Add(s11swrTable);
                         dataList[3] = true;
                         SaveBasarim();
@@ -420,7 +417,7 @@ namespace DCC
                     if (checkBoxS12Reel.Checked)
                     {
                         sayac++;
-                        Table s12reelTable = SP_WordTable.CreateReelImg(sayac, sp_DataWord.tableName5, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Reel, sp_DataWord.ArrayS12ReelUnc, sp_DataWord.ArrayS12Complex, sp_DataWord.ArrayS12ComplexUnc);
+                        Table s12reelTable = SP_WordTable.CreateReelImg(ExcelDosyaAdi, sayac, sp_DataWord.tableName5, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Reel, sp_DataWord.ArrayS12ReelUnc, sp_DataWord.ArrayS12Complex, sp_DataWord.ArrayS12ComplexUnc);
                         tables.Add(s12reelTable);
                         dataList[4] = true;
                         SaveBasarim();
@@ -428,7 +425,7 @@ namespace DCC
                     if (checkBoxS12Lin.Checked)
                     {
                         sayac++;
-                        Table s12linTable = SP_WordTable.CreateLinPhase(sayac, sp_DataWord.tableName6, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Lin, sp_DataWord.ArrayS12LinUnc, sp_DataWord.ArrayS12LinPhase, sp_DataWord.ArrayS12LinPhaseUnc);
+                        Table s12linTable = SP_WordTable.CreateLinPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName6, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Lin, sp_DataWord.ArrayS12LinUnc, sp_DataWord.ArrayS12LinPhase, sp_DataWord.ArrayS12LinPhaseUnc);
                         tables.Add(s12linTable);
                         dataList[5] = true;
                         SaveBasarim();
@@ -436,7 +433,7 @@ namespace DCC
                     if (checkBoxS12Log.Checked)
                     {
                         sayac++;
-                        Table s12logTable = SP_WordTable.CreateLogPhase(sayac, sp_DataWord.tableName7, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Log, sp_DataWord.ArrayS12LogUnc, sp_DataWord.ArrayS12LogPhase, sp_DataWord.ArrayS12LogPhaseUnc);
+                        Table s12logTable = SP_WordTable.CreateLogPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName7, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS12Log, sp_DataWord.ArrayS12LogUnc, sp_DataWord.ArrayS12LogPhase, sp_DataWord.ArrayS12LogPhaseUnc);
                         tables.Add(s12logTable);
                         dataList[6] = true;
                         SaveBasarim();
@@ -446,7 +443,7 @@ namespace DCC
                     if (checkBoxS21Reel.Checked)
                     {
                         sayac++;
-                        Table s21reelTable = SP_WordTable.CreateReelImg(sayac, sp_DataWord.tableName8, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Reel, sp_DataWord.ArrayS21ReelUnc, sp_DataWord.ArrayS21Complex, sp_DataWord.ArrayS21ComplexUnc);
+                        Table s21reelTable = SP_WordTable.CreateReelImg(ExcelDosyaAdi, sayac, sp_DataWord.tableName8, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Reel, sp_DataWord.ArrayS21ReelUnc, sp_DataWord.ArrayS21Complex, sp_DataWord.ArrayS21ComplexUnc);
                         tables.Add(s21reelTable);
                         dataList[7] = true;
                         SaveBasarim();
@@ -454,7 +451,7 @@ namespace DCC
                     if (checkBoxS21Lin.Checked)
                     {
                         sayac++;
-                        Table s21linTable = SP_WordTable.CreateLinPhase(sayac, sp_DataWord.tableName9, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Lin, sp_DataWord.ArrayS21LinUnc, sp_DataWord.ArrayS21LinPhase, sp_DataWord.ArrayS21LinPhaseUnc);
+                        Table s21linTable = SP_WordTable.CreateLinPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName9, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Lin, sp_DataWord.ArrayS21LinUnc, sp_DataWord.ArrayS21LinPhase, sp_DataWord.ArrayS21LinPhaseUnc);
                         tables.Add(s21linTable);
                         dataList[8] = true;
                         SaveBasarim();
@@ -462,7 +459,7 @@ namespace DCC
                     if (checkBoxS21Log.Checked)
                     {
                         sayac++;
-                        Table s21logTable = SP_WordTable.CreateLogPhase(sayac, sp_DataWord.tableName10, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Log, sp_DataWord.ArrayS21LogUnc, sp_DataWord.ArrayS21LogPhase, sp_DataWord.ArrayS21LogPhaseUnc);
+                        Table s21logTable = SP_WordTable.CreateLogPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName10, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS21Log, sp_DataWord.ArrayS21LogUnc, sp_DataWord.ArrayS21LogPhase, sp_DataWord.ArrayS21LogPhaseUnc);
                         tables.Add(s21logTable);
                         dataList[9] = true;
                         SaveBasarim();
@@ -471,7 +468,7 @@ namespace DCC
                     if (checkBoxS22Reel.Checked)
                     {
                         sayac++;
-                        Table s22reelTable = SP_WordTable.CreateReelImg(sayac, sp_DataWord.tableName11, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Reel, sp_DataWord.ArrayS22ReelUnc, sp_DataWord.ArrayS22Complex, sp_DataWord.ArrayS22ComplexUnc);
+                        Table s22reelTable = SP_WordTable.CreateReelImg(ExcelDosyaAdi, sayac, sp_DataWord.tableName11, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Reel, sp_DataWord.ArrayS22ReelUnc, sp_DataWord.ArrayS22Complex, sp_DataWord.ArrayS22ComplexUnc);
                         tables.Add(s22reelTable);
                         dataList[10] = true;
                         SaveBasarim();
@@ -479,7 +476,7 @@ namespace DCC
                     if (checkBoxS22Lin.Checked)
                     {
                         sayac++;
-                        Table s22linTable = SP_WordTable.CreateLinPhase(sayac, sp_DataWord.tableName12, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Lin, sp_DataWord.ArrayS22LinUnc, sp_DataWord.ArrayS22LinPhase, sp_DataWord.ArrayS22LinPhaseUnc);
+                        Table s22linTable = SP_WordTable.CreateLinPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName12, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Lin, sp_DataWord.ArrayS22LinUnc, sp_DataWord.ArrayS22LinPhase, sp_DataWord.ArrayS22LinPhaseUnc);
                         tables.Add(s22linTable);
                         dataList[11] = true;
                         SaveBasarim();
@@ -487,7 +484,7 @@ namespace DCC
                     if (checkBoxS22Log.Checked)
                     {
                         sayac++;
-                        Table s22logTable = SP_WordTable.CreateLogPhase(sayac, sp_DataWord.tableName13, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Log, sp_DataWord.ArrayS22LogUnc, sp_DataWord.ArrayS22LogPhase, sp_DataWord.ArrayS22LogPhaseUnc);
+                        Table s22logTable = SP_WordTable.CreateLogPhase(ExcelDosyaAdi, sayac, sp_DataWord.tableName13, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22Log, sp_DataWord.ArrayS22LogUnc, sp_DataWord.ArrayS22LogPhase, sp_DataWord.ArrayS22LogPhaseUnc);
                         tables.Add(s22logTable);
                         dataList[12] = true;
                         SaveBasarim();
@@ -495,7 +492,7 @@ namespace DCC
                     if (checkBoxS22SWR.Checked)
                     {
                         sayac++;
-                        Table s22swrTable = SP_WordTable.CreateSWR(sayac, sp_DataWord.tableName14, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22SWR, sp_DataWord.ArrayS22SWRUnc);
+                        Table s22swrTable = SP_WordTable.CreateSWR(ExcelDosyaAdi, sayac, sp_DataWord.tableName14, sp_DataWord.ArrayFrekans, sp_DataWord.ArrayS22SWR, sp_DataWord.ArrayS22SWRUnc);
                         tables.Add(s22swrTable);
                         dataList[13] = true;
                         SaveBasarim();
@@ -526,7 +523,7 @@ namespace DCC
                     if (checkBoxEE.Checked)
                     {
                         sayac++;
-                        Table s11reelTable_EE = EE_WordTable.EECreateReelImg(sayac, EE_DataWord.tableName1, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayS11Reel, EE_DataWord.EE_ArrayS11ReelUnc, EE_DataWord.EE_ArrayS11Complex, EE_DataWord.EE_ArrayS11ComplexUnc);
+                        Table s11reelTable_EE = EE_WordTable.EECreateReelImg(ExcelDosyaAdi, sayac, EE_DataWord.tableName1, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayS11Reel, EE_DataWord.EE_ArrayS11ReelUnc, EE_DataWord.EE_ArrayS11Complex, EE_DataWord.EE_ArrayS11ComplexUnc);
                         tables.Add(s11reelTable_EE);
                         dataListEE[0] = true;
                         SaveBasarim();
@@ -535,7 +532,7 @@ namespace DCC
                     if (checkBox_EE_RI.Checked)
                     {
                         sayac++;
-                        Table EE_table = EE_WordTable.CreateEE(sayac, EE_DataWord.tableName2, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayEE, EE_DataWord.EE_ArrayEEUnc);
+                        Table EE_table = EE_WordTable.CreateEE(ExcelDosyaAdi, sayac, EE_DataWord.tableName2, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayEE, EE_DataWord.EE_ArrayEEUnc);
                         tables.Add(EE_table);
                         dataListEE[1] = true;
                         SaveBasarim();
@@ -545,7 +542,7 @@ namespace DCC
                     if (checkBoxRHO.Checked)
                     {
                         sayac++;
-                        Table RHOTable = EE_WordTable.CreateRHO(sayac, EE_DataWord.tableName3, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayRhoLin, EE_DataWord.EE_ArrayRhoUnc);
+                        Table RHOTable = EE_WordTable.CreateRHO(ExcelDosyaAdi, sayac, EE_DataWord.tableName3, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayRhoLin, EE_DataWord.EE_ArrayRhoUnc);
                         tables.Add(RHOTable);
                         dataListEE[2] = true;
                         SaveBasarim();
@@ -553,7 +550,7 @@ namespace DCC
                     if (checkBox_EE_CF.Checked)
                     {
                         sayac++;
-                        Table EE_CF_table = EE_WordTable.CreateCF(sayac, EE_DataWord.tableName4, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayCF, EE_DataWord.EE_ArrayCFUnc);
+                        Table EE_CF_table = EE_WordTable.CreateCF(ExcelDosyaAdi, sayac, EE_DataWord.tableName4, EE_DataWord.EE_ArrayFrekans, EE_DataWord.EE_ArrayCF, EE_DataWord.EE_ArrayCFUnc);
                         tables.Add(EE_CF_table);
                         dataListEE[3] = true;
                         SaveBasarim();
@@ -579,7 +576,7 @@ namespace DCC
                     if (CheckBox_CF.Checked)
                     {
                         sayac++;
-                        Table reelTable_CF = CF_Word_Table.CF_CreateReelImg(sayac, CF_DataWord.tableName1, CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_ArrayReel, CF_DataWord.CF_ArrayReelUnc, CF_DataWord.CF_ArrayComplex, CF_DataWord.CF_ArrayComplexUnc, CF_DataWord.CF_YK, CF_DataWord.CF_YK_Unc);
+                        Table reelTable_CF = CF_Word_Table.CF_CreateReelImg(ExcelDosyaAdi, sayac, CF_DataWord.tableName1, CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_ArrayReel, CF_DataWord.CF_ArrayReelUnc, CF_DataWord.CF_ArrayComplex, CF_DataWord.CF_ArrayComplexUnc, CF_DataWord.CF_YK, CF_DataWord.CF_YK_Unc);
                         tables.Add(reelTable_CF);
                         dataListCF[0] = true;
                         SaveBasarim();
@@ -589,7 +586,7 @@ namespace DCC
                     if (CF_checkBox_RIRC.Checked)
                     {
                         sayac++;
-                        Table CF_table = CF_Word_Table.CF_CreateCF(sayac, CF_DataWord.tableName2, CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_Array, CF_DataWord.CF_ArrayCFUnc);
+                        Table CF_table = CF_Word_Table.CF_CreateCF(ExcelDosyaAdi, sayac, CF_DataWord.tableName2, CF_DataWord.CF_ArrayFrekans, CF_DataWord.CF_Array, CF_DataWord.CF_ArrayCFUnc);
                         tables.Add(CF_table);
                         dataListCF[1] = true;
                         SaveBasarim();
@@ -617,7 +614,7 @@ namespace DCC
                     {
                         sayac++;
 
-                        Table CIS_table = CIS_Word_Table.Create_Z_Position(sayac, CIS_DataWord.tableName, CIS_DataWord.CIS_Olcum_Adım, CIS_DataWord.CIS_ZP, CIS_DataWord.CIS_ZP_Unc, CIS_DataWord.CIS_ICOD, CIS_DataWord.CIS_ICOD_Unc, CIS_DataWord.CIS_OCID, CIS_DataWord.CIS_OCID_Unc);
+                        Table CIS_table = CIS_Word_Table.Create_Z_Position(ExcelDosyaAdi, sayac, CIS_DataWord.tableName, CIS_DataWord.CIS_Olcum_Adım, CIS_DataWord.CIS_ZP, CIS_DataWord.CIS_ZP_Unc, CIS_DataWord.CIS_ICOD, CIS_DataWord.CIS_ICOD_Unc, CIS_DataWord.CIS_OCID, CIS_DataWord.CIS_OCID_Unc);
                         tables.Add(CIS_table);
 
                         CIS_bool = true;
@@ -643,7 +640,7 @@ namespace DCC
                     if (NS_checkBoxENR.Checked)
                     {
                         sayac++;
-                        Table ENR_Noise_table = Noise_WordTable.CreateENR(sayac, Noise_DataWord.tableName1, Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayENR, Noise_DataWord.NS_ArrayENRUnc);
+                        Table ENR_Noise_table = Noise_WordTable.CreateENR(ExcelDosyaAdi, sayac, Noise_DataWord.tableName1, Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayENR, Noise_DataWord.NS_ArrayENRUnc);
                         tables.Add(ENR_Noise_table);
                         NoiseBool[0] = true;
                         SaveBasarim();
@@ -651,7 +648,7 @@ namespace DCC
                     if (NS_checkBox_DC_ON.Checked)
                     {
                         sayac++;
-                        Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(sayac, Noise_DataWord.tableName2, Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc,
+                        Table DC_ON_Noise_table = Noise_WordTable.Create_DC_ON_OFF(ExcelDosyaAdi, sayac, Noise_DataWord.tableName2, Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC, Noise_DataWord.NS_ArrayRC_ustlimit, Noise_DataWord.NS_ArrayRCUnc,
                                                                                     Noise_DataWord.NS_ArrayRC_Phase, Noise_DataWord.NS_ArrayRC_PhaseUnc);
                         tables.Add(DC_ON_Noise_table);
                         NoiseBool[1] = true;
@@ -661,7 +658,7 @@ namespace DCC
                     if (NS_checkBox_DC_OFF.Checked)
                     {
                         sayac++;
-                        Table DC_OFF_Noise_table = Noise_WordTable.Create_DC_ON_OFF(sayac, Noise_DataWord.tableName3, Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC_DC_OFF, Noise_DataWord.NS_ArrayRC_ustlimit_DC_OFF, Noise_DataWord.NS_ArrayRCUnc_DC_OFF,
+                        Table DC_OFF_Noise_table = Noise_WordTable.Create_DC_ON_OFF(ExcelDosyaAdi, sayac, Noise_DataWord.tableName3, Noise_DataWord.NS_ArrayFrekans, Noise_DataWord.NS_ArrayRC_DC_OFF, Noise_DataWord.NS_ArrayRC_ustlimit_DC_OFF, Noise_DataWord.NS_ArrayRCUnc_DC_OFF,
                                                                                     Noise_DataWord.NS_ArrayRC_Phase_DC_OFF, Noise_DataWord.NS_ArrayRC_PhaseUnc_DC_OFF);
                         tables.Add(DC_OFF_Noise_table);
                         NoiseBool[2] = true;
@@ -687,7 +684,7 @@ namespace DCC
                     if (ARFP_1.Checked)
                     {
                         sayac++;
-                        Table ARFP1_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName1, Absolute_RF_Power.ARFP_T1_Frekans, Absolute_RF_Power.ARFP_T1_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T1_Olculen_Güc, Absolute_RF_Power.ARFP_T1_AltSınır,
+                        Table ARFP1_table = Absolute_WordTable.ARFP_CreateTable_1(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName1, Absolute_RF_Power.ARFP_T1_Frekans, Absolute_RF_Power.ARFP_T1_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T1_Olculen_Güc, Absolute_RF_Power.ARFP_T1_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T1_Sapma, Absolute_RF_Power.ARFP_T1_ÜstSınır, Absolute_RF_Power.ARFP_T1_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma");
                         tables.Add(ARFP1_table);
                         ARFPBool[0] = true;
@@ -697,7 +694,7 @@ namespace DCC
                     if (ARFP_2.Checked)
                     {
                         sayac++;
-                        Table ARFP2_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName2, Absolute_RF_Power.ARFP_T2_Frekans, Absolute_RF_Power.ARFP_T2_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T2_OlculenDeger, Absolute_RF_Power.ARFP_T2_AltSınır,
+                        Table ARFP2_table = Absolute_WordTable.ARFP_CreateTable_1(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName2, Absolute_RF_Power.ARFP_T2_Frekans, Absolute_RF_Power.ARFP_T2_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T2_OlculenDeger, Absolute_RF_Power.ARFP_T2_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T2_Fark, Absolute_RF_Power.ARFP_T2_ÜstSınır, Absolute_RF_Power.ARFP_T2_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
                         tables.Add(ARFP2_table);
                         ARFPBool[1] = true;
@@ -706,7 +703,7 @@ namespace DCC
                     if (ARFP_3.Checked)
                     {
                         sayac++;
-                        Table ARFP3_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName3, Absolute_RF_Power.ARFP_T3_Frekans, Absolute_RF_Power.ARFP_T3_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T3_OlculenZayıflatma, Absolute_RF_Power.ARFP_T3_AltSınır,
+                        Table ARFP3_table = Absolute_WordTable.ARFP_CreateTable_1(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName3, Absolute_RF_Power.ARFP_T3_Frekans, Absolute_RF_Power.ARFP_T3_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T3_OlculenZayıflatma, Absolute_RF_Power.ARFP_T3_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T3_Zayıflatma, Absolute_RF_Power.ARFP_T3_ÜstSınır, Absolute_RF_Power.ARFP_T3_Belirsizlik, "Ölçülen Zayıflatma (dB)", "Zayıflatma Hatası (dB)");
                         tables.Add(ARFP3_table);
                         ARFPBool[2] = true;
@@ -715,7 +712,7 @@ namespace DCC
                     if (ARFP_4.Checked)
                     {
                         sayac++;
-                        Table ARFP4_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName4, Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T4_SWR_Seviye, Absolute_RF_Power.ARFP_T4_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T4_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T4_SWR_Belirsizlik, "Maksimum Değer");
+                        Table ARFP4_table = Absolute_WordTable.ARFP_CreateTable_2(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName4, Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T4_SWR_Seviye, Absolute_RF_Power.ARFP_T4_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T4_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T4_SWR_Belirsizlik, "Maksimum Değer");
                         tables.Add(ARFP4_table);
                         ARFPBool[3] = true;
                         SaveBasarim();
@@ -723,7 +720,7 @@ namespace DCC
                     if (ARFP_5.Checked)
                     {
                         sayac++;
-                        Table ARFP5_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName5, Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T5_SWR_Seviye, Absolute_RF_Power.ARFP_T5_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T5_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T5_SWR_Belirsizlik, "Maksimum Değer");
+                        Table ARFP5_table = Absolute_WordTable.ARFP_CreateTable_2(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName5, Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T5_SWR_Seviye, Absolute_RF_Power.ARFP_T5_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T5_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T5_SWR_Belirsizlik, "Maksimum Değer");
                         tables.Add(ARFP5_table);
                         ARFPBool[4] = true;
                         SaveBasarim();
@@ -731,7 +728,7 @@ namespace DCC
                     if (ARFP_6.Checked)
                     {
                         sayac++;
-                        Table ARFP6_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName6, Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T6_SWR_Seviye, Absolute_RF_Power.ARFP_T6_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T6_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T6_SWR_Belirsizlik, "Maksimum Değer");
+                        Table ARFP6_table = Absolute_WordTable.ARFP_CreateTable_2(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName6, Absolute_RF_Power.ARFP_T4_T5_T6_frekans, Absolute_RF_Power.ARFP_T6_SWR_Seviye, Absolute_RF_Power.ARFP_T6_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T6_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T6_SWR_Belirsizlik, "Maksimum Değer");
                         tables.Add(ARFP6_table);
                         ARFPBool[5] = true;
                         SaveBasarim();
@@ -739,7 +736,7 @@ namespace DCC
                     if (ARFP_7.Checked)
                     {
                         sayac++;
-                        Table ARFP7_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName7, Absolute_RF_Power.ARFP_T7_Frekans, Absolute_RF_Power.ARFP_T7_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T7_OlculenGuc, Absolute_RF_Power.ARFP_T7_AltSınır,
+                        Table ARFP7_table = Absolute_WordTable.ARFP_CreateTable_1(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName7, Absolute_RF_Power.ARFP_T7_Frekans, Absolute_RF_Power.ARFP_T7_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T7_OlculenGuc, Absolute_RF_Power.ARFP_T7_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T7_Sapma, Absolute_RF_Power.ARFP_T7_ÜstSınır, Absolute_RF_Power.ARFP_T7_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma(dB)");
                         tables.Add(ARFP7_table);
                         ARFPBool[6] = true;
@@ -748,7 +745,7 @@ namespace DCC
                     if (ARFP_8.Checked)
                     {
                         sayac++;
-                        Table ARFP8_table = Absolute_WordTable.ARFP_CreateTable_1(sayac, Absolute_RF_Power.tableName8, Absolute_RF_Power.ARFP_T8_Frekans, Absolute_RF_Power.ARFP_T8_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T8_OlculenDeger, Absolute_RF_Power.ARFP_T8_AltSınır,
+                        Table ARFP8_table = Absolute_WordTable.ARFP_CreateTable_1(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName8, Absolute_RF_Power.ARFP_T8_Frekans, Absolute_RF_Power.ARFP_T8_Cıkıs_Gücü, Absolute_RF_Power.ARFP_T8_OlculenDeger, Absolute_RF_Power.ARFP_T8_AltSınır,
                                                                                   Absolute_RF_Power.ARFP_T8_Fark, Absolute_RF_Power.ARFP_T8_ÜstSınır, Absolute_RF_Power.ARFP_T8_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
                         tables.Add(ARFP8_table);
                         ARFPBool[7] = true;
@@ -757,7 +754,7 @@ namespace DCC
                     if (ARFP_9.Checked)
                     {
                         sayac++;
-                        Table ARFP9_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName9, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T9_SWR_Seviye, Absolute_RF_Power.ARFP_T9_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T9_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T9_SWR_Belirsizlik, "Üst Sınır");
+                        Table ARFP9_table = Absolute_WordTable.ARFP_CreateTable_2(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName9, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T9_SWR_Seviye, Absolute_RF_Power.ARFP_T9_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T9_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T9_SWR_Belirsizlik, "Üst Sınır");
                         tables.Add(ARFP9_table);
                         ARFPBool[8] = true;
                         SaveBasarim();
@@ -765,7 +762,7 @@ namespace DCC
                     if (ARFP_10.Checked)
                     {
                         sayac++;
-                        Table ARFP10_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName10, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T10_SWR_Seviye, Absolute_RF_Power.ARFP_T10_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T10_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T10_SWR_Belirsizlik, "Üst Sınır");
+                        Table ARFP10_table = Absolute_WordTable.ARFP_CreateTable_2(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName10, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T10_SWR_Seviye, Absolute_RF_Power.ARFP_T10_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T10_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T10_SWR_Belirsizlik, "Üst Sınır");
                         tables.Add(ARFP10_table);
                         ARFPBool[9] = true;
                         SaveBasarim();
@@ -773,7 +770,7 @@ namespace DCC
                     if (ARFP_11.Checked)
                     {
                         sayac++;
-                        Table ARFP11_table = Absolute_WordTable.ARFP_CreateTable_2(sayac, Absolute_RF_Power.tableName11, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T11_SWR_Seviye, Absolute_RF_Power.ARFP_T11_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T11_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T11_SWR_Belirsizlik, "Üst Sınır");
+                        Table ARFP11_table = Absolute_WordTable.ARFP_CreateTable_2(ExcelDosyaAdi, sayac, Absolute_RF_Power.tableName11, Absolute_RF_Power.ARFP_T9_T10_T11_frekans, Absolute_RF_Power.ARFP_T11_SWR_Seviye, Absolute_RF_Power.ARFP_T11_SWR_OlculenDeger, Absolute_RF_Power.ARFP_T11_SWR_MaksimumDeger, Absolute_RF_Power.ARFP_T11_SWR_Belirsizlik, "Üst Sınır");
                         tables.Add(ARFP11_table);
                         ARFPBool[10] = true;
                         SaveBasarim();
@@ -802,7 +799,7 @@ namespace DCC
                     {
 
                         sayac++;
-                        Table RFD1_table = RF_Difference_wordTable.RF_Diff_Table(sayac, RF_Difference_DataWord.tableName1, RF_Difference_DataWord.RFD_T1_Frekans, RF_Difference_DataWord.RFD_T1_GostergeDegeri, RF_Difference_DataWord.RFD_T1_AltSınır, RF_Difference_DataWord.RFD_T1_OlculenDeger, RF_Difference_DataWord.RFD_T1_OlculenFark,
+                        Table RFD1_table = RF_Difference_wordTable.RF_Diff_Table(ExcelDosyaAdi, sayac, RF_Difference_DataWord.tableName1, RF_Difference_DataWord.RFD_T1_Frekans, RF_Difference_DataWord.RFD_T1_GostergeDegeri, RF_Difference_DataWord.RFD_T1_AltSınır, RF_Difference_DataWord.RFD_T1_OlculenDeger, RF_Difference_DataWord.RFD_T1_OlculenFark,
                                              RF_Difference_DataWord.RFD_T1_ÜstSınır, RF_Difference_DataWord.RFD_T1_Belirsizlik, "Frekans (GHz)", "Gösterge Değeri (dBm)", "Alt Sınır (dBm)", "Ölçülen Değer (dBm)", "Ölçülen Fark (dB)", "Üst Sınır (dBm)", "Belirsizlik (dB)");
                         tables.Add(RFD1_table);
                         RFDBool[0] = true;
@@ -812,7 +809,7 @@ namespace DCC
                     {
 
                         sayac++;
-                        Table RFD2_table = RF_Difference_wordTable.RF_Diff_Table(sayac, RF_Difference_DataWord.tableName2, RF_Difference_DataWord.RFD_T2_Frekans, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl, RF_Difference_DataWord.RFD_T2_OlculenDeger, RF_Difference_DataWord.RFD_T2_AltSınır, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl_fark,
+                        Table RFD2_table = RF_Difference_wordTable.RF_Diff_Table(ExcelDosyaAdi, sayac, RF_Difference_DataWord.tableName2, RF_Difference_DataWord.RFD_T2_Frekans, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl, RF_Difference_DataWord.RFD_T2_OlculenDeger, RF_Difference_DataWord.RFD_T2_AltSınır, RF_Difference_DataWord.RFD_T2_Nom_Guc_Lvl_fark,
                                              RF_Difference_DataWord.RFD_T2_ÜstSınır, RF_Difference_DataWord.RFD_T2_Belirsizlik, "Frekans (GHz))", "Nominal Güç Seviyesi(dBm)", "Ölçülen Değer (dBm)", "Ölçülen Değer (dBm)", "Nominal Güç Seviye Farkı (dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
                         tables.Add(RFD2_table);
                         RFDBool[1] = true;
@@ -822,7 +819,7 @@ namespace DCC
                     if (RF_Diff_3.Checked = true)
                     {
                         sayac++;
-                        Table RFD3_table = RF_Difference_wordTable.RF_Diff_Table(sayac, RF_Difference_DataWord.tableName3, RF_Difference_DataWord.RFD_T3_Frekans, RF_Difference_DataWord.RFD_T3_NominalGuc, RF_Difference_DataWord.RFD_T3_AltSınır, RF_Difference_DataWord.RFD_T3_OlculenDeger, RF_Difference_DataWord.RFD_T3_ÜstSınır,
+                        Table RFD3_table = RF_Difference_wordTable.RF_Diff_Table(ExcelDosyaAdi, sayac, RF_Difference_DataWord.tableName3, RF_Difference_DataWord.RFD_T3_Frekans, RF_Difference_DataWord.RFD_T3_NominalGuc, RF_Difference_DataWord.RFD_T3_AltSınır, RF_Difference_DataWord.RFD_T3_OlculenDeger, RF_Difference_DataWord.RFD_T3_ÜstSınır,
                                              RF_Difference_DataWord.RFD_T3_Fark, RF_Difference_DataWord.RFD_T3_Belirsizlik, "Frekans", "Nominal Güç (dBm)", "Alt sınır (dBm)", "Ölçülen Değer (dBm)", "Üst Sınır (dBm)", "Fark(dB)", "Belirsizlik (dB)");
                         tables.Add(RFD3_table);
                         RFDBool[2] = true;
@@ -831,7 +828,7 @@ namespace DCC
                     if (RF_Diff_4.Checked = true)
                     {
                         sayac++;
-                        Table RFD3_table = RF_Difference_wordTable.RF_Diff_Table(sayac, RF_Difference_DataWord.tableName4, RF_Difference_DataWord.RFD_T4_Min_Guc_lvl, RF_Difference_DataWord.RFD_T4_Max_Guc_lvl, RF_Difference_DataWord.RFD_T4_Frekans, RF_Difference_DataWord.RFD_T4_AltSınır, RF_Difference_DataWord.RFD_T4_Fark,
+                        Table RFD3_table = RF_Difference_wordTable.RF_Diff_Table(ExcelDosyaAdi, sayac, RF_Difference_DataWord.tableName4, RF_Difference_DataWord.RFD_T4_Min_Guc_lvl, RF_Difference_DataWord.RFD_T4_Max_Guc_lvl, RF_Difference_DataWord.RFD_T4_Frekans, RF_Difference_DataWord.RFD_T4_AltSınır, RF_Difference_DataWord.RFD_T4_Fark,
                                              RF_Difference_DataWord.RFD_T4_UstSınır, RF_Difference_DataWord.RFD_T4_Belirsizlik, "Min.Güç Seviyesi (dBm)", "Max. Güç Seviyesi (dBm)", "Frekans", "Alt Sınır (dB)", "Fark(dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
                         tables.Add(RFD3_table);
                         RFDBool[3] = true;
@@ -858,7 +855,7 @@ namespace DCC
                     if (RF_Gain1.Checked = true)
                     {
                         sayac++;
-                        Table RFG1_table = RF_Gain_WordTable.RF_Gain_Table(sayac, RF_Gain_DataWord.tableName1, RF_Gain_DataWord.RFG_T1_Frekans, RF_Gain_DataWord.RFG_T1_GirisGucu, RF_Gain_DataWord.RFG_T1_Belirsizlik, "Frekans", "Giriş Gücü", "Alt Sınır Belirsizlik (dB)");
+                        Table RFG1_table = RF_Gain_WordTable.RF_Gain_Table(ExcelDosyaAdi, sayac, RF_Gain_DataWord.tableName1, RF_Gain_DataWord.RFG_T1_Frekans, RF_Gain_DataWord.RFG_T1_GirisGucu, RF_Gain_DataWord.RFG_T1_Belirsizlik, "Frekans", "Giriş Gücü", "Alt Sınır Belirsizlik (dB)");
                         tables.Add(RFG1_table);
                         RFGBool[0] = true;
                         SaveBasarim();
@@ -866,7 +863,7 @@ namespace DCC
                     if (RF_Gain2.Checked = true)
                     {
                         sayac++;
-                        Table RFG2_table = RF_Gain_WordTable.RF_Gain_Table(sayac, RF_Gain_DataWord.tableName2, RF_Gain_DataWord.RFG_T2_EnBuyukKazanc, RF_Gain_DataWord.RFG_T2_EnKucukKazanc, RF_Gain_DataWord.RFG_T2_Flatness, "En Büyük Kazanç (dB)", "En Küçük Kazanç (dB)", "Flatness (±dB)");
+                        Table RFG2_table = RF_Gain_WordTable.RF_Gain_Table(ExcelDosyaAdi, sayac, RF_Gain_DataWord.tableName2, RF_Gain_DataWord.RFG_T2_EnBuyukKazanc, RF_Gain_DataWord.RFG_T2_EnKucukKazanc, RF_Gain_DataWord.RFG_T2_Flatness, "En Büyük Kazanç (dB)", "En Küçük Kazanç (dB)", "Flatness (±dB)");
                         tables.Add(RFG2_table);
                         RFGBool[1] = true;
                         SaveBasarim();
@@ -874,7 +871,7 @@ namespace DCC
                     if (RF_Gain3.Checked = true)
                     {
                         sayac++;
-                        Table RFG3_table = RF_Gain_WordTable.RF_Gain_Table(sayac, RF_Gain_DataWord.tableName3, RF_Gain_DataWord.RFG_T3_Nom_Giris_Gucu, RF_Gain_DataWord.RFG_T3_Kazanc, RF_Gain_DataWord.RFG_T3_Belirsizlik, "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
+                        Table RFG3_table = RF_Gain_WordTable.RF_Gain_Table(ExcelDosyaAdi, sayac, RF_Gain_DataWord.tableName3, RF_Gain_DataWord.RFG_T3_Nom_Giris_Gucu, RF_Gain_DataWord.RFG_T3_Kazanc, RF_Gain_DataWord.RFG_T3_Belirsizlik, "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
                         tables.Add(RFG3_table);
                         RFGBool[2] = true;
                         SaveBasarim();
@@ -882,7 +879,7 @@ namespace DCC
                     if (RF_Gain4.Checked = true)
                     {
                         sayac++;
-                        Table RFG3_table = RF_Gain_WordTable.RF_Gain_Table(sayac, RF_Gain_DataWord.tableName4, RF_Gain_DataWord.RFG_T4_Nom_Giris_Gucu, RF_Gain_DataWord.RFG_T4_Kazanc, RF_Gain_DataWord.RFG_T4_Belirsizlik, "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
+                        Table RFG3_table = RF_Gain_WordTable.RF_Gain_Table(ExcelDosyaAdi, sayac, RF_Gain_DataWord.tableName4, RF_Gain_DataWord.RFG_T4_Nom_Giris_Gucu, RF_Gain_DataWord.RFG_T4_Kazanc, RF_Gain_DataWord.RFG_T4_Belirsizlik, "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
                         tables.Add(RFG3_table);
                         RFGBool[3] = true;
                         SaveBasarim();
@@ -916,6 +913,35 @@ namespace DCC
             #endregion
 
 
+        }
+        public void refresh2()
+        {
+            UncheckAllCheckBoxes(this);
+            ExcelDosyaYolu = "";
+            ExcelPage_ComboBox.Items.Clear();
+            ExcelPage_ComboBox.Refresh();
+            ExcelFileName_TextBox.Hint = "Please Select Xml File";
+            ExcelFileName_TextBox.Text = "";
+            progressBar.Value = 0;
+            sp_DataWord.ClearData();
+            CF_DataWord.ClearData();
+            EE_DataWord.ClearData();
+            CIS_DataWord.ClearData();
+            Noise_DataWord.ClearData();
+            Absolute_RF_Power.ClearData();
+            RF_Difference_DataWord.ClearData();
+            RF_Gain_DataWord.ClearData();
+            XML_Arrays.SP_ClearData();
+            XML_Arrays.EE_ClearData();
+            XML_Arrays.CF_ClearData();
+            XML_Arrays.CIS_ClearData();
+            XML_Arrays.Absolute_RF_Power_ClearData();
+            XML_Arrays.RF_Difference_ClearData();
+            XML_Arrays.XML_RFG_ClearData();
+            CreateCertificate_Button.Enabled = false;
+            ReceiveData_Button.Enabled = false;
+            ExcelPage_ComboBox.Enabled = false;
+            EnabledAllCheckBoxes(this);
         }
         public void refresh()
         {
@@ -1538,8 +1564,12 @@ namespace DCC
             }
         }
 
-#endregion
+        #endregion
 
-        
+
+        private void Measurement_Unc_TextBox_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

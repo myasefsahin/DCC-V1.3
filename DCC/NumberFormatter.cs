@@ -44,9 +44,9 @@ namespace DCC
                 errorMessage += "Belirsizlik değeri sıfır olamaz.\n";
                 errorMessage += "Lütfen Excel dosyanızı kontrol ediniz.";
 
-                hatarefresh.refresh();
+                hatarefresh.refresh2();
 
-                MessageBox.Show(errorMessage, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new InvalidOperationException(errorMessage);
             }
 
             int basamakSayisi = 0;

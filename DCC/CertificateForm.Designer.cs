@@ -315,6 +315,7 @@
             Measurement_Unc_TextBox.TabStop = false;
             Measurement_Unc_TextBox.TextAlign = HorizontalAlignment.Left;
             Measurement_Unc_TextBox.UseSystemPasswordChar = false;
+            Measurement_Unc_TextBox.Click += Measurement_Unc_TextBox_Click;
             Measurement_Unc_TextBox.TextChanged += CalibrationDescTextBox_TextChanged;
             // 
             // Cal_MethodTextBox
@@ -708,7 +709,7 @@
             CreateCertificate_Button.NoAccentTextColor = Color.Empty;
             CreateCertificate_Button.Size = new Size(169, 36);
             CreateCertificate_Button.TabIndex = 1;
-            CreateCertificate_Button.Text = "CREATE CERTİFİCATE";
+            CreateCertificate_Button.Text = "CREATE CERTIFICATE";
             CreateCertificate_Button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             CreateCertificate_Button.UseAccentColor = false;
             CreateCertificate_Button.UseVisualStyleBackColor = true;
@@ -744,7 +745,7 @@
             ReceiveData_Button.NoAccentTextColor = Color.Empty;
             ReceiveData_Button.Size = new Size(122, 42);
             ReceiveData_Button.TabIndex = 3;
-            ReceiveData_Button.Text = "RECEİVE DATA";
+            ReceiveData_Button.Text = "RECEIVE DATA";
             ReceiveData_Button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             ReceiveData_Button.UseAccentColor = false;
             ReceiveData_Button.UseVisualStyleBackColor = true;
@@ -765,7 +766,7 @@
             SelectExcel_Button.NoAccentTextColor = Color.Empty;
             SelectExcel_Button.Size = new Size(122, 42);
             SelectExcel_Button.TabIndex = 2;
-            SelectExcel_Button.Text = "SELECT FİLE";
+            SelectExcel_Button.Text = "SELECT FILE";
             SelectExcel_Button.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             SelectExcel_Button.UseAccentColor = false;
             SelectExcel_Button.UseVisualStyleBackColor = true;
@@ -1802,7 +1803,7 @@
             MeasurementTypes_ComboBox.FormattingEnabled = true;
             MeasurementTypes_ComboBox.IntegralHeight = false;
             MeasurementTypes_ComboBox.ItemHeight = 43;
-            MeasurementTypes_ComboBox.Items.AddRange(new object[] { "Effective Efficiency", "Calibration Factor", "Calculable Impedans Standard", "RF Power", "S-Parameter", "Noise", "Meteral Characterization " });
+            MeasurementTypes_ComboBox.Items.AddRange(new object[] { "Effective Efficiency", "Calibration Factor", "Calculable Impedance Standard", "RF Power", "S-Parameter", "Noise", "Material Characterization " });
             MeasurementTypes_ComboBox.Location = new Point(229, 60);
             MeasurementTypes_ComboBox.MaxDropDownItems = 4;
             MeasurementTypes_ComboBox.MouseState = MaterialSkin.MouseState.OUT;
@@ -1856,7 +1857,7 @@
             Save_Row_Col_Button.Depth = 0;
             Save_Row_Col_Button.HighEmphasis = true;
             Save_Row_Col_Button.Icon = null;
-            Save_Row_Col_Button.Location = new Point(1104, 668);
+            Save_Row_Col_Button.Location = new Point(1104, 667);
             Save_Row_Col_Button.Margin = new Padding(4, 6, 4, 6);
             Save_Row_Col_Button.MouseState = MaterialSkin.MouseState.HOVER;
             Save_Row_Col_Button.Name = "Save_Row_Col_Button";
@@ -1876,11 +1877,11 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.GridColor = Color.Black;
-            dataGridView1.Location = new Point(54, 96);
+            dataGridView1.Location = new Point(54, 89);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(1113, 552);
+            dataGridView1.Size = new Size(1113, 540);
             dataGridView1.TabIndex = 10;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
@@ -1911,7 +1912,7 @@
             groupBox13.BackColor = Color.White;
             groupBox13.Location = new Point(29, 58);
             groupBox13.Name = "groupBox13";
-            groupBox13.Size = new Size(1162, 602);
+            groupBox13.Size = new Size(1162, 588);
             groupBox13.TabIndex = 14;
             groupBox13.TabStop = false;
             // 
@@ -1929,9 +1930,9 @@
             label6.ForeColor = Color.Navy;
             label6.Location = new Point(19, 20);
             label6.Name = "label6";
-            label6.Size = new Size(344, 23);
+            label6.Size = new Size(368, 23);
             label6.TabIndex = 2;
-            label6.Text = "TÜBİTAK ULUSAL METROLOJİ ENSTİTÜSÜ";
+            label6.Text = "TUBITAK NATIONAL METROLOGY INSTITUTE";
             // 
             // groupBox12
             // 
