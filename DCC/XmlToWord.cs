@@ -29,6 +29,7 @@ namespace DCC
         public List<string> headers = new List<string>();
         CreateTable ctb = new CreateTable();
         List<Table> tables = new List<Table>();
+        SP_WordTable SP_WordTable = new SP_WordTable();
 
         private string orderNo = "/dcc:digitalCalibrationCertificate/dcc:administrativeData/dcc:coreData/dcc:identifications/dcc:identification[@id='orderno']/dcc:value";
         private string itemName = "/dcc:digitalCalibrationCertificate/dcc:administrativeData/dcc:items/dcc:item/dcc:name[@id='itemname']/dcc:content";
@@ -1385,8 +1386,23 @@ namespace DCC
                     exd.ClearData();
                     #endregion
                 }
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Title = "Save Certificates";
+                saveFileDialog1.Filter = "Human and Machine Readable Certificate (.xml)(.docx)|*.docx";
+                DialogResult result = saveFileDialog1.ShowDialog();
 
-                ctb.ResultPages(tables);
+                // Kullanıcı bir konum seçtiyse devam et
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
+                {
+                    string originalFilePath = "wordData/sertifikaC.docx";
+                    string copyFilePath = saveFileDialog1.FileName;
+
+                    // Belgeyi kopyala
+                    File.Copy(originalFilePath, copyFilePath, true);
+
+                    // Word belgesine tablo ekle
+                    ctb.ResultPages(tables, copyFilePath);
+                }
             }
             catch (Exception ex)
             {

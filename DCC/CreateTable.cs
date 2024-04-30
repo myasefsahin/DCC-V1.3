@@ -1859,27 +1859,12 @@ new Paragraph(
                 table.AppendChild(row.CloneNode(true));
             }
         }
-        public async void ResultPages(List<Table> tables)
+        public async void ResultPages(List<Table> tables ,string copyFilePath)
         {
 
             try
             {
-                // Kullanıcıdan kaydedilecek dosya yolu al
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "Office Open WORD Belgesi (.docx)|*.docx";
-                saveFileDialog1.Title = "Belgeyi Kaydet";
-                DialogResult result = saveFileDialog1.ShowDialog();
-
-                // Kullanıcı bir konum seçtiyse devam et
-                if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
-                {
-                    string originalFilePath = "wordData/sertifikaC.docx";
-                    string copyFilePath = saveFileDialog1.FileName;
-
-                    // Belgeyi kopyala
-                    File.Copy(originalFilePath, copyFilePath, true);
-
-
+                
                     // Değiştirilecek değerleri ve karşılık gelecek yeni değerleri içeren sözlükler
                     Dictionary<string, List<Table>> replacements = new Dictionary<string, List<Table>>
             {
@@ -2011,8 +1996,8 @@ new Paragraph(
                         doc.Save();
                     }
 
-                    MessageBox.Show("İşlem Tamamlandı");
-                }
+                   
+                
             }
             catch (Exception ex)
             {
