@@ -1020,44 +1020,31 @@ namespace DCC
 
             try
             {
-                using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+                // Kullanıcıdan kaydedilecek dosya yolu al
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Title = "Save Certificates";
+                saveFileDialog1.Filter = "Human and Machine Readable Certificate (.xml)(.docx)|*.docx";
+                DialogResult result = saveFileDialog1.ShowDialog();
+
+                // Kullanıcı bir konum seçtiyse devam et
+                if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    // Diyalog kutusunun başlık metni
-                    folderDialog.Description = "Please select a folder to save the Word file";
+                    string originalFilePath = "wordData/sertifikaC.docx";
+                    string copyFilePath = saveFileDialog1.FileName;
 
-                    // Eğer kullanıcı bir klasör seçerse
-                    if (folderDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        // Seçilen klasörün yolu TextBox'a yazdırılır.
-                        LabelProgress.Visible = true;
-                        LabelProgress.ForeColor = System.Drawing.Color.Green;
-                        LabelProgress.Text = @"Folder selection successful";
+                    // Belgeyi kopyala
+                    File.Copy(originalFilePath, copyFilePath, true);
 
-                        WordFolderPath = folderDialog.SelectedPath;
+                    // Word belgesine tablo ekle
+                    createtable.ResultPages(tables, copyFilePath);
 
-                    }
-                    else
-                    {
+                    // XML dosyasını oluştur
+                    string xmlFilePath = Path.ChangeExtension(copyFilePath, ".xml");
+                    xml.Save(xmlFilePath);
 
-                    }
+                    // Bildirim mesajı göster
+                    MessageBox.Show("Human-readable and machine-readable certificates were created.", "Successful !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                createtable.ResultPages(tables);
-
-
-                if (tables.Count >= 1)
-                {
-
-                    WordBasarim();
-                }
-                else
-                {
-                    MessageBox.Show(@"Please select at least one parameter!", @"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    LabelProgress.Visible = true;
-                    LabelProgress.ForeColor = System.Drawing.Color.Red;
-                    LabelProgress.Text = @"ERROR!: Parameter Select";
-                }
-
             }
             catch (Exception err)
             {
@@ -1067,37 +1054,6 @@ namespace DCC
                 MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            try
-            {
-                using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
-                {
-                    // Diyalog kutusunun başlık metni
-                    folderDialog.Description = "Please select a folder to save the XML file.";
-
-                    // Eğer kullanıcı bir klasör seçerse
-                    if (folderDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        // Seçilen klasörün yolu TextBox'a yazdırılır.
-                        LabelProgress.Visible = true;
-                        LabelProgress.ForeColor = System.Drawing.Color.Green;
-                        LabelProgress.Text = @"Folder selection successful";
-
-                        XMLFolderPath = folderDialog.SelectedPath;
-                    }
-                }
-
-                string xmlSavePath = XMLFolderPath + "\\" + ExcelDosyaAdi + ".xml";
-                xml.Save(xmlSavePath);
-                XMLBasarim();
-
-            }
-            catch (Exception err)
-            {
-                LabelProgress.Visible = true;
-                LabelProgress.ForeColor = System.Drawing.Color.Red;
-                LabelProgress.Text = @"ERROR!: XML";
-                MessageBox.Show(err.Message, err.StackTrace, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             SelectExcel_Button.Enabled = false;
             CreateCertificate_Button.Enabled = false;
             LabelProgress.Text = "";
@@ -1110,7 +1066,7 @@ namespace DCC
             ExcelFileName_TextBox.Text = "";
             listBox1.Items.Clear();
             label7.Visible = true;
-
+           
         }
         #endregion
 
