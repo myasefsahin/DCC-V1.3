@@ -11,7 +11,7 @@ namespace DCC
 {
      class Noise_WordTable {
 
-        public Table CreateENR(int sayac, string tableName, ArrayList Freq, ArrayList ENR, ArrayList ENRUnc)
+        public Table CreateENR(string filename, int sayac, string tableName, ArrayList Freq, ArrayList ENR, ArrayList ENRUnc)
         {
                     int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -32,7 +32,7 @@ namespace DCC
                     ),
                     new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val="22"}),
-                        new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                     )
                 )
             )
@@ -115,7 +115,7 @@ namespace DCC
             return table;
         }
 
-        public Table Create_DC_ON_OFF(int sayac, string tableName, ArrayList frekans, ArrayList RC, ArrayList UstLimit, ArrayList RCUnc, ArrayList Phase, ArrayList PhaseUnc)
+        public Table Create_DC_ON_OFF(string filename,int sayac, string tableName, ArrayList frekans, ArrayList RC, ArrayList UstLimit, ArrayList RCUnc, ArrayList Phase, ArrayList PhaseUnc)
         {
             // Table properties and some other specs
             int tableWidth = 10000;
@@ -137,7 +137,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                          new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )

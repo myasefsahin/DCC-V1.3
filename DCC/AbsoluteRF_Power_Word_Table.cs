@@ -10,7 +10,7 @@ namespace DCC
 {
      class AbsoluteRF_Power_Word_Table
     {
-        public Table ARFP_CreateTable_1(int sayac,string tableName,ArrayList Freq, ArrayList CikisGucu, ArrayList Olculen, ArrayList AltSınır, ArrayList SapmaFarkZayıflatma, ArrayList UstSınır, ArrayList Belirsizlik,string olculen,string measurement)
+        public Table ARFP_CreateTable_1( string filename, int sayac,string tableName,ArrayList Freq, ArrayList CikisGucu, ArrayList Olculen, ArrayList AltSınır, ArrayList SapmaFarkZayıflatma, ArrayList UstSınır, ArrayList Belirsizlik,string olculen,string measurement)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
@@ -33,7 +33,7 @@ namespace DCC
                    ),
                    new Run(
                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                       new Text("Tablo"+sayac+". "+tableName)
+                       new Text("Tablo"+sayac+". "+tableName+ " " +"("+filename+")")
                    )
                )
            )
@@ -189,7 +189,7 @@ namespace DCC
             return table;
         }
 
-        public Table ARFP_CreateTable_2(int sayac,string tableName,ArrayList Freq, ArrayList Seviye, ArrayList OlculenDeger, ArrayList MaxUstSınır, ArrayList Belirsizlik,string max_ustsınır)
+        public Table ARFP_CreateTable_2(string filename,int sayac,string tableName,ArrayList Freq, ArrayList Seviye, ArrayList OlculenDeger, ArrayList MaxUstSınır, ArrayList Belirsizlik,string max_ustsınır)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
@@ -210,7 +210,7 @@ namespace DCC
                    ),
                    new Run(
                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                       new Text("Tablo" + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                    )
                )
            )

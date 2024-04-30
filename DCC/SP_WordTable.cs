@@ -6,7 +6,7 @@ namespace DCC
     class SP_WordTable
     {
         #region Reel & Imaginary
-        public Table CreateReelImg(int sayac,string tableName,ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc)
+        public Table CreateReelImg(string filename,int sayac,string tableName,ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc)
         {
             int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -27,7 +27,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val="22"}),
-                          new Text("Tablo "+sayac+". "+tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )
@@ -141,7 +141,7 @@ namespace DCC
         #endregion
 
         #region Linmag & Phase
-        public Table CreateLinPhase(int sayac, string tableName, ArrayList Freq, ArrayList LinMag, ArrayList LinMagUnc, ArrayList Phase, ArrayList PhaseUnc)
+        public Table CreateLinPhase(string filename, int sayac, string tableName, ArrayList Freq, ArrayList LinMag, ArrayList LinMagUnc, ArrayList Phase, ArrayList PhaseUnc)
         {
             int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -162,7 +162,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                          new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )
@@ -276,7 +276,7 @@ namespace DCC
         #endregion
 
         #region Logmag & Phase
-        public Table CreateLogPhase(int sayac, string tableName, ArrayList Freq, ArrayList LogMag, ArrayList LogMagUnc, ArrayList LogPhase, ArrayList LogPhaseUnc)
+        public Table CreateLogPhase(string filename, int sayac, string tableName, ArrayList Freq, ArrayList LogMag, ArrayList LogMagUnc, ArrayList LogPhase, ArrayList LogPhaseUnc)
         {
             int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -297,7 +297,7 @@ namespace DCC
                       ),
                       new Run(
                           new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                          new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                       )
                   )
               )
@@ -411,7 +411,7 @@ namespace DCC
         #endregion
 
         #region SWR
-        public Table CreateSWR(int sayac, string tableName, ArrayList Freq, ArrayList Swr, ArrayList SwrUnc)
+        public Table CreateSWR(string filename,int sayac, string tableName, ArrayList Freq, ArrayList Swr, ArrayList SwrUnc)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
@@ -432,7 +432,7 @@ namespace DCC
                    ),
                    new Run(
                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() { Val = "22" }),
-                       new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                    )
                )
            )

@@ -10,7 +10,7 @@ namespace DCC
 {
     class CIS_WordTable
     {
-        public Table Create_Z_Position(int sayac,string tableName,ArrayList Olcum_Adim, ArrayList z_position, ArrayList z_position_Unc, ArrayList Icod, ArrayList Icod_Unc, ArrayList Ocid, ArrayList Ocid_Unc)
+        public Table Create_Z_Position(string filename, int sayac,string tableName,ArrayList Olcum_Adim, ArrayList z_position, ArrayList z_position_Unc, ArrayList Icod, ArrayList Icod_Unc, ArrayList Ocid, ArrayList Ocid_Unc)
         {
               int tableWidth = 10000;
             int cellWidth = tableWidth / 3;
@@ -31,7 +31,7 @@ namespace DCC
                     ),
                     new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },new FontSize() { Val="22" }),
-                        new Text("Tablo "+sayac+". "+tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + "-" + filename)
                     )
                 )
             )

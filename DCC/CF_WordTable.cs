@@ -10,7 +10,7 @@ namespace DCC
 {
     class CF_WordTable
     {
-        public Table CF_CreateCF(int sayac,string tableName,ArrayList Freq, ArrayList CF, ArrayList CF_Unc)
+        public Table CF_CreateCF(string filename,int sayac,string tableName,ArrayList Freq, ArrayList CF, ArrayList CF_Unc)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
@@ -31,7 +31,7 @@ namespace DCC
                    ),
                    new Run(
                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() {Val="22" }),
-                       new Text("Tablo "+sayac+". "+tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + "-" + filename)
                    )
                )
            )
@@ -115,7 +115,7 @@ namespace DCC
         }
 
 
-        public Table CF_CreateReelImg(int sayac,string tableName,ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc, ArrayList YK, ArrayList YK_Unc)
+        public Table CF_CreateReelImg(string filename, int sayac,string tableName,ArrayList Freq, ArrayList Reel, ArrayList ReelUnc, ArrayList Imag, ArrayList ImagUnc, ArrayList YK, ArrayList YK_Unc)
         {
             // Tablo özellikleri
             int tableWidth = 10000; // Sayfa genişliğine sığacak şekilde ayarlanmalıdır (örneğin, Word'de varsayılan 10000 DXA)
@@ -136,7 +136,7 @@ namespace DCC
                ),
                new Run(
                    new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },  new FontSize() { Val = "22" }),
-                   new Text("Tablo " + sayac + ". " + tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + "-" + filename)
                )
            )
         )

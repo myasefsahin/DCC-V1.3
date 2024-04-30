@@ -136,7 +136,7 @@
             groupBox1.Size = new Size(353, 308);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
-            groupBox1.Text = "MACHİNE READABLE TO HUMAN READABLE";
+            groupBox1.Text = "MACHINE READABLE TO HUMAN READABLE";
             // 
             // checkBox1
             // 
@@ -163,7 +163,7 @@
             createWordFile.NoAccentTextColor = Color.Empty;
             createWordFile.Size = new Size(158, 36);
             createWordFile.TabIndex = 3;
-            createWordFile.Text = "CREATE HUMAN READABLE FİLE";
+            createWordFile.Text = "CREATE HUMAN READABLE FILE";
             createWordFile.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             createWordFile.UseAccentColor = false;
             createWordFile.UseVisualStyleBackColor = true;
@@ -206,14 +206,14 @@
             selectXmlFile.Depth = 0;
             selectXmlFile.HighEmphasis = true;
             selectXmlFile.Icon = null;
-            selectXmlFile.Location = new Point(99, 159);
+            selectXmlFile.Location = new Point(99, 160);
             selectXmlFile.Margin = new Padding(5);
             selectXmlFile.MouseState = MaterialSkin.MouseState.HOVER;
             selectXmlFile.Name = "selectXmlFile";
             selectXmlFile.NoAccentTextColor = Color.Empty;
             selectXmlFile.Size = new Size(158, 36);
             selectXmlFile.TabIndex = 2;
-            selectXmlFile.Text = "SELECT XML FİLE";
+            selectXmlFile.Text = "SELECT XML FILE";
             selectXmlFile.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             selectXmlFile.UseAccentColor = false;
             selectXmlFile.UseVisualStyleBackColor = true;

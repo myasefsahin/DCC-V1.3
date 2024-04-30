@@ -10,7 +10,7 @@ namespace DCC
 {
     class RF_Gain_WordTable
     {
-        public Table RF_Gain_Table(int sayac,string tableName,ArrayList col1, ArrayList col2, ArrayList col3, string Col1, string Col2, string Col3)
+        public Table RF_Gain_Table(string filename, int sayac,string tableName,ArrayList col1, ArrayList col2, ArrayList col3, string Col1, string Col2, string Col3)
         {
 
             int tableWidth = 10000;
@@ -32,7 +32,7 @@ namespace DCC
                     ),
                     new Run(
                         new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" },new FontSize() { Val="22"}),
-                        new Text("Tablo "+sayac+". "+tableName)
+                       new Text("Tablo" + sayac + ". " + tableName + " " + "(" + filename + ")")
                     )
                 )
             )

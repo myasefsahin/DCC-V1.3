@@ -82,7 +82,7 @@ namespace DCC
                     ArrayS11LinPhaseUnc.Add(formattedEntity3.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 11] + i].Value);
+                    calculateEntity.measurent = Math.Abs(Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 11] + i].Value));
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 12] + i].Value);
                     CalculateEntity formattedEntity4 = NumberFormatter.deneme(calculateEntity);
                     ArrayS11Log.Add(formattedEntity4.measurent);
@@ -128,7 +128,7 @@ namespace DCC
                     ArrayS12LinPhaseUnc.Add(formattedEntity10.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 29] + i].Value);
+                    calculateEntity.measurent = Math.Abs(Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 29] + i].Value));
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 30] + i].Value);
                     CalculateEntity formattedEntity11 = NumberFormatter.deneme(calculateEntity);
                     ArrayS12Log.Add(formattedEntity11.measurent);
@@ -171,7 +171,7 @@ namespace DCC
                     ArrayS21LinPhaseUnc.Add(formattedEntity16.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 44] + i].Value);
+                    calculateEntity.measurent = Math.Abs(Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 44] + i].Value));
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 45] + i].Value);
                     CalculateEntity formattedEntity17 = NumberFormatter.deneme(calculateEntity);
                     ArrayS21Log.Add(formattedEntity17.measurent);
@@ -212,7 +212,7 @@ namespace DCC
                     ArrayS22LinPhaseUnc.Add(formattedEntity22.uncertainty);
 
 
-                    calculateEntity.measurent = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 59] + i].Value);
+                    calculateEntity.measurent = Math.Abs(Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 59] + i].Value));
                     calculateEntity.uncertainty = Convert.ToDecimal(worksheet.Cells[columnName[harfIndex + 60] + i].Value);
                     CalculateEntity formattedEntity23 = NumberFormatter.deneme(calculateEntity);
                     ArrayS22Log.Add(formattedEntity23.measurent);
