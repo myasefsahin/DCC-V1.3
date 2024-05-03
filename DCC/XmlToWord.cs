@@ -30,6 +30,14 @@ namespace DCC
         CreateTable ctb = new CreateTable();
         List<Table> tables = new List<Table>();
         SP_WordTable SP_WordTable = new SP_WordTable();
+        EE_WordTable EE_WordTable = new EE_WordTable();
+        CF_WordTable CF_WordTable = new CF_WordTable();
+        CIS_WordTable CIS_WordTable = new CIS_WordTable();
+        Noise_WordTable Noise_WordTable=new Noise_WordTable();
+        RF_Difference_WordTable RF_Difference_WordTable = new RF_Difference_WordTable();
+        RF_Gain_WordTable RF_Gain_WordTable= new RF_Gain_WordTable();
+        AbsoluteRF_Power_Word_Table AbsoluteRF_Power_Word_Table= new AbsoluteRF_Power_Word_Table();
+        string copyFilePath;
 
         private string orderNo = "/dcc:digitalCalibrationCertificate/dcc:administrativeData/dcc:coreData/dcc:identifications/dcc:identification[@id='orderno']/dcc:value";
         private string itemName = "/dcc:digitalCalibrationCertificate/dcc:administrativeData/dcc:items/dcc:item/dcc:name[@id='itemname']/dcc:content";
@@ -451,21 +459,26 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyEE_S11ReelUnc, EffiencyEE_S11ReelUnc);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyEE_S11Imag, EffiencyEE_S11Imag);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyEE_S11ImagUnc, EffiencyEE_S11ImagUnc);
+
+                    }
+                    if (boolList[16] == true)
+                    {
+                      
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyRHO_EERho, EffiencyRHO_EERho);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyRHO_EERhoUnc, EffiencyRHO_EERhoUnc);
                     }
-                    if (boolList[16] == true)
+                    if (boolList[17] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyEE_CFEE_CF, EffiencyEE_CFEE_CF);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyEE_CFEE_CFUnc, EffiencyEE_CFEE_CFUnc);
 
                     }
-                    if (boolList[17] == true)
+                    if (boolList[18] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCF_Cal_Factor, CF_Cal_Factor);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCF_Cal_Factor_Unc, CF_Cal_Factor_Unc);
                     }
-                    if (boolList[18] == true)
+                    if (boolList[19] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCF_Imaginer, CF_Imaginer);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCF_Imaginer_Unc, CF_Imaginer_Unc);
@@ -474,7 +487,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCF_ReflectionCof, CF_ReflectionCof);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCF_ReflectionCof_Unc, CF_ReflectionCof_Unc);
                     }
-                    if (boolList[19] == true)
+                    if (boolList[20] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCIS_Z_Position, CIS_Z_Position);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCIS_Z_Position_Unc, CIS_Z_Position_Unc);
@@ -484,12 +497,12 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayCIS_OCID_Unc, CIS_OCID_Unc);
 
                     }
-                    if (boolList[20] == true)
+                    if (boolList[21] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseENR, NoiseENR);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseENRUnc, NoiseENRUnc);
                     }
-                    if (boolList[21] == true)
+                    if (boolList[22] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseDCONRCLin, NoiseDCONRCLin);
@@ -498,7 +511,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseDCONRCPhase, NoiseDCONRCPhase);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseDCONRCPhaseUnc, NoiseDCONRCPhaseUnc);
                     }
-                    if (boolList[22] == true)
+                    if (boolList[23] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseDCOFFRCLin, NoiseDCOFFRCLin);
@@ -507,7 +520,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseDCOFFRCPhase, NoiseDCOFFRCPhase);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayNoiseDCOFFRCPhaseUnc, NoiseDCOFFRCPhaseUnc);
                     }
-                    if (boolList[23] == true)
+                    if (boolList[24] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T1_GostergeDegeri, RFD_IndıcatorVal);
@@ -517,7 +530,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T1_UstSınır, RFD_upperLimit);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T1_Belirsizlik, RFD_uncertainty);
                     }
-                    if (boolList[24] == true)
+                    if (boolList[25] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T2_Nom_Guc_Lvl, RFD_NomPowlvl2);
@@ -527,7 +540,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T2_UstSınır, RFD_upperLimit2);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T2_Belirsizlik, RFD_uncertainty2);
                     }
-                    if (boolList[25] == true)
+                    if (boolList[26] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T3_NominalGuc, RFD_Nom_pow3);
@@ -537,7 +550,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T3_Fark, RFD_difference3);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T3_Belirsizlik, RFD_uncertainty3);
                     }
-                    if (boolList[26] == true)
+                    if (boolList[27] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T4_Min_Guc_lvl, RFD_MinPowLevel4);
@@ -547,28 +560,28 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T4_UstSınır, RFD_upper_limit4);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFD_T4_Belirsizlik, RFD_uncertainty4);
                     }
-                    if (boolList[27] == true)
+                    if (boolList[28] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T1_GirisGucu, RFG_Input_Pow1);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T1_Belirsizlik, RFG_Unc1);
                     }
-                    if (boolList[28] == true)
+                    if (boolList[29] == true)
                     {
 
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T2_EnKucukKazanc, RFG_lowest_Gain);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T2_Flatness, RFG_Flatness);
                     }
-                    if (boolList[29] == true)
+                    if (boolList[30] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T3_Kazanc, Gain_diff_input_100KHz);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T3_Belirsizlik, RFG_Unc2);
                     }
-                    if (boolList[30] == true)
+                    if (boolList[31] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T4_Kazanc, Gain_diff_input_1GHz);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayRFG_T4_Belirsizlik, RFG_Unc3);
                     }
-                    if (boolList[31] == true)
+                    if (boolList[32] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T1_Cıkıs_Gücü, Abs_RF_Power_Output_Power_t1);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T1_Olculen_Güc, Abs_RF_Power_Measured_Power_t1);
@@ -577,7 +590,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T1_ÜstSınır, Abs_RF_Power_Upper_Limit_t1);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T1_Belirsizlik, Abs_RF_Power_Uncertainty_t1);
                     }
-                    if (boolList[32] == true)
+                    if (boolList[33] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T2_Cıkıs_Gücü, Abs_RF_Power_Output_Power_t2);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T2_OlculenDeger, Abs_RF_Power_Measured_Power_t2);
@@ -586,7 +599,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T2_ÜstSınır, Abs_RF_Power_Upper_Limit_t2);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T2_Belirsizlik, Abs_RF_Power_Uncertainty_t2);
                     }
-                    if (boolList[33] == true)
+                    if (boolList[34] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T3_Cıkıs_Gücü, Abs_RF_Power_Output_Power_t3);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T3_OlculenZayıflatma, Abs_RF_Power_Measured_Attenuation_t3);
@@ -595,28 +608,28 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T3_ÜstSınır, Abs_RF_Power_Upper_Limit_t3);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T3_Belirsizlik, Abs_RF_Power_Uncertainty_t3);
                     }
-                    if (boolList[34] == true)
+                    if (boolList[35] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T4_SWR_Seviye, Abs_RF_Power_Level_t4);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T4_SWR_OlculenDeger, Abs_RF_Power_Measured_Value_t4);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T4_SWR_MaksimumDeger, Abs_RF_Power_Maximum_t4);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T4_SWR_Belirsizlik, Abs_RF_Power_Uncertainty_t4);
                     }
-                    if (boolList[35] == true)
+                    if (boolList[36] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T5_SWR_Seviye, Abs_RF_Power_Level_t5);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T5_SWR_OlculenDeger, Abs_RF_Power_Measured_Value_t5);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T5_SWR_MaksimumDeger, Abs_RF_Power_Maximum_t5);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T5_SWR_Belirsizlik, Abs_RF_Power_Uncertainty_t5);
                     }
-                    if (boolList[36] == true)
+                    if (boolList[37] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T6_SWR_Seviye, Abs_RF_Power_Level_t6);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T6_SWR_OlculenDeger, Abs_RF_Power_Measured_Value_t6);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T6_SWR_MaksimumDeger, Abs_RF_Power_Maximum_t6);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T6_SWR_Belirsizlik, Abs_RF_Power_Uncertainty_t6);
                     }
-                    if (boolList[37] == true)
+                    if (boolList[38] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T7_Cıkıs_Gücü, Abs_RF_Power_Output_Power_t7);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T7_OlculenGuc, Abs_RF_Power_Measured_Power_t7);
@@ -625,7 +638,7 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T7_ÜstSınır, Abs_RF_Power_Upper_Limit_t7);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T7_Belirsizlik, Abs_RF_Power_Uncertainty_t7);
                     }
-                    if (boolList[38] == true)
+                    if (boolList[39] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T8_Cıkıs_Gücü, Abs_RF_Power_Output_Power_t8);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T8_OlculenDeger, Abs_RF_Power_Measured_Value_t8);
@@ -634,21 +647,21 @@ namespace DCC
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T8_ÜstSınır, Abs_RF_Power_Upper_Limit_t8);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T8_Belirsizlik, Abs_RF_Power_Uncertainty_t8);
                     }
-                    if (boolList[39] == true)
+                    if (boolList[40] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T9_SWR_Seviye, Abs_RF_Power_Level_t9);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T9_SWR_OlculenDeger, Abs_RF_Power_Measured_Value_t9);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T9_SWR_MaksimumDeger, Abs_RF_Power_Upper_Limit_t9);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T9_SWR_Belirsizlik, Abs_RF_Power_Uncertainty_t9);
                     }
-                    if (boolList[40] == true)
+                    if (boolList[41] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T10_SWR_Seviye, Abs_RF_Power_Level_t10);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T10_SWR_OlculenDeger, Abs_RF_Power_Measured_Value_t10);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T10_SWR_MaksimumDeger, Abs_RF_Power_Upper_Limit_t10);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T10_SWR_Belirsizlik, Abs_RF_Power_Uncertainty_t10);
                     }
-                    if (boolList[41] == true)
+                    if (boolList[42] == true)
                     {
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T11_SWR_Seviye, Abs_RF_Power_Level_t11);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayARFP_T11_SWR_OlculenDeger, Abs_RF_Power_Measured_Value_t11);
@@ -961,43 +974,46 @@ namespace DCC
                     {
                         FormatData(exd.ArrayEffiencyEE_S11Imag, exd.ArrayEffiencyEE_S11ImagUnc, arraysEffiencyEE_S11Imag, arraysEffiencyEE_S11Imagunc, exd.ArrayFrekansEE.Count);
                         FormatData(exd.ArrayEffiencyEE_S11Reel, exd.ArrayEffiencyEE_S11ReelUnc, arraysEffiencyEE_S11Reel, arraysEffiencyEE_S11Reelunc, exd.ArrayFrekansEE.Count);
-                        FormatData(exd.ArrayEffiencyRHO_EERho, exd.ArrayEffiencyRHO_EERhoUnc, arraysEffiencyRHO_EERho, arraysEffiencyRHO_EERhounc, exd.ArrayFrekansEE.Count);
                     }
                     if (boolList[16] == true)
                     {
-                        FormatData(exd.ArrayEffiencyEE_CFEE_CF, exd.ArrayEffiencyEE_CFEE_CFUnc, arraysEffiencyEE_CFEE_CF, arraysEffiencyEE_CFEE_CFunc, exd.ArrayFrekansEE.Count);
+                        FormatData(exd.ArrayEffiencyRHO_EERho, exd.ArrayEffiencyRHO_EERhoUnc, arraysEffiencyRHO_EERho, arraysEffiencyRHO_EERhounc, exd.ArrayFrekansEE.Count);
                     }
                     if (boolList[17] == true)
                     {
-                        FormatData(exd.ArrayCF_Cal_Factor, exd.ArrayCF_Cal_Factor_Unc, arrayCF_Cal_Factor, arrayCF_Cal_Factor_Unc, exd.ArrayFrekansCF.Count);
+                        FormatData(exd.ArrayEffiencyEE_CFEE_CF, exd.ArrayEffiencyEE_CFEE_CFUnc, arraysEffiencyEE_CFEE_CF, arraysEffiencyEE_CFEE_CFunc, exd.ArrayFrekansEE.Count);
                     }
                     if (boolList[18] == true)
+                    {
+                        FormatData(exd.ArrayCF_Cal_Factor, exd.ArrayCF_Cal_Factor_Unc, arrayCF_Cal_Factor, arrayCF_Cal_Factor_Unc, exd.ArrayFrekansCF.Count);
+                    }
+                    if (boolList[19] == true)
                     {
                         FormatData(exd.ArrayCF_Imaginer, exd.ArrayCF_Imaginer_Unc, arrayCF_Imaginer, arrayCF_Imaginer_Unc, exd.ArrayFrekansCF.Count);
                         FormatData(exd.ArrayCF_Reel, exd.ArrayCF_Reel_Unc, arrayCF_Reel, arrayCF_Reel_Unc, exd.ArrayFrekansCF.Count);
                         FormatData(exd.ArrayCF_ReflectionCof, exd.ArrayCF_ReflectionCof_Unc, arrayCF_ReflectionCof, arrayCF_ReflectionCof_Unc, exd.ArrayFrekansCF.Count);
                     }
-                    if (boolList[19] == true)
+                    if (boolList[20] == true)
                     {
                         FormatData(exd.ArrayCIS_Z_Position, exd.ArrayCIS_Z_Position_Unc, arrayCIS_Z_Position, arrayCIS_Z_Position_Unc, exd.ArrayFrekansCIS.Count);
                         FormatData(exd.ArrayCIS_ICOD, exd.ArrayCIS_ICOD_Unc, arrayCIS_ICOD, arrayCIS_ICOD_Unc, exd.ArrayFrekansCIS.Count);
                         FormatData(exd.ArrayCIS_OCID, exd.ArrayCIS_OCID_Unc, arrayCIS_OCID, arrayCIS_OCID_Unc, exd.ArrayFrekansCIS.Count);
                     }
-                    if (boolList[20] == true)
+                    if (boolList[21] == true)
                     {
                         FormatData(exd.ArrayNoiseENR, exd.ArrayNoiseENRUnc, arrayNoiseENR, arrayNoiseENRUnc, exd.ArrayFrekansNoise.Count);
                     }
-                    if (boolList[21] == true)
+                    if (boolList[22] == true)
                     {
                         FormatData(exd.ArrayNoiseDCONRCLin, exd.ArrayNoiseDCONRCLinUnc, arrayNoiseDCONRCLin, arrayNoiseDCONRCLinUnc, exd.ArrayFrekansNoise.Count);
                         FormatData(exd.ArrayNoiseDCONRCPhase, exd.ArrayNoiseDCONRCPhaseUnc, arrayNoiseDCONRCPhase, arrayNoiseDCONRCPhaseUnc, exd.ArrayFrekansNoise.Count);
                     }
-                    if (boolList[22] == true)
+                    if (boolList[23] == true)
                     {
                         FormatData(exd.ArrayNoiseDCOFFRCLin, exd.ArrayNoiseDCOFFRCLinUnc, arrayNoiseDCOFFRCLin, arrayNoiseDCOFFRCLinUnc, exd.ArrayFrekansNoise.Count);
                         FormatData(exd.ArrayNoiseDCOFFRCPhase, exd.ArrayNoiseDCOFFRCPhaseUnc, arrayNoiseDCOFFRCPhase, arrayNoiseDCOFFRCPhaseUnc, exd.ArrayFrekansNoise.Count);
                     }
-                    if (boolList[23] == true)
+                    if (boolList[24] == true)
                     {
                         FormatData(exd.ArrayRFD_T1_GostergeDegeri, exd.ArrayRFD_T1_Belirsizlik, arrayRFD_T1_GostergeDegeri, arrayRFD_T1_Belirsizlik, exd.ArrayRFD_T1_Frekans.Count);
                         FormatData(exd.ArrayRFD_T1_OlculenDeger, exd.ArrayRFD_T1_Belirsizlik, arrayRFD_T1_OlculenDeger, arrayRFD_T1_Belirsizlik2, exd.ArrayRFD_T1_Frekans.Count);
@@ -1005,7 +1021,7 @@ namespace DCC
                         arrayRFD_T1_AltSınır = exd.ArrayRFD_T1_AltSınır;
                         arrayRFD_T1_UstSınır = exd.ArrayRFD_T1_UstSınır;
                     }
-                    if (boolList[24] == true)
+                    if (boolList[25] == true)
                     {
                         FormatData(exd.ArrayRFD_T2_OlculenDeger, exd.ArrayRFD_T2_Belirsizlik, arrayRFD_T2_OlculenDeger, arrayRFD_T2_Belirsizlik, exd.ArrayRFD_T2_Frekans.Count);
                         FormatData(exd.ArrayRFD_T2_Nom_Guc_Lvl_fark, exd.ArrayRFD_T2_Belirsizlik, arrayRFD_T2_Nom_Guc_Lvl_fark, arrayRFD_T2_Belirsizlik2, exd.ArrayRFD_T2_Frekans.Count);
@@ -1013,7 +1029,7 @@ namespace DCC
                         arrayRFD_T2_AltSınır = exd.ArrayRFD_T2_AltSınır;
                         arrayRFD_T2_UstSınır = exd.ArrayRFD_T2_UstSınır;
                     }
-                    if (boolList[25] == true)
+                    if (boolList[26] == true)
                     {
                         FormatData(exd.ArrayRFD_T3_OlculenDeger, exd.ArrayRFD_T3_Belirsizlik, arrayRFD_T3_OlculenDeger, arrayRFD_T3_Belirsizlik, exd.ArrayRFD_T3_Frekans.Count);
                         FormatData(exd.ArrayRFD_T3_Fark, exd.ArrayRFD_T3_Belirsizlik, arrayRFD_T3_Fark, arrayRFD_T3_Belirsizlik2, exd.ArrayRFD_T3_Frekans.Count);
@@ -1021,7 +1037,7 @@ namespace DCC
                         arrayRFD_T3_AltSınır = exd.ArrayRFD_T3_AltSınır;
                         arrayRFD_T3_UstSınır = exd.ArrayRFD_T3_UstSınır;
                     }
-                    if (boolList[26] == true)
+                    if (boolList[27] == true)
                     {
                         FormatData(exd.ArrayRFD_T4_Fark, exd.ArrayRFD_T4_Belirsizlik, arrayRFD_T4_Fark, arrayRFD_T4_Belirsizlik, exd.ArrayRFD_T4_Frekans.Count);
                         arrayRFD_T4_Min_Guc_lvl = exd.ArrayRFD_T4_Min_Guc_lvl;
@@ -1029,27 +1045,27 @@ namespace DCC
                         arrayRFD_T4_AltSınır = exd.ArrayRFD_T4_AltSınır;
                         arrayRFD_T4_UstSınır = exd.ArrayRFD_T4_UstSınır;
                     }
-                    if (boolList[27] == true)
+                    if (boolList[28] == true)
                     {
                         FormatData(exd.ArrayRFG_T1_GirisGucu, exd.ArrayRFG_T1_Belirsizlik, arrayRFG_T1_GirisGucu, arrayRFG_T1_Belirsizlik, exd.ArrayRFG_T1_Frekans.Count);
 
                     }
-                    if (boolList[28] == true)
+                    if (boolList[29] == true)
                     {
                         FormatData(exd.ArrayRFG_T2_EnBuyukKazanc, exd.ArrayRFG_T2_EnKucukKazanc, arrayRFG_T2_EnBuyukKazanc, arrayRFG_T2_EnKucukKazanc, exd.ArrayRFG_T2_Flatness.Count);
 
                     }
-                    if (boolList[29] == true)
+                    if (boolList[30] == true)
                     {
                         FormatData(exd.ArrayRFG_T3_Kazanc, exd.ArrayRFG_T3_Belirsizlik, arrayRFG_T3_Kazanc, arrayRFG_T3_Belirsizlik, exd.ArrayRFG_T3_Nom_Giris_Gucu.Count);
 
                     }
-                    if (boolList[30] == true)
+                    if (boolList[31] == true)
                     {
                         FormatData(exd.ArrayRFG_T4_Kazanc, exd.ArrayRFG_T4_Belirsizlik, arrayRFG_T4_Kazanc, arrayRFG_T4_Belirsizlik, exd.ArrayRFG_T4_Nom_Giris_Gucu.Count);
 
                     }
-                    if (boolList[31] == true)
+                    if (boolList[32] == true)
                     {
                         FormatData(exd.ArrayARFP_T1_Olculen_Güc, exd.ArrayARFP_T1_Belirsizlik, arrayARFP_T1_Olculen_Güc, arrayARFP_T1_Belirsizlik, exd.ArrayARFP_T1_Frekans.Count);
                         FormatData(exd.ArrayARFP_T1_Sapma, exd.ArrayARFP_T1_Belirsizlik, arrayARFP_T1_Sapma, arrayARFP_T1_Belirsizlik2, exd.ArrayARFP_T1_Frekans.Count);
@@ -1057,7 +1073,7 @@ namespace DCC
                         arrayARFP_T1_ÜstSınır = exd.ArrayARFP_T1_ÜstSınır;
                         arrayARFP_T1_AltSınır = exd.ArrayARFP_T1_AltSınır;
                     }
-                    if (boolList[32] == true)
+                    if (boolList[33] == true)
                     {
                         FormatData(exd.ArrayARFP_T2_OlculenDeger, exd.ArrayARFP_T2_Belirsizlik, arrayARFP_T2_OlculenDeger, arrayARFP_T2_Belirsizlik, exd.ArrayARFP_T2_Frekans.Count);
                         FormatData(exd.ArrayARFP_T2_Fark, exd.ArrayARFP_T2_Belirsizlik, arrayARFP_T2_Fark, arrayARFP_T2_Belirsizlik2, exd.ArrayARFP_T2_Frekans.Count);
@@ -1065,7 +1081,7 @@ namespace DCC
                         arrayARFP_T2_ÜstSınır = exd.ArrayARFP_T2_ÜstSınır;
                         arrayARFP_T2_AltSınır = exd.ArrayARFP_T2_AltSınır;
                     }
-                    if (boolList[33] == true)
+                    if (boolList[34] == true)
                     {
                         FormatData(exd.ArrayARFP_T3_OlculenZayıflatma, exd.ArrayARFP_T3_Belirsizlik, arrayARFP_T3_OlculenZayıflatma, arrayARFP_T3_Belirsizlik, exd.ArrayARFP_T3_Frekans.Count);
                         FormatData(exd.ArrayARFP_T3_Zayıflatma, exd.ArrayARFP_T3_Belirsizlik, arrayARFP_T3_Zayıflatma, arrayARFP_T3_Belirsizlik2, exd.ArrayARFP_T3_Frekans.Count);
@@ -1073,25 +1089,25 @@ namespace DCC
                         arrayARFP_T3_ÜstSınır = exd.ArrayARFP_T3_ÜstSınır;
                         arrayARFP_T3_AltSınır = exd.ArrayARFP_T3_AltSınır;
                     }
-                    if (boolList[34] == true)
+                    if (boolList[35] == true)
                     {
                         FormatData(exd.ArrayARFP_T4_SWR_OlculenDeger, exd.ArrayARFP_T4_SWR_Belirsizlik, arrayARFP_T4_SWR_OlculenDeger, arrayARFP_T4_SWR_Belirsizlik, exd.ArrayARFP_T4_T5_T6_frekans.Count);
                         arrayARFP_T4_SWR_Seviye = exd.ArrayARFP_T4_SWR_Seviye;
                         arrayARFP_T4_SWR_MaksimumDeger = exd.ArrayARFP_T4_SWR_MaksimumDeger;
                     }
-                    if (boolList[35] == true)
+                    if (boolList[36] == true)
                     {
                         FormatData(exd.ArrayARFP_T5_SWR_OlculenDeger, exd.ArrayARFP_T5_SWR_Belirsizlik, arrayARFP_T5_SWR_OlculenDeger, arrayARFP_T5_SWR_Belirsizlik, exd.ArrayARFP_T4_T5_T6_frekans.Count);
                         arrayARFP_T5_SWR_Seviye = exd.ArrayARFP_T5_SWR_Seviye;
                         arrayARFP_T5_SWR_MaksimumDeger = exd.ArrayARFP_T5_SWR_MaksimumDeger;
                     }
-                    if (boolList[36] == true)
+                    if (boolList[37] == true)
                     {
                         FormatData(exd.ArrayARFP_T6_SWR_OlculenDeger, exd.ArrayARFP_T6_SWR_Belirsizlik, arrayARFP_T6_SWR_OlculenDeger, arrayARFP_T6_SWR_Belirsizlik, exd.ArrayARFP_T4_T5_T6_frekans.Count);
                         arrayARFP_T6_SWR_Seviye = exd.ArrayARFP_T6_SWR_Seviye;
                         arrayARFP_T6_SWR_MaksimumDeger = exd.ArrayARFP_T6_SWR_MaksimumDeger;
                     }
-                    if (boolList[37] == true)
+                    if (boolList[38] == true)
                     {
                         FormatData(exd.ArrayARFP_T7_OlculenGuc, exd.ArrayARFP_T7_Belirsizlik, arrayARFP_T7_OlculenGuc, arrayARFP_T7_Belirsizlik, exd.ArrayARFP_T7_Frekans.Count);
                         FormatData(exd.ArrayARFP_T7_Sapma, exd.ArrayARFP_T7_Belirsizlik, arrayARFP_T7_Sapma, arrayARFP_T7_Belirsizlik2, exd.ArrayARFP_T7_Frekans.Count);
@@ -1099,7 +1115,7 @@ namespace DCC
                         arrayARFP_T7_ÜstSınır = exd.ArrayARFP_T7_ÜstSınır;
                         arrayARFP_T7_AltSınır = exd.ArrayARFP_T7_AltSınır;
                     }
-                    if (boolList[38] == true)
+                    if (boolList[39] == true)
                     {
                         FormatData(exd.ArrayARFP_T8_OlculenDeger, exd.ArrayARFP_T8_Belirsizlik, arrayARFP_T8_OlculenDeger, arrayARFP_T8_Belirsizlik, exd.ArrayARFP_T8_Frekans.Count);
                         FormatData(exd.ArrayARFP_T8_Fark, exd.ArrayARFP_T8_Belirsizlik, arrayARFP_T8_Fark, arrayARFP_T8_Belirsizlik2, exd.ArrayARFP_T8_Frekans.Count);
@@ -1107,19 +1123,19 @@ namespace DCC
                         arrayARFP_T8_ÜstSınır = exd.ArrayARFP_T8_ÜstSınır;
                         arrayARFP_T8_AltSınır = exd.ArrayARFP_T8_AltSınır;
                     }
-                    if (boolList[39] == true)
+                    if (boolList[40] == true)
                     {
                         FormatData(exd.ArrayARFP_T9_SWR_OlculenDeger, exd.ArrayARFP_T9_SWR_Belirsizlik, arrayARFP_T9_SWR_OlculenDeger, arrayARFP_T9_SWR_Belirsizlik, exd.ArrayARFP_T9_T10_T11_frekans.Count);
                         arrayARFP_T9_SWR_Seviye = exd.ArrayARFP_T9_SWR_Seviye;
                         arrayARFP_T9_SWR_MaksimumDeger = exd.ArrayARFP_T9_SWR_MaksimumDeger;
                     }
-                    if (boolList[40] == true)
+                    if (boolList[41] == true)
                     {
                         FormatData(exd.ArrayARFP_T10_SWR_OlculenDeger, exd.ArrayARFP_T10_SWR_Belirsizlik, arrayARFP_T10_SWR_OlculenDeger, arrayARFP_T10_SWR_Belirsizlik, exd.ArrayARFP_T9_T10_T11_frekans.Count);
                         arrayARFP_T10_SWR_Seviye = exd.ArrayARFP_T10_SWR_Seviye;
                         arrayARFP_T10_SWR_MaksimumDeger = exd.ArrayARFP_T10_SWR_MaksimumDeger;
                     }
-                    if (boolList[41] == true)
+                    if (boolList[42] == true)
                     {
                         FormatData(exd.ArrayARFP_T11_SWR_OlculenDeger, exd.ArrayARFP_T11_SWR_Belirsizlik, arrayARFP_T11_SWR_OlculenDeger, arrayARFP_T11_SWR_Belirsizlik, exd.ArrayARFP_T9_T10_T11_frekans.Count);
                         arrayARFP_T11_SWR_MaksimumDeger = exd.ArrayARFP_T11_SWR_MaksimumDeger;
@@ -1129,257 +1145,317 @@ namespace DCC
 
                     #endregion
                     #region Formatlanmış Verilerin Tablolara Dönüştürülmesi
+                    int sayac = 0;
+                    string tablename = "deneme";
+                    string filename = "";
                     if (boolList[0] == true)
                     {
-                        Table table1 = ctb.CreateReelImg(exd.ArrayFrekansSParam, arrays11reel, arrays11reelunc, arrays11complex, arrays11complexunc);
+                        sayac++;
+                        Table table1 = SP_WordTable.CreateReelImg(filename,sayac,tablename,exd.ArrayFrekansSParam, arrays11reel, arrays11reelunc, arrays11complex, arrays11complexunc);
                         tables.Add(table1);
                         this.headers.Add("Reel and Imaginary Components for S11\n\n");
 
                     }
                     if (boolList[1] == true)
                     {
-                        Table table2 = ctb.CreateLinPhase(exd.ArrayFrekansSParam, arrays11lin, arrays11linunc, arrays11linphase, arrays11linphaseunc);
+                        sayac++;
+                        Table table2 = SP_WordTable.CreateLinPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays11lin, arrays11linunc, arrays11linphase, arrays11linphaseunc);
                         tables.Add(table2);
                         this.headers.Add("Linear Magnitude and Phase Components for S11\n\n");
                     }
                     if (boolList[2] == true)
                     {
-                        Table table3 = ctb.CreateLogPhase(exd.ArrayFrekansSParam, arrays11log, arrays11logunc, arrays11logphase, arrays11logphaseunc);
+                        sayac++;
+                        Table table3 = SP_WordTable.CreateLogPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays11log, arrays11logunc, arrays11logphase, arrays11logphaseunc);
                         tables.Add(table3);
                         this.headers.Add("Logarithmic Magnitude and Phase Components for S11\n\n");
                     }
                     if (boolList[3] == true)
                     {
-                        Table table4 = ctb.CreateSWR(exd.ArrayFrekansSParam, arrays11swr, arrays11swrunc);
+                        sayac++;
+                        Table table4 = SP_WordTable.CreateSWR(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays11swr, arrays11swrunc);
                         tables.Add(table4);
                         this.headers.Add("SWR Components for S11\n");
                     }
                     if (boolList[4] == true)
                     {
-                        Table table5 = ctb.CreateReelImg(exd.ArrayFrekansSParam, arrays12reel, arrays12reelunc, arrays12complex, arrays12complexunc);
+                        sayac++;
+                        Table table5 = SP_WordTable.CreateReelImg(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays12reel, arrays12reelunc, arrays12complex, arrays12complexunc);
                         tables.Add(table5);
                         this.headers.Add("Reel and Imaginary Components for S12\n");
                     }
                     if (boolList[5] == true)
                     {
-                        Table table6 = ctb.CreateLinPhase(exd.ArrayFrekansSParam, arrays12lin, arrays12linunc, arrays12linphase, arrays12linphaseunc);
+                        sayac++;
+                        Table table6 = SP_WordTable.CreateLinPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays12lin, arrays12linunc, arrays12linphase, arrays12linphaseunc);
                         tables.Add(table6);
                         this.headers.Add("Linear Magnitude and Phase Components for S12\n\n");
                     }
                     if (boolList[6] == true)
+                        
                     {
-                        Table table7 = ctb.CreateLogPhase(exd.ArrayFrekansSParam, arrays12log, arrays12logunc, arrays12logphase, arrays12logphaseunc);
+                        sayac++;
+                        Table table7 = SP_WordTable.CreateLogPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays12log, arrays12logunc, arrays12logphase, arrays12logphaseunc);
                         tables.Add(table7);
                         this.headers.Add("Logarithmic Magnitude and Phase Components for S12\n\n");
                     }
                     if (boolList[7] == true)
                     {
-                        Table table8 = ctb.CreateReelImg(exd.ArrayFrekansSParam, arrays21reel, arrays21reelunc, arrays21complex, arrays21complexunc);
+                        sayac++;
+                        Table table8 = SP_WordTable.CreateReelImg(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays21reel, arrays21reelunc, arrays21complex, arrays21complexunc);
                         tables.Add(table8);
                         this.headers.Add("Reel and Imaginary Components for S21\n");
                     }
                     if (boolList[8] == true)
                     {
-                        Table table9 = ctb.CreateLinPhase(exd.ArrayFrekansSParam, arrays21lin, arrays21linunc, arrays21linphase, arrays21linphaseunc);
+                        sayac++;
+                        Table table9 = SP_WordTable.CreateLinPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays21lin, arrays21linunc, arrays21linphase, arrays21linphaseunc);
                         tables.Add(table9);
                         this.headers.Add("Linear Magnitude and Phase Components for S21\n\n");
                     }
                     if (boolList[9] == true)
                     {
-                        Table table10 = ctb.CreateLogPhase(exd.ArrayFrekansSParam, arrays21log, arrays21logunc, arrays21logphase, arrays21logphaseunc);
+                        sayac++;
+                        Table table10 = SP_WordTable.CreateLogPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays21log, arrays21logunc, arrays21logphase, arrays21logphaseunc);
                         tables.Add(table10);
                         this.headers.Add("Logarithmic Magnitude and Phase Components for S21\n\n");
                     }
                     if (boolList[10] == true)
                     {
-                        Table table11 = ctb.CreateReelImg(exd.ArrayFrekansSParam, arrays22reel, arrays22reelunc, arrays22complex, arrays22complexunc);
+                        sayac++;
+                        Table table11 = SP_WordTable.CreateReelImg(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays22reel, arrays22reelunc, arrays22complex, arrays22complexunc);
                         tables.Add(table11);
                         this.headers.Add("Reel and Imaginary Components for S22\n");
                     }
                     if (boolList[11] == true)
                     {
-                        Table table12 = ctb.CreateLinPhase(exd.ArrayFrekansSParam, arrays22lin, arrays22linunc, arrays22linphase, arrays22linphaseunc);
+                        sayac++;
+                        Table table12 = SP_WordTable.CreateLinPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays22lin, arrays22linunc, arrays22linphase, arrays22linphaseunc);
                         tables.Add(table12);
                         this.headers.Add("Linear Magnitude and Phase Components for S22\n\n");
                     }
                     if (boolList[12] == true)
                     {
-                        Table table13 = ctb.CreateLogPhase(exd.ArrayFrekansSParam, arrays22log, arrays22logunc, arrays22logphase, arrays22logphaseunc);
+                        Table table13 = SP_WordTable.CreateLogPhase(filename, sayac, tablename,exd.ArrayFrekansSParam, arrays22log, arrays22logunc, arrays22logphase, arrays22logphaseunc);
                         tables.Add(table13);
                         this.headers.Add("Logarithmic Magnitude and Phase Components for S22\n\n");
                     }
                     if (boolList[13] == true)
                     {
-                        Table table14 = ctb.CreateSWR(exd.ArrayFrekansSParam, arrays22swr, arrays22swrunc);
+                        sayac++;
+                        Table table14 = SP_WordTable.CreateSWR(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays22swr, arrays22swrunc);
                         tables.Add(table14);
                         this.headers.Add("SWR Components for S22\n");
                     }
                     if (boolList[14] == true)
                     {
-                        Table table15 = ctb.CreateForTwoRow(exd.ArrayFrekansEE, arraysEffiencyEEEE, arraysEffiencyEEEEunc, "Ghz", "EE 1", "EE 1 ING", "EE 2", "EE 2 ING");
+                        sayac++;
+                        Table table15 = EE_WordTable.CreateEE(filename, sayac, tablename, exd.ArrayFrekansEE, arraysEffiencyEEEE, arraysEffiencyEEEEunc);
                         tables.Add(table15);
                         this.headers.Add("EE 1\n");
                     }
                     if (boolList[15] == true)
                     {
-                        Table table16 = ctb.CreateForSixRow(exd.ArrayFrekansEE, arraysEffiencyEE_S11Reel, arraysEffiencyEE_S11Reelunc, arraysEffiencyEE_S11Imag, arraysEffiencyEE_S11Imagunc, arraysEffiencyRHO_EERho, arraysEffiencyRHO_EERhounc);
+                        sayac++;
+                        Table table16 = EE_WordTable.EECreateReelImg(filename, sayac, tablename, exd.ArrayFrekansEE, arraysEffiencyEE_S11Reel, arraysEffiencyEE_S11Reelunc, arraysEffiencyEE_S11Imag, arraysEffiencyEE_S11Imagunc);
                         tables.Add(table16);
                         this.headers.Add("EE 2\n");
                     }
                     if (boolList[16] == true)
                     {
-                        Table table17 = ctb.CreateForTwoRow(exd.ArrayFrekansEE, arraysEffiencyEE_CFEE_CF, arraysEffiencyEE_CFEE_CFunc, "Ghz", "Kalibrasyon Fakötür", "Calibration Factor Unc,", "Kalibrasyon Fakötür 2", "Calibration Factor Unc 2");
+                        sayac++;
+                        Table table17 = EE_WordTable.CreateRHO(filename, sayac, tablename, exd.ArrayFrekansEE, arraysEffiencyRHO_EERho, arraysEffiencyRHO_EERhounc);
                         tables.Add(table17);
                         this.headers.Add("EE 3\n");
                     }
                     if (boolList[17] == true)
                     {
-                        Table table18 = ctb.CreateForTwoRow(exd.ArrayFrekansCF, arrayCF_Cal_Factor, arrayCF_Cal_Factor_Unc, "Ghz", "CF Kalibrasyon Faktörü", "CF Calibration Factor", "CF Kalibrasyon Faktörü 2", "CF Calibration Factor 2");
+                        sayac++;
+                        Table table18 = EE_WordTable.CreateCF(filename, sayac, tablename, exd.ArrayFrekansEE, arraysEffiencyEE_CFEE_CF, arraysEffiencyEE_CFEE_CFunc);
                         tables.Add(table18);
-                        this.headers.Add("CF 1 \n");
+                        this.headers.Add("EE 4\n");
                     }
                     if (boolList[18] == true)
                     {
-                        Table table19 = ctb.CreateForSixRow(exd.ArrayFrekansCF, arrayCF_Reel, arrayCF_Reel_Unc, arrayCF_Imaginer, arrayCF_Imaginer_Unc, arrayCF_ReflectionCof, arrayCF_ReflectionCof_Unc);
+                        sayac++;
+                        Table table19 = CF_WordTable.CF_CreateCF(filename, sayac, tablename,exd.ArrayFrekansCF, arrayCF_Cal_Factor, arrayCF_Cal_Factor_Unc);
                         tables.Add(table19);
-                        this.headers.Add("CF 2 \n");
+                        this.headers.Add("CF 1 \n");
                     }
                     if (boolList[19] == true)
                     {
-                        Table table20 = ctb.CreateForSixRow(exd.ArrayFrekansCIS, arrayCIS_Z_Position, arrayCIS_Z_Position_Unc, arrayCIS_ICOD, arrayCIS_ICOD_Unc, arrayCIS_OCID, arrayCIS_OCID_Unc);
+                        sayac++;
+                        Table table20 = CF_WordTable.CF_CreateReelImg(filename, sayac, tablename, exd.ArrayFrekansCF, arrayCF_Reel, arrayCF_Reel_Unc, arrayCF_Imaginer, arrayCF_Imaginer_Unc, arrayCF_ReflectionCof, arrayCF_ReflectionCof_Unc);
                         tables.Add(table20);
-                        this.headers.Add("CF 3 \n");
+                        this.headers.Add("CF 2 \n");
                     }
                     if (boolList[20] == true)
                     {
-                        Table table21 = ctb.CreateForTwoRow(exd.ArrayFrekansNoise, arrayNoiseENR, arrayNoiseENRUnc, "Ghz", "Noise Enr", "Noise Enr Eng", "Nois2e Enr", "Nois2 Enr Eng");
+                        sayac++;
+                        Table table21 = CIS_WordTable.Create_Z_Position(filename, sayac, tablename, exd.ArrayFrekansCIS, arrayCIS_Z_Position, arrayCIS_Z_Position_Unc, arrayCIS_ICOD, arrayCIS_ICOD_Unc, arrayCIS_OCID, arrayCIS_OCID_Unc);
                         tables.Add(table21);
-                        this.headers.Add("Noise 1 \n");
+                        this.headers.Add("CF 3 \n");
                     }
                     if (boolList[21] == true)
                     {
-                        Table table22 = ctb.CreateForFiveRow(exd.ArrayFrekansNoise, arrayNoiseDCONRCLinUnc, exd.ArrayNoiseDCONUpLimit, arrayNoiseDCONRCLinUnc, arrayNoiseDCONRCPhase, arrayNoiseDCONRCPhaseUnc);
+                        sayac++;
+                        Table table22 = Noise_WordTable.CreateENR(filename, sayac, tablename, exd.ArrayFrekansNoise, arrayNoiseENR, arrayNoiseENRUnc);
                         tables.Add(table22);
-                        this.headers.Add("Noise 2 \n");
+                        this.headers.Add("Noise 1 \n");
                     }
                     if (boolList[22] == true)
                     {
-                        Table table23 = ctb.CreateForFiveRow(exd.ArrayFrekansNoise, arrayNoiseDCOFFRCLinUnc, exd.ArrayDCOFFUpLimit, arrayNoiseDCOFFRCLinUnc, arrayNoiseDCOFFRCPhase, arrayNoiseDCOFFRCPhaseUnc);
+                        sayac++;
+                        Table table23 = Noise_WordTable.Create_DC_ON_OFF(filename, sayac, tablename, exd.ArrayFrekansNoise, arrayNoiseDCONRCLinUnc, exd.ArrayNoiseDCONUpLimit, arrayNoiseDCONRCLinUnc, arrayNoiseDCONRCPhase, arrayNoiseDCONRCPhaseUnc);
                         tables.Add(table23);
-                        this.headers.Add("Noise 3 \n");
+                        this.headers.Add("Noise 2 \n");
                     }
                     if (boolList[23] == true)
                     {
-                        Table table24 = ctb.CreateForSixRow(exd.ArrayRFD_T1_Frekans, arrayRFD_T1_GostergeDegeri, arrayRFD_T1_AltSınır, arrayRFD_T1_UstSınır, arrayRFD_T1_OlculenDeger, arrayRFD_T1_OlculenFark, arrayRFD_T1_Belirsizlik);
+                        sayac++;
+                        Table table24 = Noise_WordTable.Create_DC_ON_OFF(filename, sayac, tablename, exd.ArrayFrekansNoise, arrayNoiseDCOFFRCLinUnc, exd.ArrayDCOFFUpLimit, arrayNoiseDCOFFRCLinUnc, arrayNoiseDCOFFRCPhase, arrayNoiseDCOFFRCPhaseUnc);
                         tables.Add(table24);
-                        this.headers.Add("RF Diff Table 1 \n");
+                        this.headers.Add("Noise 3 \n");
                     }
                     if (boolList[24] == true)
                     {
-                        Table table25 = ctb.CreateForSixRow(exd.ArrayRFD_T2_Frekans, arrayRFD_T2_Nom_Guc_Lvl, arrayRFD_T2_OlculenDeger, arrayRFD_T2_AltSınır, arrayRFD_T2_Nom_Guc_Lvl_fark, arrayRFD_T2_UstSınır, arrayRFD_T2_Belirsizlik);
+                        sayac++;
+                        Table table25 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T1_Frekans, arrayRFD_T1_GostergeDegeri, arrayRFD_T1_AltSınır, arrayRFD_T1_UstSınır, arrayRFD_T1_OlculenDeger, arrayRFD_T1_OlculenFark, arrayRFD_T1_Belirsizlik, 
+                                                                               "Frekans (GHz)", "Gösterge Değeri (dBm)", "Alt Sınır (dBm)", "Ölçülen Değer (dBm)", "Ölçülen Fark (dB)", "Üst Sınır (dBm)", "Belirsizlik (dB)");
                         tables.Add(table25);
-                        this.headers.Add("RF Diff Table 2 \n");
+                        this.headers.Add("RF Diff Table 1 \n");
                     }
                     if (boolList[25] == true)
                     {
-                        Table table26 = ctb.CreateForSixRow(exd.ArrayRFD_T3_Frekans, arrayRFD_T3_NominalGuc, arrayRFD_T3_AltSınır, arrayRFD_T3_OlculenDeger, arrayRFD_T3_UstSınır, arrayRFD_T3_Fark, arrayRFD_T3_Belirsizlik);
+                        sayac++;
+                        Table table26 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T2_Frekans, arrayRFD_T2_Nom_Guc_Lvl, arrayRFD_T2_OlculenDeger, arrayRFD_T2_AltSınır, arrayRFD_T2_Nom_Guc_Lvl_fark, arrayRFD_T2_UstSınır, arrayRFD_T2_Belirsizlik, 
+                                                                                "Frekans (GHz))", "Nominal Güç Seviyesi(dBm)", "Ölçülen Değer (dBm)", "Ölçülen Değer (dBm)", "Nominal Güç Seviye Farkı (dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
                         tables.Add(table26);
-                        this.headers.Add("RF Diff Table 3 \n");
+                        this.headers.Add("RF Diff Table 2 \n");
                     }
                     if (boolList[26] == true)
                     {
-                        Table table27 = ctb.CreateForSixRow(exd.ArrayRFD_T4_Frekans, arrayRFD_T4_Min_Guc_lvl, arrayRFD_T4_Max_Guc_lvl, arrayRFD_T4_AltSınır, arrayRFD_T4_Fark, arrayRFD_T4_UstSınır, arrayRFD_T4_Belirsizlik);
+                        sayac++;
+                        Table table27 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T3_Frekans, arrayRFD_T3_NominalGuc, arrayRFD_T3_AltSınır, arrayRFD_T3_OlculenDeger, arrayRFD_T3_UstSınır, arrayRFD_T3_Fark, arrayRFD_T3_Belirsizlik, 
+                                                                                "Frekans", "Nominal Güç (dBm)", "Alt sınır (dBm)", "Ölçülen Değer (dBm)", "Üst Sınır (dBm)", "Fark(dB)", "Belirsizlik (dB)");
                         tables.Add(table27);
-                        this.headers.Add("RF Diff Table 4 \n");
+                        this.headers.Add("RF Diff Table 3 \n");
                     }
                     if (boolList[27] == true)
                     {
-                        Table table28 = ctb.CreateSWR(exd.ArrayRFG_T1_Frekans, arrayRFG_T1_GirisGucu, arrayRFG_T1_Belirsizlik);
+                        sayac++;
+                        Table table28 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T4_Frekans, arrayRFD_T4_Min_Guc_lvl, arrayRFD_T4_Max_Guc_lvl, arrayRFD_T4_AltSınır, arrayRFD_T4_Fark, arrayRFD_T4_UstSınır, arrayRFD_T4_Belirsizlik, 
+                                                                                "Min.Güç Seviyesi (dBm)", "Max. Güç Seviyesi (dBm)", "Frekans", "Alt Sınır (dB)", "Fark(dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
                         tables.Add(table28);
-                        this.headers.Add("RF Gain Table 1 \n");
+                        this.headers.Add("RF Diff Table 4 \n");
                     }
                     if (boolList[28] == true)
                     {
-                        Table table29 = ctb.CreateSWR(exd.ArrayRFG_T2_EnBuyukKazanc, arrayRFG_T2_EnKucukKazanc, exd.ArrayRFG_T2_Flatness);
+                        sayac++;
+                        Table table29 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T1_Frekans, arrayRFG_T1_GirisGucu, arrayRFG_T1_Belirsizlik, 
+                                                                          "Frekans", "Giriş Gücü", "Alt Sınır Belirsizlik (dB)");
                         tables.Add(table29);
-                        this.headers.Add("RF Gain Table 2 \n");
+                        this.headers.Add("RF Gain Table 1 \n");
                     }
                     if (boolList[29] == true)
                     {
-                        Table table30 = ctb.CreateSWR(exd.ArrayRFG_T3_Nom_Giris_Gucu, arrayRFG_T3_Kazanc, arrayRFG_T3_Belirsizlik);
+                        sayac++;
+                        Table table30 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T2_EnBuyukKazanc, arrayRFG_T2_EnKucukKazanc, exd.ArrayRFG_T2_Flatness, 
+                                                                          "En Büyük Kazanç (dB)", "En Küçük Kazanç (dB)", "Flatness (±dB)");
                         tables.Add(table30);
-                        this.headers.Add("RF Gain Table 3 \n");
+                        this.headers.Add("RF Gain Table 2 \n");
                     }
                     if (boolList[30] == true)
                     {
-                        Table table31 = ctb.CreateSWR(exd.ArrayRFG_T4_Nom_Giris_Gucu, arrayRFG_T4_Kazanc, arrayRFG_T4_Belirsizlik);
+                        sayac++;
+                        Table table31 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T3_Nom_Giris_Gucu, arrayRFG_T3_Kazanc, arrayRFG_T3_Belirsizlik, 
+                                                                         "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
                         tables.Add(table31);
-                        this.headers.Add("RF Gain Table 4 \n");
+                        this.headers.Add("RF Gain Table 3 \n");
                     }
                     if (boolList[31] == true)
                     {
-                        Table table = ctb.CreateForSixRow(exd.ArrayARFP_T1_Frekans, arrayARFP_T1_Cıkıs_Gücü, arrayARFP_T1_Olculen_Güc, arrayARFP_T1_AltSınır, arrayARFP_T1_Sapma, arrayARFP_T1_ÜstSınır, arrayARFP_T1_Belirsizlik);
-                        tables.Add(table);
-                        this.headers.Add("Absolude 1 \n");
+                        sayac++;
+                        Table table32 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T4_Nom_Giris_Gucu, arrayRFG_T4_Kazanc, arrayRFG_T4_Belirsizlik, 
+                                                                         "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
+                        tables.Add(table32);
+                        this.headers.Add("RF Gain Table 4 \n");
                     }
                     if (boolList[32] == true)
                     {
-                        Table table = ctb.CreateForSixRow(exd.ArrayARFP_T2_Frekans, arrayARFP_T2_Cıkıs_Gücü, arrayARFP_T2_OlculenDeger, arrayARFP_T2_AltSınır, arrayARFP_T2_Fark, arrayARFP_T2_ÜstSınır, arrayARFP_T2_Belirsizlik);
-                        tables.Add(table);
-                        this.headers.Add("Absolude 2 \n");
+                        sayac++;
+                        Table table33 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T1_Frekans, arrayARFP_T1_Cıkıs_Gücü, arrayARFP_T1_Olculen_Güc, arrayARFP_T1_AltSınır, arrayARFP_T1_Sapma, arrayARFP_T1_ÜstSınır, arrayARFP_T1_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma");
+                        tables.Add(table33);
+                        this.headers.Add("Absolude 1 \n");
                     }
                     if (boolList[33] == true)
                     {
-                        Table table = ctb.CreateForSixRow(exd.ArrayARFP_T3_Frekans, arrayARFP_T3_Cıkıs_Gücü, arrayARFP_T3_OlculenZayıflatma, arrayARFP_T3_AltSınır, arrayARFP_T3_Zayıflatma, arrayARFP_T3_ÜstSınır, arrayARFP_T3_Belirsizlik);
-                        tables.Add(table);
-                        this.headers.Add("Absolude 3 \n");
+                        sayac++;
+                        Table table34 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T2_Frekans, arrayARFP_T2_Cıkıs_Gücü, arrayARFP_T2_OlculenDeger, arrayARFP_T2_AltSınır, arrayARFP_T2_Fark, arrayARFP_T2_ÜstSınır, arrayARFP_T2_Belirsizlik,"Ölçülen Değer (dBm)", "Fark (dB)");
+                        tables.Add(table34);
+                        this.headers.Add("Absolude 2 \n");
                     }
                     if (boolList[34] == true)
                     {
-                        Table table = ctb.CreateForFourRow(exd.ArrayARFP_T4_T5_T6_frekans, arrayARFP_T4_SWR_Seviye, arrayARFP_T4_SWR_OlculenDeger, arrayARFP_T4_SWR_MaksimumDeger, arrayARFP_T4_SWR_Belirsizlik, "Absolude 4", "Absolude 4", "Absolude 4", "Absolude 4");
-                        tables.Add(table);
-                        this.headers.Add("Absolude 4 \n");
+                        sayac++;
+                        Table table35 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T3_Frekans, arrayARFP_T3_Cıkıs_Gücü, arrayARFP_T3_OlculenZayıflatma, arrayARFP_T3_AltSınır, arrayARFP_T3_Zayıflatma, arrayARFP_T3_ÜstSınır, arrayARFP_T3_Belirsizlik, "Ölçülen Zayıflatma (dB)", "Zayıflatma Hatası (dB)");
+                        tables.Add(table35);
+                        this.headers.Add("Absolude 3 \n");
                     }
                     if (boolList[35] == true)
                     {
-                        Table table = ctb.CreateForFourRow(exd.ArrayARFP_T4_T5_T6_frekans, arrayARFP_T5_SWR_Seviye, arrayARFP_T5_SWR_OlculenDeger, arrayARFP_T5_SWR_MaksimumDeger, arrayARFP_T5_SWR_Belirsizlik, "Absolude 5", "Absolude 5", "Absolude 5", "Absolude 5");
-                        tables.Add(table);
-                        this.headers.Add("Absolude 5 \n");
+                        sayac++;
+                        Table table36 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_2(filename, sayac, tablename, exd.ArrayARFP_T4_T5_T6_frekans, arrayARFP_T4_SWR_Seviye, arrayARFP_T4_SWR_OlculenDeger, arrayARFP_T4_SWR_MaksimumDeger, arrayARFP_T4_SWR_Belirsizlik, "Maksimum Değer");
+                        tables.Add(table36);
+                        this.headers.Add("Absolude 4 \n");
                     }
                     if (boolList[36] == true)
                     {
-                        Table table = ctb.CreateForFourRow(exd.ArrayARFP_T4_T5_T6_frekans, arrayARFP_T6_SWR_Seviye, arrayARFP_T6_SWR_OlculenDeger, arrayARFP_T6_SWR_MaksimumDeger, arrayARFP_T6_SWR_Belirsizlik, "Absolude 6", "Absolude 6", "Absolude 6", "Absolude 6");
-                        tables.Add(table);
-                        this.headers.Add("Absolude 6 \n");
+                        sayac++;
+                        Table table37 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_2(filename, sayac, tablename, exd.ArrayARFP_T4_T5_T6_frekans, arrayARFP_T5_SWR_Seviye, arrayARFP_T5_SWR_OlculenDeger, arrayARFP_T5_SWR_MaksimumDeger, arrayARFP_T5_SWR_Belirsizlik, "Maksimum Değer");
+                        tables.Add(table37);
+                        this.headers.Add("Absolude 5 \n");
                     }
                     if (boolList[37] == true)
                     {
-                        Table table = ctb.CreateForSixRow(exd.ArrayARFP_T7_Frekans, arrayARFP_T7_Cıkıs_Gücü, arrayARFP_T7_OlculenGuc, arrayARFP_T7_AltSınır, arrayARFP_T7_Sapma, arrayARFP_T7_ÜstSınır, arrayARFP_T7_Belirsizlik);
-                        tables.Add(table);
-                        this.headers.Add("Absolude 7 \n");
+                        sayac++;
+                        Table table38 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_2(filename, sayac, tablename, exd.ArrayARFP_T4_T5_T6_frekans, arrayARFP_T6_SWR_Seviye, arrayARFP_T6_SWR_OlculenDeger, arrayARFP_T6_SWR_MaksimumDeger, arrayARFP_T6_SWR_Belirsizlik, "Maksimum Değer");
+                        tables.Add(table38);
+                        this.headers.Add("Absolude 6 \n");
                     }
                     if (boolList[38] == true)
                     {
-                        Table table = ctb.CreateForSixRow(exd.ArrayARFP_T8_Frekans, arrayARFP_T8_Cıkıs_Gücü, arrayARFP_T8_OlculenDeger, arrayARFP_T8_AltSınır, arrayARFP_T8_Fark, arrayARFP_T8_ÜstSınır, arrayARFP_T8_Belirsizlik);
-                        tables.Add(table);
-                        this.headers.Add("Absolude 8 \n");
+                        sayac++;
+                        Table table39 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T7_Frekans, arrayARFP_T7_Cıkıs_Gücü, arrayARFP_T7_OlculenGuc, arrayARFP_T7_AltSınır, arrayARFP_T7_Sapma, arrayARFP_T7_ÜstSınır, arrayARFP_T7_Belirsizlik, "Ölçülen Güç (dBm)", "Sapma(dB)");
+                        tables.Add(table39);
+                        this.headers.Add("Absolude 7 \n");
                     }
                     if (boolList[39] == true)
                     {
-                        Table table = ctb.CreateForFourRow(exd.ArrayARFP_T9_T10_T11_frekans, arrayARFP_T9_SWR_Seviye, arrayARFP_T9_SWR_OlculenDeger, arrayARFP_T9_SWR_MaksimumDeger, arrayARFP_T9_SWR_Belirsizlik, "Absolude 9", "Absolude 9", "Absolude 9", "Absolude 9");
-                        tables.Add(table);
-                        this.headers.Add("Absolude 9 \n");
+                        sayac++;
+                        Table table40 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T8_Frekans, arrayARFP_T8_Cıkıs_Gücü, arrayARFP_T8_OlculenDeger, arrayARFP_T8_AltSınır, arrayARFP_T8_Fark, arrayARFP_T8_ÜstSınır, arrayARFP_T8_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
+                        tables.Add(table40);
+                        this.headers.Add("Absolude 8 \n");
                     }
                     if (boolList[40] == true)
                     {
-                        Table table = ctb.CreateForFourRow(exd.ArrayARFP_T9_T10_T11_frekans, arrayARFP_T10_SWR_Seviye, arrayARFP_T10_SWR_OlculenDeger, arrayARFP_T10_SWR_MaksimumDeger, arrayARFP_T10_SWR_Belirsizlik, "Absolude 10", "Absolude 10", "Absolude 10", "Absolude 10");
-                        tables.Add(table);
-                        this.headers.Add("Absolude 10 \n");
+                        sayac++;
+                        Table table41 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_2(filename, sayac, tablename, exd.ArrayARFP_T9_T10_T11_frekans, arrayARFP_T9_SWR_Seviye, arrayARFP_T9_SWR_OlculenDeger, arrayARFP_T9_SWR_MaksimumDeger, arrayARFP_T9_SWR_Belirsizlik, "Üst Sınır");
+                        tables.Add(table41);
+                        this.headers.Add("Absolude 9 \n");
                     }
                     if (boolList[41] == true)
                     {
-                        Table table = ctb.CreateForFourRow(exd.ArrayARFP_T9_T10_T11_frekans, arrayARFP_T11_SWR_Seviye, arrayARFP_T11_SWR_OlculenDeger, arrayARFP_T11_SWR_MaksimumDeger, arrayARFP_T11_SWR_Belirsizlik, "Absolude 11", "Absolude 11", "Absolude 11", "Absolude 11");
-                        tables.Add(table);
+                        sayac++;
+                        Table table42 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_2(filename, sayac, tablename, exd.ArrayARFP_T9_T10_T11_frekans, arrayARFP_T10_SWR_Seviye, arrayARFP_T10_SWR_OlculenDeger, arrayARFP_T10_SWR_MaksimumDeger, arrayARFP_T10_SWR_Belirsizlik, "Üst Sınır");
+                        tables.Add(table42);
+                        this.headers.Add("Absolude 10 \n");
+                    }
+                    if (boolList[42] == true)
+                    {
+                        sayac++;
+                        Table table43 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_2(filename, sayac, tablename, exd.ArrayARFP_T9_T10_T11_frekans, arrayARFP_T11_SWR_Seviye, arrayARFP_T11_SWR_OlculenDeger, arrayARFP_T11_SWR_MaksimumDeger, arrayARFP_T11_SWR_Belirsizlik, "Üst Sınır");
+                        tables.Add(table43);
                         this.headers.Add("Absolude 11 \n");
                     }
 
@@ -1388,14 +1464,14 @@ namespace DCC
                 }
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.Title = "Save Certificates";
-                saveFileDialog1.Filter = "Human and Machine Readable Certificate (.xml)(.docx)|*.docx";
+                saveFileDialog1.Filter = "Human Readable Certificate(.docx)|*.docx";
                 DialogResult result = saveFileDialog1.ShowDialog();
 
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
                     string originalFilePath = "wordData/sertifikaC.docx";
-                    string copyFilePath = saveFileDialog1.FileName;
+                    copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
                     File.Copy(originalFilePath, copyFilePath, true);
@@ -1488,109 +1564,113 @@ namespace DCC
                     {
                         boolList[15] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "Effective Effiency EE-Cal_Factor")
+                    if (quantityElement.Attribute("refType").Value == "Effective Effiency EE-Rho")
                     {
                         boolList[16] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "Calibration Factor CF-Cal_Factor")
+                    if (quantityElement.Attribute("refType").Value == "Effective Effiency EE-Cal_Factor")
                     {
                         boolList[17] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "Calibration Factor CF-Reel")
+                    if (quantityElement.Attribute("refType").Value == "Calibration Factor CF-Cal_Factor")
                     {
                         boolList[18] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "Calculable Impedance Standard CIS-Z-Position")
+                    if (quantityElement.Attribute("refType").Value == "Calibration Factor CF-Reel")
                     {
                         boolList[19] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "Noise_ENR")
+                    if (quantityElement.Attribute("refType").Value == "Calculable Impedance Standard CIS-Z-Position")
                     {
                         boolList[20] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "Noise_DC_ON_Lin")
+                    if (quantityElement.Attribute("refType").Value == "Noise_ENR")
                     {
                         boolList[21] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "Noise_DC_OFF_Lin")
+                    
+                    if (quantityElement.Attribute("refType").Value == "Noise_DC_ON_Lin")
                     {
                         boolList[22] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t1")
+                    if (quantityElement.Attribute("refType").Value == "Noise_DC_OFF_Lin")
                     {
                         boolList[23] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t2")
+                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t1")
                     {
                         boolList[24] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t3")
+                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t2")
                     {
                         boolList[25] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t4")
+                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t3")
                     {
                         boolList[26] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Unc1")
+                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t4")
                     {
                         boolList[27] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Flatness")
+                    if (quantityElement.Attribute("refType").Value == "RFG_Unc1")
                     {
                         boolList[28] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Unc2")
+                    if (quantityElement.Attribute("refType").Value == "RFG_Flatness")
                     {
                         boolList[29] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Unc3")
+                    if (quantityElement.Attribute("refType").Value == "RFG_Unc2")
                     {
                         boolList[30] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t1")
+                    if (quantityElement.Attribute("refType").Value == "RFG_Unc3")
                     {
                         boolList[31] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t2")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t1")
                     {
                         boolList[32] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t3")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t2")
                     {
                         boolList[33] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t4")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t3")
                     {
                         boolList[34] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t5")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t4")
                     {
                         boolList[35] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t6")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t5")
                     {
                         boolList[36] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t7")
-                    {
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t6")
+                    
                         boolList[37] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t8")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t7")
                     {
                         boolList[38] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t9")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t8")
                     {
                         boolList[39] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t10")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t9")
                     {
                         boolList[40] = true;
                     }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t11")
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t10")
                     {
                         boolList[41] = true;
+                    }
+                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t11")
+                    {
+                        boolList[42] = true;
                     }
 
                 }
