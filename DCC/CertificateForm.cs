@@ -1177,34 +1177,79 @@ namespace DCC
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == -1 || e.ColumnIndex == -1)
-                return;
+            List<bool> sparambool = new List<bool>() { true,true,true,true,true,false,true,true,true,true,false, true, true, true, true, false,true,true,false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false,true,true,false };
 
-            int columnIndex = e.ColumnIndex;
-            int rowIndex = e.RowIndex;
-            object cellValue = dataGridView1.Rows[rowIndex].Cells[columnIndex].Value;
-            string columnName = dataGridView1.Columns[columnIndex].HeaderText;
-            int rowNumber = rowIndex + 1;
-
-            sütun = columnName;
-            satır = rowNumber;
-
-
-            label4.Text = ($"Selection cell:  {"Column: "}{columnName}{"  Row: "}{rowNumber}");
-            LabelProgress.Text = "Cell selection successful";
-
-            Thread.Sleep(10);
-            progressBar.Value = 0;
-            for (int i = 0; i < 100; i++)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                progressBar.Value += 1;
+                DataGridViewCell selectedCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string selectedWorksheet = ExcelPage_ComboBox.SelectedItem.ToString();
+                FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+                using (ExcelPackage excelPackage = new ExcelPackage(fileInfo))
+                {
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets[selectedWorksheet];
+                    string selectedColumnHeader = selectedCell.OwningColumn.HeaderText; // Seçilen sütunun başlığını al
+                    int rowIndex = e.RowIndex;
+                    satır = rowIndex + 1;
+                    sütun = selectedColumnHeader;
+
+
+                    int startRow = worksheet.Dimension.Start.Row; // Tablonun başlangıç satırı
+                    int endRow = worksheet.Dimension.End.Row;     // Tablonun son satırı
+                    int lastColumnWithData = worksheet.Dimension.End.Column; // Veri bulunan son sütun
+
+                    List<bool> boolList = new List<bool>();
+
+                    // Kullanıcının seçtiği sütundan başlayarak veri bulunan son sütuna kadar tara
+                    for (int col = selectedCell.ColumnIndex+1; col <= lastColumnWithData; col++)
+                    {
+                        bool hasData = false;
+
+                        // Herhangi bir veri içeren bir hücre var mı kontrol et
+                        for (int row = startRow; row <= endRow; row++)
+                        {
+                            if (!string.IsNullOrEmpty(worksheet.Cells[row, col].Text))
+                            {
+                                hasData = true;
+                                break;
+                            }
+                        }
+
+                        // Bool listesine sonucu ekle
+                        boolList.Add(hasData);
+                    }
+                    
+
+                    // Elde edilen sonuçları kullanabilirsiniz
+                    listBox1.Items.Clear();
+                    foreach (bool item in boolList)
+                    {
+                       listBox1.Items.Add(item.ToString());
+                    }
+
+                    if (MeasurementTypes_ComboBox.SelectedIndex == 4 && AreListsEqual(boolList, sparambool))
+                    {
+                        MessageBox.Show("Table structures can be created with certificates compatible with the program..");
+                        label4.Text = ($"Selection cell:  {"Column: "}{sütun}{"  Row: "}{satır}");
+                        LabelProgress.Text = "Cell selection successful";
+
+                        Thread.Sleep(10);
+                        progressBar.Value = 0;
+                        for (int i = 0; i < 100; i++)
+                        {
+                            progressBar.Value += 1;
+                        }
+                        LabelProgress.Visible = true;
+                        LabelProgress.ForeColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        MessageBox.Show("The template is incompatible, please check the template structure.");
+                    }
+
+
+                  
+                }
             }
-            LabelProgress.Visible = true;
-            LabelProgress.ForeColor = System.Drawing.Color.Green;
-
-
-
-
         }
         #endregion
 
@@ -1527,5 +1572,27 @@ namespace DCC
         {
            
         }
+
+        public void sablonkontrol()
+        {
+            #region Sparametre 
+            List<bool> sparambool = new List<bool>() {true,true,true,true,true,false,true,true,true,true,false,true,true,true,true,false,true,true,false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false , true, true, true, true, false , true, true, true, true, false , true, true, true, true, false , true, true, true, true, false , true, true };
+            #endregion
+        }
+
+        static bool AreListsEqual(List<bool> list1, List<bool> list2)
+        {
+            if (list1.Count != list2.Count)
+                return false;
+
+            for (int i = 0; i < list1.Count; i++)
+            {
+                if (list1[i] != list2[i])
+                    return false;
+            }
+
+            return true;
+        }
     }
 }
+
