@@ -1177,7 +1177,35 @@ namespace DCC
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            List<bool> sparambool = new List<bool>() { true,true,true,true,true,false,true,true,true,true,false, true, true, true, true, false,true,true,false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false,true,true,false };
+            List<bool> sparambool = new List<bool>() { true,true,true,true,true,false,true,true,true,true,false, true, true, true, true, false,
+                                                        true,true,false, true, true, true, true, false, true, true, true, true, false, true, true,
+                                                        true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, 
+                                                            true, true, false, true, true, true, true, false, true, true, true, true,
+                                                            false, true, true, true, true, false,true,true};
+
+            List<bool> EEbool = new List<bool>() { true, true, true,  false, true, true, true, true, false, true, true, false, true, true };
+
+            List<bool> CFbool = new List<bool>() { true, true, true, false, true, true, true, true, true, true, true };
+
+            List<bool> CISbool = new List<bool>() { true, true, true, true, true, true, true };
+
+            List<bool> ABSbool = new List<bool>() { true, true, true, true, true, true, true,false, true, true, true, true, true, true, true, false, true, true, true, true,
+                                                    true, true, true, false, true, true, true, true, true, false, true, true, true, true, true, false, true, true, true, true, 
+                                                    true, false, true, true, true, true, true,true,true ,false, true, true, true, true, 
+                                                    true,true,true, false, true, true, true, true, true, false, true, true, true, true, true, false, true, true, true, true, true};
+
+            List<bool> RFDbool = new List<bool>() { true, true, true, true, true, true, true ,false, true, true, true, true, true, true, true,
+                                                    false, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true};
+
+            List<bool> RFGbool = new List<bool>() { true, true, true, false, true, true, true, false, true, true, true, false, true, true, true };
+
+            List<bool> NSbool = new List<bool>() { true, true, true, false, true, true, true, true, true, true, false, true, true, true, true, true, true };
+
+
+
+
+
+
 
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
@@ -1219,30 +1247,43 @@ namespace DCC
                     }
                     
 
-                    // Elde edilen sonuçları kullanabilirsiniz
-                    listBox1.Items.Clear();
-                    foreach (bool item in boolList)
+
+                
+                    if (MeasurementTypes_ComboBox.SelectedIndex == 0 && AreListsEqual(boolList, EEbool))
                     {
-                       listBox1.Items.Add(item.ToString());
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 1 && AreListsEqual(boolList, CFbool))
+                    {
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 2 && AreListsEqual(boolList, CISbool))
+                    {
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 3 && RFPowTabControl.SelectedTab==Abs_RF_Power_tabpage && AreListsEqual(boolList, ABSbool))
+                    {
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 3 && RFPowTabControl.SelectedTab == RF_Diff_tabpage && AreListsEqual(boolList, RFDbool))
+                    {
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 3 && RFPowTabControl.SelectedTab == RF_Gain_tabpage && AreListsEqual(boolList, RFGbool))
+                    {
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 4 && AreListsEqual(boolList, sparambool))
+                    {
+                        KontrolBasarim();
+                    }
+                    else if (MeasurementTypes_ComboBox.SelectedIndex == 5 && AreListsEqual(boolList, NSbool))
+                    {
+                        KontrolBasarim();
                     }
 
-                    if (MeasurementTypes_ComboBox.SelectedIndex == 4 && AreListsEqual(boolList, sparambool))
-                    {
-                        MessageBox.Show("Table structures can be created with certificates compatible with the program..");
-                        label4.Text = ($"Selection cell:  {"Column: "}{sütun}{"  Row: "}{satır}");
-                        LabelProgress.Text = "Cell selection successful";
-
-                        Thread.Sleep(10);
-                        progressBar.Value = 0;
-                        for (int i = 0; i < 100; i++)
-                        {
-                            progressBar.Value += 1;
-                        }
-                        LabelProgress.Visible = true;
-                        LabelProgress.ForeColor = System.Drawing.Color.Green;
-                    }
                     else
-                    {
+                       {
                         MessageBox.Show("The template is incompatible, please check the template structure.");
                     }
 
@@ -1592,6 +1633,22 @@ namespace DCC
             }
 
             return true;
+        }
+
+        public void KontrolBasarim()
+        {
+            MessageBox.Show("Table structures can be created with certificates compatible with the program..");
+            label4.Text = ($"Selection cell:  {"Column: "}{sütun}{"  Row: "}{satır}");
+            LabelProgress.Text = "Cell selection successful";
+
+            Thread.Sleep(10);
+            progressBar.Value = 0;
+            for (int i = 0; i < 100; i++)
+            {
+                progressBar.Value += 1;
+            }
+            LabelProgress.Visible = true;
+            LabelProgress.ForeColor = System.Drawing.Color.Green;
         }
     }
 }
