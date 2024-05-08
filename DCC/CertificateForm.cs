@@ -262,6 +262,7 @@ namespace DCC
         #region Button
         private void ExcelPage_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Save_Row_Col_Button.Enabled = false;
             this.Text = "EXCEL ROW AND COLUMN SELECT";
             CertificateTabControl.SelectedTab = ExcelView_Page;
 
@@ -1177,6 +1178,7 @@ namespace DCC
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             List<bool> sparambool = new List<bool>() { true,true,true,true,true,false,true,true,true,true,false, true, true, true, true, false,
                                                         true,true,false, true, true, true, true, false, true, true, true, true, false, true, true,
                                                         true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, 
@@ -1200,10 +1202,6 @@ namespace DCC
             List<bool> RFGbool = new List<bool>() { true, true, true, false, true, true, true, false, true, true, true, false, true, true, true };
 
             List<bool> NSbool = new List<bool>() { true, true, true, false, true, true, true, true, true, true, false, true, true, true, true, true, true };
-
-
-
-
 
 
 
@@ -1237,6 +1235,7 @@ namespace DCC
                         {
                             if (!string.IsNullOrEmpty(worksheet.Cells[row, col].Text))
                             {
+                                Save_Row_Col_Button.Enabled= true;
                                 hasData = true;
                                 break;
                             }
@@ -1284,11 +1283,16 @@ namespace DCC
 
                     else
                        {
-                        MessageBox.Show("The template is incompatible, please check the template structure.");
+                        MessageBox.Show("The table structure is not compatible with the selected parameter, please check the cell you selected and the Excel file you selected!","Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Save_Row_Col_Button.Enabled = false;
+                        label4.Text = ($"Selection cell:  {"Column: "}{sütun}{"  Row: "}{satır}");
+                        LabelProgress.Text = "";
+                        progressBar.Value= 0;
+
                     }
 
 
-                  
+
                 }
             }
         }
@@ -1637,9 +1641,10 @@ namespace DCC
 
         public void KontrolBasarim()
         {
-            MessageBox.Show("Table structures can be created with certificates compatible with the program..");
+            MessageBox.Show("The table structure according to the selected cell is suitable for creating certificates. You can create a certificate.", "Successful!", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            label4.Location = new Point(396,53);
             label4.Text = ($"Selection cell:  {"Column: "}{sütun}{"  Row: "}{satır}");
-            LabelProgress.Text = "Cell selection successful";
+            LabelProgress.Text = "Cell selection successful !";
 
             Thread.Sleep(10);
             progressBar.Value = 0;
