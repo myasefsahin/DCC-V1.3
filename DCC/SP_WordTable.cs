@@ -33,7 +33,7 @@ namespace DCC
               )
           );
 
-            // Tablo başlığı
+            
             TableRow headerRow = new TableRow(
                 new TableProperties(
                      new TableHeader()

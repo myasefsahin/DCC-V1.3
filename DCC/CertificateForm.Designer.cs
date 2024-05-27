@@ -315,7 +315,6 @@
             Measurement_Unc_TextBox.TabStop = false;
             Measurement_Unc_TextBox.TextAlign = HorizontalAlignment.Left;
             Measurement_Unc_TextBox.UseSystemPasswordChar = false;
-            Measurement_Unc_TextBox.Click += Measurement_Unc_TextBox_Click;
             Measurement_Unc_TextBox.TextChanged += CalibrationDescTextBox_TextChanged;
             // 
             // Cal_MethodTextBox
@@ -736,6 +735,7 @@
             ReceiveData_Button.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ReceiveData_Button.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             ReceiveData_Button.Depth = 0;
+            ReceiveData_Button.Enabled = false;
             ReceiveData_Button.HighEmphasis = true;
             ReceiveData_Button.Icon = null;
             ReceiveData_Button.Location = new Point(197, 235);
@@ -1883,6 +1883,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(1113, 540);
             dataGridView1.TabIndex = 10;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // label4
