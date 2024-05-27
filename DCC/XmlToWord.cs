@@ -33,10 +33,10 @@ namespace DCC
         EE_WordTable EE_WordTable = new EE_WordTable();
         CF_WordTable CF_WordTable = new CF_WordTable();
         CIS_WordTable CIS_WordTable = new CIS_WordTable();
-        Noise_WordTable Noise_WordTable=new Noise_WordTable();
+        Noise_WordTable Noise_WordTable = new Noise_WordTable();
         RF_Difference_WordTable RF_Difference_WordTable = new RF_Difference_WordTable();
-        RF_Gain_WordTable RF_Gain_WordTable= new RF_Gain_WordTable();
-        AbsoluteRF_Power_Word_Table AbsoluteRF_Power_Word_Table= new AbsoluteRF_Power_Word_Table();
+        RF_Gain_WordTable RF_Gain_WordTable = new RF_Gain_WordTable();
+        AbsoluteRF_Power_Word_Table AbsoluteRF_Power_Word_Table = new AbsoluteRF_Power_Word_Table();
         string copyFilePath;
 
         private string orderNo = "/dcc:digitalCalibrationCertificate/dcc:administrativeData/dcc:coreData/dcc:identifications/dcc:identification[@id='orderno']/dcc:value";
@@ -463,7 +463,7 @@ namespace DCC
                     }
                     if (boolList[16] == true)
                     {
-                      
+
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyRHO_EERho, EffiencyRHO_EERho);
                         ProcessXmlNodeList(resultNode, nsmgr, exd.ArrayEffiencyRHO_EERhoUnc, EffiencyRHO_EERhoUnc);
                     }
@@ -1151,7 +1151,7 @@ namespace DCC
                     if (boolList[0] == true)
                     {
                         sayac++;
-                        Table table1 = SP_WordTable.CreateReelImg(filename,sayac,tablename,exd.ArrayFrekansSParam, arrays11reel, arrays11reelunc, arrays11complex, arrays11complexunc);
+                        Table table1 = SP_WordTable.CreateReelImg(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays11reel, arrays11reelunc, arrays11complex, arrays11complexunc);
                         tables.Add(table1);
                         this.headers.Add("Reel and Imaginary Components for S11\n\n");
 
@@ -1192,7 +1192,7 @@ namespace DCC
                         this.headers.Add("Linear Magnitude and Phase Components for S12\n\n");
                     }
                     if (boolList[6] == true)
-                        
+
                     {
                         sayac++;
                         Table table7 = SP_WordTable.CreateLogPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays12log, arrays12logunc, arrays12logphase, arrays12logphaseunc);
@@ -1236,7 +1236,7 @@ namespace DCC
                     }
                     if (boolList[12] == true)
                     {
-                        Table table13 = SP_WordTable.CreateLogPhase(filename, sayac, tablename,exd.ArrayFrekansSParam, arrays22log, arrays22logunc, arrays22logphase, arrays22logphaseunc);
+                        Table table13 = SP_WordTable.CreateLogPhase(filename, sayac, tablename, exd.ArrayFrekansSParam, arrays22log, arrays22logunc, arrays22logphase, arrays22logphaseunc);
                         tables.Add(table13);
                         this.headers.Add("Logarithmic Magnitude and Phase Components for S22\n\n");
                     }
@@ -1278,7 +1278,7 @@ namespace DCC
                     if (boolList[18] == true)
                     {
                         sayac++;
-                        Table table19 = CF_WordTable.CF_CreateCF(filename, sayac, tablename,exd.ArrayFrekansCF, arrayCF_Cal_Factor, arrayCF_Cal_Factor_Unc);
+                        Table table19 = CF_WordTable.CF_CreateCF(filename, sayac, tablename, exd.ArrayFrekansCF, arrayCF_Cal_Factor, arrayCF_Cal_Factor_Unc);
                         tables.Add(table19);
                         this.headers.Add("CF 1 \n");
                     }
@@ -1320,7 +1320,7 @@ namespace DCC
                     if (boolList[24] == true)
                     {
                         sayac++;
-                        Table table25 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T1_Frekans, arrayRFD_T1_GostergeDegeri, arrayRFD_T1_AltSınır, arrayRFD_T1_UstSınır, arrayRFD_T1_OlculenDeger, arrayRFD_T1_OlculenFark, arrayRFD_T1_Belirsizlik, 
+                        Table table25 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T1_Frekans, arrayRFD_T1_GostergeDegeri, arrayRFD_T1_AltSınır, arrayRFD_T1_UstSınır, arrayRFD_T1_OlculenDeger, arrayRFD_T1_OlculenFark, arrayRFD_T1_Belirsizlik,
                                                                                "Frekans (GHz)", "Gösterge Değeri (dBm)", "Alt Sınır (dBm)", "Ölçülen Değer (dBm)", "Ölçülen Fark (dB)", "Üst Sınır (dBm)", "Belirsizlik (dB)");
                         tables.Add(table25);
                         this.headers.Add("RF Diff Table 1 \n");
@@ -1328,7 +1328,7 @@ namespace DCC
                     if (boolList[25] == true)
                     {
                         sayac++;
-                        Table table26 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T2_Frekans, arrayRFD_T2_Nom_Guc_Lvl, arrayRFD_T2_OlculenDeger, arrayRFD_T2_AltSınır, arrayRFD_T2_Nom_Guc_Lvl_fark, arrayRFD_T2_UstSınır, arrayRFD_T2_Belirsizlik, 
+                        Table table26 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T2_Frekans, arrayRFD_T2_Nom_Guc_Lvl, arrayRFD_T2_OlculenDeger, arrayRFD_T2_AltSınır, arrayRFD_T2_Nom_Guc_Lvl_fark, arrayRFD_T2_UstSınır, arrayRFD_T2_Belirsizlik,
                                                                                 "Frekans (GHz))", "Nominal Güç Seviyesi(dBm)", "Ölçülen Değer (dBm)", "Ölçülen Değer (dBm)", "Nominal Güç Seviye Farkı (dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
                         tables.Add(table26);
                         this.headers.Add("RF Diff Table 2 \n");
@@ -1336,7 +1336,7 @@ namespace DCC
                     if (boolList[26] == true)
                     {
                         sayac++;
-                        Table table27 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T3_Frekans, arrayRFD_T3_NominalGuc, arrayRFD_T3_AltSınır, arrayRFD_T3_OlculenDeger, arrayRFD_T3_UstSınır, arrayRFD_T3_Fark, arrayRFD_T3_Belirsizlik, 
+                        Table table27 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T3_Frekans, arrayRFD_T3_NominalGuc, arrayRFD_T3_AltSınır, arrayRFD_T3_OlculenDeger, arrayRFD_T3_UstSınır, arrayRFD_T3_Fark, arrayRFD_T3_Belirsizlik,
                                                                                 "Frekans", "Nominal Güç (dBm)", "Alt sınır (dBm)", "Ölçülen Değer (dBm)", "Üst Sınır (dBm)", "Fark(dB)", "Belirsizlik (dB)");
                         tables.Add(table27);
                         this.headers.Add("RF Diff Table 3 \n");
@@ -1344,7 +1344,7 @@ namespace DCC
                     if (boolList[27] == true)
                     {
                         sayac++;
-                        Table table28 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T4_Frekans, arrayRFD_T4_Min_Guc_lvl, arrayRFD_T4_Max_Guc_lvl, arrayRFD_T4_AltSınır, arrayRFD_T4_Fark, arrayRFD_T4_UstSınır, arrayRFD_T4_Belirsizlik, 
+                        Table table28 = RF_Difference_WordTable.RF_Diff_Table(filename, sayac, tablename, exd.ArrayRFD_T4_Frekans, arrayRFD_T4_Min_Guc_lvl, arrayRFD_T4_Max_Guc_lvl, arrayRFD_T4_AltSınır, arrayRFD_T4_Fark, arrayRFD_T4_UstSınır, arrayRFD_T4_Belirsizlik,
                                                                                 "Min.Güç Seviyesi (dBm)", "Max. Güç Seviyesi (dBm)", "Frekans", "Alt Sınır (dB)", "Fark(dB)", "Üst Sınır (dB)", "Belirsizlik (dB)");
                         tables.Add(table28);
                         this.headers.Add("RF Diff Table 4 \n");
@@ -1352,7 +1352,7 @@ namespace DCC
                     if (boolList[28] == true)
                     {
                         sayac++;
-                        Table table29 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T1_Frekans, arrayRFG_T1_GirisGucu, arrayRFG_T1_Belirsizlik, 
+                        Table table29 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T1_Frekans, arrayRFG_T1_GirisGucu, arrayRFG_T1_Belirsizlik,
                                                                           "Frekans", "Giriş Gücü", "Alt Sınır Belirsizlik (dB)");
                         tables.Add(table29);
                         this.headers.Add("RF Gain Table 1 \n");
@@ -1360,7 +1360,7 @@ namespace DCC
                     if (boolList[29] == true)
                     {
                         sayac++;
-                        Table table30 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T2_EnBuyukKazanc, arrayRFG_T2_EnKucukKazanc, exd.ArrayRFG_T2_Flatness, 
+                        Table table30 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T2_EnBuyukKazanc, arrayRFG_T2_EnKucukKazanc, exd.ArrayRFG_T2_Flatness,
                                                                           "En Büyük Kazanç (dB)", "En Küçük Kazanç (dB)", "Flatness (±dB)");
                         tables.Add(table30);
                         this.headers.Add("RF Gain Table 2 \n");
@@ -1368,7 +1368,7 @@ namespace DCC
                     if (boolList[30] == true)
                     {
                         sayac++;
-                        Table table31 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T3_Nom_Giris_Gucu, arrayRFG_T3_Kazanc, arrayRFG_T3_Belirsizlik, 
+                        Table table31 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T3_Nom_Giris_Gucu, arrayRFG_T3_Kazanc, arrayRFG_T3_Belirsizlik,
                                                                          "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
                         tables.Add(table31);
                         this.headers.Add("RF Gain Table 3 \n");
@@ -1376,7 +1376,7 @@ namespace DCC
                     if (boolList[31] == true)
                     {
                         sayac++;
-                        Table table32 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T4_Nom_Giris_Gucu, arrayRFG_T4_Kazanc, arrayRFG_T4_Belirsizlik, 
+                        Table table32 = RF_Gain_WordTable.RF_Gain_Table(filename, sayac, tablename, exd.ArrayRFG_T4_Nom_Giris_Gucu, arrayRFG_T4_Kazanc, arrayRFG_T4_Belirsizlik,
                                                                          "Nominal Giriş Gücü", "Kazanç", "Uncertainty");
                         tables.Add(table32);
                         this.headers.Add("RF Gain Table 4 \n");
@@ -1391,7 +1391,7 @@ namespace DCC
                     if (boolList[33] == true)
                     {
                         sayac++;
-                        Table table34 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T2_Frekans, arrayARFP_T2_Cıkıs_Gücü, arrayARFP_T2_OlculenDeger, arrayARFP_T2_AltSınır, arrayARFP_T2_Fark, arrayARFP_T2_ÜstSınır, arrayARFP_T2_Belirsizlik,"Ölçülen Değer (dBm)", "Fark (dB)");
+                        Table table34 = AbsoluteRF_Power_Word_Table.ARFP_CreateTable_1(filename, sayac, tablename, exd.ArrayARFP_T2_Frekans, arrayARFP_T2_Cıkıs_Gücü, arrayARFP_T2_OlculenDeger, arrayARFP_T2_AltSınır, arrayARFP_T2_Fark, arrayARFP_T2_ÜstSınır, arrayARFP_T2_Belirsizlik, "Ölçülen Değer (dBm)", "Fark (dB)");
                         tables.Add(table34);
                         this.headers.Add("Absolude 2 \n");
                     }
@@ -1470,7 +1470,7 @@ namespace DCC
                 // Kullanıcı bir konum seçtiyse devam et
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(saveFileDialog1.FileName))
                 {
-                    string originalFilePath = "wordData/sertifikaC.docx";
+                    string originalFilePath = "../../../SourceFiles/sertifikaC.docx";
                     copyFilePath = saveFileDialog1.FileName;
 
                     // Belgeyi kopyala
@@ -1488,7 +1488,7 @@ namespace DCC
         }
         public static List<bool> SelectFilledColumns(XElement resultElement)
         {
-            List<bool> boolList = new List<bool>(new bool[42]);
+            List<bool> boolList = new List<bool>(new bool[43]);
 
             XNamespace dcc = "https://ptb.de/dcc";
 
@@ -1587,70 +1587,70 @@ namespace DCC
                     if (quantityElement.Attribute("refType").Value == "Noise_ENR")
                     {
                         boolList[21] = true;
-                    
-                    if (quantityElement.Attribute("refType").Value == "Noise_DC_ON_Lin")
-                    {
-                        boolList[22] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "Noise_DC_OFF_Lin")
-                    {
-                        boolList[23] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t1")
-                    {
-                        boolList[24] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t2")
-                    {
-                        boolList[25] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t3")
-                    {
-                        boolList[26] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RF_Diff_t4")
-                    {
-                        boolList[27] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Unc1")
-                    {
-                        boolList[28] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Flatness")
-                    {
-                        boolList[29] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Unc2")
-                    {
-                        boolList[30] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "RFG_Unc3")
-                    {
-                        boolList[31] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t1")
-                    {
-                        boolList[32] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t2")
-                    {
-                        boolList[33] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t3")
-                    {
-                        boolList[34] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t4")
-                    {
-                        boolList[35] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t5")
-                    {
-                        boolList[36] = true;
-                    }
-                    if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t6")
-                    
-                        boolList[37] = true;
+
+                        if (quantityElement.Attribute("refType").Value == "Noise_DC_ON_Lin")
+                        {
+                            boolList[22] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "Noise_DC_OFF_Lin")
+                        {
+                            boolList[23] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RF_Diff_t1")
+                        {
+                            boolList[24] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RF_Diff_t2")
+                        {
+                            boolList[25] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RF_Diff_t3")
+                        {
+                            boolList[26] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RF_Diff_t4")
+                        {
+                            boolList[27] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RFG_Unc1")
+                        {
+                            boolList[28] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RFG_Flatness")
+                        {
+                            boolList[29] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RFG_Unc2")
+                        {
+                            boolList[30] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "RFG_Unc3")
+                        {
+                            boolList[31] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t1")
+                        {
+                            boolList[32] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t2")
+                        {
+                            boolList[33] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t3")
+                        {
+                            boolList[34] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t4")
+                        {
+                            boolList[35] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t5")
+                        {
+                            boolList[36] = true;
+                        }
+                        if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t6")
+
+                            boolList[37] = true;
                     }
                     if (quantityElement.Attribute("refType").Value == "frequency_ARFP_t7")
                     {

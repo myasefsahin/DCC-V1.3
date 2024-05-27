@@ -115,9 +115,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(209, 16);
+            pictureBox2.Location = new Point(206, 35);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(259, 280);
+            pictureBox2.Size = new Size(244, 250);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
@@ -322,9 +322,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(225, 35);
+            pictureBox1.Location = new Point(206, 35);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(200, 250);
+            pictureBox1.Size = new Size(244, 250);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;

@@ -10,6 +10,9 @@ namespace DCC
 {
     class CF_WordTable
     {
+     
+        //Calibration Factor ölçüm tipinin Excel üzerindeki tabloların tablo yapılarına göre oluşturulma kodu, 
+        //Bu method seçilen dosyanın adını Certificate form üzerinde tutulan sayacı, ve CF_DataWord classında çekilen ve formatlanan verileri parametre olarak alır. 
         public Table CF_CreateCF(string filename,int sayac,string tableName,ArrayList Freq, ArrayList CF, ArrayList CF_Unc)
         {
             // Tablo özellikleri
@@ -30,6 +33,7 @@ namespace DCC
                        new Justification() { Val = JustificationValues.Center } // Paragrafı ortala
                    ),
                    new Run(
+                       //Tablo başlığındaki verinin yazıldığı kısım 
                        new RunProperties(new RunFonts() { Ascii = "Arial", HighAnsi = "Arial" }, new FontSize() {Val="22" }),
                        new Text("Tablo" + sayac + ". " + tableName + "-" + filename)
                    )

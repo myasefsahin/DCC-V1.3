@@ -38,8 +38,7 @@ namespace DCC
         {
             if (uncertainty == 0)
             {
-                XmlDocument temp11 = new XmlDocument();
-                CertificateForm hatarefresh = new CertificateForm(temp11);
+                CertificateForm hatarefresh = new CertificateForm();
                 string errorMessage = "Hata oluştu!\n\n";
                 errorMessage += "Belirsizlik değeri sıfır olamaz.\n";
                 errorMessage += "Lütfen Excel dosyanızı kontrol ediniz.";

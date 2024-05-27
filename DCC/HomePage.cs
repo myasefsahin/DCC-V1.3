@@ -19,17 +19,15 @@ namespace DCC
         {
             InitializeComponent();
             CheckUserLogin();
+
         }
 
-     
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Text = "DCC CREATER";
             tabControl1.SelectedTab = HomeTab;
         }
-
-   
 
         private void HomePage_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -112,7 +110,6 @@ namespace DCC
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-
         }
 
         private void CertificatePageShowButton_Click_1(object sender, EventArgs e)
@@ -122,12 +119,7 @@ namespace DCC
             try
             {
 
-                string xmlFilePath = "xmlData/dcc_xml_scheme_uzun.xml";
-                XmlDocument x = new XmlDocument();
-                x.Load(xmlFilePath);
-
-                CreateXML ctx = new CreateXML();
-                this.xml = ctx.AddAdministrativeData(x, XML_Arrays);
+               
 
                 // Feedback
                 labelProgress.Visible = false;
@@ -137,8 +129,7 @@ namespace DCC
                 labelProgress.Visible = true;
                 labelProgress.ForeColor = System.Drawing.Color.Green;
                 labelProgress.Text = @"Administrative data save successful";
-                CertificateForm certificateForm = new CertificateForm(xml);
-                this.xml = certificateForm.xml;
+                CertificateForm certificateForm = new CertificateForm();
                 certificateForm.Show();
 
             }
@@ -158,6 +149,8 @@ namespace DCC
             this.Text = "XML TO WORD";
             tabControl1.SelectedTab = XMLtoWordPage;
         }
+
+  
     }
 
 }
